@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Estudio</title>
+    <style>
+        /* --- ESTILOS GENERALES (CSS PURO) --- */
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --success: #22c55e;
+            --success-bg: #dcfce7;
+            --error: #ef4444;
+            --error-bg: #fee2e2;
+            --border-radius: 12px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        #app {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: #1e293b;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        header h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        header p { color: #94a3b8; font-size: 0.9rem; }
+
+        /* --- MAIN --- */
+        main { flex-grow: 1; padding: 20px; }
+
+        /* --- PANTALLA SELECCIÓN (GRID) --- */
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .subject-card {
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border: 1px solid #e2e8f0;
+        }
+
+        .subject-card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0,0,0,0.05);
+        }
+
+        /* Colores por asignatura */
+        .sub-sost { background-color: #eff6ff; border-color: #bfdbfe; }
+        .sub-sost h2 { color: #1d4ed8; border-color: #bfdbfe; }
+        
+        .sub-digi { background-color: #f0fdf4; border-color: #bbf7d0; }
+        .sub-digi h2 { color: #15803d; border-color: #bbf7d0; }
+
+        .sub-web { background-color: #faf5ff; border-color: #e9d5ff; }
+        .sub-web h2 { color: #7e22ce; border-color: #e9d5ff; }
+
+        /* Botones de cuestionario */
+        .quiz-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        .quiz-btn:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* --- PANTALLA QUIZ --- */
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+        
+        .progress-badge {
+            background: #f1f5f9;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #64748b;
+        }
+
+        .question-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .option-btn {
+            width: 100%;
+            text-align: left;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            color: #334155;
+        }
+
+        .option-btn:hover { background-color: #f8fafc; border-color: #cbd5e1; }
+        
+        .option-btn.selected {
+            background-color: #eff6ff;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn-secondary {
+            background: none;
+            border: none;
+            color: #64748b;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-primary:hover:not(:disabled) { background-color: var(--primary-hover); }
+
+        /* --- PANTALLA RESULTADOS --- */
+        .results-container { text-align: center; max-width: 600px; margin: 0 auto; }
+        .score-card {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+        .score-item span { display: block; }
+        .big-number { font-size: 2.5rem; font-weight: 800; color: var(--primary-color); }
+        
+        .feedback-box { padding: 15px; border-radius: 8px; margin-bottom: 30px; font-weight: bold; }
+        .fb-good { background-color: var(--success-bg); color: #166534; }
+        .fb-avg { background-color: #eff6ff; color: #1e40af; }
+        .fb-bad { background-color: var(--error-bg); color: #991b1b; }
+
+        /* Revisión */
+        .review-item {
+            text-align: left;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #ccc;
+            background: #f8fafc;
+        }
+        .review-item.correct { border-left-color: var(--success); background-color: #f0fdf4; }
+        .review-item.incorrect { border-left-color: var(--error); background-color: #fef2f2; }
+        
+        .review-option { padding: 8px; border-radius: 4px; margin-top: 5px; font-size: 0.9rem; }
+        .opt-correct { background-color: #dcfce7; color: #14532d; font-weight: bold; }
+        .opt-incorrect { background-color: #fee2e2; color: #7f1d1d; text-decoration: line-through; }
+
+        .hidden { display: none !important; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            #app { border-radius: 0; min-height: 100vh; }
+            .grid-menu { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        
+        <header>
+            <h1>Plataforma de Repaso</h1>
+            <p>Sostenibilidad | Digitalización | Diseño Web</p>
+        </header>
+
+        <main>
+            
+            <!-- 1. PANTALLA DE SELECCIÓN -->
+            <div id="seleccion-screen" class="grid-menu">
+                
+                <!-- Sostenibilidad -->
+                <div class="subject-card sub-sost">
+                    <h2>🌱 Sostenibilidad</h2>
+                    <button onclick="startQuiz('sostenibilidad', 'sost1')" class="quiz-btn">1. Entendiendo la Sostenibilidad</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost2')" class="quiz-btn">2. Quincena 20/10 - 02/11</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost3')" class="quiz-btn">3. Quincena 03/11 - 16/11</button>
+                </div>
+
+                <!-- Digitalización -->
+                <div class="subject-card sub-digi">
+                    <h2>💻 Digitalización</h2>
+                    <button onclick="startQuiz('digitalizacion', 'digi1')" class="quiz-btn">1. Quincena 2</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi2')" class="quiz-btn">2. Quincena 3</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi3')" class="quiz-btn">3. Quincena 4</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi4')" class="quiz-btn">4. Quincena 5 (Tema 2)</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi5')" class="quiz-btn">Evalúa tus conocimientos T.1-2</button>
+                </div>
+
+                <!-- Diseño Web -->
+                <div class="subject-card sub-web">
+                    <h2>🎨 Diseño Web</h2>
+                    <button onclick="startQuiz('diseno', 'ud1')" class="quiz-btn">UD1. Diseño de Interfaces</button>
+                    <button onclick="startQuiz('diseno', 'ud2')" class="quiz-btn">UD2. Elementos Diseño</button>
+                    <button onclick="startQuiz('diseno', 'ud3')" class="quiz-btn">UD3. Usabilidad y Accesibilidad</button>
+                    <button onclick="startQuiz('diseno', 'ud4')" class="quiz-btn">UD4. HTML y Semántica</button>
+                    <button onclick="startQuiz('diseno', 'ud5')" class="quiz-btn">UD5. CSS y Estilos</button>
+                </div>
+
+            </div>
+
+            <!-- 2. PANTALLA DE CUESTIONARIO -->
+            <div id="quiz-screen" class="hidden">
+                <div class="quiz-header">
+                    <h2 id="quiz-title">Título del Test</h2>
+                    <span id="progress" class="progress-badge">1 / 30</span>
+                </div>
+
+                <div class="question-box">
+                    <p id="question-text" class="question-text">¿Pregunta?</p>
+                    <div id="options-container">
+                        <!-- Opciones generadas por JS -->
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button onclick="showScreen('seleccion-screen')" class="btn-secondary">Cancelar</button>
+                    <button id="next-btn" onclick="nextQuestion()" class="btn-primary" disabled>Siguiente</button>
+                </div>
+            </div>
+
+            <!-- 3. PANTALLA DE RESULTADOS -->
+            <div id="results-screen" class="hidden">
+                <div class="results-container">
+                    <div style="font-size: 4rem;">📊</div>
+                    <h2 style="margin: 10px 0;">Resultados</h2>
+                    <p>Has completado el cuestionario</p>
+                    
+                    <div class="score-card">
+                        <div class="score-item">
+                            <span class="big-number" id="final-score">0</span>
+                            <small>Aciertos</small>
+                        </div>
+                        <div class="score-item">
+                            <span class="big-number" id="final-grade">0.0</span>
+                            <small>Nota</small>
+                        </div>
+                    </div>
+
+                    <div id="feedback-msg" class="feedback-box"></div>
+
+                    <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px;">
+                        <button onclick="showScreen('seleccion-screen')" class="btn-secondary" style="background:#e2e8f0; color:#333; padding: 10px 20px; border-radius: 6px;">Menú Principal</button>
+                        <button onclick="restartQuiz()" class="btn-primary">Repetir Test</button>
+                    </div>
+
+                    <div id="review-container">
+                        <!-- Revisión generada por JS -->
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // --- BASE DE DATOS ---
+        const BBDD = {
+            sostenibilidad: {
+                sost1: {
+                    title: "Entendiendo la Sostenibilidad",
+                    questions: [
+                        { pregunta: "¿Qué son los Objetivos de Desarrollo Sostenible (ODS)?", opciones: ["Una campaña publicitaria de la ONU.", "Una estrategia empresarial para mejorar la competitividad.", "Un conjunto de 17 metas internacionales para lograr un futuro más justo y sostenible."], correcta: 2 },
+                        { pregunta: "¿Qué significa sostenibilidad desde una perspectiva ecosocial?", opciones: ["Aumentar la eficiencia tecnológica sin reducir el consumo.", "Crecer económicamente sin límites.", "Atender las necesidades del presente sin comprometer las del futuro."], correcta: 2 },
+                        { pregunta: "¿Qué informe popularizó el término “desarrollo sostenible” en 1987?", opciones: ["Informe Meadows.", "Informe Brundtland.", "Protocolo de Kioto."], correcta: 1 },
+                        { pregunta: "¿En qué consiste la “economía de la rosquilla” de Kate Raworth?", opciones: ["En garantizar un “suelo social” de necesidades básicas y un “techo ecológico” que no debemos superar.", "En crecer ilimitadamente en producción y consumo.", "En basar toda la economía en los combustibles fósiles."], correcta: 0 },
+                        { pregunta: "¿Qué se entiende por “lavado verde” (greenwashing)?", opciones: ["Reutilizar materiales en procesos industriales.", "Reducir el consumo de agua en procesos de producción.", "Estrategia de marketing empresarial para parecer sostenible sin serlo realmente."], correcta: 2 },
+                        { pregunta: "¿Qué significa “decrecimiento” según el texto?", opciones: ["Reducir únicamente el crecimiento cultural y humano.", "Reducir consumos innecesarios y opulentos, redistribuyendo los recursos.", "Eliminar por completo la producción industrial."], correcta: 1 },
+                        { pregunta: "¿Qué propone “poner la vida en el centro”?", opciones: ["Priorizar los beneficios empresariales frente a las necesidades humanas.", "Fomentar el individualismo y la competencia en las sociedades.", "Reorganizar la economía y la política para garantizar vidas dignas y cuidados."], correcta: 2 },
+                        { pregunta: "¿Por qué es vital mantener la biodiversidad?", opciones: ["Porque asegura funciones esenciales como la fotosíntesis, polinización y fertilidad del suelo.", "Porque incrementa los beneficios económicos de las multinacionales.", "Porque permite el crecimiento ilimitado de la economía."], correcta: 0 }
+                    ]
+                },
+                sost2: {
+                    title: "Quincena 20 Oct - 02 Nov",
+                    questions: [
+                        { pregunta: "¿Qué se entiende por “crisis ecosocial”?", opciones: ["Una crisis únicamente ambiental.", "Una crisis que combina problemas ecológicos, económicos y sociales.", "Una crisis política causada por la falta de leyes ambientales."], correcta: 1 },
+                        { pregunta: "¿Cuál es una de las principales causas del cambio climático?", opciones: ["El uso de energía solar.", "El aumento de la población.", "La deforestación y el uso de combustibles fósiles."], correcta: 2 },
+                        { pregunta: "¿Qué objetivo persigue el desarrollo sostenible?", opciones: ["Crecer económicamente sin límites.", "Satisfacer las necesidades actuales sin comprometer las de futuras generaciones.", "Reducir la producción industrial al mínimo."], correcta: 1 },
+                        { pregunta: "¿Qué papel tiene la educación en la sostenibilidad?", opciones: ["Ninguno, ya que es un tema solo político.", "Fomentar la conciencia y el cambio de hábitos hacia un modelo sostenible.", "Enseñar únicamente sobre energías renovables."], correcta: 1 },
+                        { pregunta: "¿Qué significa el término “huella ecológica”?", opciones: ["El impacto ambiental que genera una persona o comunidad para mantener su estilo de vida.", "La cantidad de residuos que produce un país.", "La cantidad de árboles plantados por una persona."], correcta: 0 },
+                        { pregunta: "¿Qué problema causa la pérdida de biodiversidad?", opciones: ["Favorece el equilibrio de los ecosistemas.", "Aumenta la capacidad de adaptación de las especies.", "Rompe los equilibrios naturales y reduce los recursos disponibles."], correcta: 2 },
+                        { pregunta: "¿Qué se busca con la economía circular?", opciones: ["Reutilizar, reciclar y reducir para evitar residuos.", "Maximizar el consumo de recursos.", "Aumentar la producción industrial."], correcta: 0 },
+                        { pregunta: "¿Qué son los Objetivos de Desarrollo Sostenible (ODS)?", opciones: ["Un conjunto de metas globales para erradicar la pobreza y proteger el planeta.", "Un programa de ayuda económica para países pobres.", "Normas europeas para proteger el medio ambiente."], correcta: 0 },
+                        { pregunta: "¿Por qué es importante la justicia social en la sostenibilidad?", opciones: ["Porque se enfoca solo en los derechos de los animales.", "Porque busca que todos tengan las mismas oportunidades y acceso a recursos.", "Porque mejora la producción industrial."], correcta: 1 },
+                        { pregunta: "¿Qué actitud personal favorece la sostenibilidad?", opciones: ["Ignorar los problemas ambientales globales.", "Consumir productos locales y reducir el desperdicio.", "Usar más energía para mantener la economía."], correcta: 1 }
+                    ]
+                },
+                sost3: {
+                    title: "Quincena 03 Nov - 16 Nov",
+                    questions: [
+                        { pregunta: "¿Qué mide principalmente la huella ecológica?", opciones: ["La cantidad de residuos reciclados en un país", "El número de especies en peligro de extinción", "El impacto ambiental de las actividades humanas sobre los recursos naturales"], correcta: 2 },
+                        { pregunta: "¿Cuál de las siguientes acciones contribuye a reducir la huella ecológica?", opciones: ["Aumentar el uso de combustibles fósiles", "Usar transporte público en lugar de automóvil particular", "Consumir más productos desechables por comodidad"], correcta: 1 },
+                        { pregunta: "¿Qué objetivo persigue la sostenibilidad?", opciones: ["Alcanzar el máximo crecimiento económico posible", "Equilibrar las necesidades humanas con la conservación del planeta", "Reducir la población mundial"], correcta: 1 },
+                        { pregunta: "¿Qué propone el desarrollo sostenible?", opciones: ["Atender las necesidades actuales sin dañar las posibilidades de las generaciones futuras", "Favorecer el crecimiento económico sin límite.", "Sustituir los ecosistemas naturales por zonas urbanas sostenibles"], correcta: 0 },
+                        { pregunta: "¿Por qué el cambio climático se considera un desafío ecosocial?", opciones: ["Porque solo afecta al medio ambiente", "Porque se debe únicamente a procesos naturales", "Porque sus causas y consecuencias tienen impacto ambiental y social"], correcta: 2 },
+                        { pregunta: "¿Qué caracteriza al modelo de economía circular?", opciones: ["Aumentar el consumo de materias primas", "Basarse en producir, usar y desechar", "Eliminar residuos mediante la reutilización y el reciclaje"], correcta: 2 },
+                        { pregunta: "Según los desafíos ecosociales actuales, ¿qué limita más el logro de un desarrollo verdaderamente sostenible?", opciones: ["La desigual distribución del acceso a los recursos y la riqueza", "La falta de recursos naturales en el planeta", "La escasez de tecnologías innovadoras"], correcta: 0 },
+                        { pregunta: "¿Qué papel cumple la educación ambiental en la transformación hacia sociedades sostenibles?", opciones: ["Formar ciudadanos críticos y comprometidos con el cambio de modelo social", "Informar sobre los peligros naturales del planeta", "Fomentar únicamente el conocimiento científico del medio ambiente"], correcta: 0 },
+                        { pregunta: "¿Por qué el modelo de producción y consumo actual se considera insostenible?", opciones: ["Porque aún no utiliza suficiente energía nuclear", "Porque no ha alcanzado su máximo nivel de eficiencia", "Porque depende de la extracción continua de recursos y genera desigualdad social"], correcta: 2 },
+                        { pregunta: "¿Cuál de los siguientes factores profundiza los problemas ecosociales globales?", opciones: ["La sobreexplotación de recursos unida al individualismo económico", "La reducción de la huella ecológica de los países desarrollados", "La cooperación internacional y la economía solidaria"], correcta: 0 }
+                    ]
+                }
+            },
+            digitalizacion: {
+                digi1: {
+                    title: "Quincena 2",
+                    questions: [
+                        { pregunta: "¿Qué impulsa la necesidad de una convergencia IT-OT efectiva?", opciones: ["La digitalización de procesos industriales y la proliferación de dispositivos IoT.", "La necesidad de mantener separados los sistemas de oficina y de fábrica.", "La reducción de costes en ciberseguridad."], correcta: 0 },
+                        { pregunta: "Indica si es verdadera o falsa: La implantación de tecnología digital en una empresa no requiere ningún cambio cultural.", opciones: ["Verdadero", "Falso"], correcta: 1 },
+                        { pregunta: "Indica si es verdadera o falsa: La digitalización implica solamente el cambio de documentos de formato papel a digital.", opciones: ["Verdadero", "Falso"], correcta: 1 },
+                        { pregunta: "Indica si es verdadera o falsa: La digitalización y la transformación digital son términos sinónimos.", opciones: ["Verdadero", "Falso"], correcta: 1 },
+                        { pregunta: "¿Qué elemento es fundamental para gestionar la resistencia al cambio en un plan de digitalización?", opciones: ["Aumentar la carga de trabajo.", "Comunicación efectiva.", "Eliminar empleos.", "Reducir la capacitación."], correcta: 1 },
+                        { pregunta: "Indica si es verdadera o falsa: La convergencia IT-OT busca separar aún más las tecnologías de información y las operacionales.", opciones: ["Verdadero", "Falso"], correcta: 1 },
+                        { pregunta: "Los datos y analítica intensiva se utilizan para la ___ informadas.", opciones: ["generación de informes", "toma de decisiones", "automatización de tareas"], correcta: 1 },
+                        { pregunta: "La transformación digital del modelo de negocio implica revisar la ___ y cómo se ofrece al mercado.", opciones: ["propuesta de valor", "plantilla de empleados", "infraestructura física"], correcta: 0 },
+                        { pregunta: "Menciona una tecnología que ayude a mejorar la experiencia del cliente en el entorno digital.", opciones: ["Sistemas ERP", "Firewalls de red", "Chatbots"], correcta: 2 },
+                        { pregunta: "Indica si es verdadera o falsa: La transformación digital no afecta la cultura organizacional de una empresa.", opciones: ["Verdadero", "Falso"], correcta: 1 },
+                        { pregunta: "¿Qué tipo de transformación digital podría realizar un negocio artesano local para expandirse?", opciones: ["Abrirse al comercio electrónico.", "Implementar un sistema de producción en cadena.", "Mover su taller a una zona industrial."], correcta: 0 },
+                        { pregunta: "Indica si es verdadera o falsa: La implementación de tecnologías emergentes siempre resulta en un retorno inmediato de la inversión.", opciones: ["Verdadero", "Falso"], correcta: 1 },
+                        { pregunta: "¿Qué es necesario para manejar la resistencia al cambio durante la implementación de tecnología digital?", opciones: ["Ignorar las quejas de los empleados.", "Comunicación efectiva.", "Aumentar los salarios temporalmente."], correcta: 1 },
+                        { pregunta: "¿Cuál de las siguientes opciones NO es un componente de un plan de digitalización?", opciones: ["Reducción de personal", "Alineación con estrategias comerciales", "Evaluación de riesgos", "Identificación de objetivos"], correcta: 0 }
+                    ]
+                },
+                digi2: {
+                    title: "Quincena 3",
+                    questions: [
+                        { pregunta: "¿Qué tecnología se utiliza para garantizar la trazabilidad y seguridad en las transacciones digitales?", opciones: ["Realidad virtual.", "Internet de las cosas.", "Blockchain.", "Big data."], correcta: 2 },
+                        { pregunta: "Indica si es verdadera o falsa: La transformación digital solo se aplica a grandes corporaciones y no es relevante para las pequeñas empresas.", opciones: ["Verdadero", "Falso"], correcta: 1 },
+                        { pregunta: "Indica si es verdadera o falsa: Los sistemas ERP se utilizan exclusivamente para la gestión financiera dentro de una organización.", opciones: ["Verdadero", "Falso"], correcta: 1 },
+                        { pregunta: "¿Cuál es un beneficio principal de la digitalización de la cadena de suministro?", opciones: ["Aumento de costos operativos.", "Reducción de la visibilidad de inventario.", "Disminución de la innovación.", "Mejora en la planificación y adaptabilidad."], correcta: 3 },
+                        { pregunta: "¿Cuál es el principal objetivo de implementar sistemas de gestión de activos (AMS)?", opciones: ["Monitorizar y mantener eficientemente los activos físicos.", "Disminuir la transparencia operativa.", "Reducir la cantidad de activos.", "Aumentar el costo operacional."], correcta: 0 },
+                        { pregunta: "¿Cuál de estos es un beneficio de la transformación digital del dominio empresarial?", opciones: ["Incremento en los costos operativos.", "Aumento en la eficiencia operativa.", "Reducción de la interacción humana.", "Disminución del uso de datos."], correcta: 1 },
+                        { pregunta: "Menciona una característica de un entorno IT.", opciones: ["Todas son correctas.", "Desarrollo de software.", "Comunicaciones y ciberseguridad.", "Enfoque en la información y sistemas empresariales."], correcta: 0 },
+                        { pregunta: "¿Cuál de estos no es un beneficio de la digitalización en planta?", opciones: ["Reducción de la intervención humana.", "Optimización de procesos.", "Aumento de errores operativos.", "Mejora en la eficiencia operativa."], correcta: 2 },
+                        { pregunta: "¿Qué tecnología es fundamental en la transformación digital para mejorar la interacción con los clientes?", opciones: ["Teléfono fijo.", "Fax.", "Papel y lápiz.", "Chatbots."], correcta: 3 },
+                        { pregunta: "¿Qué aspecto de la digitalización puede ayudar especialmente en la reducción de errores operativos?", opciones: ["Reducción del uso de datos.", "Uso intensivo de documentos en papel.", "Automatización de procesos.", "Aumento de la intervención humana."], correcta: 2 },
+                        { pregunta: "Indica si es verdadera o falsa: La introducción de la tecnología digital en las operaciones de una empresa nunca introduce nuevos riesgos.", opciones: ["Verdadero", "Falso"], correcta: 1 },
+                        { pregunta: "La integración de sistemas _______ en la transformación digital ayuda a mejorar la experiencia del cliente.", opciones: ["OT.", "CRM.", "IT.", "Interconectados."], correcta: 1 },
+                        { pregunta: "¿Qué representa un «gemelo digital» en el contexto de la digitalización industrial?", opciones: ["Un modelo digital que replica procesos físicos.", "Un empleado virtual.", "Un nuevo tipo de sensor IoT.", "Una copia de seguridad de datos."], correcta: 0 }
+                    ]
+                },
+                digi3: {
+                    title: "Quincena 4",
+                    questions: [
+                        { pregunta: "¿Qué son las tecnologías habilitadoras digitales (THD)?", opciones: ["Un conjunto de normas industriales de producción.", "Un tipo de software de entretenimiento digital.", "Un conjunto de tecnologías clave facilitadores de la transformación digital.", "Un grupo de programas informáticos para uso doméstico."], correcta: 2 },
+                        { pregunta: "El Big Data y la analítica se centran en:", opciones: ["La creación de entornos digitales simulados.", "El desarrollo de materiales avanzados.", "La gestión y el análisis de grandes volúmenes de datos.", "La comunicación entre dispositivos mediante voz."], correcta: 2 },
+                        { pregunta: "La impresión 3D también es conocida como", opciones: ["Diseño automatizado.", "Modelado colaborativo.", "Producción avanzada.", "Fabricación aditiva."], correcta: 3 },
+                        { pregunta: "¿Qué aporta la robótica colaborativa a los entornos de trabajo?", opciones: ["Mejora la realidad virtual inmersiva.", "Permite el almacenamiento de datos en la nube.", "Facilita la colaboración segura entre robots y seres humanos.", "Aumenta la capacidad de las redes 5G."], correcta: 2 },
+                        { pregunta: "¿Qué modelo económico sigue un flujo unidireccional de la producción al consumo y eliminación?", opciones: ["Economía sostenible.", "Economía lineal.", "Economía digital.", "Economía circular."], correcta: 1 },
+                        { pregunta: "El modelo de economía circular tiene como objetivo", opciones: ["Eliminar el uso de tecnologías digitales.", "Reducir el consumo de información digital.", "Aumentar la velocidad de transmisión de datos.", "Promover procesos de producción que generen el menor impacto posible al medioambiente."], correcta: 3 },
+                        { pregunta: "El Internet de las cosas (IoT) implica la conexión de dispositivos físicos a través de:", opciones: ["Una nube local que almacena imágenes digitales.", "Un cableado interno que conecta los sistemas eléctricos.", "Una red, permitiendo la recopilación y el intercambio de datos entre ellos.", "Un programa de inteligencia artificial."], correcta: 2 },
+                        { pregunta: "La evolución de la industria hacia la industria 5.0 se caracteriza por", opciones: ["El uso exclusivo de robots industriales.", "El retorno a los métodos de producción manual.", "La capacidad de los dispositivos para generar conocimiento y tomar decisiones de forma autónoma.", "La eliminación de procesos automatizados."], correcta: 2 },
+                        { pregunta: "¿Cuál de las siguientes afirmaciones describe la Inteligencia Artificial (IA)?", opciones: ["Sistemas informáticos que pueden realizar tareas que normalmente requieren inteligencia humana.", "Se refiere al almacenamiento de grandes volúmenes de datos.", "Consiste en superponer información digital sobre el mundo real.", "Es una tecnología de registro distribuido para transacciones seguras."], correcta: 0 },
+                        { pregunta: "Las redes 5G proporcionan", opciones: ["Una mejora en la gestión de residuos urbanos.", "La capacidad de fabricar objetos tridimensionales.", "Velocidades de transmisión de datos mucho más rápidas y menor latencia.", "Un nuevo modelo de economía circular."], correcta: 2 },
+                        { pregunta: "¿Qué diferencia a la RV de la RA?", opciones: ["La RV utiliza datos del mundo real para crear análisis predictivos.", "La RV combina elementos físicos y virtuales.", "La RV se basa en la impresión 3D.", "La RV sumerge completamente al usuario en un entorno digital simulado."], correcta: 3 },
+                        { pregunta: "¿Qué característica principal tiene la tecnología Blockchain?", opciones: ["Genera gemelos digitales para análisis predictivo.", "Proporciona una gestión segura y transparente de transacciones.", "Permite la simulación de objetos físicos en tiempo real.", "Superpone gráficos sobre la vista del mundo real."], correcta: 1 },
+                        { pregunta: "Los gemelos digitales permiten", opciones: ["Proteger los datos digitales mediante encriptación.", "Superponer imágenes virtuales sobre el entorno real.", "Crear representaciones precisas en tiempo real de objetos físicos o sistemas.", "Fabricar productos mediante impresión 3D."], correcta: 2 },
+                        { pregunta: "La Realidad Aumentada (RA) combina elementos del mundo real con:", opciones: ["Representaciones tridimensionales de objetos físicos.", "Imágenes almacenadas en la nube.", "Elementos virtuales, superponiendo información digital sobre la vista del mundo real.", "Datos encriptados provenientes del blockchain."], correcta: 2 }
+                    ]
+                },
+                digi4: {
+                    title: "Quincena 5 (Tema 2)",
+                    questions: [
+                        { pregunta: "En la “Producción JIT”, ¿qué tecnología permite la recopilación de datos en tiempo real?", opciones: ["Dispositivos IoT", "Realidad virtual", "Gemelos digitales", "Inteligencia artificial"], correcta: 0 },
+                        { pregunta: "La “Extensión de la vida del producto” busca eliminar la obsolescencia programada.", opciones: ["Verdadero", "Falso"], correcta: 0 },
+                        { pregunta: "¿Qué modelo de negocio reemplaza la adquisición de un producto por el servicio?", opciones: ["Extensión de la vida del producto", "Producción JIT", "Producto como servicio", "Cadena de suministro sostenible"], correcta: 2 },
+                        { pregunta: "La simbiosis industrial consiste en evitar cualquier tipo de intercambio entre empresas.", opciones: ["Verdadero", "Falso"], correcta: 1 },
+                        { pregunta: "¿Qué modelo se centra en el impacto ambiental durante toda su vida útil?", opciones: ["Simbiosis industrial", "Ecodiseño", "Cadena de suministro sostenible", "Reciclado y reconversión"], correcta: 1 },
+                        { pregunta: "¿Qué tipo de red mejora la conectividad eficiente en la cadena de suministro?", opciones: ["3G", "4G", "5G", "Wi-Fi"], correcta: 2 },
+                        { pregunta: "¿Cuál es el principal objetivo de los modelos de negocio sostenibles?", opciones: ["Incrementar el consumo de energía", "Minimizar el consumo y el desperdicio", "Eliminar la producción industrial", "Sustituir totalmente los combustibles fósiles"], correcta: 1 },
+                        { pregunta: "¿Qué tecnología se usa en “Reciclado y reconversión”?", opciones: ["Robótica colaborativa", "Realidad aumentada", "Gemelos digitales", "Todas son correctas"], correcta: 3 },
+                        { pregunta: "¿Qué tecnología garantiza la trazabilidad en la cadena de suministro?", opciones: ["Inteligencia artificial", "Impresión 3D", "Blockchain", "Robótica colaborativa"], correcta: 2 },
+                        { pregunta: "En “Modelos de negocio sostenibles”, ¿qué impacto tendría continuar con los patrones actuales?", opciones: ["Un incremento en la sostenibilidad ambiental", "Una reducción en el consumo energético", "Un impacto muy importante en el medioambiente", "Una mejora en la eficiencia industrial"], correcta: 2 },
+                        { pregunta: "¿Qué tecnología optimiza la clasificación de materiales reciclables?", opciones: ["Realidad aumentada", "Inteligencia artificial", "Ciberseguridad", "Big data"], correcta: 1 },
+                        { pregunta: "¿Qué tecnología permite rastrear la procedencia de productos y repuestos?", opciones: ["Realidad aumentada", "Blockchain", "Impresión 3D", "Big data"], correcta: 1 }
+                    ]
+                },
+                digi5: {
+    title: "Evalúa tus conocimientos T.1-2",
+    questions: [
+        { pregunta: "Un plan de digitalización prepara a la empresa para la transformación digital porque…", opciones: [
+            "Evita identificar áreas específicas que podrían beneficiarse de dicho plan.",
+            "Incluye estrategias para combatir la resistencia al cambio que pueda aparecer.",
+            "Evita introducir nuevos riesgos y mejorar así la seguridad y el cumplimiento.",
+            "Ayuda a optimizar las inversiones en tecnología, capacitación y cambio organizacional."
+        ], correcta: 3 },
+
+        { pregunta: "¿Cuál de los siguientes NO es un aspecto clave en el proceso de transformación digital?", opciones: [
+            "Enfoque en mejorar la experiencia del cliente.",
+            "Cambio de la cultura organizacional.",
+            "El uso de datos y analíticas.",
+            "Dispositivos más potentes para los empleados."
+        ], correcta: 3 },
+
+        { pregunta: "Una de las principales características de un entorno OT es…", opciones: [
+            "El uso de sensores y dispositivos conectados para recopilar datos.",
+            "La seguridad de las aplicaciones y los datos.",
+            "El uso de sistemas de gestión empresarial.",
+            "La implantación de herramientas de comunicación."
+        ], correcta: 0 },
+
+        { pregunta: "¿Cuáles de los siguientes aspectos corresponden a la digitalización en negocio?", opciones: [
+            "Big data.",
+            "Inteligencia artificial.",
+            "Blockchain.",
+            "Todos los anteriores."
+        ], correcta: 3 },
+
+        { pregunta: "¿Por qué es importante que tengamos en cuenta aspectos de la ciberseguridad en la transformación digital?", opciones: [
+            "Porque la ciberseguridad está de moda y favorece la imagen.",
+            "Para mantenernos conectados a internet.",
+            "Porque hay que asegurar los datos y sistemas críticos del negocio.",
+            "Porque los ordenadores necesitan un antivirus."
+        ], correcta: 2 },
+
+        { pregunta: "¿Es lo mismo digitalización que transformación digital?", opciones: [
+            "Sí, porque la digitalización siempre implica transformación digital.",
+            "No. La transformación digital es un proceso más profundo que la digitalización.",
+            "No. La digitalización es más profunda que la transformación digital.",
+            "Sí. Se utilizan indistintamente."
+        ], correcta: 1 },
+
+        { pregunta: "¿Cuál de los siguientes NO es un tipo de transformación digital?", opciones: [
+            "Transformación digital de la cultura.",
+            "Transformación digital de procesos.",
+            "Transformación digital en la gestión de residuos.",
+            "Transformación digital del modelo de negocio."
+        ], correcta: 2 },
+
+        { pregunta: "Uno de los principales efectos de implantar tecnología en los procesos es…", opciones: [
+            "La reducción de errores gracias a la automatización.",
+            "El aumento de la carga de trabajo.",
+            "La necesidad de asignar más recursos.",
+            "La reducción de la jornada laboral."
+        ], correcta: 0 },
+
+        { pregunta: "¿A qué nos referimos con el término entorno IT?", opciones: [
+            "A la información de la organización y los sistemas que la gestionan.",
+            "A todos los dispositivos electrónicos de la empresa.",
+            "A la tecnología que supervisa dispositivos.",
+            "Ninguna de las anteriores."
+        ], correcta: 0 },
+
+        { pregunta: "Al enfoque operativo en el proceso de digitalización se le conoce como…", opciones: [
+            "Digitalización en negocio.",
+            "Digitalización en empresa.",
+            "Digitalización en sistema.",
+            "Digitalización en planta."
+        ], correcta: 3 },
+
+        { pregunta: "Las tecnologías habilitadoras digitales…", opciones: [
+            "Habilitan a los empleados para usar la infraestructura digital.",
+            "Son productos y servicios generados.",
+            "Permiten que dispositivos analógicos funcionen con mecanismos digitales.",
+            "Proporcionan capacidades e infraestructura para impulsar la digitalización."
+        ], correcta: 3 },
+
+        { pregunta: "¿Cuál de las siguientes NO se considera una tecnología habilitadora digital?", opciones: [
+            "Inteligencia artificial.",
+            "Computación en la nube.",
+            "Televisión por cable por fibra IPTV.",
+            "Impresión 3D."
+        ], correcta: 2 },
+
+        { pregunta: "¿En qué revolución industrial nos encontramos?", opciones: [
+            "Industria 3.0.",
+            "Industria 4.0.",
+            "Industria 5.0.",
+            "Industria 6.0."
+        ], correcta: 1 },
+
+        { pregunta: "¿Qué modelo económico busca el menor impacto ambiental?", opciones: [
+            "Economía lineal.",
+            "Economía circular.",
+            "Economía triangular.",
+            "Economía simplificada basada en el ‘condensador de fluzo’."
+        ], correcta: 1 },
+
+        { pregunta: "Modelo sostenible que elimina la obsolescencia programada:", opciones: [
+            "Extensión de la vida del producto.",
+            "Simbiosis industrial.",
+            "Ecodiseño.",
+            "Reciclado y reconversión."
+        ], correcta: 0 },
+
+        { pregunta: "¿Cuál NO es una tecnología habilitadora digital emergente?", opciones: [
+            "Nanotecnología.",
+            "Fotónica.",
+            "Materiales avanzados.",
+            "Desarrollo software predictivo."
+        ], correcta: 3 },
+
+        { pregunta: "¿Qué es la tecnología de gemelos digitales?", opciones: [
+            "Gemelos con componentes digitales colocados en camisas.",
+            "Representaciones precisas de objetos físicos para simularlos en tiempo real.",
+            "Tener un hijo idéntico mediante genética.",
+            "Generar entornos tan realistas que no se distingan de la realidad."
+        ], correcta: 1 },
+
+        { pregunta: "En el modelo 'producto como servicio'…", opciones: [
+            "Las redes 5G facilitan el servicio por su velocidad.",
+            "Blockchain permite comprar hardware en bitcoins.",
+            "La IA selecciona clientes para evitar morosos.",
+            "La impresión 3D permite imprimir ordenadores."
+        ], correcta: 0 },
+
+        { pregunta: "La tecnología emergente de mayor impacto en wearables es…", opciones: [
+            "Fotónica.",
+            "IA con computación en la nube.",
+            "Micro- y nanotecnología.",
+            "Biotecnología industrial con impresión 3D."
+        ], correcta: 2 },
+
+        { pregunta: "¿Qué tecnología está más relacionada con prototipos y prótesis?", opciones: [
+            "Computación en la nube.",
+            "Blockchain.",
+            "5G/Wi-Fi 6.",
+            "Impresión 3D."
+        ], correcta: 3 }
+    ]
+}
+
+                
+            },
+            diseno: {
+                ud1: {
+                    title: "UD1. Diseño de Interfaces",
+                    questions: [
+                        { pregunta: "¿Qué son las interfaces de usuario?", opciones: ["Conjunto de elementos gráficos para decorar.", "Conjunto de elementos hardware/software que permiten la interacción usuario-ordenador.", "Sistemas operativos avanzados."], correcta: 1 },
+                        { pregunta: "¿Qué significan las siglas GUI?", opciones: ["General User Interaction", "Graphical User Interface", "Global User Interface"], correcta: 1 },
+                        { pregunta: "Según Hansen, un principio de diseño es:", opciones: ["Hacer que el usuario escriba mucho.", "Conocer al usuario.", "Usar muchos colores."], correcta: 1 },
+                        { pregunta: "¿Qué es la Ley de Fitts?", opciones: ["Modela el movimiento humano y el tiempo para alcanzar un objetivo.", "Regla sobre el contraste de colores.", "Normativa sobre derechos de autor."], correcta: 0 },
+                        { pregunta: "¿Qué característica NO es propia de una buena interfaz?", opciones: ["Consistencia", "Aprendizaje fácil", "Sobrecarga de memoria"], correcta: 2 },
+                        { pregunta: "¿Qué es el 'Sketching'?", opciones: ["Diseño final en alta fidelidad.", "Diseños esquemáticos en papel sin detalles.", "Programación del backend."], correcta: 1 },
+                        { pregunta: "¿Qué es un Wireframe?", opciones: ["Dibujo de pantallas con cierto detalle de contenidos y acciones.", "El código final de la web.", "Un video explicativo."], correcta: 0 },
+                        { pregunta: "En el modelo de color RGB, ¿cuántos bits se suelen usar por color?", opciones: ["4 bits", "8 bits", "16 bits"], correcta: 1 },
+                        { pregunta: "¿Qué código hexadecimal representa el amarillo puro?", opciones: ["#FF0000", "#FFFF00", "#0000FF"], correcta: 1 },
+                        { pregunta: "La saturación define:", opciones: ["La cantidad de luz de un color.", "La intensidad de un color (más o menos gris).", "El color base."], correcta: 1 },
+                        { pregunta: "¿Qué son los colores seguros web?", opciones: ["Colores que no cansan la vista.", "Colores que se ven igual en cualquier navegador/sistema.", "Colores aprobados por la W3C."], correcta: 1 },
+                        { pregunta: "¿Qué elemento NO es propio de una GUI?", opciones: ["Ventanas", "Menús", "Consola de comandos pura"], correcta: 2 },
+                        { pregunta: "En el diseño centrado en el usuario, lo primero es:", opciones: ["Programar.", "Conocer la audiencia y el contexto.", "Elegir los colores."], correcta: 1 },
+                        { pregunta: "¿Qué es un Mockup?", opciones: ["Un boceto rápido.", "Un modelo visual de alta fidelidad estático.", "Un prototipo funcional."], correcta: 1 },
+                        { pregunta: "La propiedad 'Brillo' en color define:", opciones: ["La oscuridad o claridad (blanco/negro añadido).", "La pureza del color.", "El matiz."], correcta: 0 },
+                        { pregunta: "¿Qué colores componen el modelo RGB?", opciones: ["Rojo, Amarillo, Azul", "Rojo, Verde, Azul", "Cian, Magenta, Amarillo"], correcta: 1 },
+                        { pregunta: "¿Qué es la consistencia en una interfaz?", opciones: ["Que siempre funcione rápido.", "Seguir el mismo diseño y estructura en todas las pantallas.", "Usar siempre el mismo color de fondo."], correcta: 1 },
+                        { pregunta: "¿Qué es la 'anticipación' en diseño?", opciones: ["Prever errores o necesidades del usuario.", "Cargar la página antes de que el usuario entre.", "Adivinar el nombre del usuario."], correcta: 0 },
+                        { pregunta: "Un prototipo horizontal modela:", opciones: ["Pocas características con mucho detalle.", "Muchas características con pocos detalles.", "Solo la base de datos."], correcta: 1 },
+                        { pregunta: "Un prototipo vertical modela:", opciones: ["Muchas características superficialmente.", "Pocas características pero con mucho detalle/profundidad.", "El menú lateral."], correcta: 1 },
+                        { pregunta: "¿Cuál es una función del diseñador gráfico en interfaces?", opciones: ["Función estética y comunicativa.", "Gestión de bases de datos.", "Configuración de servidores."], correcta: 0 },
+                        { pregunta: "¿Qué herramienta se menciona para prototipado?", opciones: ["Excel", "Figma", "Notepad"], correcta: 1 },
+                        { pregunta: "¿Qué significa que una interfaz sea 'intuitiva'?", opciones: ["Que requiere leer un manual.", "Que el usuario sabe usarla sin apenas aprendizaje previo.", "Que usa inteligencia artificial."], correcta: 1 },
+                        { pregunta: "¿Qué es la internacionalización de la interfaz?", opciones: ["Que esté alojada en servidores extranjeros.", "Que permita ser usada por diferentes culturas/idiomas.", "Que use el dólar como moneda."], correcta: 1 },
+                        { pregunta: "Los valores iniciales (por defecto) sirven para:", opciones: ["Rellenar espacio.", "Facilitar la tarea al usuario preseleccionando lo más común.", "Obligar al usuario a cambiar todo."], correcta: 1 },
+                        { pregunta: "¿Qué dispositivo de entrada se menciona aparte del ratón?", opciones: ["Impresora", "Pantalla táctil", "Disco duro"], correcta: 1 },
+                        { pregunta: "El sistema operativo actúa de interfaz entre:", opciones: ["Hardware y aplicaciones.", "Usuario y monitor.", "Internet y navegador."], correcta: 0 },
+                        { pregunta: "¿Qué es un 'objeto origen' en diseño?", opciones: ["El que recibe datos.", "El que permite introducción de datos (ej. arrastrar).", "El logotipo."], correcta: 1 },
+                        { pregunta: "En hexadecimal, ¿cuántos dígitos componen un color?", opciones: ["3 o 6", "Solo 8", "Solo 4"], correcta: 0 },
+                        { pregunta: "¿Qué es la usabilidad?", opciones: ["Capacidad de ser usado eficaz y eficientemente.", "Que sea bonito.", "Que use tecnologías modernas."], correcta: 0 }
+                    ]
+                },
+                ud2: {
+                    title: "UD2. Elementos Diseño Web",
+                    questions: [
+                        { pregunta: "¿Qué es una guía de estilo?", opciones: ["Un manual de programación.", "Documento que define las reglas de diseño para mantener coherencia.", "Un tutorial de Photoshop."], correcta: 1 },
+                        { pregunta: "¿Qué incluye una paleta cromática?", opciones: ["Solo el color negro.", "Colores principales y sus variaciones con códigos exactos.", "Fotos del equipo."], correcta: 1 },
+                        { pregunta: "El patrón de lectura en 'F' indica que:", opciones: ["Los usuarios leen todo el texto.", "Los usuarios escanean la parte superior y la izquierda principalmente.", "Los usuarios leen de abajo a arriba."], correcta: 1 },
+                        { pregunta: "¿Qué es el 'Header' o cabecera?", opciones: ["La parte inferior de la página.", "Zona superior con logo y menú principal.", "La barra lateral."], correcta: 1 },
+                        { pregunta: "¿Qué es el 'Footer'?", opciones: ["Zona superior.", "Pie de página con enlaces legales y contacto.", "El cuerpo del artículo."], correcta: 1 },
+                        { pregunta: "¿Qué función tiene la barra lateral (Sidebar)?", opciones: ["Mostrar el contenido principal.", "Mostrar información adicional, widgets o navegación secundaria.", "Mostrar el logo gigante."], correcta: 1 },
+                        { pregunta: "¿Qué son las 'migas de pan' (breadcrumbs)?", opciones: ["Restos de comida.", "Elemento de navegación que indica la ubicación del usuario en la jerarquía.", "Un tipo de menú desplegable."], correcta: 1 },
+                        { pregunta: "¿Qué es un Mapa de Navegación?", opciones: ["Un mapa de Google Maps.", "Representación de la arquitectura de páginas del sitio.", "Un dibujo del edificio."], correcta: 1 },
+                        { pregunta: "¿Qué es un Sitemap XML?", opciones: ["Un archivo para buscadores con la lista de URLs.", "Un mapa visual para el usuario.", "El diseño en Photoshop."], correcta: 0 },
+                        { pregunta: "¿Qué es una 'Landing Page'?", opciones: ["Página de error.", "Página de aterrizaje diseñada para convertir visitas en leads.", "La página de 'Quiénes somos'."], correcta: 1 },
+                        { pregunta: "¿Qué significa que una web sea 'Responsive'?", opciones: ["Que responde rápido.", "Que se adapta a diferentes tamaños de pantalla.", "Que tiene chat."], correcta: 1 },
+                        { pregunta: "En una guía de estilo, ¿qué define la tipografía?", opciones: ["Solo el tamaño.", "Fuentes, tamaños, pesos y colores de texto.", "El idioma del texto."], correcta: 1 },
+                        { pregunta: "¿Qué es un IDE mencionado en el tema?", opciones: ["IntelliJ", "Spotify", "Chrome"], correcta: 0 },
+                        { pregunta: "¿Qué framework CSS se menciona?", opciones: ["Django", "Bootstrap / Tailwind", "Laravel"], correcta: 1 },
+                        { pregunta: "La navegabilidad web se refiere a:", opciones: ["La velocidad de internet.", "Facilidad para desplazarse por las páginas del sitio.", "El uso de GPS."], correcta: 1 },
+                        { pregunta: "¿Qué es la maquetación web?", opciones: ["Distribuir los elementos en el espacio disponible.", "Escribir el contenido.", "Hacer fotos."], correcta: 0 },
+                        { pregunta: "¿Qué es un Wireframe de alta fidelidad?", opciones: ["Un dibujo a mano.", "Un diseño visual detallado cercano al final.", "Un esquema de base de datos."], correcta: 1 },
+                        { pregunta: "El color azul suele transmitir:", opciones: ["Peligro", "Confianza y seguridad", "Hambre"], correcta: 1 },
+                        { pregunta: "El color rojo suele transmitir:", opciones: ["Calma", "Pasión, peligro o urgencia", "Naturaleza"], correcta: 1 },
+                        { pregunta: "¿Qué es una plantilla de diseño?", opciones: ["Un sitio prediseñado usado como base.", "Una hoja en blanco.", "Un virus."], correcta: 0 },
+                        { pregunta: "¿Qué herramienta permite crear mapas conceptuales?", opciones: ["XMind", "Calculator", "Notepad"], correcta: 0 },
+                        { pregunta: "Para mejorar la velocidad de carga se debe:", opciones: ["Usar imágenes gigantes.", "Optimizar imágenes y minificar código.", "Poner muchos vídeos."], correcta: 1 },
+                        { pregunta: "¿Qué es el 'Hero Image'?", opciones: ["Una foto de un superhéroe.", "Imagen grande y destacada en la cabecera o inicio.", "Un icono pequeño."], correcta: 1 },
+                        { pregunta: "La consistencia en los botones implica:", opciones: ["Que cada uno sea de un color distinto.", "Que sigan el mismo estilo visual para la misma función.", "Que sean invisibles."], correcta: 1 },
+                        { pregunta: "¿Qué es el 'Hover'?", opciones: ["Estado cuando el ratón pasa por encima de un elemento.", "Hacer clic.", "Arrastrar."], correcta: 0 },
+                        { pregunta: "Una web 'educativa' es aquella que:", opciones: ["Es de un colegio.", "Es fácil de aprender a usar.", "Tiene muchos textos."], correcta: 1 },
+                        { pregunta: "¿Qué validador se menciona para HTML?", opciones: ["W3C Validator", "Google Maps", "Facebook"], correcta: 0 },
+                        { pregunta: "El menú de navegación debe ser:", opciones: ["Oculto y difícil.", "Claro, visible y fácil de usar.", "Solo iconos sin texto."], correcta: 1 },
+                        { pregunta: "¿Qué es un Widget en una barra lateral?", opciones: ["Un virus.", "Pequeña aplicación o componente (ej. calendario, lista etiquetas).", "Un enlace roto."], correcta: 1 },
+                        { pregunta: "El objetivo principal de la guía de estilo es:", opciones: ["Hacer el trabajo más lento.", "Mantener la integridad visual y coherencia del proyecto.", "Gastar papel."], correcta: 1 }
+                    ]
+                },
+                ud3: {
+                    title: "UD3. Usabilidad y Accesibilidad",
+                    questions: [
+                        { pregunta: "¿Qué es la usabilidad (ISO 9241)?", opciones: ["Capacidad de ser usado para lograr objetivos con eficacia, eficiencia y satisfacción.", "Que la web sea barata.", "Que funcione sin internet."], correcta: 0 },
+                        { pregunta: "Diferencia entre UI y UX:", opciones: ["Son lo mismo.", "UI es la interfaz visual, UX es la experiencia completa del usuario.", "UI es código, UX es diseño."], correcta: 1 },
+                        { pregunta: "¿Qué es la accesibilidad web?", opciones: ["Que haya WiFi gratis.", "Capacidad de uso por personas con diferentes capacidades/discapacidades.", "Que la web cargue rápido."], correcta: 1 },
+                        { pregunta: "¿Qué son las WCAG?", opciones: ["Pautas de Accesibilidad para el Contenido Web.", "Un tipo de imagen.", "Un navegador web."], correcta: 0 },
+                        { pregunta: "¿Cuáles son los 4 principios de la accesibilidad (POUR)?", opciones: ["Perceptible, Operable, Comprensible, Robusto.", "Rápido, Bonito, Barato, Fácil.", "Azul, Rojo, Verde, Amarillo."], correcta: 0 },
+                        { pregunta: "¿Qué significa 'Perceptible'?", opciones: ["Que la información pueda ser percibida por los sentidos (vista, oído...).", "Que sea rápido.", "Que sea táctil."], correcta: 0 },
+                        { pregunta: "¿Qué significa 'Operable'?", opciones: ["Que funcione con teclado y otros dispositivos de entrada.", "Que tenga operaciones matemáticas.", "Que sea médico."], correcta: 0 },
+                        { pregunta: "¿Qué es WAI-ARIA?", opciones: ["Una cantante.", "Atributos para mejorar la accesibilidad en aplicaciones ricas/dinámicas.", "Un virus."], correcta: 1 },
+                        { pregunta: "¿Qué es un lector de pantalla?", opciones: ["Un monitor.", "Software que lee el contenido para ciegos (ej. NVDA, JAWS).", "Unas gafas."], correcta: 1 },
+                        { pregunta: "La eficiencia de uso mide:", opciones: ["Si es bonito.", "El tiempo para completar tareas una vez aprendido el sistema.", "Los errores."], correcta: 1 },
+                        { pregunta: "La memorabilidad se refiere a:", opciones: ["Cuán fácil es recordar cómo usar el sistema tras un tiempo.", "Cuánta RAM usa.", "Si tiene fotos de recuerdos."], correcta: 0 },
+                        { pregunta: "Un análisis heurístico es:", opciones: ["Un análisis de sangre.", "Evaluación de usabilidad basada en principios (ej. Nielsen).", "Una encuesta."], correcta: 1 },
+                        { pregunta: "¿Qué es un mapa de calor (heatmap)?", opciones: ["Temperatura del PC.", "Representación visual de dónde hacen clic o miran los usuarios.", "Un mapa del tiempo."], correcta: 1 },
+                        { pregunta: "El atributo 'alt' en imágenes sirve para:", opciones: ["Nada.", "Describir la imagen para accesibilidad y SEO.", "Poner título."], correcta: 1 },
+                        { pregunta: "Nivel de conformidad WCAG más básico:", opciones: ["A", "AA", "AAA"], correcta: 0 },
+                        { pregunta: "Nivel de conformidad WCAG ideal/estándar:", opciones: ["A", "AA", "AAA"], correcta: 1 },
+                        { pregunta: "¿Qué es el contraste de color?", opciones: ["Diferencia de luz/color entre texto y fondo (importante para baja visión).", "Usar muchos colores.", "Brillo de pantalla."], correcta: 0 },
+                        { pregunta: "Un test A/B consiste en:", opciones: ["Probar dos versiones para ver cuál funciona mejor.", "Aprender el abecedario.", "Test de sangre."], correcta: 0 },
+                        { pregunta: "¿Qué rol cumple el atributo 'aria-label'?", opciones: ["Poner una etiqueta visible.", "Proporcionar una etiqueta accesible para lectores de pantalla.", "Cambiar el color."], correcta: 1 },
+                        { pregunta: "La robustez en accesibilidad implica:", opciones: ["Que sea duro.", "Compatible con diferentes navegadores y tecnologías asistivas futuras.", "Que no se rompa."], correcta: 1 },
+                        { pregunta: "¿Qué es el 'Card Sorting'?", opciones: ["Juego de cartas.", "Técnica para organizar contenidos (arquitectura de información).", "Ordenar la habitación."], correcta: 1 },
+                        { pregunta: "En un formulario, la etiqueta <label> sirve para:", opciones: ["Decorar.", "Asociar un texto descriptivo a un campo input (accesibilidad).", "Nada."], correcta: 1 },
+                        { pregunta: "El foco (focus) visible es importante para:", opciones: ["Navegación por teclado.", "Ratón.", "Impresora."], correcta: 0 },
+                        { pregunta: "¿Qué es la carga cognitiva?", opciones: ["Peso de la web.", "Esfuerzo mental necesario para usar la interfaz.", "Batería del móvil."], correcta: 1 },
+                        { pregunta: "Un error de usabilidad grave es:", opciones: ["Impedir completar la tarea principal.", "Un color feo.", "Una falta de ortografía leve."], correcta: 0 },
+                        { pregunta: "¿Qué herramienta automática evalúa accesibilidad?", opciones: ["Lighthouse / WAVE", "Photoshop", "Word"], correcta: 0 },
+                        { pregunta: "Diseño inclusivo busca:", opciones: ["Diseñar solo para un grupo.", "Diseñar considerando la mayor diversidad humana posible.", "Diseñar solo para expertos."], correcta: 1 },
+                        { pregunta: "La retroalimentación (feedback) al usuario es:", opciones: ["Darle dinero.", "Informar sobre el resultado de sus acciones (ej. 'Guardado').", "Ignorarlo."], correcta: 1 },
+                        { pregunta: "¿Qué es la ISO 9126?", opciones: ["Estándar de calidad de software.", "Marca de coche.", "Tipo de papel."], correcta: 0 },
+                        { pregunta: "El atributo 'lang' en HTML es importante para:", opciones: ["Nada.", "Que los lectores de pantalla pronuncien correctamente el idioma.", "El color de fondo."], correcta: 1 }
+                    ]
+                },
+                ud4: {
+                    title: "UD4. Revisión HTML",
+                    questions: [
+                        { pregunta: "¿Qué significa HTML?", opciones: ["HyperText Markup Language", "High Tech Modern Language", "Home Tool Markup"], correcta: 0 },
+                        { pregunta: "¿Para qué sirve <!DOCTYPE html>?", opciones: ["Decoración.", "Indicar al navegador que es un documento HTML5.", "Cerrar la página."], correcta: 1 },
+                        { pregunta: "¿Qué etiqueta contiene la información técnica (metadatos) no visible?", opciones: ["<body>", "<head>", "<footer>"], correcta: 1 },
+                        { pregunta: "¿Qué etiqueta define el contenido visible?", opciones: ["<head>", "<body>", "<script>"], correcta: 1 },
+                        { pregunta: "¿Qué etiqueta se usa para el título principal?", opciones: ["<h6>", "<p>", "<h1>"], correcta: 2 },
+                        { pregunta: "¿Cómo se define una lista desordenada?", opciones: ["<ol>", "<ul>", "<list>"], correcta: 1 },
+                        { pregunta: "¿Cómo se define un ítem de lista?", opciones: ["<li>", "<il>", "<item>"], correcta: 0 },
+                        { pregunta: "¿Qué atributo es obligatorio en <img> para accesibilidad?", opciones: ["src", "alt", "title"], correcta: 1 },
+                        { pregunta: "¿Cómo se crea un enlace?", opciones: ["<a href='url'>", "<link src='url'>", "<href a='url'>"], correcta: 0 },
+                        { pregunta: "¿Qué atributo abre un enlace en nueva pestaña?", opciones: ["target='_new'", "target='_blank'", "new='tab'"], correcta: 1 },
+                        { pregunta: "¿Qué etiqueta define una tabla?", opciones: ["<table>", "<tab>", "<grid>"], correcta: 0 },
+                        { pregunta: "Para combinar columnas en una tabla se usa:", opciones: ["rowspan", "colspan", "span"], correcta: 1 },
+                        { pregunta: "¿Qué etiqueta define una fila de tabla?", opciones: ["<td>", "<tr>", "<th>"], correcta: 1 },
+                        { pregunta: "¿Qué etiqueta es semántica para la navegación?", opciones: ["<div id='nav'>", "<nav>", "<menu>"], correcta: 1 },
+                        { pregunta: "¿Qué etiqueta es semántica para el pie de página?", opciones: ["<bottom>", "<footer>", "<end>"], correcta: 1 },
+                        { pregunta: "¿Qué etiqueta es semántica para contenido independiente?", opciones: ["<section>", "<article>", "<div>"], correcta: 1 },
+                        { pregunta: "¿Qué etiqueta se usa para contenido lateral/relacionado?", opciones: ["<sidebar>", "<aside>", "<next>"], correcta: 1 },
+                        { pregunta: "Elemento para reproducir video nativo:", opciones: ["<movie>", "<video>", "<media>"], correcta: 1 },
+                        { pregunta: "Elemento para dibujar gráficos con JS:", opciones: ["<canvas>", "<draw>", "<image>"], correcta: 0 },
+                        { pregunta: "Elemento para gráficos vectoriales:", opciones: ["<svg>", "<vector>", "<png>"], correcta: 0 },
+                        { pregunta: "¿Qué etiqueta define un formulario?", opciones: ["<input>", "<form>", "<submit>"], correcta: 1 },
+                        { pregunta: "Tipo de input para contraseñas:", opciones: ["type='text'", "type='secret'", "type='password'"], correcta: 2 },
+                        { pregunta: "Tipo de input para enviar formulario:", opciones: ["type='button'", "type='submit'", "type='send'"], correcta: 1 },
+                        { pregunta: "La etiqueta <label> se asocia al input mediante:", opciones: ["id y for", "name y class", "src y alt"], correcta: 0 },
+                        { pregunta: "¿Qué es una etiqueta vacía?", opciones: ["La que no tiene cierre ni contenido (ej: <br>, <img>).", "La que está en blanco.", "La que no sirve."], correcta: 0 },
+                        { pregunta: "¿Qué hace <meta charset='utf-8'>?", opciones: ["Define el color.", "Define la codificación de caracteres.", "Define el autor."], correcta: 1 },
+                        { pregunta: "Para incrustar un mapa de Google se suele usar:", opciones: ["<iframe>", "<map>", "<geo>"], correcta: 0 },
+                        { pregunta: "¿Qué etiqueta define un salto de línea?", opciones: ["<lb>", "<break>", "<br>"], correcta: 2 },
+                        { pregunta: "Para agrupar opciones en un select se usa:", opciones: ["<group>", "<optgroup>", "<list>"], correcta: 1 },
+                        { pregunta: "Validar el HTML sirve para:", opciones: ["Detectar errores de sintaxis.", "Que sea más bonito.", "Nada."], correcta: 0 }
+                    ]
+                },
+                ud5: {
+                    title: "UD5. CSS y Estilos",
+                    questions: [
+                        { pregunta: "¿Qué significan las siglas CSS?", opciones: ["Computer Style Sheets", "Cascading Style Sheets", "Colorful Style Sheets"], correcta: 1 },
+                        { pregunta: "¿Cuál es la sintaxis correcta de una regla CSS?", opciones: ["selector { propiedad: valor; }", "propiedad: valor { selector }", "selector = propiedad: valor"], correcta: 0 },
+                        { pregunta: "¿Cómo se selecciona un elemento por su ID?", opciones: [".nombre", "#nombre", "*nombre"], correcta: 1 },
+                        { pregunta: "¿Cómo se selecciona un elemento por su Clase?", opciones: [".nombre", "#nombre", "nombre"], correcta: 0 },
+                        { pregunta: "Para aplicar estilo a todos los párrafos <p>:", opciones: ["p { }", ".p { }", "#p { }"], correcta: 0 },
+                        { pregunta: "¿Qué propiedad cambia el color de texto?", opciones: ["text-color", "font-color", "color"], correcta: 2 },
+                        { pregunta: "¿Qué propiedad cambia el color de fondo?", opciones: ["background-color", "bgcolor", "back-color"], correcta: 0 },
+                        { pregunta: "El Modelo de Caja (Box Model) incluye:", opciones: ["Margin, Border, Padding, Content", "Header, Body, Footer", "Color, Size, Font"], correcta: 0 },
+                        { pregunta: "¿Qué es el 'Padding'?", opciones: ["Margen externo.", "Espacio interior entre contenido y borde.", "Borde."], correcta: 1 },
+                        { pregunta: "¿Qué es el 'Margin'?", opciones: ["Espacio exterior fuera del borde.", "Espacio interior.", "Grosor del borde."], correcta: 0 },
+                        { pregunta: "Para centrar un bloque horizontalmente se usa:", opciones: ["margin: 0 auto;", "text-align: center;", "float: center;"], correcta: 0 },
+                        { pregunta: "¿Qué hace 'display: none'?", opciones: ["Oculta el elemento y no ocupa espacio.", "Lo hace transparente pero ocupa espacio.", "Lo borra del HTML."], correcta: 0 },
+                        { pregunta: "¿Qué hace 'visibility: hidden'?", opciones: ["Oculta el elemento pero sigue ocupando su espacio.", "Lo elimina.", "Lo hace pequeño."], correcta: 0 },
+                        { pregunta: "La propiedad 'position: absolute' posiciona respecto a:", opciones: ["La ventana.", "Su primer ancestro posicionado (no static).", "Siempre el body."], correcta: 1 },
+                        { pregunta: "La propiedad 'position: fixed' posiciona respecto a:", opciones: ["El documento.", "La ventana del navegador (viewport).", "El padre."], correcta: 1 },
+                        { pregunta: "¿Qué hace 'z-index'?", opciones: ["Controla el orden de apilamiento (profundidad) de elementos posicionados.", "El zoom.", "El tamaño de letra."], correcta: 0 },
+                        { pregunta: "¿Cómo se comenta en CSS?", opciones: ["// comentario", "/* comentario */", "<!-- comentario -->"], correcta: 1 },
+                        { pregunta: "¿Qué selector elige los hijos directos?", opciones: ["div p", "div > p", "div + p"], correcta: 1 },
+                        { pregunta: "¿Qué selector elige el hermano adyacente?", opciones: ["h1 ~ p", "h1 + p", "h1 > p"], correcta: 1 },
+                        { pregunta: "La pseudoclase :hover se activa cuando:", opciones: ["Se hace clic.", "El ratón pasa por encima.", "Se visita el enlace."], correcta: 1 },
+                        { pregunta: "La pseudoclase :nth-child(2) selecciona:", opciones: ["El segundo hijo.", "Los hijos pares.", "El último hijo."], correcta: 0 },
+                        { pregunta: "¿Qué es una Media Query (@media)?", opciones: ["Una consulta a la base de datos.", "Regla para aplicar estilos según características del dispositivo (ej. ancho pantalla).", "Un video."], correcta: 1 },
+                        { pregunta: "Unidades relativas son:", opciones: ["px, cm", "em, rem, %, vw", "pt, in"], correcta: 1 },
+                        { pregunta: "Unidad 'vw' significa:", opciones: ["View Width (ancho del viewport).", "Very Wide.", "Vertical Width."], correcta: 0 },
+                        { pregunta: "¿Cómo se definen variables en CSS nativo?", opciones: ["$variable: valor;", "--variable: valor;", "var variable = valor;"], correcta: 1 },
+                        { pregunta: "¿Cómo se usa una variable CSS?", opciones: ["var(--variable)", "$variable", "@variable"], correcta: 0 },
+                        { pregunta: "La propiedad 'float' saca al elemento del flujo normal:", opciones: ["Verdadero", "Falso"], correcta: 0 },
+                        { pregunta: "¿Qué propiedad se usa para cambiar la fuente?", opciones: ["font-style", "font-family", "text-style"], correcta: 1 },
+                        { pregunta: "Especificidad: ¿Qué pesa más, un ID o una Clase?", opciones: ["Clase", "ID", "Igual"], correcta: 1 },
+                        { pregunta: "¿Para qué sirve 'box-sizing: border-box'?", opciones: ["Para decorar el borde.", "Para que el padding y border se incluyan en el ancho total del elemento.", "Para eliminar bordes."], correcta: 1 }
+                    ]
+                }
+            }
+        };
+
+        // --- VARIABLES DE ESTADO ---
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = []; // Almacena { selected: index, correct: index }
+
+        // --- ELEMENTOS DOM ---
+        const seleccionScreen = document.getElementById('seleccion-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultsScreen = document.getElementById('results-screen');
+        
+        const quizTitle = document.getElementById('quiz-title');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const progressText = document.getElementById('progress');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const finalScore = document.getElementById('final-score');
+        const finalGrade = document.getElementById('final-grade');
+        const feedbackMsg = document.getElementById('feedback-msg');
+        const reviewContainer = document.getElementById('review-container');
+
+        // --- FUNCIONES ---
+
+        function showScreen(screenId) {
+            [seleccionScreen, quizScreen, resultsScreen].forEach(el => el.classList.add('hidden'));
+            document.getElementById(screenId).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function startQuiz(subject, quizId) {
+            currentQuiz = BBDD[subject][quizId];
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = [];
+            showScreen('quiz-screen');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = currentQuiz.questions[currentQuestionIndex];
+            
+            quizTitle.textContent = currentQuiz.title;
+            progressText.textContent = `${currentQuestionIndex + 1} / ${currentQuiz.questions.length}`;
+            questionText.textContent = q.pregunta;
+            
+            optionsContainer.innerHTML = '';
+            nextBtn.disabled = true;
+
+            q.opciones.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn";
+                btn.textContent = opt;
+                btn.onclick = () => selectOption(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(index, btnElement) {
+            // Desmarcar previos
+            Array.from(optionsContainer.children).forEach(b => b.classList.remove('selected'));
+
+            // Marcar actual
+            btnElement.classList.add('selected');
+            
+            // Guardar respuesta temporalmente
+            optionsContainer.dataset.selectedIndex = index;
+            nextBtn.disabled = false;
+        }
+
+        function nextQuestion() {
+            const selectedIndex = parseInt(optionsContainer.dataset.selectedIndex);
+            const correctIndex = currentQuiz.questions[currentQuestionIndex].correcta;
+            
+            // Guardar resultado
+            userAnswers.push({
+                question: currentQuiz.questions[currentQuestionIndex].pregunta,
+                options: currentQuiz.questions[currentQuestionIndex].opciones,
+                selected: selectedIndex,
+                correct: correctIndex
+            });
+
+            if (selectedIndex === correctIndex) score++;
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < currentQuiz.questions.length) {
+                loadQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function finishQuiz() {
+            const total = currentQuiz.questions.length;
+            const grade = (score / total) * 10;
+
+            finalScore.textContent = `${score} / ${total}`;
+            finalGrade.textContent = grade.toFixed(2);
+
+            // Feedback
+            feedbackMsg.className = 'feedback-box';
+            if (grade >= 9) {
+                feedbackMsg.textContent = "¡Excelente trabajo! Dominas el tema. 🌟";
+                feedbackMsg.classList.add('fb-good');
+            } else if (grade >= 5) {
+                feedbackMsg.textContent = "Aprobado. Buen esfuerzo, pero repasa los fallos. 👍";
+                feedbackMsg.classList.add('fb-avg');
+            } else {
+                feedbackMsg.textContent = "Necesitas estudiar más. ¡Ánimo! 💪";
+                feedbackMsg.classList.add('fb-bad');
+            }
+
+            // Generar revisión
+            reviewContainer.innerHTML = '';
+            userAnswers.forEach((ans, idx) => {
+                const isCorrect = ans.selected === ans.correct;
+                const card = document.createElement('div');
+                card.className = `review-item ${isCorrect ? 'correct' : 'incorrect'}`;
+                
+                let html = `<p><strong>${idx + 1}. ${ans.question}</strong></p>`;
+                
+                ans.options.forEach((opt, optIdx) => {
+                    let classes = "review-option ";
+                    let icon = "";
+
+                    if (optIdx === ans.correct) {
+                        classes += "opt-correct"; 
+                        icon = " ✅ (Correcta)";
+                    } else if (optIdx === ans.selected && !isCorrect) {
+                        classes += "opt-incorrect"; 
+                        icon = " ❌ (Tu respuesta)";
+                    } else if (optIdx === ans.selected && isCorrect) {
+                         // Ya cubierto por el caso correcto
+                    } else {
+                        // Opciones no seleccionadas y no correctas
+                        classes += "bg-white border border-gray-200";
+                    }
+                    
+                    html += `<div class="${classes}">${opt} ${icon}</div>`;
+                });
+
+                card.innerHTML = html;
+                reviewContainer.appendChild(card);
+            });
+
+            showScreen('results-screen');
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = [];
+            showScreen('quiz-screen');
+            loadQuestion();
+        }
+    </script>
+</body>
+</html>
