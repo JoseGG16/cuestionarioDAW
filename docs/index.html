@@ -282,6 +282,10 @@
                 <div class="subject-card sub-serv">
                     <h2>⚙️ Desarrollo Web Entorno Servidor</h2>
                     <button onclick="startQuiz('servidor', 'serv1')" class="quiz-btn">1.Libro 2012 Test de Conocimientos</button>
+                    <button onclick="startQuiz('servidor', 'cap1')" class="quiz-btn">2.Libro 2012 Capítulo 1: Arquitecturas</button>
+                    <button onclick="startQuiz('servidor', 'cap2')" class="quiz-btn">3.Libro 2012 Capítulo 2: Inserción de Código</button>
+                    <button onclick="startQuiz('servidor', 'cap3')" class="quiz-btn">4.Libro 2012 Capítulo 3: Programación</button>
+                    <button onclick="startQuiz('servidor', 'global')" class="quiz-btn">Global (Caps 1, 2 y 3)</button>
                 </div>
             </div>
 
@@ -809,6 +813,121 @@
                         { pregunta: "¿Cuál de estos algoritmos no es un algoritmo de ordenación?", opciones: ["Intercambio.", "Selección Directa.", "Burbuja.", "Binaria."], correcta: 3 },
                         { pregunta: "¿Qué algoritmo de búsqueda es más eficiente?", opciones: ["Búsqueda secuencial.", "Búsqueda binaria.", "Son igual de eficientes.", "Ninguna de las anteriores."], correcta: 1 }
                     ]
+                },
+                cap1: {
+                    title: "Capítulo 1: Arquitecturas y Herramientas",
+                    questions: [
+                        { pregunta: "¿En qué capa de la arquitectura web reside habitualmente la interfaz gráfica que ve el usuario?", opciones: ["Capa de Negocio.", "Capa de Persistencia.", "Capa de Presentación.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "¿Cuál de los siguientes modelos de programación carga la mayor parte del procesamiento en el cliente?", opciones: ["Fat Server / Thin Client.", "Fat Client / Thin Server.", "Servidor de Transacciones.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "Un servidor web que genera una respuesta diferente para una misma URL dependiendo del usuario es un ejemplo de:", opciones: ["Aplicación web estática.", "Aplicación web interactiva/dinámica.", "Aplicación web basada en DHTML puro.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué lenguaje de los siguientes NO es un lenguaje de scripting de servidor interpretado?", opciones: ["PHP.", "ASP (Clásico).", "C++ (usado como CGI compilado).", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "Respecto al estándar CGI, señala la afirmación VERDADERA:", opciones: ["Es muy eficiente porque mantiene el proceso en memoria.", "Crea un proceso nuevo por cada petición, lo que afecta al rendimiento.", "Es un lenguaje de programación exclusivo de Microsoft.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "¿Qué tecnología de Microsoft utiliza una estrategia de 'código repartido' o 'code-behind'?", opciones: ["ASP Clásico.", "PHP.", "ASP.NET.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "¿Cuál es el método HTTP utilizado habitualmente para enviar datos de un formulario de registro (datos sensibles)?", opciones: ["GET.", "PUT.", "POST.", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "Si una URL es 'http://sitio.com/buscar?q=termino', ¿qué método se está utilizando?", opciones: ["POST.", "GET.", "SOAP.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué tipo de herramienta es 'Eclipse' o 'NetBeans' en el contexto del desarrollo web?", opciones: ["Marcadores de texto simples.", "Herramientas de tratamiento de imágenes.", "Entornos de Desarrollo Integrados (IDE).", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "¿Qué caracteriza a una arquitectura 'Cliente/Servidor'?", opciones: ["El cliente siempre procesa los datos.", "El servidor inicia la comunicación.", "El cliente solicita un servicio y el servidor responde.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "En una arquitectura de 3 capas, ¿dónde suele residir la lógica de negocio?", opciones: ["En el navegador del cliente exclusivamente.", "En el servidor de base de datos.", "En la capa intermedia o de negocio (Servidor de Aplicaciones/Web).", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "¿Cuál es una desventaja principal de las aplicaciones CGI tradicionales?", opciones: ["No pueden acceder a bases de datos.", "Escaso rendimiento ante muchas peticiones simultáneas.", "Solo funcionan en Windows.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué significa que HTTP sea un protocolo 'sin estado'?", opciones: ["Que no funciona en Estados Unidos.", "Que cada petición es independiente y no recuerda las anteriores por defecto.", "Que el servidor siempre mantiene la conexión abierta.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué servidor web es conocido por ser Open Source y muy modular?", opciones: ["Internet Information Server (IIS).", "Apache HTTP Server.", "Oracle WebLogic.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "La tecnología JSP (Java Server Pages) se basa en:", opciones: ["Interpretar código Basic.", "Compilar el código a Servlets (clases Java).", "Ejecutar scripts en el cliente.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Si hablamos de 'Fat Server', nos referimos a:", opciones: ["Un servidor con mucho espacio en disco.", "Una arquitectura donde el servidor realiza la mayor parte del procesamiento.", "Un servidor lento.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué lenguaje nació en 1994 y es un acrónimo recursivo de 'Hypertext Preprocessor'?", opciones: ["Perl.", "Python.", "PHP.", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "Las aplicaciones web estáticas:", opciones: ["Interactúan con bases de datos en tiempo real.", "Se basan principalmente en HTML y el servidor solo entrega ficheros.", "Usan AJAX extensivamente.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Para validar la sintaxis de código mientras escribes, lo ideal es usar:", opciones: ["El bloc de notas.", "Un IDE con capacidades de validación.", "Un navegador web.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "¿Cuál de los siguientes NO es un servidor web?", opciones: ["Nginx.", "Apache.", "MySQL.", "Ninguna es correcta."], correcta: 2 }
+                    ]
+                },
+                cap2: {
+                    title: "Capítulo 2: Inserción de Código (PHP)",
+                    questions: [
+                        { pregunta: "Analiza este código: `<?php echo 'Hola'; ?>`. ¿Qué recibe el navegador del cliente?", opciones: ["El código PHP tal cual.", "La palabra 'Hola'.", "Un error de sintaxis.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Cómo se define una variable en PHP?", opciones: ["Int $var = 0;", "var $nombre;", "$nombre_variable = valor;", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "Dado el código: `$a = 10; function prueba() { echo $a; } prueba();`. ¿Qué ocurre?", opciones: ["Imprime 10.", "Da un error o warning de variable no definida (ámbito local).", "Imprime 0.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué imprime: `echo 'Hola ' . 'Mundo';`?", opciones: ["Hola Mundo", "Hola + Mundo", "Error de sintaxis.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Cuál es la etiqueta estándar de apertura de PHP?", opciones: ["<php>", "<?php", "<%", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "En PHP, las variables son 'case-sensitive'. Esto significa que:", opciones: ["$Var y $var son la misma variable.", "$Var y $var son variables diferentes.", "Solo importa la primera letra.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Si `$a = '5'` y ejecutamos `$b = $a + 2;`, ¿cuál es el valor y tipo de `$b`?", opciones: ["'52' (String).", "7 (Integer).", "Error de tipos.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué función se usa para liberar/destruir una variable?", opciones: ["delete()", "kill()", "unset()", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "¿Cuál es el resultado de `(int) 3.9`?", opciones: ["4", "3.9", "3", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "¿Qué hace la función `var_dump($variable)`?", opciones: ["Borra la variable.", "Muestra el tipo y el valor de la variable.", "Guarda la variable en BD.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Analiza: `$a = 0; if(empty($a)) echo 'Vacia'; else echo 'Llena';`", opciones: ["Imprime 'Llena'.", "Imprime 'Vacia' porque 0 se considera vacío.", "Da error.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué imprime `echo \"El valor es $a\";` si $a=5?", opciones: ["El valor es $a", "El valor es 5", "Error de comillas.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué imprime `echo 'El valor es $a';` si $a=5?", opciones: ["El valor es $a", "El valor es 5", "Error de comillas.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "Para definir una constante en PHP se usa:", opciones: ["const $PI = 3.14;", "define('PI', 3.14);", "$PI = const(3.14);", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "Los comentarios de una línea en PHP pueden ser:", opciones: ["// o #", "<!-- -->", "/* */ solamente", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Qué motor es el corazón de PHP (compilación y ejecución)?", opciones: ["JVM.", "Motor Zend.", ".NET Framework.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué ocurre si sumas un integer y un float en PHP?", opciones: ["El resultado es integer (trunca decimales).", "El resultado es float.", "Da error de tipos.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Cómo escapamos una comilla doble dentro de un string de comillas dobles?", opciones: ["Con una barra invertida (\").", "Duplicando la comilla (\"\").", "No se puede.", "Todas son correctas."], correcta: 0 },
+                        { pregunta: "¿Qué función comprueba si una variable tiene un valor asignado y no es NULL?", opciones: ["check()", "isset()", "verify()", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En PHP, ¿es necesario declarar el tipo de una variable antes de usarla?", opciones: ["Sí, siempre.", "No, es de tipado dinámico/débil.", "Solo para los arrays.", "Todas son correctas."], correcta: 1 }
+                    ]
+                },
+                cap3: {
+                    title: "Capítulo 3: Programación (Estructuras)",
+                    questions: [
+                        { pregunta: "¿Cuál es la estructura correcta de un `if` en PHP?", opciones: ["if (condicion) { ... }", "if condicion then ... end if", "if {condicion} ...", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "En un `switch` en PHP, ¿qué pasa si olvidas el `break`?", opciones: ["Da un error de sintaxis.", "Se ejecutan los casos siguientes (fall-through) hasta encontrar un break o el final.", "El bucle se detiene.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "¿Qué bucle se ejecuta SIEMPRE al menos una vez?", opciones: ["while", "for", "do-while", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "¿Cómo se define un array en PHP?", opciones: ["$a = {1, 2, 3};", "$a = array(1, 2, 3);", "$a = [1, 2, 3]; (versiones modernas)", "B y C son correctas."], correcta: 3 },
+                        { pregunta: "Analiza: `$a = array('clave' => 'valor'); echo $a[0];`", opciones: ["Imprime 'valor'.", "Da un error o warning 'Undefined offset' (no existe índice 0).", "Imprime 'clave'.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué bucle es ideal para recorrer arrays en PHP?", opciones: ["for", "while", "foreach", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "¿Cómo se define una función en PHP?", opciones: ["sub miFuncion() { }", "void miFuncion() { }", "function miFuncion() { }", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "Variable superglobal para recoger datos de un formulario `method='POST'`:", opciones: ["$_GET", "$_REQUEST", "$_POST", "B y C pueden servir."], correcta: 3 },
+                        { pregunta: "Si tienes `<input name='edad'>`, ¿cómo accedes a ella en PHP tras un POST?", opciones: ["$edad", "$_POST['edad']", "request.form('edad')", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Diferencia principal entre `include` y `require`:", opciones: ["No hay diferencia.", "require detiene la ejecución si falla (Fatal Error), include solo da un warning.", "include es solo para HTML.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "¿Qué hace la sentencia `continue` en un bucle?", opciones: ["Sale del bucle totalmente.", "Salta el resto de la iteración actual y vuelve a evaluar la condición.", "Reinicia el contador a 0.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Código: `for($i=0; $i<3; $i++) { echo $i; }`", opciones: ["012", "123", "0123", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Qué algoritmo de ordenación es más eficiente generalmente: Burbuja o QuickSort?", opciones: ["Burbuja.", "QuickSort.", "Son iguales.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En PHP, ¿se pueden anidar sentencias `if`?", opciones: ["Sí, sin límite.", "No.", "Solo hasta 3 niveles.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Qué función ordena un array de menor a mayor?", opciones: ["sort()", "order()", "arrange()", "Todas son correctas."], correcta: 0 },
+                        { pregunta: "Para saber el número de elementos de un array usamos:", opciones: ["length()", "size()", "count()", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "¿El método GET envía los datos visibles en la URL?", opciones: ["Sí.", "No, van encriptados.", "Depende del navegador.", "Todas son correctas."], correcta: 0 },
+                        { pregunta: "En un formulario, el atributo `action` indica:", opciones: ["El método de envío (GET/POST).", "El archivo o script que procesará los datos.", "El nombre del formulario.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Analiza: `$i=0; while($i < 5) echo $i++;`", opciones: ["01234", "12345", "Bucle infinito.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Qué imprime `echo 10 % 3;` (módulo)?", opciones: ["3.33", "1", "3", "Ninguna es correcta."], correcta: 1 }
+                    ]
+                },
+                global: {
+                    title: "Examen Global Entorno Servidor (Caps 1-3)",
+                    questions: [
+                        { pregunta: "Código: `<?php $x=5; function p() { echo $x; } p(); ?>` ¿Resultado?", opciones: ["5", "0", "Error/Warning: Variable indefinida (ámbito).", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "¿Qué arquitectura separa Lógica, Presentación y Datos?", opciones: ["MVC (Modelo Vista Controlador) / 3 Capas.", "CGI.", "Monolítica.", "Todas son correctas."], correcta: 0 },
+                        { pregunta: "En PHP, ¿cuál es la diferencia entre `==` y `===`?", opciones: ["No hay diferencia.", "`==` compara valor, `===` compara valor y tipo.", "`===` asigna valor.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué array superglobal contiene datos de cookies?", opciones: ["$_SESSION", "$_SERVER", "$_COOKIE", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "Código: `$a = array(1, 2); array_push($a, 3); echo count($a);`", opciones: ["2", "3", "Error.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "El lenguaje JSP se compila y se convierte en:", opciones: ["Un script PHP.", "Un Servlet de Java.", "Código máquina puro.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "¿Qué imprime `echo (int) '10 coches';`?", opciones: ["10", "0", "Error.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Qué etiqueta HTML crea un campo de texto?", opciones: ["<textfield>", "<input type='text'>", "<text>", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "¿Para qué sirve `break 2;` en PHP?", opciones: ["Rompe 2 caracteres.", "Sale de 2 estructuras de control anidadas (ej. switch dentro de while).", "Detiene el script 2 segundos.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Si usamos `$_REQUEST`, ¿qué datos podemos leer?", opciones: ["Solo GET.", "Solo POST.", "GET, POST y COOKIE.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "Código ASP: `Dim a(5)`. ¿Cuántos elementos tiene el array?", opciones: ["5", "6 (índices 0 a 5).", "4", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué significa que PHP sea 'Loosely Typed'?", opciones: ["Que es lento.", "Que no necesitas declarar tipos y pueden cambiar dinámicamente.", "Que es estricto con los tipos.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué función PHP incluye un archivo y da error fatal si no existe?", opciones: ["include()", "require()", "import()", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "En un patrón MVC, la 'Vista' se encarga de:", opciones: ["La lógica de negocio.", "El acceso a base de datos.", "La interfaz de usuario.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "¿Qué operador se usa en PHP para concatenar y asignar a la vez?", opciones: ["+=", ".=", "&&", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "Analiza: `$x = true; echo (int)$x;`", opciones: ["1", "0", "true", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Qué hace `foreach($array as $k => $v)`?", opciones: ["Recorre solo las claves.", "Recorre clave ($k) y valor ($v).", "Da error de sintaxis.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Cuál es una ventaja de la arquitectura de 3 capas?", opciones: ["Mayor escalabilidad y mantenimiento.", "Más difícil de programar.", "Requiere 3 servidores físicos obligatoriamente.", "Todas son correctas."], correcta: 0 },
+                        { pregunta: "¿Qué protocolo usa la Web para la comunicación cliente-servidor?", opciones: ["FTP.", "HTTP.", "SMTP.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Código: `$a = '5'; $b = 5; if($a === $b) echo 'Igual'; else echo 'Distinto';`", opciones: ["Igual", "Distinto", "Error", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En ASP clásico, ¿qué lenguaje de scripting se usa por defecto?", opciones: ["JavaScript.", "VBScript.", "C#.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué función PHP invierte un string?", opciones: ["str_reverse()", "strrev()", "reverse()", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "Para comentar múltiples líneas en PHP usamos:", opciones: ["//", "#", "/* ... */", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "¿Qué es un servidor 'basado en hilos'?", opciones: ["Crea un proceso nuevo por petición.", "Usa hilos ligeros compartiendo memoria dentro de un proceso.", "Usa cables físicos.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿El código PHP es visible para el usuario si hace 'Ver código fuente' en el navegador?", opciones: ["Sí, siempre.", "No, el servidor lo procesa y envía HTML.", "A veces.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "Código: `do { echo 'x'; } while (false);`", opciones: ["Imprime 'x' una vez.", "Bucle infinito.", "No imprime nada.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "En JSP, `<%= variable %>` equivale en PHP a:", opciones: ["<?php echo $variable; ?>", "<?php variable; ?>", "<?php print_r($variable); ?>", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Qué es 'Apache'?", opciones: ["Un lenguaje.", "Un servidor web.", "Un navegador.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "Si en un formulario no pones `method`, ¿cuál usa por defecto?", opciones: ["POST.", "GET.", "Ninguno, da error.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué función PHP devuelve la longitud de un string?", opciones: ["length()", "count()", "strlen()", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "Código: `$a=10; function x() { global $a; $a++; } x(); echo $a;`", opciones: ["10", "11", "0", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué tipo de variable es `$f = 3.14;`?", opciones: ["Integer.", "Float/Double.", "String.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué significa URL?", opciones: ["Uniform Resource Locator.", "Universal Remote Link.", "Uniform Real Link.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "En PHP, `elseif` se puede escribir como:", opciones: ["else if (separado).", "elseif (junto).", "Ambos son válidos.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "Al enviar un archivo (upload) en un formulario, el método debe ser:", opciones: ["GET.", "POST.", "PUT.", "Todas son correctas."], correcta: 1 }
+                    ]
                 }
             } 
         };
@@ -972,3 +1091,4 @@
     </script>
 </body>
 </html>
+
