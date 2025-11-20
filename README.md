@@ -1,31 +1,48 @@
-📘 Aplicación de Cuestionarios – Grado Superior de Desarrollo Web
+# 📘 Aplicación de Cuestionarios – Grado Superior de Desarrollo Web
 
-Bienvenido a mi aplicación de cuestionarios interactivos, diseñada para ayudar a estudiantes del Grado Superior de Desarrollo de Aplicaciones Web (DAW) a repasar y reforzar sus conocimientos de una forma práctica y dinámica.
+Bienvenido a mi aplicación de **cuestionarios interactivos**, diseñada para ayudar a estudiantes del **Grado Superior de Desarrollo de Aplicaciones Web (DAW)** a repasar y reforzar sus conocimientos de una forma práctica y dinámica.
 
-🎯 Objetivo del Proyecto
+---
 
-El propósito de esta aplicación es ofrecer un entorno sencillo e intuitivo donde los usuarios puedan realizar cuestionarios sobre todos los módulos del ciclo formativo. Es una herramienta ideal para estudiar, preparar exámenes o evaluar el propio progreso.
+## 🎯 Objetivo del Proyecto
 
-🧩 Características Principales
+El propósito de esta aplicación es ofrecer un entorno **sencillo e intuitivo** donde los usuarios puedan realizar cuestionarios sobre todos los módulos del ciclo formativo.  
+Es una herramienta ideal para estudiar, preparar exámenes o evaluar el propio progreso.
 
-Cuestionarios por módulo: Incluye preguntas clasificadas según cada asignatura del ciclo (Programación, Entornos de Desarrollo, Bases de Datos, Lenguajes de Marcas, Desarrollo Web, etc.).
+---
 
-Interfaz clara e intuitiva.
+## 🧩 Características Principales
 
-Corrección automática.
+- **Cuestionarios por módulo**: preguntas clasificadas según cada asignatura (Programación, Entornos de Desarrollo, Bases de Datos, Lenguajes de Marcas, Desarrollo Web, etc.).  
+- **Interfaz clara e intuitiva**  
+- **Corrección automática**  
+- **Puntuación final** al completar cada cuestionario  
+- **Diseño pensado para el aprendizaje rápido**
 
-Puntuación final al completar cada cuestionario.
+---
 
-Diseño pensado para el aprendizaje rápido.
+## 🛠️ Tecnologías Utilizadas
 
-🛠️ Tecnologías Utilizadas
+- **HTML**
+- **CSS**
+- **JavaScript**
 
-HTML/CSS/JavaScript
+---
 
-🚀 Estado Actual
+## 🚀 Estado Actual
 
-El proyecto está en desarrollo continuo. Se irán añadiendo más módulos, preguntas y funcionalidades como rankings, estadísticas y perfiles de usuario.
+El proyecto está en **desarrollo continuo**.  
+Próximas mejoras previstas:
 
-🤝 Contribuciones
+- Más módulos y nuevas preguntas  
+- Rankings de usuarios  
+- Estadísticas personalizadas  
+- Perfiles y guardado de resultados
 
-Si deseas mejorar la aplicación, aportar nuevas preguntas o sugerir funcionalidades, ¡las contribuciones son bienvenidas!
+---
+
+## 🤝 Contribuciones
+
+Si deseas mejorar la aplicación, aportar nuevas preguntas o sugerir funcionalidades, **¡las contribuciones son bienvenidas!**
+
+---
