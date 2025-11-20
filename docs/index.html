@@ -86,6 +86,8 @@
         .sub-web { background-color: #faf5ff; border-color: #e9d5ff; }
         .sub-web h2 { color: #7e22ce; border-color: #e9d5ff; }
 
+        .sub-serv { background-color: #fff7ed; border-color: #ffedd5; }
+        .sub-serv h2 { color: #c2410c; border-color: #ffedd5; }
         /* Botones de cuestionario */
         .quiz-btn {
             display: block;
@@ -240,7 +242,7 @@
         
         <header>
             <h1>Plataforma de Repaso</h1>
-            <p>Sostenibilidad | Digitalización | Diseño Web</p>
+            <p>Sostenibilidad | Digitalización | Diseño Web | Entorno Servidor</p>
         </header>
 
         <main>
@@ -263,7 +265,7 @@
                     <button onclick="startQuiz('digitalizacion', 'digi2')" class="quiz-btn">2. Quincena 3</button>
                     <button onclick="startQuiz('digitalizacion', 'digi3')" class="quiz-btn">3. Quincena 4</button>
                     <button onclick="startQuiz('digitalizacion', 'digi4')" class="quiz-btn">4. Quincena 5 (Tema 2)</button>
-                    <button onclick="startQuiz('digitalizacion', 'digi5')" class="quiz-btn">Evalúa tus conocimientos T.1-2</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi5')" class="quiz-btn">5. Evalúa tus conocimientos T.1-2</button>
                 </div>
 
                 <!-- Diseño Web -->
@@ -276,6 +278,11 @@
                     <button onclick="startQuiz('diseno', 'ud5')" class="quiz-btn">UD5. CSS y Estilos</button>
                 </div>
 
+                <!-- NUEVO: Desarrollo Web Entorno Servidor -->
+                <div class="subject-card sub-serv">
+                    <h2>⚙️ Desarrollo Web Entorno Servidor</h2>
+                    <button onclick="startQuiz('servidor', 'serv1')" class="quiz-btn">1.Libro 2012 Test de Conocimientos</button>
+                </div>
             </div>
 
             <!-- 2. PANTALLA DE CUESTIONARIO -->
@@ -777,7 +784,33 @@
                         { pregunta: "¿Para qué sirve 'box-sizing: border-box'?", opciones: ["Para decorar el borde.", "Para que el padding y border se incluyan en el ancho total del elemento.", "Para eliminar bordes."], correcta: 1 }
                     ]
                 }
-            }
+            },
+            // Base de datos de Entorno Servidor
+            servidor: {
+                serv1: {
+                    title: "Cuestionario Entorno Servidor (Libro 2012 Test-Conocimientos)",
+                    questions: [
+                        { pregunta: "¿Cuál de los siguientes lenguajes no puede utilizarse como lenguaje de scripting?", opciones: ["PHP.", "Perl.", "HTML.", "JSP."], correcta: 2 },
+                        { pregunta: "¿Cuál de las siguientes estrategias representa una estrategia de programación válida en entornos cliente/servidor?", opciones: ["Fat Client/Thin Server.", "Programación en dos capas.", "Uso de servidores de objetos.", "Todos los anteriores."], correcta: 3 },
+                        { pregunta: "¿Cuál de las siguientes herramientas no permite la validación de la sintaxis de código?", opciones: ["UltraEdit.", "Microsoft Visual Studio.", "NetBeans IDE.", "Ninguno los anteriores."], correcta: 3 },
+                        { pregunta: "Señale la respuesta correcta con respecto a CGI:", opciones: ["Es un lenguaje de programación del lado del servidor.", "Es un estándar que indica la forma en la que un servidor debe ejecutar un programa externo.", "Puede programarse en HTML.", "Es una herramienta de carácter genérico."], correcta: 1 },
+                        { pregunta: "Señale la respuesta correcta con respecto a la integración de código con servidores web:", opciones: ["Las peticiones a una aplicación web pueden hacerse siguiendo un formato “informal” (en lenguaje natural).", "Las peticiones de tipo POST se utilizan para recuperar información del servidor.", "El código de una aplicación web estática no requiere la ejecución de ningún programa externo por parte del servidor.", "Ninguna de las anteriores."], correcta: 2 },
+                        { pregunta: "Señale la respuesta correcta respecto a los servidores basados en procesos:", opciones: ["Se basa en la obtención de un paralelismo de ejecución mediante la duplicación del proceso de ejecución.", "Todos los procesos creados por un servidor comparten la misma zona de memoria.", "Se implementan en el núcleo del sistema operativo.", "Ninguna de las anteriores."], correcta: 0 },
+                        { pregunta: "¿Cuál de las siguientes afirmaciones es cierta con respecto a la sintaxis de PHP?", opciones: ["Los espacios en blanco que se escriban dentro del código embebido afectan al significado del código ejecutado.", "No se permite la utilización de tabulaciones como elementos para separar sentencias en PHP.", "El nombre de las variables distingue entre mayúsculas y minúsculas.", "El nombre de una variable puede empezar por números o letras."], correcta: 2 },
+                        { pregunta: "¿Cuál de las siguientes combinaciones de caracteres sirve para definir un comentario de una línea en PHP?", opciones: ["--", "<!--", "//", "**"], correcta: 2 },
+                        { pregunta: "De acuerdo a la precedencia de operadores en PHP, ¿cuál sería el resultado de ejecutar la siguiente operación: \"10.5\" + 4.5*2 / 3?", opciones: ["23.5", "13.5", "10", "null"], correcta: 1 },
+                        { pregunta: "Indique el tipo de la variable $resultado en la siguiente operación: $resultado = \"100\" + 10.5;", opciones: ["String.", "Entero.", "Float.", "Boolean."], correcta: 2 },
+                        { pregunta: "En la petición “example.php?nombre=Roberto”, ¿cómo se recupera el valor de la variable “nombre” de la página PHP “example.php”?", opciones: ["request.getParameter(“nombre”).", "$_POST[‘nombre’].", "$_GET[‘nombre’].", "Ninguna de las anteriores."], correcta: 2 },
+                        { pregunta: "En las sentencias switch o select case para ASP, ¿qué lenguaje no permite que la expresión que se evalúa sea un string?", opciones: ["ASP.", "JSP.", "PHP.", "Todas las afirmaciones anteriores son falsas."], correcta: 0 },
+                        { pregunta: "El método GET envía los datos del formulario:", opciones: ["En el cuerpo de la petición HTTP.", "En la URL de la petición.", "Tanto en el cuerpo de la petición como en la URL.", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "La diferencia entre un procedimiento y una función es:", opciones: ["Una función devuelve un valor mientras que el procedimiento no.", "Un procedimiento no puede recibir argumentos mientras que en una función es obligatorio.", "Un procedimiento devuelve un valor mientras que una función no.", "Ninguna de las anteriores."], correcta: 0 },
+                        { pregunta: "¿Qué estructura de control por excelencia se utiliza para recorrer un array?", opciones: ["While o su equivalente en ASP Do…While.", "If.", "For o su equivalente en ASP For…Next.", "Switch o su equivalente en ASP Select Case."], correcta: 2 },
+                        { pregunta: "¿Cuántas veces se ejecutará el siguiente bucle escrito en JSP while(i>0){i=i-1;}, si i=1 antes del bucle?", opciones: ["1.", "Ninguna.", "2.", "Infinitas."], correcta: 0 },
+                        { pregunta: "¿Cuál de estos algoritmos no es un algoritmo de ordenación?", opciones: ["Intercambio.", "Selección Directa.", "Burbuja.", "Binaria."], correcta: 3 },
+                        { pregunta: "¿Qué algoritmo de búsqueda es más eficiente?", opciones: ["Búsqueda secuencial.", "Búsqueda binaria.", "Son igual de eficientes.", "Ninguna de las anteriores."], correcta: 1 }
+                    ]
+                }
+            } 
         };
 
         // --- VARIABLES DE ESTADO ---
