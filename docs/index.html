@@ -286,6 +286,9 @@
                     <button onclick="startQuiz('servidor', 'cap2')" class="quiz-btn">3.Libro 2012 Capítulo 2: Inserción de Código</button>
                     <button onclick="startQuiz('servidor', 'cap3')" class="quiz-btn">4.Libro 2012 Capítulo 3: Programación</button>
                     <button onclick="startQuiz('servidor', 'global')" class="quiz-btn">Global (Caps 1, 2 y 3)</button>
+                    <button onclick="startQuiz('servidor', 'servlets')" class="quiz-btn">5.Servlets y Sesiones</button>
+                    <button onclick="startQuiz('servidor', 'jdbc')" class="quiz-btn">6.JDBC y MySQL</button>
+                    <button onclick="startQuiz('servidor', 'examen')" class="quiz-btn">Examen Final (5-6)</button>
                 </div>
             </div>
 
@@ -928,7 +931,118 @@
                         { pregunta: "En PHP, `elseif` se puede escribir como:", opciones: ["else if (separado).", "elseif (junto).", "Ambos son válidos.", "Ninguna es correcta."], correcta: 2 },
                         { pregunta: "Al enviar un archivo (upload) en un formulario, el método debe ser:", opciones: ["GET.", "POST.", "PUT.", "Todas son correctas."], correcta: 1 }
                     ]
+                },
+                jdbc: {
+                    title: "Test JDBC y MySQL (Temas 1-4)",
+                    questions: [
+                        { pregunta: "¿Qué significa JDBC?", opciones: ["Java Data Base Connection.", "Java Database Connectivity.", "Java Direct Base Communication.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En la arquitectura JDBC, ¿qué componente gestiona los drivers?", opciones: ["JDBC API.", "JDBC Driver Manager.", "ODBC Data Source.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "Para realizar una conexión a MySQL desde Java, ¿qué objetos son imprescindibles?", opciones: ["Connection, Statement, ResultSet.", "Servlet, JSP, HTML.", "Solo Connection.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "En el código: `Class.forName('com.mysql.jdbc.Driver');`, ¿qué se está haciendo?", opciones: ["Crear una conexión física.", "Registrar el driver JDBC.", "Ejecutar una consulta SQL.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Cuál es el puerto por defecto de MySQL?", opciones: ["8080.", "3306.", "1521.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Analiza este código: `DriverManager.getConnection(url, user, pass)`. ¿Qué devuelve este método?", opciones: ["Un objeto Statement.", "Un booleano indicando éxito.", "Un objeto Connection.", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "En el patrón MVC implementado, ¿qué clase actúa como Modelo?", opciones: ["MostrarUsuariosServlet.java.", "index.jsp.", "Usuario.java (Bean) y Dao.java.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "En la clase `Dao.java`, el método `crearInstancia` es `synchronized`. ¿Por qué?", opciones: ["Para que sea más rápido.", "Para implementar el patrón Singleton y evitar problemas de concurrencia.", "Para conectar con la base de datos.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué hace `rs.next()` en un ResultSet?", opciones: ["Borra el registro actual.", "Mueve el cursor a la siguiente fila y devuelve true si hay datos.", "Cierra la conexión.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "Si la URL de conexión es `jdbc:mysql://localhost/DB`, ¿dónde está la base de datos?", opciones: ["En un servidor remoto.", "En la misma máquina (local).", "No se especifica.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué significa CRUD?", opciones: ["Create, Read, Update, Delete.", "Connect, Run, Undo, Drop.", "Create, Run, Update, Done.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "En la implementación de `Dao`, ¿qué patrón de diseño se utiliza para asegurar una única instancia?", opciones: ["Factory.", "Singleton.", "Observer.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué excepción lanza JDBC típicamente si falla la conexión?", opciones: ["IOException.", "NullPointerException.", "SQLException.", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "En el archivo `index.jsp` (Vista), ¿cómo se recupera la lista de usuarios enviada por el Servlet?", opciones: ["request.getParameter('users').", "request.getAttribute('users').", "response.getWriter().", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Para ejecutar sentencias SQL con parámetros (ej: `WHERE id=?`), ¿qué objeto es más adecuado y seguro?", opciones: ["Statement.", "PreparedStatement.", "CallableStatement.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué librería (.jar) se debe añadir al Build Path para conectar con MySQL?", opciones: ["servlet-api.jar.", "mysql-connector-java-x.x.x.jar.", "jstl.jar.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "El método `forward(request, response)` se utiliza en el Controlador para:", opciones: ["Redirigir a la Vista (JSP) manteniendo los datos del request.", "Cerrar la sesión.", "Enviar una cookie.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Qué devuelve `statement.executeQuery(sql)`?", opciones: ["Un entero con el número de filas afectadas.", "Un objeto ResultSet con los datos.", "Un booleano.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "En el modelo de 3 capas explicado, ¿qué función tiene la capa DAO?", opciones: ["Presentar los datos al usuario.", "Gestionar la lógica de negocio compleja.", "Abstraer y encapsular el acceso a los datos de la BD.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "Si la variable `connection` es `null` al intentar crear un Statement, ¿qué ocurre?", opciones: ["Se crea una nueva conexión automáticamente.", "Lanza una NullPointerException.", "No pasa nada.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En `JdbcConnection.java`, ¿qué hace `url = 'jdbc:mysql://localhost:3306/' + db`?", opciones: ["Define la cadena de conexión.", "Conecta directamente.", "Crea la base de datos.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Es posible tener múltiples objetos `Statement` sobre una misma `Connection`?", opciones: ["Sí.", "No, solo uno por conexión.", "Depende del driver.", "Todas son correctas."], correcta: 0 },
+                        { pregunta: "Para importar un script SQL en XAMPP, ¿qué herramienta se suele usar?", opciones: ["Apache Tomcat.", "phpMyAdmin.", "Eclipse.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En el ejercicio CRUD propuesto, ¿qué operación corresponde a la 'U'?", opciones: ["Upload (Subir archivos).", "Update (Modificar registros).", "Undo (Deshacer).", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "El método `Class.forName` puede lanzar la excepción:", opciones: ["ClassNotFoundException.", "SQLException.", "IOException.", "Todas son correctas."], correcta: 0 },
+                        { pregunta: "¿Qué objeto Java representa una fila de la tabla de base de datos en el modelo?", opciones: ["El ResultSet.", "La clase Usuario (Bean).", "El Servlet.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué sentencia SQL se usa para añadir un nuevo usuario?", opciones: ["ADD USER...", "INSERT INTO...", "CREATE USER...", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En la arquitectura mostrada, el Servlet actúa como:", opciones: ["Vista.", "Modelo.", "Controlador.", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "¿Qué método de `HttpServletRequest` se usa para pasar datos complejos (objetos) a la JSP?", opciones: ["setAttribute().", "setParameter().", "addHeader().", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "Si el driver JDBC no está en el Classpath/Build Path, ¿qué error obtendrás?", opciones: ["Error 404.", "ClassNotFoundException (al cargar el driver).", "Error de sintaxis SQL.", "Todas son correctas."], correcta: 1 }
+                    ]
+                },
+                servlets: {
+                    title: "Test Servlets y Sesiones (Temas 1-11)",
+                    questions: [
+                        { pregunta: "¿Qué método del ciclo de vida de un Servlet se ejecuta una sola vez al inicio?", opciones: ["service().", "doGet().", "init().", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "En el Ejercicio 1 (Login con Cookies), si el usuario es 'mario' y pass 'admin', ¿qué se hace?", opciones: ["Se crea una Cookie y se envía al cliente.", "Se crea una HttpSession.", "Se guarda en base de datos.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Qué objeto permite crear una sesión o recuperar la existente?", opciones: ["HttpServletResponse.", "HttpServletRequest (método getSession).", "ServletConfig.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "En el archivo `web.xml`, ¿qué etiqueta define la URL que invoca al servlet?", opciones: ["<servlet-class>.", "<url-pattern>.", "<servlet-name>.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué hace `cookie.setMaxAge(0)`?", opciones: ["Hace que la cookie dure para siempre.", "Borra la cookie inmediatamente.", "Hace que la cookie dure hasta cerrar el navegador.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En el Ejercicio 2 (Sesiones), ¿cómo se cierra la sesión del usuario?", opciones: ["session.delete().", "session.invalidate().", "session.close().", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "¿Cuál es el ámbito (scope) que comparte datos entre todos los usuarios de la aplicación?", opciones: ["Request Scope.", "Session Scope.", "Application Scope.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "Si un usuario desactiva las cookies en su navegador:", opciones: ["Las sesiones basadas en URL-rewriting podrían funcionar.", "Las cookies dejarán de funcionar.", "El seguimiento de sesión por defecto fallará.", "Todas son correctas."], correcta: 3 },
+                        { pregunta: "Código: `response.getWriter().print('Hola');` ¿Qué hace?", opciones: ["Escribe 'Hola' en la consola del servidor.", "Envía 'Hola' al navegador del cliente como respuesta.", "Guarda 'Hola' en un log.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué método HTTP es idempotente y lleva los parámetros en la URL?", opciones: ["POST.", "GET.", "DELETE.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En el formulario de login del Ejercicio 1, ¿qué método del Servlet recibe los datos?", opciones: ["init().", "doPost() (si el form usa method='post').", "destroy().", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "¿Para qué sirve `session.setAttribute('producto', miProducto)`?", opciones: ["Para guardar un objeto en la sesión del usuario actual.", "Para enviar una cookie.", "Para guardar en base de datos.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "Si `request.getParameter('nombre')` devuelve `null`, significa que:", opciones: ["El campo 'nombre' vino vacío.", "El parámetro 'nombre' no existía en la petición.", "El usuario se llama Null.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué interfaz deben implementar la mayoría de los Servlets HTTP?", opciones: ["GenericServlet.", "Servlet.", "HttpServlet (heredan de esta clase abstracta).", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "En el Ejercicio 1, ¿dónde se visualiza el botón 'Cerrar Sesión'?", opciones: ["En index.jsp.", "En login.jsp (cuando el usuario está logueado).", "En el servlet.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué hace `response.sendRedirect('pagina.jsp')`?", opciones: ["Redirige al cliente a una nueva URL (nueva petición).", "Hace un forward interno.", "Incluye el contenido.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Cuál es la diferencia principal entre Cookie y Sesión?", opciones: ["La Cookie se guarda en el cliente, la Sesión en el servidor.", "La Sesión es solo texto, la Cookie admite objetos.", "No hay diferencia.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "En el código `@WebServlet('/Saludo')`, ¿qué es esto?", opciones: ["Una anotación que sustituye la configuración en web.xml.", "Un comentario.", "Código XML.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "¿Qué método se llama cuando se para el servidor o se redepsiega la aplicación?", opciones: ["stop().", "end().", "destroy().", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "En el Ejercicio 2, si un usuario intenta acceder directamente a una página protegida sin sesión:", opciones: ["Entra sin problemas.", "Debería ser redirigido al login (controlado por lógica de sesión).", "El servidor se bloquea.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué objeto se usa para leer las cabeceras HTTP?", opciones: ["HttpServletResponse.", "HttpServletRequest.", "HttpSession.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "El método `cookie.setDomain('dominio')` sirve para:", opciones: ["Restringir la cookie a un dominio específico.", "Cambiar el nombre de la cookie.", "Encriptar la cookie.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "Si usamos `request.setAttribute()`, ¿cuánto duran esos datos?", opciones: ["Toda la sesión.", "Solo durante esa petición (Request Scope).", "Para siempre.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué etiqueta HTML se usa para crear el botón de envío en los formularios de los ejercicios?", opciones: ["<button>.", "<input type='submit'>.", "<submit>.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "En `session.setMaxInactiveInterval(10)`, ¿qué unidad se usa?", opciones: ["Milisegundos.", "Minutos.", "Segundos.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "¿Qué hace `request.getCookies()`?", opciones: ["Devuelve un array de objetos Cookie.", "Devuelve una sola cookie.", "Devuelve un mapa.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "En el Ejercicio 1, si el usuario y contraseña son incorrectos:", opciones: ["Se crea la cookie igual.", "Se muestra un mensaje de error en la vista.", "Se redirige a Google.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué tipo de contenido MIME se suele establecer con `response.setContentType` para generar HTML?", opciones: ["text/plain.", "application/json.", "text/html.", "Todas son correctas."], correcta: 2 },
+                        { pregunta: "La carpeta `WEB-INF` es especial porque:", opciones: ["Es accesible públicamente.", "No es accesible directamente desde el navegador (protegida).", "Contiene solo imágenes.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Para codificar caracteres especiales en una Cookie, se usa:", opciones: ["URLEncoder.encode().", "String.parse().", "Cookie.encode().", "Ninguna es correcta."], correcta: 0 }
+                    ]
+                },
+                examen: {
+                    title: "Examen Final (JDBC + Servlets + CRUD)",
+                    questions: [
+                        { pregunta: "En el CRUD propuesto, para la operación DELETE, ¿qué dato es crucial recibir del formulario?", opciones: ["El nombre del usuario.", "El ID del usuario a eliminar.", "La contraseña.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Código: `session.invalidate()`. ¿Qué efecto inmediato tiene?", opciones: ["Borra el usuario de la BD.", "Destruye la sesión actual en el servidor.", "Cierra el navegador.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Si en `Dao.java` usáramos `PreparedStatement` en lugar de `Statement`, ¿qué ventaja principal tendríamos?", opciones: ["Menos código.", "Prevención de inyección SQL y mejor rendimiento (precompilación).", "No hace falta conexión.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "En el modelo MVC con Servlets y JSP, ¿quién decide qué vista mostrar?", opciones: ["El Modelo.", "La Vista misma.", "El Controlador (Servlet).", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "En el Ejercicio 1, ¿qué pasa si la cookie `setMaxAge` es negativo (-1)?", opciones: ["La cookie no se crea.", "La cookie se borra al cerrar el navegador.", "La cookie es permanente.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué método de `HttpServlet` atiende cualquier petición (GET, POST, etc.) y despacha al método específico?", opciones: ["dispatch().", "service().", "run().", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En el Ejercicio 2 (Login con Sesión), ¿dónde se guardan los datos del usuario logueado?", opciones: ["En el disco duro del cliente.", "En la memoria del servidor (objeto HttpSession).", "En la URL.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "Si tenemos `public class Usuario implements Serializable`, ¿para qué sirve `Serializable`?", opciones: ["Para poder guardar el objeto en sesión o transmitirlo.", "Para conectar a la BD.", "Para encriptarlo.", "Todas son correctas."], correcta: 0 },
+                        { pregunta: "¿Qué es un `war` en el contexto de despliegue?", opciones: ["Un conflicto armado.", "Web ARchive, formato para distribuir aplicaciones web Java.", "Un archivo de configuración.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En JDBC, ¿qué objeto contiene los datos devueltos por un `SELECT`?", opciones: ["Statement.", "Connection.", "ResultSet.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "Código: `request.getRequestDispatcher('vista.jsp').forward(request, response)`.", opciones: ["Redirige a vista.jsp en el servidor (transparente al cliente).", "Envía una respuesta 302 al cliente.", "Crea una nueva petición.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "En el Ejercicio Propuesto de CRUD, para editar un usuario, ¿cuántos pasos/peticiones suelen hacer falta?", opciones: ["1 paso: guardar directo.", "2 pasos: cargar datos en formulario (GET) y guardar cambios (POST).", "Ningún paso.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué scope usarías para un contador de visitas global de toda la web?", opciones: ["Session.", "Request.", "Application.", "Ninguna es correcta."], correcta: 2 },
+                        { pregunta: "Si `Dao.getInstancia()` se llama 10 veces, ¿cuántos objetos Dao se crean?", opciones: ["10.", "1.", "0.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En el archivo `web.xml`, `<welcome-file-list>` define:", opciones: ["Los archivos que se borran al inicio.", "Los archivos que se sirven por defecto si no se especifica recurso.", "La lista de usuarios permitidos.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "¿Qué método de `Connection` se usaría para desactivar el auto-commit (transacciones)?", opciones: ["setAutoCommit(false).", "commit(false).", "rollback().", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "En el Ejercicio 1, si el usuario hace logout, ¿qué debemos hacer con la cookie?", opciones: ["Nada.", "Sobrescribirla con `setMaxAge(0)`.", "Borrarla del servidor.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "La anotación `@WebServlet('/Login')` equivale a configurar:", opciones: ["Un `<servlet-mapping>` en web.xml.", "Un `<context-param>`.", "Una base de datos.", "Todas son correctas."], correcta: 0 },
+                        { pregunta: "Si en el CRUD intentas insertar un usuario con un ID que ya existe, ¿qué excepción SQL salta?", opciones: ["NullPointerException.", "IntegrityConstraintViolation / DuplicateKey.", "ConnectionTimeout.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué hace `out.println()` en un Servlet?", opciones: ["Escribe en la consola de Eclipse.", "Escribe en el cuerpo de la respuesta HTTP (HTML).", "Escribe en un fichero.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En el modelo Bean (`Usuario.java`), los métodos getter y setter sirven para:", opciones: ["Encapsulamiento y acceso a propiedades privadas.", "Conectar a la BD.", "Validar formularios.", "Todas son correctas."], correcta: 0 },
+                        { pregunta: "¿Qué diferencia hay entre `executeQuery` y `executeUpdate`?", opciones: ["`executeQuery` para SELECT, `executeUpdate` para INSERT/UPDATE/DELETE.", "Son iguales.", "`executeQuery` es más rápido.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "En una arquitectura de 3 capas, si cambiamos la base de datos de MySQL a Oracle, ¿qué capa debería cambiar principalmente?", opciones: ["Capa de Presentación.", "Capa de Negocio.", "Capa de Persistencia (DAO).", "Todas por igual."], correcta: 2 },
+                        { pregunta: "El método `getParameter` devuelve siempre:", opciones: ["Object.", "String.", "Integer.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En el Ejercicio 2, para proteger una JSP para que solo la vean usuarios logueados, ¿qué harías al principio de la JSP?", opciones: ["Nada.", "Verificar si existe el objeto usuario en `session`, si no, redirigir.", "Poner una contraseña.", "Todas son correctas."], correcta: 1 },
+                        { pregunta: "¿Qué clase de Java se usa para manejar fechas SQL?", opciones: ["java.util.Date.", "java.sql.Date.", "java.time.LocalDate.", "Todas podrían usarse pero java.sql.Date es la específica de JDBC."], correcta: 3 },
+                        { pregunta: "En el patrón Singleton del `Dao`, la variable `instance` es:", opciones: ["public.", "private static.", "protected.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué hace `request.getContextPath()` en la vista JSP?", opciones: ["Devuelve la ruta raíz de la aplicación web.", "Devuelve la IP del servidor.", "Devuelve el nombre del archivo.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "Si un Servlet lanza una `ServletException`, ¿quién la maneja habitualmente?", opciones: ["El cliente.", "El contenedor de Servlets (Tomcat) mostrando página de error.", "La base de datos.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En el CRUD, el método para obtener TODOS los usuarios devuelve habitualmente:", opciones: ["Un Usuario.", "Un `List<Usuario>` o `ArrayList<Usuario>`.", "Un String.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "¿Qué es XAMPP según los documentos?", opciones: ["Un entorno que incluye Apache, MySQL, PHP, etc.", "Un lenguaje de programación.", "Un IDE.", "Ninguna es correcta."], correcta: 0 },
+                        { pregunta: "Para evitar que un usuario vea datos de otro en una sesión:", opciones: ["Usar cookies distintas.", "El contenedor gestiona sesiones independientes por usuario automáticamente.", "Programarlo manualmente.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En `JdbcConnection`, el driver se carga con:", opciones: ["`new Driver()`.", "`Class.forName(...)`.", "`import driver`.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "El código `<%= usuario.getNombre() %>` en JSP es:", opciones: ["Una directiva.", "Una expresión que imprime el resultado.", "Un scriptlet.", "Ninguna es correcta."], correcta: 1 },
+                        { pregunta: "En el ejercicio propuesto de CRUD, ¿qué acción se realiza primero para modificar?", opciones: ["UPDATE SQL.", "SELECT SQL por ID para cargar datos previos.", "DELETE SQL.", "Ninguna es correcta."], correcta: 1 }
+                    ]
                 }
+                
             } 
         };
 
@@ -1091,4 +1205,5 @@
     </script>
 </body>
 </html>
+
 
