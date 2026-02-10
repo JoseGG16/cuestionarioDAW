@@ -256,6 +256,10 @@
                     <button onclick="startQuiz('sostenibilidad', 'sost1')" class="quiz-btn">1. Entendiendo la Sostenibilidad</button>
                     <button onclick="startQuiz('sostenibilidad', 'sost2')" class="quiz-btn">2. Quincena 20/10 - 02/11</button>
                     <button onclick="startQuiz('sostenibilidad', 'sost3')" class="quiz-btn">3. Quincena 03/11 - 16/11</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost4')" class="quiz-btn">4. Q6: Agenda 2030 y ODS</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost5')" class="quiz-btn">5. Q7: Análisis Crítico ODS</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost6')" class="quiz-btn">6. Q9: Software y Economía Circular</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost7')" class="quiz-btn">7. Q10: Ética y Impacto TIC</button>
                 </div>
 
                 <!-- Digitalización -->
@@ -266,6 +270,11 @@
                     <button onclick="startQuiz('digitalizacion', 'digi3')" class="quiz-btn">3. Quincena 4</button>
                     <button onclick="startQuiz('digitalizacion', 'digi4')" class="quiz-btn">4. Quincena 5 (Tema 2)</button>
                     <button onclick="startQuiz('digitalizacion', 'digi5')" class="quiz-btn">5. Evalúa tus conocimientos T.1-2</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi6')" class="quiz-btn">6. Q6: Modelos Cloud (IaaS/PaaS/SaaS)</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi7')" class="quiz-btn">7. Q7: Servicios Cloud y Edge Computing</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi8')" class="quiz-btn">8. Q8: IA y Minería de Datos</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi9')" class="quiz-btn">9. Q9: Big Data y Data Science I</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi10')" class="quiz-btn">10. Q10: Data Analytics y Almacenamiento</button>
                 </div>
 
                 <!-- Diseño Web -->
@@ -281,11 +290,6 @@
                 <!-- NUEVO: Desarrollo Web Entorno Servidor -->
                 <div class="subject-card sub-serv">
                     <h2>⚙️ Desarrollo Web Entorno Servidor</h2>
-                    <button onclick="startQuiz('servidor', 'serv1')" class="quiz-btn">1.Libro 2012 Test de Conocimientos</button>
-                    <button onclick="startQuiz('servidor', 'cap1')" class="quiz-btn">2.Libro 2012 Capítulo 1: Arquitecturas</button>
-                    <button onclick="startQuiz('servidor', 'cap2')" class="quiz-btn">3.Libro 2012 Capítulo 2: Inserción de Código</button>
-                    <button onclick="startQuiz('servidor', 'cap3')" class="quiz-btn">4.Libro 2012 Capítulo 3: Programación</button>
-                    <button onclick="startQuiz('servidor', 'global')" class="quiz-btn">Global (Caps 1, 2 y 3)</button>
                     <button onclick="startQuiz('servidor', 'servlets')" class="quiz-btn">5.Servlets y Sesiones</button>
                     <button onclick="startQuiz('servidor', 'jdbc')" class="quiz-btn">6.JDBC y MySQL</button>
                     <button onclick="startQuiz('servidor', 'examen')" class="quiz-btn">Examen Final (5-6)</button>
@@ -392,7 +396,228 @@
                         { pregunta: "¿Por qué el modelo de producción y consumo actual se considera insostenible?", opciones: ["Porque aún no utiliza suficiente energía nuclear", "Porque no ha alcanzado su máximo nivel de eficiencia", "Porque depende de la extracción continua de recursos y genera desigualdad social"], correcta: 2 },
                         { pregunta: "¿Cuál de los siguientes factores profundiza los problemas ecosociales globales?", opciones: ["La sobreexplotación de recursos unida al individualismo económico", "La reducción de la huella ecológica de los países desarrollados", "La cooperación internacional y la economía solidaria"], correcta: 0 }
                     ]
-                }
+                },
+                sost4: {
+    title: "Q6: Agenda 2030 y ODS",
+    questions: [
+        { 
+            pregunta: "¿Qué es la Agenda 2030?", 
+            opciones: ["Un acuerdo global para reducir la deuda externa de los países.", "Un tratado vinculante que obliga a los países a cumplir los ODS.", "Un acuerdo internacional para promover el bienestar humano y la sostenibilidad del planeta."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Cuántos Objetivos de Desarrollo Sostenible (ODS) incluye la Agenda 2030?", 
+            opciones: ["12", "17", "8"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Por qué se considera que los ODS son un instrumento de “soft law”?", 
+            opciones: ["Porque son recomendaciones sin carácter vinculante.", "Porque son obligatorios para todos los países firmantes.", "Porque incluyen sanciones económicas en caso de incumplimiento."], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Cuál es una crítica al ODS 8 sobre crecimiento económico?", 
+            opciones: ["Que fomenta la redistribución de la riqueza.", "Que promueve la reducción del consumo energético.", "Que plantea un crecimiento sostenido, lo cual contradice los límites del planeta."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué papel tienen los estándares de sostenibilidad como GRI, IFRS o ESRS?", 
+            opciones: ["Obligar legalmente a todas las empresas a cumplir los ODS.", "Sustituir la normativa europea sobre sostenibilidad.", "Certificar prácticas empresariales sostenibles y facilitar informes."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Cuál es una limitación de la Responsabilidad Social Corporativa (RSC)?", 
+            opciones: ["Depende de la autorregulación voluntaria de la empresa.", "Es obligatoria para todas las empresas.", "Garantiza la reducción de la huella hídrica."], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué modelo económico propone internalizar el impacto social y ambiental en los precios?", 
+            opciones: ["Economía extractivista.", "Economía del bien común.", "Economía lineal."], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué problema se asocia a la proliferación de sellos de sostenibilidad?", 
+            opciones: ["Ha aumentado la credibilidad de las empresas.", "Ha facilitado la transparencia empresarial.", "Ha favorecido el greenwashing."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué efecto ha tenido el negacionismo sobre la Agenda 2030?", 
+            opciones: ["Ha frenado el debate serio sobre la eficacia de los objetivos.", "Ha impulsado la creación de nuevos ODS más ambiciosos.", "Ha obligado a los países a cumplir los ODS mediante sanciones."], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué criterio NO se utiliza para definir una gran empresa según la Directiva (UE) 2022/2464?", 
+            opciones: ["Tener presencia en al menos 10 países.", "Facturar más de 40 millones de euros.", "Tener más de 250 empleados."], 
+            correcta: 0 
+        }
+    ]
+},
+sost5: {
+    title: "Q7: Análisis Crítico ODS",
+    questions: [
+        { 
+            pregunta: "¿Por qué los ODS incluyen metas económicas junto a las ambientales?", 
+            opciones: ["Porque los países ricos lo exigieron en las negociaciones", "Porque sin economía sostenible no hay desarrollo integral", "Porque el crecimiento económico es indispensable para reducir la pobreza"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué riesgo implica que los ODS sean voluntarios?", 
+            opciones: ["Que se generen sanciones internacionales", "Que se conviertan en declaraciones sin impacto real", "Que los países los cumplan más rápido"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Por qué algunos críticos dicen que los ODS son “demasiado amplios”?", 
+            opciones: ["Porque incluyen temas irrelevantes", "Porque abarcan tantas áreas que es difícil priorizar", "Porque solo benefician a países desarrollados"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué dilema surge entre ODS 8 (Trabajo decente y crecimiento económico) y ODS 13 (Acción por el clima)?", 
+            opciones: ["Que la acción climática impide la innovación", "Que el crecimiento económico puede aumentar emisiones", "Que el empleo depende solo de energías renovables"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Por qué se considera que el ODS 17 (Alianzas) es clave para todos los demás?", 
+            opciones: ["Porque es el único que tiene financiación propia", "Porque sin cooperación global no hay recursos ni tecnología", "Porque sustituye la responsabilidad de los gobiernos"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué crítica se hace a la medición de los ODS?", 
+            opciones: ["Que muchos países carecen de datos fiables", "Que los indicadores son claros y fáciles de aplicar", "Que se mide solo el impacto económico"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Por qué el ODS 12 (Consumo responsable) es difícil de implementar?", 
+            opciones: ["Porque no tiene relación con el cambio climático", "Porque depende solo de decisiones individuales", "Porque implica cambiar hábitos y modelos económicos"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Por qué algunos países priorizan ciertos ODS sobre otros?", 
+            opciones: ["Porque la ONU lo exige", "Porque todos tienen la misma urgencia", "Porque responden a intereses políticos y económicos"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Por qué el ODS 5 (Igualdad de género) es transversal?", 
+            opciones: ["Porque influye en salud, economía y participación política", "Porque no tiene relación con otros ODS", "Porque afecta solo a educación"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Por qué algunos expertos/as ven los ODS como “utópicos”?", 
+            opciones: ["Porque requieren cambios estructurales profundos en poco tiempo", "Porque son fáciles de cumplir", "Porque no tienen impacto social"], 
+            correcta: 0 
+        }
+    ]
+},
+sost6: {
+    title: "Q9: Software y Economía Circular",
+    questions: [
+        { 
+            pregunta: "¿Qué característica del software favorece más la economía circular?", 
+            opciones: ["Capacidad de actualización sin sustituir el sistema", "Dependencia de hardware potente", "Uso exclusivo de software propietario"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Cuál es el principal objetivo de la economía circular aplicada al sector tecnológico?", 
+            opciones: ["Sustituir totalmente la digitalización", "Incrementar la producción", "Mantener el valor de productos y materiales el mayor tiempo posible"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Por qué el software eficiente contribuye a la sostenibilidad? (1)", 
+            opciones: ["Elimina la necesidad de actualizaciones", "Reduce el mantenimiento", "Disminuye el consumo energético y alarga la vida del hardware"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué residuo es más característico del sector TIC?", 
+            opciones: ["Residuos de aparatos eléctricos y electrónicos (RAEE)", "Residuos orgánicos", "Residuos químicos"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Por qué el software eficiente contribuye a la sostenibilidad? (2)", 
+            opciones: ["Porque disminuye el consumo energético y prolonga la vida del hardware", "Porque elimina la necesidad de mantenimiento", "Porque aumenta la velocidad de obsolescencia"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Cuál de las siguientes prácticas NO favorece la economía circular en el sector TIC?", 
+            opciones: ["Consumo energético descontrolado en servidores", "Reutilización de componentes software", "Virtualización de sistemas"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué relación existe entre la digitalización y la sostenibilidad?", 
+            opciones: ["Puede reducir el consumo de recursos si se aplica correctamente", "Elimina totalmente los residuos", "La digitalización siempre aumenta el impacto ambiental"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué indicador es más adecuado para medir la sostenibilidad en proyectos informáticos?", 
+            opciones: ["Lenguaje de programación utilizado", "Consumo energético y vida útil del sistema", "Tiempo de desarrollo"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Cuál es una diferencia clave entre la economía circular y la economía lineal?", 
+            opciones: ["La economía lineal se basa en extraer, producir, usar y desechar", "La economía circular elimina completamente los residuos", "La economía circular prioriza el reciclaje frente a la producción"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "Dentro de un sistema productivo sostenible, ¿qué acción tiene mayor impacto a largo plazo?", 
+            opciones: ["Rediseñar los productos para facilitar su reparación y reutilización", "Aumentar la velocidad de producción", "Incrementar el consumo de materias primas recicladas sin cambiar el diseño"], 
+            correcta: 0 
+        }
+    ]
+},
+sost7: {
+    title: "Q10: Ética y sostenibilidad TIC",
+    questions: [
+        { 
+            pregunta: "Una decisión es coherente con la economía circular cuando:", 
+            opciones: ["Reduce solo el coste inmediato", "Es la más rápida de aplicar", "Tiene en cuenta el uso futuro y el final del recurso"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "En informática, una práctica inspirada en la economía de los cuidados sería…", 
+            opciones: ["Usar solo tecnologías de última generación", "Ignorar la accesibilidad para ahorrar tiempo de desarrollo", "Diseñar interfaces pensando en usuarios con distintas capacidades"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué efecto tiene la dependencia global de productos tecnológicos, como ordenadores o móviles, según el contenido teórico de la UD4?", 
+            opciones: ["Mejora la autosuficiencia energética", "Incrementa la resiliencia local", "Aumenta la vulnerabilidad ante crisis globales"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué papel tienen los profesionales en la economía circular?", 
+            opciones: ["Aplicar solo lo que indique la empresa", "Tomar decisiones responsables dentro de su ámbito", "Cambiar las políticas globales"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Por qué la exportación de residuos electrónicos agrava la desigualdad global?", 
+            opciones: ["Porque traslada los impactos tóxicos a territorios con menos recursos", "Porque los países receptores cuentan con mejores tecnologías", "Porque reduce la extracción de minerales"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué implica que la mochila ecológica de un producto sea varias veces mayor que su peso real?", 
+            opciones: ["Que el consumo invisible de recursos es extremadamente alto", "Que su uso será más duradero", "Que el producto es seguro"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué conclusión puede extraerse del impacto desigual de las familias profesionales?", 
+            opciones: ["Que todas consumen la misma cantidad de recursos", "Que sectores intensivos en materiales generan mayor huella ecológica", "Que la educación es el sector con mayor impacto"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué relación establece el texto entre acumulación de riqueza y problemas ecológicos?", 
+            opciones: ["Los ingresos altos se relacionan con menor consumo", "La concentración de riqueza reduce las emisiones", "Las personas más ricas generan mayor huella y mayor desigualdad"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Por qué el diseño del producto es clave para la economía circular?", 
+            opciones: ["Porque determina la facilidad para reparar, reciclar o reutilizar", "Porque solo afecta a la estética", "Porque influye únicamente en el marketing"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué síntesis hace el documento respecto a la economía circular?", 
+            opciones: ["Se limita a mejorar los procesos de reciclaje", "Requiere reducir, rediseñar y replantear qué se produce y para qué", "Es viable sin cambiar el modelo de consumo actual"], 
+            correcta: 1 
+        }
+    ]
+}
+
             },
             digitalizacion: {
                 digi1: {
@@ -611,7 +836,398 @@
             "Impresión 3D."
         ], correcta: 3 }
     ]
+},digi6: {
+    title: "Q6: Modelos Cloud (IaaS/PaaS/SaaS)",
+    questions: [
+        { 
+            pregunta: "¿Qué caracteriza a una nube híbrida?", 
+            opciones: ["Acceso restringido a una sola aplicación", "Combinación de nube pública y privada", "Uso exclusivo de proveedores públicos", "Integración de múltiples proveedores del mismo tipo"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué tipo de escalabilidad ofrece típicamente el modelo PaaS?", 
+            opciones: ["Estática", "Automática", "Ninguna", "Manual"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Cuál es un inconveniente común del modelo SaaS?", 
+            opciones: ["Imposibilidad de acceso desde navegadores web", "Necesidad de personal técnico especializado", "Limitación en la personalización de la aplicación", "Alto coste inicial de hardware"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué modelo de servicio en la nube requiere habilidades técnicas avanzadas para su gestión?", 
+            opciones: ["PaaS", "SaaS", "IaaS", "Ninguno de los anteriores"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué empresa fue pionera en ofrecer aplicaciones empresariales a través de la web en 1999?", 
+            opciones: ["Salesforce", "Microsoft", "Amazon", "Google"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Cuál es la principal diferencia entre una nube híbrida y un modelo multinube?", 
+            opciones: ["La nube híbrida no puede usar servicios de AWS", "La nube híbrida usa más proveedores", "El modelo multinube implica múltiples proveedores, mientras que la híbrida combina tipos de nube (pública/privada)", "La multinube no permite escalabilidad"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué tipo de nube utiliza exclusivamente una única organización y ofrece mayor control sobre la infraestructura?", 
+            opciones: ["Nube pública", "Nube privada", "Nube híbrida", "Multinube"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Cuál de las siguientes NO es una característica típica del modelo IaaS?", 
+            opciones: ["Escalabilidad automática gestionada por la plataforma", "Escalabilidad dinámica", "Control total sobre el sistema operativo", "Virtualización de recursos"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Cuál de los siguientes es un ejemplo de SaaS horizontal?", 
+            opciones: ["Google Workspace", "LegalZoom", "Veeva Systems", "Wrike for Marketers"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué ventaja principal ofrece el modelo PaaS a los desarrolladores?", 
+            opciones: ["Facturación basada en propiedad de servidores", "Acceso directo al hardware subyacente", "No tener que gestionar la infraestructura subyacente", "Instalación local de la aplicación"], 
+            correcta: 2 
+        }
+    ]
+},
+digi7: {
+    title: "Q7: Servicios Cloud y Edge Computing",
+    questions: [
+        { 
+            pregunta: "¿Qué ventaja del edge computing se menciona especialmente para sistemas de vigilancia con cámaras en red?", 
+            opciones: ["Ahorro de ancho de banda", "Latencia reducida", "Menor dependencia de la conectividad", "Mayor privacidad"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Cuál de los siguientes es un ejemplo de servicio de copia de seguridad en la nube?", 
+            opciones: ["Microsoft Teams", "Oracle WebCenter", "Google Workspace", "AWS Backup"], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿En qué paradigma se procesan los datos directamente en los dispositivos que los generan?", 
+            opciones: ["Cloud computing", "IaaS", "Mist computing", "Fog computing"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué tipo de servicio en la nube permite a los usuarios ejecutar aplicaciones sin gestionar la infraestructura subyacente?", 
+            opciones: ["IaaS", "XaaS", "PaaS", "SaaS"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Cuál de los siguientes es un ejemplo de servicio IaaS mencionado?", 
+            opciones: ["JIRA", "AWS EC2", "Slack", "Microsoft 365"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué modelo de computación en la nube ofrece mayor control sobre la infraestructura?", 
+            opciones: ["PaaS", "XaaS", "SaaS", "IaaS"], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿Qué modelo de pago en la nube permite a las empresas adaptar sus gastos a los ingresos generados?", 
+            opciones: ["PAYG (Pay as you go)", "Suscripción fija", "Pago anual anticipado", "Modelo de capital fijo"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué limitación fundamental presenta el uso de servicios XaaS?", 
+            opciones: ["Alto costo inicial", "Imposibilidad de actualizaciones automáticas", "Dependencia de una conexión a internet estable", "Dificultad para personalizar"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Cuál de los siguientes servicios se menciona como ejemplo de SaaS para gestión empresarial?", 
+            opciones: ["SAP Business One", "Azure Blob Storage", "AWS Lambda", "Google Compute Engine"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué ventaja del edge computing es crucial en vehículos autónomos ante situaciones de emergencia?", 
+            opciones: ["Mejor integración con la nube", "Reducción de costes operativos", "Latencia reducida", "Mayor escalabilidad"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Cuál de los siguientes NO es un modelo principal de computación en la nube?", 
+            opciones: ["PaaS", "DaaS", "SaaS", "IaaS"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué significa la sigla ALM en el contexto del documento?", 
+            opciones: ["Application Lifecycle Management", "Automated Learning Model", "Advanced Logic Module", "Application Load Manager"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué característica del modelo XaaS permite a las empresas pagar solo por lo que utilizan?", 
+            opciones: ["Acceso remoto", "Mantenimiento reducido", "Flexibilidad", "Escalabilidad"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué tipo de computación descentraliza el procesamiento llevándolo a dispositivos intermedios como routers o gateways?", 
+            opciones: ["Cloud computing", "Mist computing", "Edge computing", "Fog computing"], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿Qué significa la sigla XaaS?", 
+            opciones: ["Todo como servicio", "Plataforma como servicio", "Infraestructura como servicio", "Computación como servicio"], 
+            correcta: 0 
+        }
+    ]
+},
+digi8: {
+    title: "Q8: IA y Minería de Datos",
+    questions: [
+        { 
+            pregunta: "¿Qué disciplina combina estadística, IA, aprendizaje automático y gestión de bases de datos para descubrir patrones?", 
+            opciones: ["Minería de datos", "Big data", "Procesamiento del lenguaje natural", "Robótica"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Cuál es un ejemplo de aplicación del aprendizaje profundo mencionado?", 
+            opciones: ["Segmentación de clientes", "Análisis de preferencias sin etiquetas", "Detección de correo no deseado", "Identificación de patrones en imágenes de radiodiagnóstico"], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿Qué técnica de IA utiliza redes neuronales con múltiples capas?", 
+            opciones: ["Aprendizaje semisupervisado", "Aprendizaje no supervisado", "Machine learning", "Aprendizaje profundo"], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿En qué tipo de aprendizaje el sistema recibe recompensas o penalizaciones?", 
+            opciones: ["Aprendizaje por refuerzo", "Aprendizaje no supervisado", "Aprendizaje supervisado", "Aprendizaje semisupervisado"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué tipo de minería de datos analiza sentimientos en redes sociales?", 
+            opciones: ["Minería temporal", "Minería espacial", "Minería textual", "Minería de asociación"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿En qué año se acuñó el término «inteligencia artificial»?", 
+            opciones: ["1965", "1950", "1956", "1945"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué tipo de aprendizaje se usa cuando solo una parte de los datos está etiquetada?", 
+            opciones: ["Aprendizaje supervisado", "Aprendizaje por refuerzo", "Aprendizaje semisupervisado", "Aprendizaje no supervisado"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Quién planteó la pregunta «¿Puede una máquina pensar?»?", 
+            opciones: ["John McCarthy", "Herbert Simon", "Alan Turing", "Marvin Minsky"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué tecnología permite que asistentes virtuales como Alexa entiendan y respondan?", 
+            opciones: ["Procesamiento del lenguaje natural", "Machine bias", "Aprendizaje por refuerzo", "Visión por computadora"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué fase del proceso de minería de datos implica limpiar y transformar los datos?", 
+            opciones: ["Preparación de los datos", "Comprensión de los datos", "Modelización", "Comprensión del negocio"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué THD utiliza IA para analizar patrones de tráfico y optimizar semáforos?", 
+            opciones: ["IoT", "Impresión 3D", "Robótica colaborativa", "Blockchain"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué tipo de minería de datos se usa para agrupar clientes con comportamientos de compra similares?", 
+            opciones: ["Minería de clústeres", "Minería de asociación", "Minería secuencial", "Minería textual"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿En qué sector la IA puede simular escenarios de competición reales para el entrenamiento?", 
+            opciones: ["Energía", "Deporte", "Salud", "Turismo"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué tipo de minería de datos identifica que los clientes que compran pañales también tienden a comprar cerveza?", 
+            opciones: ["Minería de asociación", "Minería predictiva", "Minería descriptiva", "Minería de clústeres"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué THD combinada con IA permite rastrear productos desde su origen hasta su destino asegurando autenticidad?", 
+            opciones: ["Realidad aumentada", "Computación en la nube", "Blockchain", "IoT"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué tipo de IA se caracteriza por su capacidad para llevar a cabo tareas específicas o limitadas?", 
+            opciones: ["Superinteligencia artificial", "IA estrecha", "IA general", "IA emocional"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué modelo de IA NO existe actualmente en la práctica?", 
+            opciones: ["IA general", "IA estrecha", "IA de asistentes virtuales", "IA especializada"], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué aspecto crítico de la IA exige que los datos personales se recopilen con consentimiento informado?", 
+            opciones: ["Interpretabilidad", "Equidad", "Privacidad y protección de datos personales", "Responsabilidad"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué aspecto crítico del tratamiento de datos en IA se refiere a evitar que los modelos reproduzcan prejuicios?", 
+            opciones: ["Responsabilidad", "Interpretabilidad", "Privacidad", "Equidad y sesgo"], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿Qué término se utiliza para referirse al sesgo inconsciente en los modelos de IA?", 
+            opciones: ["AI ethics", "Machine bias", "Data bias", "Learning error"], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Cuál es un ejemplo de aprendizaje supervisado?", 
+            opciones: ["Detección de patrones en redes sociales", "Reconocimiento de voz sin etiquetas", "Detección de correo no deseado", "Segmentación de clientes sin categorías"], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Cuál es la primera etapa del proceso de minería de datos?", 
+            opciones: ["Preparación de los datos", "Comprensión del negocio", "Evaluación", "Comprensión de los datos"], 
+            correcta: 1 
+        }
+    ]
+},
+digi9: {
+    title: "Q9: Big Data y Data Science I",
+    questions: [
+        { 
+            pregunta: "¿Qué es un \"Dashboard\"?", 
+            opciones: ["Una herramienta visual para ofrecer comprensión clara e interactiva de indicadores.", "Un sistema de almacenamiento en la nube elástico.", "Un tipo de base de datos NoSQL.", "Un formato de intercambio de gráficos."], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Qué define la \"Variedad\" en el big data?", 
+            opciones: ["La capacidad de agregar datos de múltiples fuentes.", "La dificultad para procesar grandes conjuntos de datos.", "La cantidad de errores que contienen los datos.", "La diversidad de tipos y fuentes de datos (estructurados, semi, no estructurados)."], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿Con qué se relaciona la \"Veracidad\" de los datos?", 
+            opciones: ["Velocidad de red.", "Espacio en servidor.", "Calidad y confiabilidad, dado que pueden contener errores.", "Valor económico."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué implica la característica de \"Velocidad\"?", 
+            opciones: ["Tiempo de lectura humano.", "Inconsistencia de formato.", "Rapidez con la que se generan, procesan y analizan los datos.", "Velocidad de internet."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿En qué consiste la característica de \"Agregación\"?", 
+            opciones: ["Rapidez de análisis.", "Capacidad de agregar datos de múltiples fuentes.", "Dificultad de gestión.", "Inconsistencia estructural."], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿A qué se refiere la \"Ingeniería de características\"?", 
+            opciones: ["Proceso de seleccionar, crear o transformar variables de entrada.", "Análisis exploratorio.", "Documentación de origen.", "Visualización mediante dashboards."], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "En la fase de \"Generación de datos\", ¿qué se establece?", 
+            opciones: ["Visualización.", "Decisiones estratégicas.", "Eliminación de datos.", "Cuáles van a ser los datos a tratar y sus fuentes."], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿Qué es la ciencia de datos (data science)?", 
+            opciones: ["Datos de sensores.", "Servicio de Microsoft.", "Repositorio centralizado.", "Disciplina que combina estadística, matemáticas y programación para extraer conocimientos."], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿En qué consiste la fase de \"Limpieza de datos\"?", 
+            opciones: ["Comprender el negocio.", "Buscar datos.", "Crear variables.", "Corregir o eliminar valores erróneos, faltantes o duplicados."], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿Qué es un \"dato\"?", 
+            opciones: ["Producto final útil.", "Análisis climático.", "Representación \"cruda\" y sin procesar de una entidad.", "Resultado interpretado."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿A qué se refiere el concepto de big data?", 
+            opciones: ["Técnicas y tecnologías para manejar conjuntos de datos masivos y complejos.", "Datos de redes sociales únicamente.", "Herramientas de ordenadores domésticos.", "Almacenamiento físico sin internet."], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Cómo surge la \"información\"?", 
+            opciones: ["Eliminación de duplicados.", "Del procesamiento, organización y contextualización de los datos.", "Recopilación masiva aleatoria.", "Representación simbólica."], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué hacen la minería de datos y la IA en la fase de \"Procesamiento\"?", 
+            opciones: ["Toman decisiones finales.", "Almacenan datos.", "Presentan gráficos.", "Preparan datos, identifican patrones y realizan transformaciones."], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿A qué se refiere la característica de \"Volumen\" en big data?", 
+            opciones: ["Rapidez de generación.", "Diversidad de fuentes.", "Calidad de datos.", "Escala masiva de datos generados constantemente."], 
+            correcta: 3 
+        }
+    ]
+},
+digi10: {
+    title: "Q10: Data Analytics y Almacenamiento",
+    questions: [
+        { 
+            pregunta: "¿Para qué se utiliza la información en la data science?", 
+            opciones: ["Para transformarla en big data.", "Para predecir los problemas futuros.", "Para convertirla en insights.", "Para resolver los problemas de negocio."], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Qué significa el término insight?", 
+            opciones: ["Valor de mayor tamaño.", "Herramienta visual.", "Información significativa que surge al procesar datos.", "Dato sin procesar."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿A qué disciplina corresponde la fase de validación de los resultados mencionada?", 
+            opciones: ["Data science.", "Data analytics.", "Data insights.", "Común a todos."], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Cuál NO es un nivel del modelo de almacenamiento de datos por niveles?", 
+            opciones: ["Nivel templado.", "Nivel frío.", "Nivel caliente.", "Nivel crítico."], 
+            correcta: 3 
+        },
+        { 
+            pregunta: "¿Qué relación existe entre la data science y el data analytics?", 
+            opciones: ["Ninguna.", "El data analytics es una disciplina derivada de la data science.", "Son lo mismo.", "La data science deriva del data analytics."], 
+            correcta: 1 
+        },
+        { 
+            pregunta: "¿Cómo se llama la disciplina que busca generar insights?", 
+            opciones: ["Data analytics.", "Data insights.", "Big data.", "Data science."], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Cuál NO es una de las seis uves que definen el big data?", 
+            opciones: ["Variedad.", "Veracidad.", "Volatilidad.", "Valor."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Para qué se utiliza un dashboard según el texto?", 
+            opciones: ["Para visualizar información relevante en tiempo real.", "Para eliminar datos duplicados.", "Para convertir science en big data.", "Para almacenar datos calientes."], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "¿Cuál es la principal diferencia entre dato e información?", 
+            opciones: ["El dato es resultado de procesar.", "El dato surge de organizar información.", "La información surge del procesamiento y organización de datos.", "Son lo mismo."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿Qué requiere el Data Analytics a diferencia del Data Science?", 
+            opciones: ["Estrategias futuras.", "Predecir futuro.", "Habilidades más orientadas al negocio y visualización.", "Habilidades en programación y matemáticas."], 
+            correcta: 2 
+        },
+        { 
+            pregunta: "¿En qué consiste la agregación de los datos?", 
+            opciones: ["En combinar datos que provienen de diferentes fuentes.", "Agregar comienzo al final.", "Agregar etiquetas.", "Eliminar duplicados."], 
+            correcta: 0 
+        },
+        { 
+            pregunta: "En el modelo por niveles, ¿qué medio se usa para el \"Nivel frío\"?", 
+            opciones: ["HDD tradicionales.", "SSD alta velocidad.", "Cintas magnéticas o soluciones cloud de bajo coste.", "Memoria RAM."], 
+            correcta: 2 
+        }
+    ]
 }
+
+
 
                 
             },
@@ -794,144 +1410,6 @@
             },
             // Base de datos de Entorno Servidor
             servidor: {
-                serv1: {
-                    title: "Cuestionario Entorno Servidor (Libro 2012 Test-Conocimientos)",
-                    questions: [
-                        { pregunta: "¿Cuál de los siguientes lenguajes no puede utilizarse como lenguaje de scripting?", opciones: ["PHP.", "Perl.", "HTML.", "JSP."], correcta: 2 },
-                        { pregunta: "¿Cuál de las siguientes estrategias representa una estrategia de programación válida en entornos cliente/servidor?", opciones: ["Fat Client/Thin Server.", "Programación en dos capas.", "Uso de servidores de objetos.", "Todos los anteriores."], correcta: 3 },
-                        { pregunta: "¿Cuál de las siguientes herramientas no permite la validación de la sintaxis de código?", opciones: ["UltraEdit.", "Microsoft Visual Studio.", "NetBeans IDE.", "Ninguno los anteriores."], correcta: 3 },
-                        { pregunta: "Señale la respuesta correcta con respecto a CGI:", opciones: ["Es un lenguaje de programación del lado del servidor.", "Es un estándar que indica la forma en la que un servidor debe ejecutar un programa externo.", "Puede programarse en HTML.", "Es una herramienta de carácter genérico."], correcta: 1 },
-                        { pregunta: "Señale la respuesta correcta con respecto a la integración de código con servidores web:", opciones: ["Las peticiones a una aplicación web pueden hacerse siguiendo un formato “informal” (en lenguaje natural).", "Las peticiones de tipo POST se utilizan para recuperar información del servidor.", "El código de una aplicación web estática no requiere la ejecución de ningún programa externo por parte del servidor.", "Ninguna de las anteriores."], correcta: 2 },
-                        { pregunta: "Señale la respuesta correcta respecto a los servidores basados en procesos:", opciones: ["Se basa en la obtención de un paralelismo de ejecución mediante la duplicación del proceso de ejecución.", "Todos los procesos creados por un servidor comparten la misma zona de memoria.", "Se implementan en el núcleo del sistema operativo.", "Ninguna de las anteriores."], correcta: 0 },
-                        { pregunta: "¿Cuál de las siguientes afirmaciones es cierta con respecto a la sintaxis de PHP?", opciones: ["Los espacios en blanco que se escriban dentro del código embebido afectan al significado del código ejecutado.", "No se permite la utilización de tabulaciones como elementos para separar sentencias en PHP.", "El nombre de las variables distingue entre mayúsculas y minúsculas.", "El nombre de una variable puede empezar por números o letras."], correcta: 2 },
-                        { pregunta: "¿Cuál de las siguientes combinaciones de caracteres sirve para definir un comentario de una línea en PHP?", opciones: ["--", "<!--", "//", "**"], correcta: 2 },
-                        { pregunta: "De acuerdo a la precedencia de operadores en PHP, ¿cuál sería el resultado de ejecutar la siguiente operación: \"10.5\" + 4.5*2 / 3?", opciones: ["23.5", "13.5", "10", "null"], correcta: 1 },
-                        { pregunta: "Indique el tipo de la variable $resultado en la siguiente operación: $resultado = \"100\" + 10.5;", opciones: ["String.", "Entero.", "Float.", "Boolean."], correcta: 2 },
-                        { pregunta: "En la petición “example.php?nombre=Roberto”, ¿cómo se recupera el valor de la variable “nombre” de la página PHP “example.php”?", opciones: ["request.getParameter(“nombre”).", "$_POST[‘nombre’].", "$_GET[‘nombre’].", "Ninguna de las anteriores."], correcta: 2 },
-                        { pregunta: "En las sentencias switch o select case para ASP, ¿qué lenguaje no permite que la expresión que se evalúa sea un string?", opciones: ["ASP.", "JSP.", "PHP.", "Todas las afirmaciones anteriores son falsas."], correcta: 0 },
-                        { pregunta: "El método GET envía los datos del formulario:", opciones: ["En el cuerpo de la petición HTTP.", "En la URL de la petición.", "Tanto en el cuerpo de la petición como en la URL.", "Ninguna de las anteriores."], correcta: 1 },
-                        { pregunta: "La diferencia entre un procedimiento y una función es:", opciones: ["Una función devuelve un valor mientras que el procedimiento no.", "Un procedimiento no puede recibir argumentos mientras que en una función es obligatorio.", "Un procedimiento devuelve un valor mientras que una función no.", "Ninguna de las anteriores."], correcta: 0 },
-                        { pregunta: "¿Qué estructura de control por excelencia se utiliza para recorrer un array?", opciones: ["While o su equivalente en ASP Do…While.", "If.", "For o su equivalente en ASP For…Next.", "Switch o su equivalente en ASP Select Case."], correcta: 2 },
-                        { pregunta: "¿Cuántas veces se ejecutará el siguiente bucle escrito en JSP while(i>0){i=i-1;}, si i=1 antes del bucle?", opciones: ["1.", "Ninguna.", "2.", "Infinitas."], correcta: 0 },
-                        { pregunta: "¿Cuál de estos algoritmos no es un algoritmo de ordenación?", opciones: ["Intercambio.", "Selección Directa.", "Burbuja.", "Binaria."], correcta: 3 },
-                        { pregunta: "¿Qué algoritmo de búsqueda es más eficiente?", opciones: ["Búsqueda secuencial.", "Búsqueda binaria.", "Son igual de eficientes.", "Ninguna de las anteriores."], correcta: 1 }
-                    ]
-                },
-                cap1: {
-                    title: "Capítulo 1: Arquitecturas y Herramientas",
-                    questions: [
-                        { pregunta: "¿En qué capa de la arquitectura web reside habitualmente la interfaz gráfica que ve el usuario?", opciones: ["Capa de Negocio.", "Capa de Persistencia.", "Capa de Presentación.", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "¿Cuál de los siguientes modelos de programación carga la mayor parte del procesamiento en el cliente?", opciones: ["Fat Server / Thin Client.", "Fat Client / Thin Server.", "Servidor de Transacciones.", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "Un servidor web que genera una respuesta diferente para una misma URL dependiendo del usuario es un ejemplo de:", opciones: ["Aplicación web estática.", "Aplicación web interactiva/dinámica.", "Aplicación web basada en DHTML puro.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué lenguaje de los siguientes NO es un lenguaje de scripting de servidor interpretado?", opciones: ["PHP.", "ASP (Clásico).", "C++ (usado como CGI compilado).", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "Respecto al estándar CGI, señala la afirmación VERDADERA:", opciones: ["Es muy eficiente porque mantiene el proceso en memoria.", "Crea un proceso nuevo por cada petición, lo que afecta al rendimiento.", "Es un lenguaje de programación exclusivo de Microsoft.", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "¿Qué tecnología de Microsoft utiliza una estrategia de 'código repartido' o 'code-behind'?", opciones: ["ASP Clásico.", "PHP.", "ASP.NET.", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "¿Cuál es el método HTTP utilizado habitualmente para enviar datos de un formulario de registro (datos sensibles)?", opciones: ["GET.", "PUT.", "POST.", "Todas son correctas."], correcta: 2 },
-                        { pregunta: "Si una URL es 'http://sitio.com/buscar?q=termino', ¿qué método se está utilizando?", opciones: ["POST.", "GET.", "SOAP.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué tipo de herramienta es 'Eclipse' o 'NetBeans' en el contexto del desarrollo web?", opciones: ["Marcadores de texto simples.", "Herramientas de tratamiento de imágenes.", "Entornos de Desarrollo Integrados (IDE).", "Todas son correctas."], correcta: 2 },
-                        { pregunta: "¿Qué caracteriza a una arquitectura 'Cliente/Servidor'?", opciones: ["El cliente siempre procesa los datos.", "El servidor inicia la comunicación.", "El cliente solicita un servicio y el servidor responde.", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "En una arquitectura de 3 capas, ¿dónde suele residir la lógica de negocio?", opciones: ["En el navegador del cliente exclusivamente.", "En el servidor de base de datos.", "En la capa intermedia o de negocio (Servidor de Aplicaciones/Web).", "Todas son correctas."], correcta: 2 },
-                        { pregunta: "¿Cuál es una desventaja principal de las aplicaciones CGI tradicionales?", opciones: ["No pueden acceder a bases de datos.", "Escaso rendimiento ante muchas peticiones simultáneas.", "Solo funcionan en Windows.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué significa que HTTP sea un protocolo 'sin estado'?", opciones: ["Que no funciona en Estados Unidos.", "Que cada petición es independiente y no recuerda las anteriores por defecto.", "Que el servidor siempre mantiene la conexión abierta.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué servidor web es conocido por ser Open Source y muy modular?", opciones: ["Internet Information Server (IIS).", "Apache HTTP Server.", "Oracle WebLogic.", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "La tecnología JSP (Java Server Pages) se basa en:", opciones: ["Interpretar código Basic.", "Compilar el código a Servlets (clases Java).", "Ejecutar scripts en el cliente.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "Si hablamos de 'Fat Server', nos referimos a:", opciones: ["Un servidor con mucho espacio en disco.", "Una arquitectura donde el servidor realiza la mayor parte del procesamiento.", "Un servidor lento.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué lenguaje nació en 1994 y es un acrónimo recursivo de 'Hypertext Preprocessor'?", opciones: ["Perl.", "Python.", "PHP.", "Todas son correctas."], correcta: 2 },
-                        { pregunta: "Las aplicaciones web estáticas:", opciones: ["Interactúan con bases de datos en tiempo real.", "Se basan principalmente en HTML y el servidor solo entrega ficheros.", "Usan AJAX extensivamente.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "Para validar la sintaxis de código mientras escribes, lo ideal es usar:", opciones: ["El bloc de notas.", "Un IDE con capacidades de validación.", "Un navegador web.", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "¿Cuál de los siguientes NO es un servidor web?", opciones: ["Nginx.", "Apache.", "MySQL.", "Ninguna es correcta."], correcta: 2 }
-                    ]
-                },
-                cap2: {
-                    title: "Capítulo 2: Inserción de Código (PHP)",
-                    questions: [
-                        { pregunta: "Analiza este código: `<?php echo 'Hola'; ?>`. ¿Qué recibe el navegador del cliente?", opciones: ["El código PHP tal cual.", "La palabra 'Hola'.", "Un error de sintaxis.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Cómo se define una variable en PHP?", opciones: ["Int $var = 0;", "var $nombre;", "$nombre_variable = valor;", "Todas son correctas."], correcta: 2 },
-                        { pregunta: "Dado el código: `$a = 10; function prueba() { echo $a; } prueba();`. ¿Qué ocurre?", opciones: ["Imprime 10.", "Da un error o warning de variable no definida (ámbito local).", "Imprime 0.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué imprime: `echo 'Hola ' . 'Mundo';`?", opciones: ["Hola Mundo", "Hola + Mundo", "Error de sintaxis.", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "¿Cuál es la etiqueta estándar de apertura de PHP?", opciones: ["<php>", "<?php", "<%", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "En PHP, las variables son 'case-sensitive'. Esto significa que:", opciones: ["$Var y $var son la misma variable.", "$Var y $var son variables diferentes.", "Solo importa la primera letra.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "Si `$a = '5'` y ejecutamos `$b = $a + 2;`, ¿cuál es el valor y tipo de `$b`?", opciones: ["'52' (String).", "7 (Integer).", "Error de tipos.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué función se usa para liberar/destruir una variable?", opciones: ["delete()", "kill()", "unset()", "Todas son correctas."], correcta: 2 },
-                        { pregunta: "¿Cuál es el resultado de `(int) 3.9`?", opciones: ["4", "3.9", "3", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "¿Qué hace la función `var_dump($variable)`?", opciones: ["Borra la variable.", "Muestra el tipo y el valor de la variable.", "Guarda la variable en BD.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "Analiza: `$a = 0; if(empty($a)) echo 'Vacia'; else echo 'Llena';`", opciones: ["Imprime 'Llena'.", "Imprime 'Vacia' porque 0 se considera vacío.", "Da error.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué imprime `echo \"El valor es $a\";` si $a=5?", opciones: ["El valor es $a", "El valor es 5", "Error de comillas.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué imprime `echo 'El valor es $a';` si $a=5?", opciones: ["El valor es $a", "El valor es 5", "Error de comillas.", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "Para definir una constante en PHP se usa:", opciones: ["const $PI = 3.14;", "define('PI', 3.14);", "$PI = const(3.14);", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "Los comentarios de una línea en PHP pueden ser:", opciones: ["// o #", "<!-- -->", "/* */ solamente", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "¿Qué motor es el corazón de PHP (compilación y ejecución)?", opciones: ["JVM.", "Motor Zend.", ".NET Framework.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué ocurre si sumas un integer y un float en PHP?", opciones: ["El resultado es integer (trunca decimales).", "El resultado es float.", "Da error de tipos.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Cómo escapamos una comilla doble dentro de un string de comillas dobles?", opciones: ["Con una barra invertida (\").", "Duplicando la comilla (\"\").", "No se puede.", "Todas son correctas."], correcta: 0 },
-                        { pregunta: "¿Qué función comprueba si una variable tiene un valor asignado y no es NULL?", opciones: ["check()", "isset()", "verify()", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "En PHP, ¿es necesario declarar el tipo de una variable antes de usarla?", opciones: ["Sí, siempre.", "No, es de tipado dinámico/débil.", "Solo para los arrays.", "Todas son correctas."], correcta: 1 }
-                    ]
-                },
-                cap3: {
-                    title: "Capítulo 3: Programación (Estructuras)",
-                    questions: [
-                        { pregunta: "¿Cuál es la estructura correcta de un `if` en PHP?", opciones: ["if (condicion) { ... }", "if condicion then ... end if", "if {condicion} ...", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "En un `switch` en PHP, ¿qué pasa si olvidas el `break`?", opciones: ["Da un error de sintaxis.", "Se ejecutan los casos siguientes (fall-through) hasta encontrar un break o el final.", "El bucle se detiene.", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "¿Qué bucle se ejecuta SIEMPRE al menos una vez?", opciones: ["while", "for", "do-while", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "¿Cómo se define un array en PHP?", opciones: ["$a = {1, 2, 3};", "$a = array(1, 2, 3);", "$a = [1, 2, 3]; (versiones modernas)", "B y C son correctas."], correcta: 3 },
-                        { pregunta: "Analiza: `$a = array('clave' => 'valor'); echo $a[0];`", opciones: ["Imprime 'valor'.", "Da un error o warning 'Undefined offset' (no existe índice 0).", "Imprime 'clave'.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué bucle es ideal para recorrer arrays en PHP?", opciones: ["for", "while", "foreach", "Todas son correctas."], correcta: 2 },
-                        { pregunta: "¿Cómo se define una función en PHP?", opciones: ["sub miFuncion() { }", "void miFuncion() { }", "function miFuncion() { }", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "Variable superglobal para recoger datos de un formulario `method='POST'`:", opciones: ["$_GET", "$_REQUEST", "$_POST", "B y C pueden servir."], correcta: 3 },
-                        { pregunta: "Si tienes `<input name='edad'>`, ¿cómo accedes a ella en PHP tras un POST?", opciones: ["$edad", "$_POST['edad']", "request.form('edad')", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "Diferencia principal entre `include` y `require`:", opciones: ["No hay diferencia.", "require detiene la ejecución si falla (Fatal Error), include solo da un warning.", "include es solo para HTML.", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "¿Qué hace la sentencia `continue` en un bucle?", opciones: ["Sale del bucle totalmente.", "Salta el resto de la iteración actual y vuelve a evaluar la condición.", "Reinicia el contador a 0.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "Código: `for($i=0; $i<3; $i++) { echo $i; }`", opciones: ["012", "123", "0123", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "¿Qué algoritmo de ordenación es más eficiente generalmente: Burbuja o QuickSort?", opciones: ["Burbuja.", "QuickSort.", "Son iguales.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "En PHP, ¿se pueden anidar sentencias `if`?", opciones: ["Sí, sin límite.", "No.", "Solo hasta 3 niveles.", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "¿Qué función ordena un array de menor a mayor?", opciones: ["sort()", "order()", "arrange()", "Todas son correctas."], correcta: 0 },
-                        { pregunta: "Para saber el número de elementos de un array usamos:", opciones: ["length()", "size()", "count()", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "¿El método GET envía los datos visibles en la URL?", opciones: ["Sí.", "No, van encriptados.", "Depende del navegador.", "Todas son correctas."], correcta: 0 },
-                        { pregunta: "En un formulario, el atributo `action` indica:", opciones: ["El método de envío (GET/POST).", "El archivo o script que procesará los datos.", "El nombre del formulario.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "Analiza: `$i=0; while($i < 5) echo $i++;`", opciones: ["01234", "12345", "Bucle infinito.", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "¿Qué imprime `echo 10 % 3;` (módulo)?", opciones: ["3.33", "1", "3", "Ninguna es correcta."], correcta: 1 }
-                    ]
-                },
-                global: {
-                    title: "Examen Global Entorno Servidor (Caps 1-3)",
-                    questions: [
-                        { pregunta: "Código: `<?php $x=5; function p() { echo $x; } p(); ?>` ¿Resultado?", opciones: ["5", "0", "Error/Warning: Variable indefinida (ámbito).", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "¿Qué arquitectura separa Lógica, Presentación y Datos?", opciones: ["MVC (Modelo Vista Controlador) / 3 Capas.", "CGI.", "Monolítica.", "Todas son correctas."], correcta: 0 },
-                        { pregunta: "En PHP, ¿cuál es la diferencia entre `==` y `===`?", opciones: ["No hay diferencia.", "`==` compara valor, `===` compara valor y tipo.", "`===` asigna valor.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué array superglobal contiene datos de cookies?", opciones: ["$_SESSION", "$_SERVER", "$_COOKIE", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "Código: `$a = array(1, 2); array_push($a, 3); echo count($a);`", opciones: ["2", "3", "Error.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "El lenguaje JSP se compila y se convierte en:", opciones: ["Un script PHP.", "Un Servlet de Java.", "Código máquina puro.", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "¿Qué imprime `echo (int) '10 coches';`?", opciones: ["10", "0", "Error.", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "¿Qué etiqueta HTML crea un campo de texto?", opciones: ["<textfield>", "<input type='text'>", "<text>", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "¿Para qué sirve `break 2;` en PHP?", opciones: ["Rompe 2 caracteres.", "Sale de 2 estructuras de control anidadas (ej. switch dentro de while).", "Detiene el script 2 segundos.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "Si usamos `$_REQUEST`, ¿qué datos podemos leer?", opciones: ["Solo GET.", "Solo POST.", "GET, POST y COOKIE.", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "Código ASP: `Dim a(5)`. ¿Cuántos elementos tiene el array?", opciones: ["5", "6 (índices 0 a 5).", "4", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué significa que PHP sea 'Loosely Typed'?", opciones: ["Que es lento.", "Que no necesitas declarar tipos y pueden cambiar dinámicamente.", "Que es estricto con los tipos.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué función PHP incluye un archivo y da error fatal si no existe?", opciones: ["include()", "require()", "import()", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "En un patrón MVC, la 'Vista' se encarga de:", opciones: ["La lógica de negocio.", "El acceso a base de datos.", "La interfaz de usuario.", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "¿Qué operador se usa en PHP para concatenar y asignar a la vez?", opciones: ["+=", ".=", "&&", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "Analiza: `$x = true; echo (int)$x;`", opciones: ["1", "0", "true", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "¿Qué hace `foreach($array as $k => $v)`?", opciones: ["Recorre solo las claves.", "Recorre clave ($k) y valor ($v).", "Da error de sintaxis.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Cuál es una ventaja de la arquitectura de 3 capas?", opciones: ["Mayor escalabilidad y mantenimiento.", "Más difícil de programar.", "Requiere 3 servidores físicos obligatoriamente.", "Todas son correctas."], correcta: 0 },
-                        { pregunta: "¿Qué protocolo usa la Web para la comunicación cliente-servidor?", opciones: ["FTP.", "HTTP.", "SMTP.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "Código: `$a = '5'; $b = 5; if($a === $b) echo 'Igual'; else echo 'Distinto';`", opciones: ["Igual", "Distinto", "Error", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "En ASP clásico, ¿qué lenguaje de scripting se usa por defecto?", opciones: ["JavaScript.", "VBScript.", "C#.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué función PHP invierte un string?", opciones: ["str_reverse()", "strrev()", "reverse()", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "Para comentar múltiples líneas en PHP usamos:", opciones: ["//", "#", "/* ... */", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "¿Qué es un servidor 'basado en hilos'?", opciones: ["Crea un proceso nuevo por petición.", "Usa hilos ligeros compartiendo memoria dentro de un proceso.", "Usa cables físicos.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿El código PHP es visible para el usuario si hace 'Ver código fuente' en el navegador?", opciones: ["Sí, siempre.", "No, el servidor lo procesa y envía HTML.", "A veces.", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "Código: `do { echo 'x'; } while (false);`", opciones: ["Imprime 'x' una vez.", "Bucle infinito.", "No imprime nada.", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "En JSP, `<%= variable %>` equivale en PHP a:", opciones: ["<?php echo $variable; ?>", "<?php variable; ?>", "<?php print_r($variable); ?>", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "¿Qué es 'Apache'?", opciones: ["Un lenguaje.", "Un servidor web.", "Un navegador.", "Todas son correctas."], correcta: 1 },
-                        { pregunta: "Si en un formulario no pones `method`, ¿cuál usa por defecto?", opciones: ["POST.", "GET.", "Ninguno, da error.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué función PHP devuelve la longitud de un string?", opciones: ["length()", "count()", "strlen()", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "Código: `$a=10; function x() { global $a; $a++; } x(); echo $a;`", opciones: ["10", "11", "0", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué tipo de variable es `$f = 3.14;`?", opciones: ["Integer.", "Float/Double.", "String.", "Ninguna es correcta."], correcta: 1 },
-                        { pregunta: "¿Qué significa URL?", opciones: ["Uniform Resource Locator.", "Universal Remote Link.", "Uniform Real Link.", "Ninguna es correcta."], correcta: 0 },
-                        { pregunta: "En PHP, `elseif` se puede escribir como:", opciones: ["else if (separado).", "elseif (junto).", "Ambos son válidos.", "Ninguna es correcta."], correcta: 2 },
-                        { pregunta: "Al enviar un archivo (upload) en un formulario, el método debe ser:", opciones: ["GET.", "POST.", "PUT.", "Todas son correctas."], correcta: 1 }
-                    ]
-                },
                 jdbc: {
                     title: "Test JDBC y MySQL (Temas 1-4)",
                     questions: [
@@ -1042,7 +1520,6 @@
                         { pregunta: "En el ejercicio propuesto de CRUD, ¿qué acción se realiza primero para modificar?", opciones: ["UPDATE SQL.", "SELECT SQL por ID para cargar datos previos.", "DELETE SQL.", "Ninguna es correcta."], correcta: 1 }
                     ]
                 }
-                
             } 
         };
 
@@ -1205,5 +1682,3 @@
     </script>
 </body>
 </html>
-
-
