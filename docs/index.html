@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,11 @@
             --border-radius: 12px;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -50,11 +55,42 @@
             padding: 1.5rem;
             text-align: center;
         }
-        header h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        header p { color: #94a3b8; font-size: 0.9rem; }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
 
         /* --- MAIN --- */
-        main { flex-grow: 1; padding: 20px; }
+        main {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        /* --- ESTILO PARA BLOQUES DE CÓDIGO --- */
+        .code-box {
+            background-color: #1e293b;
+            /* Fondo oscuro tipo editor */
+            color: #e2e8f0;
+            /* Texto claro */
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            /* Scroll lateral si es muy largo */
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            /* Mantiene los saltos de línea */
+            border: 1px solid #475569;
+            text-align: left;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
 
         /* --- PANTALLA SELECCIÓN (GRID) --- */
         .grid-menu {
@@ -73,21 +109,60 @@
             font-size: 1.2rem;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid rgba(0,0,0,0.05);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
         }
 
         /* Colores por asignatura */
-        .sub-sost { background-color: #eff6ff; border-color: #bfdbfe; }
-        .sub-sost h2 { color: #1d4ed8; border-color: #bfdbfe; }
-        
-        .sub-digi { background-color: #f0fdf4; border-color: #bbf7d0; }
-        .sub-digi h2 { color: #15803d; border-color: #bbf7d0; }
+        .sub-sost {
+            background-color: #eff6ff;
+            border-color: #bfdbfe;
+        }
 
-        .sub-web { background-color: #faf5ff; border-color: #e9d5ff; }
-        .sub-web h2 { color: #7e22ce; border-color: #e9d5ff; }
+        .sub-sost h2 {
+            color: #1d4ed8;
+            border-color: #bfdbfe;
+        }
 
-        .sub-serv { background-color: #fff7ed; border-color: #ffedd5; }
-        .sub-serv h2 { color: #c2410c; border-color: #ffedd5; }
+        .sub-digi {
+            background-color: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .sub-digi h2 {
+            color: #15803d;
+            border-color: #bbf7d0;
+        }
+
+        .sub-web {
+            background-color: #faf5ff;
+            border-color: #e9d5ff;
+        }
+
+        .sub-web h2 {
+            color: #7e22ce;
+            border-color: #e9d5ff;
+        }
+
+        .sub-serv {
+            background-color: #fff7ed;
+            border-color: #ffedd5;
+        }
+
+        .sub-serv h2 {
+            color: #c2410c;
+            border-color: #ffedd5;
+        }
+
+        .sub-cli {
+            background-color: #fdf2f8;
+            border-color: #fbcfe8;
+        }
+
+        .sub-cli h2 {
+            color: #db2777;
+            border-color: #fbcfe8;
+        }
+
         /* Botones de cuestionario */
         .quiz-btn {
             display: block;
@@ -96,7 +171,7 @@
             padding: 12px;
             margin-bottom: 8px;
             background: white;
-            border: 1px solid rgba(0,0,0,0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -106,7 +181,7 @@
 
         .quiz-btn:hover {
             transform: translateX(5px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
         /* --- PANTALLA QUIZ --- */
@@ -118,7 +193,7 @@
             border-bottom: 1px solid #e2e8f0;
             padding-bottom: 15px;
         }
-        
+
         .progress-badge {
             background: #f1f5f9;
             padding: 5px 12px;
@@ -157,8 +232,11 @@
             color: #334155;
         }
 
-        .option-btn:hover { background-color: #f8fafc; border-color: #cbd5e1; }
-        
+        .option-btn:hover {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
         .option-btn.selected {
             background-color: #eff6ff;
             border-color: var(--primary-color);
@@ -190,25 +268,61 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-        
-        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-        .btn-primary:hover:not(:disabled) { background-color: var(--primary-hover); }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--primary-hover);
+        }
 
         /* --- PANTALLA RESULTADOS --- */
-        .results-container { text-align: center; max-width: 600px; margin: 0 auto; }
+        .results-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .score-card {
             display: flex;
             justify-content: center;
             gap: 40px;
             margin: 30px 0;
         }
-        .score-item span { display: block; }
-        .big-number { font-size: 2.5rem; font-weight: 800; color: var(--primary-color); }
-        
-        .feedback-box { padding: 15px; border-radius: 8px; margin-bottom: 30px; font-weight: bold; }
-        .fb-good { background-color: var(--success-bg); color: #166534; }
-        .fb-avg { background-color: #eff6ff; color: #1e40af; }
-        .fb-bad { background-color: var(--error-bg); color: #991b1b; }
+
+        .score-item span {
+            display: block;
+        }
+
+        .big-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .feedback-box {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .fb-good {
+            background-color: var(--success-bg);
+            color: #166534;
+        }
+
+        .fb-avg {
+            background-color: #eff6ff;
+            color: #1e40af;
+        }
+
+        .fb-bad {
+            background-color: var(--error-bg);
+            color: #991b1b;
+        }
 
         /* Revisión */
         .review-item {
@@ -219,47 +333,216 @@
             border-left: 5px solid #ccc;
             background: #f8fafc;
         }
-        .review-item.correct { border-left-color: var(--success); background-color: #f0fdf4; }
-        .review-item.incorrect { border-left-color: var(--error); background-color: #fef2f2; }
-        
-        .review-option { padding: 8px; border-radius: 4px; margin-top: 5px; font-size: 0.9rem; }
-        .opt-correct { background-color: #dcfce7; color: #14532d; font-weight: bold; }
-        .opt-incorrect { background-color: #fee2e2; color: #7f1d1d; text-decoration: line-through; }
 
-        .hidden { display: none !important; }
+        .review-item.correct {
+            border-left-color: var(--success);
+            background-color: #f0fdf4;
+        }
+
+        .review-item.incorrect {
+            border-left-color: var(--error);
+            background-color: #fef2f2;
+        }
+
+        .review-option {
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+        .opt-correct {
+            background-color: #dcfce7;
+            color: #14532d;
+            font-weight: bold;
+        }
+
+        .opt-incorrect {
+            background-color: #fee2e2;
+            color: #7f1d1d;
+            text-decoration: line-through;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- ESTILOS NUEVOS PARA IA --- */
+        .text-answer-area {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        .text-answer-area:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: #f8fafc;
+        }
+
+        .ai-btn {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            /* Gradiente morado IA */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s;
+        }
+
+        .ai-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .ai-btn:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        .ai-feedback-box {
+            background-color: #f3f4f6;
+            border-left: 4px solid #a855f7;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            /* Mantiene saltos de línea */
+            font-size: 0.95rem;
+        }
+
+        /* Animación de carga */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* --- PANTALLA DE CARGA (OVERLAY) --- */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .loading-content h3 {
+            margin-top: 20px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .loading-bar-container {
+            width: 300px;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .loading-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2563eb, #a855f7);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
         /* Responsive */
         @media (max-width: 600px) {
-            body { padding: 10px; }
-            #app { border-radius: 0; min-height: 100vh; }
-            .grid-menu { grid-template-columns: 1fr; }
+            body {
+                padding: 10px;
+            }
+
+            #app {
+                border-radius: 0;
+                min-height: 100vh;
+            }
+
+            .grid-menu {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body>
 
+<body>
+    <!-- OVERLAY DE CARGA -->
+    <div id="loading-overlay" class="hidden">
+        <div class="loading-content">
+            <div class="spinner"
+                style="border-color: #a855f7; border-top-color: transparent; width: 50px; height: 50px; border-width: 5px;">
+            </div>
+            <h3 id="loading-text">Corrigiendo examen con IA...</h3>
+            <p>Por favor espera, estamos analizando tus respuestas.</p>
+            <div class="loading-bar-container">
+                <div id="loading-bar" class="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
     <div id="app">
-        
+
         <header>
             <h1>Plataforma de Repaso</h1>
             <p>Sostenibilidad | Digitalización | Diseño Web | Entorno Servidor</p>
         </header>
 
         <main>
-            
+
             <!-- 1. PANTALLA DE SELECCIÓN -->
             <div id="seleccion-screen" class="grid-menu">
-                
+
                 <!-- Sostenibilidad -->
                 <div class="subject-card sub-sost">
                     <h2>🌱 Sostenibilidad</h2>
-                    <button onclick="startQuiz('sostenibilidad', 'sost1')" class="quiz-btn">1. Entendiendo la Sostenibilidad</button>
-                    <button onclick="startQuiz('sostenibilidad', 'sost2')" class="quiz-btn">2. Quincena 20/10 - 02/11</button>
-                    <button onclick="startQuiz('sostenibilidad', 'sost3')" class="quiz-btn">3. Quincena 03/11 - 16/11</button>
-                    <button onclick="startQuiz('sostenibilidad', 'sost4')" class="quiz-btn">4. Q6: Agenda 2030 y ODS</button>
-                    <button onclick="startQuiz('sostenibilidad', 'sost5')" class="quiz-btn">5. Q7: Análisis Crítico ODS</button>
-                    <button onclick="startQuiz('sostenibilidad', 'sost6')" class="quiz-btn">6. Q9: Software y Economía Circular</button>
-                    <button onclick="startQuiz('sostenibilidad', 'sost7')" class="quiz-btn">7. Q10: Ética y Impacto TIC</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost1')" class="quiz-btn">1. Entendiendo la
+                        Sostenibilidad</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost2')" class="quiz-btn">2. Quincena 20/10 -
+                        02/11</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost3')" class="quiz-btn">3. Quincena 03/11 -
+                        16/11</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost4')" class="quiz-btn">4. Q6: Agenda 2030 y
+                        ODS</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost5')" class="quiz-btn">5. Q7: Análisis Crítico
+                        ODS</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost6')" class="quiz-btn">6. Q9: Software y Economía
+                        Circular</button>
+                    <button onclick="startQuiz('sostenibilidad', 'sost7')" class="quiz-btn">7. Q10: Ética y Impacto
+                        TIC</button>
                 </div>
 
                 <!-- Digitalización -->
@@ -268,13 +551,20 @@
                     <button onclick="startQuiz('digitalizacion', 'digi1')" class="quiz-btn">1. Quincena 2</button>
                     <button onclick="startQuiz('digitalizacion', 'digi2')" class="quiz-btn">2. Quincena 3</button>
                     <button onclick="startQuiz('digitalizacion', 'digi3')" class="quiz-btn">3. Quincena 4</button>
-                    <button onclick="startQuiz('digitalizacion', 'digi4')" class="quiz-btn">4. Quincena 5 (Tema 2)</button>
-                    <button onclick="startQuiz('digitalizacion', 'digi5')" class="quiz-btn">5. Evalúa tus conocimientos T.1-2</button>
-                    <button onclick="startQuiz('digitalizacion', 'digi6')" class="quiz-btn">6. Q6: Modelos Cloud (IaaS/PaaS/SaaS)</button>
-                    <button onclick="startQuiz('digitalizacion', 'digi7')" class="quiz-btn">7. Q7: Servicios Cloud y Edge Computing</button>
-                    <button onclick="startQuiz('digitalizacion', 'digi8')" class="quiz-btn">8. Q8: IA y Minería de Datos</button>
-                    <button onclick="startQuiz('digitalizacion', 'digi9')" class="quiz-btn">9. Q9: Big Data y Data Science I</button>
-                    <button onclick="startQuiz('digitalizacion', 'digi10')" class="quiz-btn">10. Q10: Data Analytics y Almacenamiento</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi4')" class="quiz-btn">4. Quincena 5 (Tema
+                        2)</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi5')" class="quiz-btn">5. Evalúa tus conocimientos
+                        T.1-2</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi6')" class="quiz-btn">6. Q6: Modelos Cloud
+                        (IaaS/PaaS/SaaS)</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi7')" class="quiz-btn">7. Q7: Servicios Cloud y
+                        Edge Computing</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi8')" class="quiz-btn">8. Q8: IA y Minería de
+                        Datos</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi9')" class="quiz-btn">9. Q9: Big Data y Data
+                        Science I</button>
+                    <button onclick="startQuiz('digitalizacion', 'digi10')" class="quiz-btn">10. Q10: Data Analytics y
+                        Almacenamiento</button>
                 </div>
 
                 <!-- Diseño Web -->
@@ -282,7 +572,8 @@
                     <h2>🎨 Diseño Web</h2>
                     <button onclick="startQuiz('diseno', 'ud1')" class="quiz-btn">UD1. Diseño de Interfaces</button>
                     <button onclick="startQuiz('diseno', 'ud2')" class="quiz-btn">UD2. Elementos Diseño</button>
-                    <button onclick="startQuiz('diseno', 'ud3')" class="quiz-btn">UD3. Usabilidad y Accesibilidad</button>
+                    <button onclick="startQuiz('diseno', 'ud3')" class="quiz-btn">UD3. Usabilidad y
+                        Accesibilidad</button>
                     <button onclick="startQuiz('diseno', 'ud4')" class="quiz-btn">UD4. HTML y Semántica</button>
                     <button onclick="startQuiz('diseno', 'ud5')" class="quiz-btn">UD5. CSS y Estilos</button>
                 </div>
@@ -293,6 +584,24 @@
                     <button onclick="startQuiz('servidor', 'servlets')" class="quiz-btn">5.Servlets y Sesiones</button>
                     <button onclick="startQuiz('servidor', 'jdbc')" class="quiz-btn">6.JDBC y MySQL</button>
                     <button onclick="startQuiz('servidor', 'examen')" class="quiz-btn">Examen Final (5-6)</button>
+                    <button onclick="startQuiz('servidor', 'serv_t4')" class="quiz-btn">Tema 4: Servlets, Sesiones y
+                        Scopes</button>
+                    <button onclick="startQuiz('servidor', 'serv_t5')" class="quiz-btn">Tema 5: JDBC y Patrón
+                        MVC/DAO</button>
+                    <button onclick="startQuiz('servidor', 'serv_t6')" class="quiz-btn">Tema 6: Servicios Web
+                        (REST)</button>
+                    <button onclick="startQuiz('servidor', 'serv_t7')" class="quiz-btn">Tema 7: Formato JSON
+                        (GSON)</button>
+                    
+                    <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); margin: 10px 0;">
+                    <button onclick="startQuiz('servidor', 'serv_final')" class="quiz-btn"
+                        style="font-weight:bold; color:#c2410c;">🎓 EXAMEN FINAL (Todos los temas)</button>
+                </div>
+
+                <div class="subject-card sub-cli">
+                    <h2>🎨 Desarrollo Web en Entorno Cliente (Angular)</h2>
+                    <button onclick="startQuiz('cliente', 'angular1')" class="quiz-btn">Ejemplo preguntas text
+                        examen</button>
                 </div>
             </div>
 
@@ -322,7 +631,7 @@
                     <div style="font-size: 4rem;">📊</div>
                     <h2 style="margin: 10px 0;">Resultados</h2>
                     <p>Has completado el cuestionario</p>
-                    
+
                     <div class="score-card">
                         <div class="score-item">
                             <span class="big-number" id="final-score">0</span>
@@ -337,7 +646,9 @@
                     <div id="feedback-msg" class="feedback-box"></div>
 
                     <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px;">
-                        <button onclick="showScreen('seleccion-screen')" class="btn-secondary" style="background:#e2e8f0; color:#333; padding: 10px 20px; border-radius: 6px;">Menú Principal</button>
+                        <button onclick="showScreen('seleccion-screen')" class="btn-secondary"
+                            style="background:#e2e8f0; color:#333; padding: 10px 20px; border-radius: 6px;">Menú
+                            Principal</button>
                         <button onclick="restartQuiz()" class="btn-primary">Repetir Test</button>
                     </div>
 
@@ -398,225 +709,225 @@
                     ]
                 },
                 sost4: {
-    title: "Q6: Agenda 2030 y ODS",
-    questions: [
-        { 
-            pregunta: "¿Qué es la Agenda 2030?", 
-            opciones: ["Un acuerdo global para reducir la deuda externa de los países.", "Un tratado vinculante que obliga a los países a cumplir los ODS.", "Un acuerdo internacional para promover el bienestar humano y la sostenibilidad del planeta."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Cuántos Objetivos de Desarrollo Sostenible (ODS) incluye la Agenda 2030?", 
-            opciones: ["12", "17", "8"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Por qué se considera que los ODS son un instrumento de “soft law”?", 
-            opciones: ["Porque son recomendaciones sin carácter vinculante.", "Porque son obligatorios para todos los países firmantes.", "Porque incluyen sanciones económicas en caso de incumplimiento."], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Cuál es una crítica al ODS 8 sobre crecimiento económico?", 
-            opciones: ["Que fomenta la redistribución de la riqueza.", "Que promueve la reducción del consumo energético.", "Que plantea un crecimiento sostenido, lo cual contradice los límites del planeta."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué papel tienen los estándares de sostenibilidad como GRI, IFRS o ESRS?", 
-            opciones: ["Obligar legalmente a todas las empresas a cumplir los ODS.", "Sustituir la normativa europea sobre sostenibilidad.", "Certificar prácticas empresariales sostenibles y facilitar informes."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Cuál es una limitación de la Responsabilidad Social Corporativa (RSC)?", 
-            opciones: ["Depende de la autorregulación voluntaria de la empresa.", "Es obligatoria para todas las empresas.", "Garantiza la reducción de la huella hídrica."], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué modelo económico propone internalizar el impacto social y ambiental en los precios?", 
-            opciones: ["Economía extractivista.", "Economía del bien común.", "Economía lineal."], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué problema se asocia a la proliferación de sellos de sostenibilidad?", 
-            opciones: ["Ha aumentado la credibilidad de las empresas.", "Ha facilitado la transparencia empresarial.", "Ha favorecido el greenwashing."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué efecto ha tenido el negacionismo sobre la Agenda 2030?", 
-            opciones: ["Ha frenado el debate serio sobre la eficacia de los objetivos.", "Ha impulsado la creación de nuevos ODS más ambiciosos.", "Ha obligado a los países a cumplir los ODS mediante sanciones."], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué criterio NO se utiliza para definir una gran empresa según la Directiva (UE) 2022/2464?", 
-            opciones: ["Tener presencia en al menos 10 países.", "Facturar más de 40 millones de euros.", "Tener más de 250 empleados."], 
-            correcta: 0 
-        }
-    ]
-},
-sost5: {
-    title: "Q7: Análisis Crítico ODS",
-    questions: [
-        { 
-            pregunta: "¿Por qué los ODS incluyen metas económicas junto a las ambientales?", 
-            opciones: ["Porque los países ricos lo exigieron en las negociaciones", "Porque sin economía sostenible no hay desarrollo integral", "Porque el crecimiento económico es indispensable para reducir la pobreza"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué riesgo implica que los ODS sean voluntarios?", 
-            opciones: ["Que se generen sanciones internacionales", "Que se conviertan en declaraciones sin impacto real", "Que los países los cumplan más rápido"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Por qué algunos críticos dicen que los ODS son “demasiado amplios”?", 
-            opciones: ["Porque incluyen temas irrelevantes", "Porque abarcan tantas áreas que es difícil priorizar", "Porque solo benefician a países desarrollados"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué dilema surge entre ODS 8 (Trabajo decente y crecimiento económico) y ODS 13 (Acción por el clima)?", 
-            opciones: ["Que la acción climática impide la innovación", "Que el crecimiento económico puede aumentar emisiones", "Que el empleo depende solo de energías renovables"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Por qué se considera que el ODS 17 (Alianzas) es clave para todos los demás?", 
-            opciones: ["Porque es el único que tiene financiación propia", "Porque sin cooperación global no hay recursos ni tecnología", "Porque sustituye la responsabilidad de los gobiernos"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué crítica se hace a la medición de los ODS?", 
-            opciones: ["Que muchos países carecen de datos fiables", "Que los indicadores son claros y fáciles de aplicar", "Que se mide solo el impacto económico"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Por qué el ODS 12 (Consumo responsable) es difícil de implementar?", 
-            opciones: ["Porque no tiene relación con el cambio climático", "Porque depende solo de decisiones individuales", "Porque implica cambiar hábitos y modelos económicos"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Por qué algunos países priorizan ciertos ODS sobre otros?", 
-            opciones: ["Porque la ONU lo exige", "Porque todos tienen la misma urgencia", "Porque responden a intereses políticos y económicos"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Por qué el ODS 5 (Igualdad de género) es transversal?", 
-            opciones: ["Porque influye en salud, economía y participación política", "Porque no tiene relación con otros ODS", "Porque afecta solo a educación"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Por qué algunos expertos/as ven los ODS como “utópicos”?", 
-            opciones: ["Porque requieren cambios estructurales profundos en poco tiempo", "Porque son fáciles de cumplir", "Porque no tienen impacto social"], 
-            correcta: 0 
-        }
-    ]
-},
-sost6: {
-    title: "Q9: Software y Economía Circular",
-    questions: [
-        { 
-            pregunta: "¿Qué característica del software favorece más la economía circular?", 
-            opciones: ["Capacidad de actualización sin sustituir el sistema", "Dependencia de hardware potente", "Uso exclusivo de software propietario"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Cuál es el principal objetivo de la economía circular aplicada al sector tecnológico?", 
-            opciones: ["Sustituir totalmente la digitalización", "Incrementar la producción", "Mantener el valor de productos y materiales el mayor tiempo posible"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Por qué el software eficiente contribuye a la sostenibilidad? (1)", 
-            opciones: ["Elimina la necesidad de actualizaciones", "Reduce el mantenimiento", "Disminuye el consumo energético y alarga la vida del hardware"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué residuo es más característico del sector TIC?", 
-            opciones: ["Residuos de aparatos eléctricos y electrónicos (RAEE)", "Residuos orgánicos", "Residuos químicos"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Por qué el software eficiente contribuye a la sostenibilidad? (2)", 
-            opciones: ["Porque disminuye el consumo energético y prolonga la vida del hardware", "Porque elimina la necesidad de mantenimiento", "Porque aumenta la velocidad de obsolescencia"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Cuál de las siguientes prácticas NO favorece la economía circular en el sector TIC?", 
-            opciones: ["Consumo energético descontrolado en servidores", "Reutilización de componentes software", "Virtualización de sistemas"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué relación existe entre la digitalización y la sostenibilidad?", 
-            opciones: ["Puede reducir el consumo de recursos si se aplica correctamente", "Elimina totalmente los residuos", "La digitalización siempre aumenta el impacto ambiental"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué indicador es más adecuado para medir la sostenibilidad en proyectos informáticos?", 
-            opciones: ["Lenguaje de programación utilizado", "Consumo energético y vida útil del sistema", "Tiempo de desarrollo"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Cuál es una diferencia clave entre la economía circular y la economía lineal?", 
-            opciones: ["La economía lineal se basa en extraer, producir, usar y desechar", "La economía circular elimina completamente los residuos", "La economía circular prioriza el reciclaje frente a la producción"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "Dentro de un sistema productivo sostenible, ¿qué acción tiene mayor impacto a largo plazo?", 
-            opciones: ["Rediseñar los productos para facilitar su reparación y reutilización", "Aumentar la velocidad de producción", "Incrementar el consumo de materias primas recicladas sin cambiar el diseño"], 
-            correcta: 0 
-        }
-    ]
-},
-sost7: {
-    title: "Q10: Ética y sostenibilidad TIC",
-    questions: [
-        { 
-            pregunta: "Una decisión es coherente con la economía circular cuando:", 
-            opciones: ["Reduce solo el coste inmediato", "Es la más rápida de aplicar", "Tiene en cuenta el uso futuro y el final del recurso"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "En informática, una práctica inspirada en la economía de los cuidados sería…", 
-            opciones: ["Usar solo tecnologías de última generación", "Ignorar la accesibilidad para ahorrar tiempo de desarrollo", "Diseñar interfaces pensando en usuarios con distintas capacidades"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué efecto tiene la dependencia global de productos tecnológicos, como ordenadores o móviles, según el contenido teórico de la UD4?", 
-            opciones: ["Mejora la autosuficiencia energética", "Incrementa la resiliencia local", "Aumenta la vulnerabilidad ante crisis globales"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué papel tienen los profesionales en la economía circular?", 
-            opciones: ["Aplicar solo lo que indique la empresa", "Tomar decisiones responsables dentro de su ámbito", "Cambiar las políticas globales"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Por qué la exportación de residuos electrónicos agrava la desigualdad global?", 
-            opciones: ["Porque traslada los impactos tóxicos a territorios con menos recursos", "Porque los países receptores cuentan con mejores tecnologías", "Porque reduce la extracción de minerales"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué implica que la mochila ecológica de un producto sea varias veces mayor que su peso real?", 
-            opciones: ["Que el consumo invisible de recursos es extremadamente alto", "Que su uso será más duradero", "Que el producto es seguro"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué conclusión puede extraerse del impacto desigual de las familias profesionales?", 
-            opciones: ["Que todas consumen la misma cantidad de recursos", "Que sectores intensivos en materiales generan mayor huella ecológica", "Que la educación es el sector con mayor impacto"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué relación establece el texto entre acumulación de riqueza y problemas ecológicos?", 
-            opciones: ["Los ingresos altos se relacionan con menor consumo", "La concentración de riqueza reduce las emisiones", "Las personas más ricas generan mayor huella y mayor desigualdad"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Por qué el diseño del producto es clave para la economía circular?", 
-            opciones: ["Porque determina la facilidad para reparar, reciclar o reutilizar", "Porque solo afecta a la estética", "Porque influye únicamente en el marketing"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué síntesis hace el documento respecto a la economía circular?", 
-            opciones: ["Se limita a mejorar los procesos de reciclaje", "Requiere reducir, rediseñar y replantear qué se produce y para qué", "Es viable sin cambiar el modelo de consumo actual"], 
-            correcta: 1 
-        }
-    ]
-}
+                    title: "Q6: Agenda 2030 y ODS",
+                    questions: [
+                        {
+                            pregunta: "¿Qué es la Agenda 2030?",
+                            opciones: ["Un acuerdo global para reducir la deuda externa de los países.", "Un tratado vinculante que obliga a los países a cumplir los ODS.", "Un acuerdo internacional para promover el bienestar humano y la sostenibilidad del planeta."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Cuántos Objetivos de Desarrollo Sostenible (ODS) incluye la Agenda 2030?",
+                            opciones: ["12", "17", "8"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Por qué se considera que los ODS son un instrumento de “soft law”?",
+                            opciones: ["Porque son recomendaciones sin carácter vinculante.", "Porque son obligatorios para todos los países firmantes.", "Porque incluyen sanciones económicas en caso de incumplimiento."],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Cuál es una crítica al ODS 8 sobre crecimiento económico?",
+                            opciones: ["Que fomenta la redistribución de la riqueza.", "Que promueve la reducción del consumo energético.", "Que plantea un crecimiento sostenido, lo cual contradice los límites del planeta."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué papel tienen los estándares de sostenibilidad como GRI, IFRS o ESRS?",
+                            opciones: ["Obligar legalmente a todas las empresas a cumplir los ODS.", "Sustituir la normativa europea sobre sostenibilidad.", "Certificar prácticas empresariales sostenibles y facilitar informes."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Cuál es una limitación de la Responsabilidad Social Corporativa (RSC)?",
+                            opciones: ["Depende de la autorregulación voluntaria de la empresa.", "Es obligatoria para todas las empresas.", "Garantiza la reducción de la huella hídrica."],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué modelo económico propone internalizar el impacto social y ambiental en los precios?",
+                            opciones: ["Economía extractivista.", "Economía del bien común.", "Economía lineal."],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué problema se asocia a la proliferación de sellos de sostenibilidad?",
+                            opciones: ["Ha aumentado la credibilidad de las empresas.", "Ha facilitado la transparencia empresarial.", "Ha favorecido el greenwashing."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué efecto ha tenido el negacionismo sobre la Agenda 2030?",
+                            opciones: ["Ha frenado el debate serio sobre la eficacia de los objetivos.", "Ha impulsado la creación de nuevos ODS más ambiciosos.", "Ha obligado a los países a cumplir los ODS mediante sanciones."],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué criterio NO se utiliza para definir una gran empresa según la Directiva (UE) 2022/2464?",
+                            opciones: ["Tener presencia en al menos 10 países.", "Facturar más de 40 millones de euros.", "Tener más de 250 empleados."],
+                            correcta: 0
+                        }
+                    ]
+                },
+                sost5: {
+                    title: "Q7: Análisis Crítico ODS",
+                    questions: [
+                        {
+                            pregunta: "¿Por qué los ODS incluyen metas económicas junto a las ambientales?",
+                            opciones: ["Porque los países ricos lo exigieron en las negociaciones", "Porque sin economía sostenible no hay desarrollo integral", "Porque el crecimiento económico es indispensable para reducir la pobreza"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué riesgo implica que los ODS sean voluntarios?",
+                            opciones: ["Que se generen sanciones internacionales", "Que se conviertan en declaraciones sin impacto real", "Que los países los cumplan más rápido"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Por qué algunos críticos dicen que los ODS son “demasiado amplios”?",
+                            opciones: ["Porque incluyen temas irrelevantes", "Porque abarcan tantas áreas que es difícil priorizar", "Porque solo benefician a países desarrollados"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué dilema surge entre ODS 8 (Trabajo decente y crecimiento económico) y ODS 13 (Acción por el clima)?",
+                            opciones: ["Que la acción climática impide la innovación", "Que el crecimiento económico puede aumentar emisiones", "Que el empleo depende solo de energías renovables"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Por qué se considera que el ODS 17 (Alianzas) es clave para todos los demás?",
+                            opciones: ["Porque es el único que tiene financiación propia", "Porque sin cooperación global no hay recursos ni tecnología", "Porque sustituye la responsabilidad de los gobiernos"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué crítica se hace a la medición de los ODS?",
+                            opciones: ["Que muchos países carecen de datos fiables", "Que los indicadores son claros y fáciles de aplicar", "Que se mide solo el impacto económico"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Por qué el ODS 12 (Consumo responsable) es difícil de implementar?",
+                            opciones: ["Porque no tiene relación con el cambio climático", "Porque depende solo de decisiones individuales", "Porque implica cambiar hábitos y modelos económicos"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Por qué algunos países priorizan ciertos ODS sobre otros?",
+                            opciones: ["Porque la ONU lo exige", "Porque todos tienen la misma urgencia", "Porque responden a intereses políticos y económicos"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Por qué el ODS 5 (Igualdad de género) es transversal?",
+                            opciones: ["Porque influye en salud, economía y participación política", "Porque no tiene relación con otros ODS", "Porque afecta solo a educación"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Por qué algunos expertos/as ven los ODS como “utópicos”?",
+                            opciones: ["Porque requieren cambios estructurales profundos en poco tiempo", "Porque son fáciles de cumplir", "Porque no tienen impacto social"],
+                            correcta: 0
+                        }
+                    ]
+                },
+                sost6: {
+                    title: "Q9: Software y Economía Circular",
+                    questions: [
+                        {
+                            pregunta: "¿Qué característica del software favorece más la economía circular?",
+                            opciones: ["Capacidad de actualización sin sustituir el sistema", "Dependencia de hardware potente", "Uso exclusivo de software propietario"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Cuál es el principal objetivo de la economía circular aplicada al sector tecnológico?",
+                            opciones: ["Sustituir totalmente la digitalización", "Incrementar la producción", "Mantener el valor de productos y materiales el mayor tiempo posible"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Por qué el software eficiente contribuye a la sostenibilidad? (1)",
+                            opciones: ["Elimina la necesidad de actualizaciones", "Reduce el mantenimiento", "Disminuye el consumo energético y alarga la vida del hardware"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué residuo es más característico del sector TIC?",
+                            opciones: ["Residuos de aparatos eléctricos y electrónicos (RAEE)", "Residuos orgánicos", "Residuos químicos"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Por qué el software eficiente contribuye a la sostenibilidad? (2)",
+                            opciones: ["Porque disminuye el consumo energético y prolonga la vida del hardware", "Porque elimina la necesidad de mantenimiento", "Porque aumenta la velocidad de obsolescencia"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Cuál de las siguientes prácticas NO favorece la economía circular en el sector TIC?",
+                            opciones: ["Consumo energético descontrolado en servidores", "Reutilización de componentes software", "Virtualización de sistemas"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué relación existe entre la digitalización y la sostenibilidad?",
+                            opciones: ["Puede reducir el consumo de recursos si se aplica correctamente", "Elimina totalmente los residuos", "La digitalización siempre aumenta el impacto ambiental"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué indicador es más adecuado para medir la sostenibilidad en proyectos informáticos?",
+                            opciones: ["Lenguaje de programación utilizado", "Consumo energético y vida útil del sistema", "Tiempo de desarrollo"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Cuál es una diferencia clave entre la economía circular y la economía lineal?",
+                            opciones: ["La economía lineal se basa en extraer, producir, usar y desechar", "La economía circular elimina completamente los residuos", "La economía circular prioriza el reciclaje frente a la producción"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "Dentro de un sistema productivo sostenible, ¿qué acción tiene mayor impacto a largo plazo?",
+                            opciones: ["Rediseñar los productos para facilitar su reparación y reutilización", "Aumentar la velocidad de producción", "Incrementar el consumo de materias primas recicladas sin cambiar el diseño"],
+                            correcta: 0
+                        }
+                    ]
+                },
+                sost7: {
+                    title: "Q10: Ética y sostenibilidad TIC",
+                    questions: [
+                        {
+                            pregunta: "Una decisión es coherente con la economía circular cuando:",
+                            opciones: ["Reduce solo el coste inmediato", "Es la más rápida de aplicar", "Tiene en cuenta el uso futuro y el final del recurso"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "En informática, una práctica inspirada en la economía de los cuidados sería…",
+                            opciones: ["Usar solo tecnologías de última generación", "Ignorar la accesibilidad para ahorrar tiempo de desarrollo", "Diseñar interfaces pensando en usuarios con distintas capacidades"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué efecto tiene la dependencia global de productos tecnológicos, como ordenadores o móviles, según el contenido teórico de la UD4?",
+                            opciones: ["Mejora la autosuficiencia energética", "Incrementa la resiliencia local", "Aumenta la vulnerabilidad ante crisis globales"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué papel tienen los profesionales en la economía circular?",
+                            opciones: ["Aplicar solo lo que indique la empresa", "Tomar decisiones responsables dentro de su ámbito", "Cambiar las políticas globales"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Por qué la exportación de residuos electrónicos agrava la desigualdad global?",
+                            opciones: ["Porque traslada los impactos tóxicos a territorios con menos recursos", "Porque los países receptores cuentan con mejores tecnologías", "Porque reduce la extracción de minerales"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué implica que la mochila ecológica de un producto sea varias veces mayor que su peso real?",
+                            opciones: ["Que el consumo invisible de recursos es extremadamente alto", "Que su uso será más duradero", "Que el producto es seguro"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué conclusión puede extraerse del impacto desigual de las familias profesionales?",
+                            opciones: ["Que todas consumen la misma cantidad de recursos", "Que sectores intensivos en materiales generan mayor huella ecológica", "Que la educación es el sector con mayor impacto"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué relación establece el texto entre acumulación de riqueza y problemas ecológicos?",
+                            opciones: ["Los ingresos altos se relacionan con menor consumo", "La concentración de riqueza reduce las emisiones", "Las personas más ricas generan mayor huella y mayor desigualdad"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Por qué el diseño del producto es clave para la economía circular?",
+                            opciones: ["Porque determina la facilidad para reparar, reciclar o reutilizar", "Porque solo afecta a la estética", "Porque influye únicamente en el marketing"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué síntesis hace el documento respecto a la economía circular?",
+                            opciones: ["Se limita a mejorar los procesos de reciclaje", "Requiere reducir, rediseñar y replantear qué se produce y para qué", "Es viable sin cambiar el modelo de consumo actual"],
+                            correcta: 1
+                        }
+                    ]
+                }
 
             },
             digitalizacion: {
@@ -694,542 +1005,582 @@ sost7: {
                     ]
                 },
                 digi5: {
-    title: "Evalúa tus conocimientos T.1-2",
-    questions: [
-        { pregunta: "Un plan de digitalización prepara a la empresa para la transformación digital porque…", opciones: [
-            "Evita identificar áreas específicas que podrían beneficiarse de dicho plan.",
-            "Incluye estrategias para combatir la resistencia al cambio que pueda aparecer.",
-            "Evita introducir nuevos riesgos y mejorar así la seguridad y el cumplimiento.",
-            "Ayuda a optimizar las inversiones en tecnología, capacitación y cambio organizacional."
-        ], correcta: 3 },
+                    title: "Evalúa tus conocimientos T.1-2",
+                    questions: [
+                        {
+                            pregunta: "Un plan de digitalización prepara a la empresa para la transformación digital porque…", opciones: [
+                                "Evita identificar áreas específicas que podrían beneficiarse de dicho plan.",
+                                "Incluye estrategias para combatir la resistencia al cambio que pueda aparecer.",
+                                "Evita introducir nuevos riesgos y mejorar así la seguridad y el cumplimiento.",
+                                "Ayuda a optimizar las inversiones en tecnología, capacitación y cambio organizacional."
+                            ], correcta: 3
+                        },
 
-        { pregunta: "¿Cuál de los siguientes NO es un aspecto clave en el proceso de transformación digital?", opciones: [
-            "Enfoque en mejorar la experiencia del cliente.",
-            "Cambio de la cultura organizacional.",
-            "El uso de datos y analíticas.",
-            "Dispositivos más potentes para los empleados."
-        ], correcta: 3 },
+                        {
+                            pregunta: "¿Cuál de los siguientes NO es un aspecto clave en el proceso de transformación digital?", opciones: [
+                                "Enfoque en mejorar la experiencia del cliente.",
+                                "Cambio de la cultura organizacional.",
+                                "El uso de datos y analíticas.",
+                                "Dispositivos más potentes para los empleados."
+                            ], correcta: 3
+                        },
 
-        { pregunta: "Una de las principales características de un entorno OT es…", opciones: [
-            "El uso de sensores y dispositivos conectados para recopilar datos.",
-            "La seguridad de las aplicaciones y los datos.",
-            "El uso de sistemas de gestión empresarial.",
-            "La implantación de herramientas de comunicación."
-        ], correcta: 0 },
+                        {
+                            pregunta: "Una de las principales características de un entorno OT es…", opciones: [
+                                "El uso de sensores y dispositivos conectados para recopilar datos.",
+                                "La seguridad de las aplicaciones y los datos.",
+                                "El uso de sistemas de gestión empresarial.",
+                                "La implantación de herramientas de comunicación."
+                            ], correcta: 0
+                        },
 
-        { pregunta: "¿Cuáles de los siguientes aspectos corresponden a la digitalización en negocio?", opciones: [
-            "Big data.",
-            "Inteligencia artificial.",
-            "Blockchain.",
-            "Todos los anteriores."
-        ], correcta: 3 },
+                        {
+                            pregunta: "¿Cuáles de los siguientes aspectos corresponden a la digitalización en negocio?", opciones: [
+                                "Big data.",
+                                "Inteligencia artificial.",
+                                "Blockchain.",
+                                "Todos los anteriores."
+                            ], correcta: 3
+                        },
 
-        { pregunta: "¿Por qué es importante que tengamos en cuenta aspectos de la ciberseguridad en la transformación digital?", opciones: [
-            "Porque la ciberseguridad está de moda y favorece la imagen.",
-            "Para mantenernos conectados a internet.",
-            "Porque hay que asegurar los datos y sistemas críticos del negocio.",
-            "Porque los ordenadores necesitan un antivirus."
-        ], correcta: 2 },
+                        {
+                            pregunta: "¿Por qué es importante que tengamos en cuenta aspectos de la ciberseguridad en la transformación digital?", opciones: [
+                                "Porque la ciberseguridad está de moda y favorece la imagen.",
+                                "Para mantenernos conectados a internet.",
+                                "Porque hay que asegurar los datos y sistemas críticos del negocio.",
+                                "Porque los ordenadores necesitan un antivirus."
+                            ], correcta: 2
+                        },
 
-        { pregunta: "¿Es lo mismo digitalización que transformación digital?", opciones: [
-            "Sí, porque la digitalización siempre implica transformación digital.",
-            "No. La transformación digital es un proceso más profundo que la digitalización.",
-            "No. La digitalización es más profunda que la transformación digital.",
-            "Sí. Se utilizan indistintamente."
-        ], correcta: 1 },
+                        {
+                            pregunta: "¿Es lo mismo digitalización que transformación digital?", opciones: [
+                                "Sí, porque la digitalización siempre implica transformación digital.",
+                                "No. La transformación digital es un proceso más profundo que la digitalización.",
+                                "No. La digitalización es más profunda que la transformación digital.",
+                                "Sí. Se utilizan indistintamente."
+                            ], correcta: 1
+                        },
 
-        { pregunta: "¿Cuál de los siguientes NO es un tipo de transformación digital?", opciones: [
-            "Transformación digital de la cultura.",
-            "Transformación digital de procesos.",
-            "Transformación digital en la gestión de residuos.",
-            "Transformación digital del modelo de negocio."
-        ], correcta: 2 },
+                        {
+                            pregunta: "¿Cuál de los siguientes NO es un tipo de transformación digital?", opciones: [
+                                "Transformación digital de la cultura.",
+                                "Transformación digital de procesos.",
+                                "Transformación digital en la gestión de residuos.",
+                                "Transformación digital del modelo de negocio."
+                            ], correcta: 2
+                        },
 
-        { pregunta: "Uno de los principales efectos de implantar tecnología en los procesos es…", opciones: [
-            "La reducción de errores gracias a la automatización.",
-            "El aumento de la carga de trabajo.",
-            "La necesidad de asignar más recursos.",
-            "La reducción de la jornada laboral."
-        ], correcta: 0 },
+                        {
+                            pregunta: "Uno de los principales efectos de implantar tecnología en los procesos es…", opciones: [
+                                "La reducción de errores gracias a la automatización.",
+                                "El aumento de la carga de trabajo.",
+                                "La necesidad de asignar más recursos.",
+                                "La reducción de la jornada laboral."
+                            ], correcta: 0
+                        },
 
-        { pregunta: "¿A qué nos referimos con el término entorno IT?", opciones: [
-            "A la información de la organización y los sistemas que la gestionan.",
-            "A todos los dispositivos electrónicos de la empresa.",
-            "A la tecnología que supervisa dispositivos.",
-            "Ninguna de las anteriores."
-        ], correcta: 0 },
+                        {
+                            pregunta: "¿A qué nos referimos con el término entorno IT?", opciones: [
+                                "A la información de la organización y los sistemas que la gestionan.",
+                                "A todos los dispositivos electrónicos de la empresa.",
+                                "A la tecnología que supervisa dispositivos.",
+                                "Ninguna de las anteriores."
+                            ], correcta: 0
+                        },
 
-        { pregunta: "Al enfoque operativo en el proceso de digitalización se le conoce como…", opciones: [
-            "Digitalización en negocio.",
-            "Digitalización en empresa.",
-            "Digitalización en sistema.",
-            "Digitalización en planta."
-        ], correcta: 3 },
+                        {
+                            pregunta: "Al enfoque operativo en el proceso de digitalización se le conoce como…", opciones: [
+                                "Digitalización en negocio.",
+                                "Digitalización en empresa.",
+                                "Digitalización en sistema.",
+                                "Digitalización en planta."
+                            ], correcta: 3
+                        },
 
-        { pregunta: "Las tecnologías habilitadoras digitales…", opciones: [
-            "Habilitan a los empleados para usar la infraestructura digital.",
-            "Son productos y servicios generados.",
-            "Permiten que dispositivos analógicos funcionen con mecanismos digitales.",
-            "Proporcionan capacidades e infraestructura para impulsar la digitalización."
-        ], correcta: 3 },
+                        {
+                            pregunta: "Las tecnologías habilitadoras digitales…", opciones: [
+                                "Habilitan a los empleados para usar la infraestructura digital.",
+                                "Son productos y servicios generados.",
+                                "Permiten que dispositivos analógicos funcionen con mecanismos digitales.",
+                                "Proporcionan capacidades e infraestructura para impulsar la digitalización."
+                            ], correcta: 3
+                        },
 
-        { pregunta: "¿Cuál de las siguientes NO se considera una tecnología habilitadora digital?", opciones: [
-            "Inteligencia artificial.",
-            "Computación en la nube.",
-            "Televisión por cable por fibra IPTV.",
-            "Impresión 3D."
-        ], correcta: 2 },
+                        {
+                            pregunta: "¿Cuál de las siguientes NO se considera una tecnología habilitadora digital?", opciones: [
+                                "Inteligencia artificial.",
+                                "Computación en la nube.",
+                                "Televisión por cable por fibra IPTV.",
+                                "Impresión 3D."
+                            ], correcta: 2
+                        },
 
-        { pregunta: "¿En qué revolución industrial nos encontramos?", opciones: [
-            "Industria 3.0.",
-            "Industria 4.0.",
-            "Industria 5.0.",
-            "Industria 6.0."
-        ], correcta: 1 },
+                        {
+                            pregunta: "¿En qué revolución industrial nos encontramos?", opciones: [
+                                "Industria 3.0.",
+                                "Industria 4.0.",
+                                "Industria 5.0.",
+                                "Industria 6.0."
+                            ], correcta: 1
+                        },
 
-        { pregunta: "¿Qué modelo económico busca el menor impacto ambiental?", opciones: [
-            "Economía lineal.",
-            "Economía circular.",
-            "Economía triangular.",
-            "Economía simplificada basada en el ‘condensador de fluzo’."
-        ], correcta: 1 },
+                        {
+                            pregunta: "¿Qué modelo económico busca el menor impacto ambiental?", opciones: [
+                                "Economía lineal.",
+                                "Economía circular.",
+                                "Economía triangular.",
+                                "Economía simplificada basada en el ‘condensador de fluzo’."
+                            ], correcta: 1
+                        },
 
-        { pregunta: "Modelo sostenible que elimina la obsolescencia programada:", opciones: [
-            "Extensión de la vida del producto.",
-            "Simbiosis industrial.",
-            "Ecodiseño.",
-            "Reciclado y reconversión."
-        ], correcta: 0 },
+                        {
+                            pregunta: "Modelo sostenible que elimina la obsolescencia programada:", opciones: [
+                                "Extensión de la vida del producto.",
+                                "Simbiosis industrial.",
+                                "Ecodiseño.",
+                                "Reciclado y reconversión."
+                            ], correcta: 0
+                        },
 
-        { pregunta: "¿Cuál NO es una tecnología habilitadora digital emergente?", opciones: [
-            "Nanotecnología.",
-            "Fotónica.",
-            "Materiales avanzados.",
-            "Desarrollo software predictivo."
-        ], correcta: 3 },
+                        {
+                            pregunta: "¿Cuál NO es una tecnología habilitadora digital emergente?", opciones: [
+                                "Nanotecnología.",
+                                "Fotónica.",
+                                "Materiales avanzados.",
+                                "Desarrollo software predictivo."
+                            ], correcta: 3
+                        },
 
-        { pregunta: "¿Qué es la tecnología de gemelos digitales?", opciones: [
-            "Gemelos con componentes digitales colocados en camisas.",
-            "Representaciones precisas de objetos físicos para simularlos en tiempo real.",
-            "Tener un hijo idéntico mediante genética.",
-            "Generar entornos tan realistas que no se distingan de la realidad."
-        ], correcta: 1 },
+                        {
+                            pregunta: "¿Qué es la tecnología de gemelos digitales?", opciones: [
+                                "Gemelos con componentes digitales colocados en camisas.",
+                                "Representaciones precisas de objetos físicos para simularlos en tiempo real.",
+                                "Tener un hijo idéntico mediante genética.",
+                                "Generar entornos tan realistas que no se distingan de la realidad."
+                            ], correcta: 1
+                        },
 
-        { pregunta: "En el modelo 'producto como servicio'…", opciones: [
-            "Las redes 5G facilitan el servicio por su velocidad.",
-            "Blockchain permite comprar hardware en bitcoins.",
-            "La IA selecciona clientes para evitar morosos.",
-            "La impresión 3D permite imprimir ordenadores."
-        ], correcta: 0 },
+                        {
+                            pregunta: "En el modelo 'producto como servicio'…", opciones: [
+                                "Las redes 5G facilitan el servicio por su velocidad.",
+                                "Blockchain permite comprar hardware en bitcoins.",
+                                "La IA selecciona clientes para evitar morosos.",
+                                "La impresión 3D permite imprimir ordenadores."
+                            ], correcta: 0
+                        },
 
-        { pregunta: "La tecnología emergente de mayor impacto en wearables es…", opciones: [
-            "Fotónica.",
-            "IA con computación en la nube.",
-            "Micro- y nanotecnología.",
-            "Biotecnología industrial con impresión 3D."
-        ], correcta: 2 },
+                        {
+                            pregunta: "La tecnología emergente de mayor impacto en wearables es…", opciones: [
+                                "Fotónica.",
+                                "IA con computación en la nube.",
+                                "Micro- y nanotecnología.",
+                                "Biotecnología industrial con impresión 3D."
+                            ], correcta: 2
+                        },
 
-        { pregunta: "¿Qué tecnología está más relacionada con prototipos y prótesis?", opciones: [
-            "Computación en la nube.",
-            "Blockchain.",
-            "5G/Wi-Fi 6.",
-            "Impresión 3D."
-        ], correcta: 3 }
-    ]
-},digi6: {
-    title: "Q6: Modelos Cloud (IaaS/PaaS/SaaS)",
-    questions: [
-        { 
-            pregunta: "¿Qué caracteriza a una nube híbrida?", 
-            opciones: ["Acceso restringido a una sola aplicación", "Combinación de nube pública y privada", "Uso exclusivo de proveedores públicos", "Integración de múltiples proveedores del mismo tipo"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué tipo de escalabilidad ofrece típicamente el modelo PaaS?", 
-            opciones: ["Estática", "Automática", "Ninguna", "Manual"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Cuál es un inconveniente común del modelo SaaS?", 
-            opciones: ["Imposibilidad de acceso desde navegadores web", "Necesidad de personal técnico especializado", "Limitación en la personalización de la aplicación", "Alto coste inicial de hardware"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué modelo de servicio en la nube requiere habilidades técnicas avanzadas para su gestión?", 
-            opciones: ["PaaS", "SaaS", "IaaS", "Ninguno de los anteriores"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué empresa fue pionera en ofrecer aplicaciones empresariales a través de la web en 1999?", 
-            opciones: ["Salesforce", "Microsoft", "Amazon", "Google"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Cuál es la principal diferencia entre una nube híbrida y un modelo multinube?", 
-            opciones: ["La nube híbrida no puede usar servicios de AWS", "La nube híbrida usa más proveedores", "El modelo multinube implica múltiples proveedores, mientras que la híbrida combina tipos de nube (pública/privada)", "La multinube no permite escalabilidad"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué tipo de nube utiliza exclusivamente una única organización y ofrece mayor control sobre la infraestructura?", 
-            opciones: ["Nube pública", "Nube privada", "Nube híbrida", "Multinube"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Cuál de las siguientes NO es una característica típica del modelo IaaS?", 
-            opciones: ["Escalabilidad automática gestionada por la plataforma", "Escalabilidad dinámica", "Control total sobre el sistema operativo", "Virtualización de recursos"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Cuál de los siguientes es un ejemplo de SaaS horizontal?", 
-            opciones: ["Google Workspace", "LegalZoom", "Veeva Systems", "Wrike for Marketers"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué ventaja principal ofrece el modelo PaaS a los desarrolladores?", 
-            opciones: ["Facturación basada en propiedad de servidores", "Acceso directo al hardware subyacente", "No tener que gestionar la infraestructura subyacente", "Instalación local de la aplicación"], 
-            correcta: 2 
-        }
-    ]
-},
-digi7: {
-    title: "Q7: Servicios Cloud y Edge Computing",
-    questions: [
-        { 
-            pregunta: "¿Qué ventaja del edge computing se menciona especialmente para sistemas de vigilancia con cámaras en red?", 
-            opciones: ["Ahorro de ancho de banda", "Latencia reducida", "Menor dependencia de la conectividad", "Mayor privacidad"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Cuál de los siguientes es un ejemplo de servicio de copia de seguridad en la nube?", 
-            opciones: ["Microsoft Teams", "Oracle WebCenter", "Google Workspace", "AWS Backup"], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿En qué paradigma se procesan los datos directamente en los dispositivos que los generan?", 
-            opciones: ["Cloud computing", "IaaS", "Mist computing", "Fog computing"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué tipo de servicio en la nube permite a los usuarios ejecutar aplicaciones sin gestionar la infraestructura subyacente?", 
-            opciones: ["IaaS", "XaaS", "PaaS", "SaaS"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Cuál de los siguientes es un ejemplo de servicio IaaS mencionado?", 
-            opciones: ["JIRA", "AWS EC2", "Slack", "Microsoft 365"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué modelo de computación en la nube ofrece mayor control sobre la infraestructura?", 
-            opciones: ["PaaS", "XaaS", "SaaS", "IaaS"], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿Qué modelo de pago en la nube permite a las empresas adaptar sus gastos a los ingresos generados?", 
-            opciones: ["PAYG (Pay as you go)", "Suscripción fija", "Pago anual anticipado", "Modelo de capital fijo"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué limitación fundamental presenta el uso de servicios XaaS?", 
-            opciones: ["Alto costo inicial", "Imposibilidad de actualizaciones automáticas", "Dependencia de una conexión a internet estable", "Dificultad para personalizar"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Cuál de los siguientes servicios se menciona como ejemplo de SaaS para gestión empresarial?", 
-            opciones: ["SAP Business One", "Azure Blob Storage", "AWS Lambda", "Google Compute Engine"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué ventaja del edge computing es crucial en vehículos autónomos ante situaciones de emergencia?", 
-            opciones: ["Mejor integración con la nube", "Reducción de costes operativos", "Latencia reducida", "Mayor escalabilidad"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Cuál de los siguientes NO es un modelo principal de computación en la nube?", 
-            opciones: ["PaaS", "DaaS", "SaaS", "IaaS"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué significa la sigla ALM en el contexto del documento?", 
-            opciones: ["Application Lifecycle Management", "Automated Learning Model", "Advanced Logic Module", "Application Load Manager"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué característica del modelo XaaS permite a las empresas pagar solo por lo que utilizan?", 
-            opciones: ["Acceso remoto", "Mantenimiento reducido", "Flexibilidad", "Escalabilidad"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué tipo de computación descentraliza el procesamiento llevándolo a dispositivos intermedios como routers o gateways?", 
-            opciones: ["Cloud computing", "Mist computing", "Edge computing", "Fog computing"], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿Qué significa la sigla XaaS?", 
-            opciones: ["Todo como servicio", "Plataforma como servicio", "Infraestructura como servicio", "Computación como servicio"], 
-            correcta: 0 
-        }
-    ]
-},
-digi8: {
-    title: "Q8: IA y Minería de Datos",
-    questions: [
-        { 
-            pregunta: "¿Qué disciplina combina estadística, IA, aprendizaje automático y gestión de bases de datos para descubrir patrones?", 
-            opciones: ["Minería de datos", "Big data", "Procesamiento del lenguaje natural", "Robótica"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Cuál es un ejemplo de aplicación del aprendizaje profundo mencionado?", 
-            opciones: ["Segmentación de clientes", "Análisis de preferencias sin etiquetas", "Detección de correo no deseado", "Identificación de patrones en imágenes de radiodiagnóstico"], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿Qué técnica de IA utiliza redes neuronales con múltiples capas?", 
-            opciones: ["Aprendizaje semisupervisado", "Aprendizaje no supervisado", "Machine learning", "Aprendizaje profundo"], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿En qué tipo de aprendizaje el sistema recibe recompensas o penalizaciones?", 
-            opciones: ["Aprendizaje por refuerzo", "Aprendizaje no supervisado", "Aprendizaje supervisado", "Aprendizaje semisupervisado"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué tipo de minería de datos analiza sentimientos en redes sociales?", 
-            opciones: ["Minería temporal", "Minería espacial", "Minería textual", "Minería de asociación"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿En qué año se acuñó el término «inteligencia artificial»?", 
-            opciones: ["1965", "1950", "1956", "1945"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué tipo de aprendizaje se usa cuando solo una parte de los datos está etiquetada?", 
-            opciones: ["Aprendizaje supervisado", "Aprendizaje por refuerzo", "Aprendizaje semisupervisado", "Aprendizaje no supervisado"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Quién planteó la pregunta «¿Puede una máquina pensar?»?", 
-            opciones: ["John McCarthy", "Herbert Simon", "Alan Turing", "Marvin Minsky"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué tecnología permite que asistentes virtuales como Alexa entiendan y respondan?", 
-            opciones: ["Procesamiento del lenguaje natural", "Machine bias", "Aprendizaje por refuerzo", "Visión por computadora"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué fase del proceso de minería de datos implica limpiar y transformar los datos?", 
-            opciones: ["Preparación de los datos", "Comprensión de los datos", "Modelización", "Comprensión del negocio"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué THD utiliza IA para analizar patrones de tráfico y optimizar semáforos?", 
-            opciones: ["IoT", "Impresión 3D", "Robótica colaborativa", "Blockchain"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué tipo de minería de datos se usa para agrupar clientes con comportamientos de compra similares?", 
-            opciones: ["Minería de clústeres", "Minería de asociación", "Minería secuencial", "Minería textual"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿En qué sector la IA puede simular escenarios de competición reales para el entrenamiento?", 
-            opciones: ["Energía", "Deporte", "Salud", "Turismo"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué tipo de minería de datos identifica que los clientes que compran pañales también tienden a comprar cerveza?", 
-            opciones: ["Minería de asociación", "Minería predictiva", "Minería descriptiva", "Minería de clústeres"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué THD combinada con IA permite rastrear productos desde su origen hasta su destino asegurando autenticidad?", 
-            opciones: ["Realidad aumentada", "Computación en la nube", "Blockchain", "IoT"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué tipo de IA se caracteriza por su capacidad para llevar a cabo tareas específicas o limitadas?", 
-            opciones: ["Superinteligencia artificial", "IA estrecha", "IA general", "IA emocional"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué modelo de IA NO existe actualmente en la práctica?", 
-            opciones: ["IA general", "IA estrecha", "IA de asistentes virtuales", "IA especializada"], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué aspecto crítico de la IA exige que los datos personales se recopilen con consentimiento informado?", 
-            opciones: ["Interpretabilidad", "Equidad", "Privacidad y protección de datos personales", "Responsabilidad"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué aspecto crítico del tratamiento de datos en IA se refiere a evitar que los modelos reproduzcan prejuicios?", 
-            opciones: ["Responsabilidad", "Interpretabilidad", "Privacidad", "Equidad y sesgo"], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿Qué término se utiliza para referirse al sesgo inconsciente en los modelos de IA?", 
-            opciones: ["AI ethics", "Machine bias", "Data bias", "Learning error"], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Cuál es un ejemplo de aprendizaje supervisado?", 
-            opciones: ["Detección de patrones en redes sociales", "Reconocimiento de voz sin etiquetas", "Detección de correo no deseado", "Segmentación de clientes sin categorías"], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Cuál es la primera etapa del proceso de minería de datos?", 
-            opciones: ["Preparación de los datos", "Comprensión del negocio", "Evaluación", "Comprensión de los datos"], 
-            correcta: 1 
-        }
-    ]
-},
-digi9: {
-    title: "Q9: Big Data y Data Science I",
-    questions: [
-        { 
-            pregunta: "¿Qué es un \"Dashboard\"?", 
-            opciones: ["Una herramienta visual para ofrecer comprensión clara e interactiva de indicadores.", "Un sistema de almacenamiento en la nube elástico.", "Un tipo de base de datos NoSQL.", "Un formato de intercambio de gráficos."], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Qué define la \"Variedad\" en el big data?", 
-            opciones: ["La capacidad de agregar datos de múltiples fuentes.", "La dificultad para procesar grandes conjuntos de datos.", "La cantidad de errores que contienen los datos.", "La diversidad de tipos y fuentes de datos (estructurados, semi, no estructurados)."], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿Con qué se relaciona la \"Veracidad\" de los datos?", 
-            opciones: ["Velocidad de red.", "Espacio en servidor.", "Calidad y confiabilidad, dado que pueden contener errores.", "Valor económico."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué implica la característica de \"Velocidad\"?", 
-            opciones: ["Tiempo de lectura humano.", "Inconsistencia de formato.", "Rapidez con la que se generan, procesan y analizan los datos.", "Velocidad de internet."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿En qué consiste la característica de \"Agregación\"?", 
-            opciones: ["Rapidez de análisis.", "Capacidad de agregar datos de múltiples fuentes.", "Dificultad de gestión.", "Inconsistencia estructural."], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿A qué se refiere la \"Ingeniería de características\"?", 
-            opciones: ["Proceso de seleccionar, crear o transformar variables de entrada.", "Análisis exploratorio.", "Documentación de origen.", "Visualización mediante dashboards."], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "En la fase de \"Generación de datos\", ¿qué se establece?", 
-            opciones: ["Visualización.", "Decisiones estratégicas.", "Eliminación de datos.", "Cuáles van a ser los datos a tratar y sus fuentes."], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿Qué es la ciencia de datos (data science)?", 
-            opciones: ["Datos de sensores.", "Servicio de Microsoft.", "Repositorio centralizado.", "Disciplina que combina estadística, matemáticas y programación para extraer conocimientos."], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿En qué consiste la fase de \"Limpieza de datos\"?", 
-            opciones: ["Comprender el negocio.", "Buscar datos.", "Crear variables.", "Corregir o eliminar valores erróneos, faltantes o duplicados."], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿Qué es un \"dato\"?", 
-            opciones: ["Producto final útil.", "Análisis climático.", "Representación \"cruda\" y sin procesar de una entidad.", "Resultado interpretado."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿A qué se refiere el concepto de big data?", 
-            opciones: ["Técnicas y tecnologías para manejar conjuntos de datos masivos y complejos.", "Datos de redes sociales únicamente.", "Herramientas de ordenadores domésticos.", "Almacenamiento físico sin internet."], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Cómo surge la \"información\"?", 
-            opciones: ["Eliminación de duplicados.", "Del procesamiento, organización y contextualización de los datos.", "Recopilación masiva aleatoria.", "Representación simbólica."], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué hacen la minería de datos y la IA en la fase de \"Procesamiento\"?", 
-            opciones: ["Toman decisiones finales.", "Almacenan datos.", "Presentan gráficos.", "Preparan datos, identifican patrones y realizan transformaciones."], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿A qué se refiere la característica de \"Volumen\" en big data?", 
-            opciones: ["Rapidez de generación.", "Diversidad de fuentes.", "Calidad de datos.", "Escala masiva de datos generados constantemente."], 
-            correcta: 3 
-        }
-    ]
-},
-digi10: {
-    title: "Q10: Data Analytics y Almacenamiento",
-    questions: [
-        { 
-            pregunta: "¿Para qué se utiliza la información en la data science?", 
-            opciones: ["Para transformarla en big data.", "Para predecir los problemas futuros.", "Para convertirla en insights.", "Para resolver los problemas de negocio."], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Qué significa el término insight?", 
-            opciones: ["Valor de mayor tamaño.", "Herramienta visual.", "Información significativa que surge al procesar datos.", "Dato sin procesar."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿A qué disciplina corresponde la fase de validación de los resultados mencionada?", 
-            opciones: ["Data science.", "Data analytics.", "Data insights.", "Común a todos."], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Cuál NO es un nivel del modelo de almacenamiento de datos por niveles?", 
-            opciones: ["Nivel templado.", "Nivel frío.", "Nivel caliente.", "Nivel crítico."], 
-            correcta: 3 
-        },
-        { 
-            pregunta: "¿Qué relación existe entre la data science y el data analytics?", 
-            opciones: ["Ninguna.", "El data analytics es una disciplina derivada de la data science.", "Son lo mismo.", "La data science deriva del data analytics."], 
-            correcta: 1 
-        },
-        { 
-            pregunta: "¿Cómo se llama la disciplina que busca generar insights?", 
-            opciones: ["Data analytics.", "Data insights.", "Big data.", "Data science."], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Cuál NO es una de las seis uves que definen el big data?", 
-            opciones: ["Variedad.", "Veracidad.", "Volatilidad.", "Valor."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Para qué se utiliza un dashboard según el texto?", 
-            opciones: ["Para visualizar información relevante en tiempo real.", "Para eliminar datos duplicados.", "Para convertir science en big data.", "Para almacenar datos calientes."], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "¿Cuál es la principal diferencia entre dato e información?", 
-            opciones: ["El dato es resultado de procesar.", "El dato surge de organizar información.", "La información surge del procesamiento y organización de datos.", "Son lo mismo."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿Qué requiere el Data Analytics a diferencia del Data Science?", 
-            opciones: ["Estrategias futuras.", "Predecir futuro.", "Habilidades más orientadas al negocio y visualización.", "Habilidades en programación y matemáticas."], 
-            correcta: 2 
-        },
-        { 
-            pregunta: "¿En qué consiste la agregación de los datos?", 
-            opciones: ["En combinar datos que provienen de diferentes fuentes.", "Agregar comienzo al final.", "Agregar etiquetas.", "Eliminar duplicados."], 
-            correcta: 0 
-        },
-        { 
-            pregunta: "En el modelo por niveles, ¿qué medio se usa para el \"Nivel frío\"?", 
-            opciones: ["HDD tradicionales.", "SSD alta velocidad.", "Cintas magnéticas o soluciones cloud de bajo coste.", "Memoria RAM."], 
-            correcta: 2 
-        }
-    ]
-}
+                        {
+                            pregunta: "¿Qué tecnología está más relacionada con prototipos y prótesis?", opciones: [
+                                "Computación en la nube.",
+                                "Blockchain.",
+                                "5G/Wi-Fi 6.",
+                                "Impresión 3D."
+                            ], correcta: 3
+                        }
+                    ]
+                }, digi6: {
+                    title: "Q6: Modelos Cloud (IaaS/PaaS/SaaS)",
+                    questions: [
+                        {
+                            pregunta: "¿Qué caracteriza a una nube híbrida?",
+                            opciones: ["Acceso restringido a una sola aplicación", "Combinación de nube pública y privada", "Uso exclusivo de proveedores públicos", "Integración de múltiples proveedores del mismo tipo"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué tipo de escalabilidad ofrece típicamente el modelo PaaS?",
+                            opciones: ["Estática", "Automática", "Ninguna", "Manual"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Cuál es un inconveniente común del modelo SaaS?",
+                            opciones: ["Imposibilidad de acceso desde navegadores web", "Necesidad de personal técnico especializado", "Limitación en la personalización de la aplicación", "Alto coste inicial de hardware"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué modelo de servicio en la nube requiere habilidades técnicas avanzadas para su gestión?",
+                            opciones: ["PaaS", "SaaS", "IaaS", "Ninguno de los anteriores"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué empresa fue pionera en ofrecer aplicaciones empresariales a través de la web en 1999?",
+                            opciones: ["Salesforce", "Microsoft", "Amazon", "Google"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Cuál es la principal diferencia entre una nube híbrida y un modelo multinube?",
+                            opciones: ["La nube híbrida no puede usar servicios de AWS", "La nube híbrida usa más proveedores", "El modelo multinube implica múltiples proveedores, mientras que la híbrida combina tipos de nube (pública/privada)", "La multinube no permite escalabilidad"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué tipo de nube utiliza exclusivamente una única organización y ofrece mayor control sobre la infraestructura?",
+                            opciones: ["Nube pública", "Nube privada", "Nube híbrida", "Multinube"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Cuál de las siguientes NO es una característica típica del modelo IaaS?",
+                            opciones: ["Escalabilidad automática gestionada por la plataforma", "Escalabilidad dinámica", "Control total sobre el sistema operativo", "Virtualización de recursos"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Cuál de los siguientes es un ejemplo de SaaS horizontal?",
+                            opciones: ["Google Workspace", "LegalZoom", "Veeva Systems", "Wrike for Marketers"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué ventaja principal ofrece el modelo PaaS a los desarrolladores?",
+                            opciones: ["Facturación basada en propiedad de servidores", "Acceso directo al hardware subyacente", "No tener que gestionar la infraestructura subyacente", "Instalación local de la aplicación"],
+                            correcta: 2
+                        }
+                    ]
+                },
+                digi7: {
+                    title: "Q7: Servicios Cloud y Edge Computing",
+                    questions: [
+                        {
+                            pregunta: "¿Qué ventaja del edge computing se menciona especialmente para sistemas de vigilancia con cámaras en red?",
+                            opciones: ["Ahorro de ancho de banda", "Latencia reducida", "Menor dependencia de la conectividad", "Mayor privacidad"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Cuál de los siguientes es un ejemplo de servicio de copia de seguridad en la nube?",
+                            opciones: ["Microsoft Teams", "Oracle WebCenter", "Google Workspace", "AWS Backup"],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿En qué paradigma se procesan los datos directamente en los dispositivos que los generan?",
+                            opciones: ["Cloud computing", "IaaS", "Mist computing", "Fog computing"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué tipo de servicio en la nube permite a los usuarios ejecutar aplicaciones sin gestionar la infraestructura subyacente?",
+                            opciones: ["IaaS", "XaaS", "PaaS", "SaaS"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Cuál de los siguientes es un ejemplo de servicio IaaS mencionado?",
+                            opciones: ["JIRA", "AWS EC2", "Slack", "Microsoft 365"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué modelo de computación en la nube ofrece mayor control sobre la infraestructura?",
+                            opciones: ["PaaS", "XaaS", "SaaS", "IaaS"],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿Qué modelo de pago en la nube permite a las empresas adaptar sus gastos a los ingresos generados?",
+                            opciones: ["PAYG (Pay as you go)", "Suscripción fija", "Pago anual anticipado", "Modelo de capital fijo"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué limitación fundamental presenta el uso de servicios XaaS?",
+                            opciones: ["Alto costo inicial", "Imposibilidad de actualizaciones automáticas", "Dependencia de una conexión a internet estable", "Dificultad para personalizar"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Cuál de los siguientes servicios se menciona como ejemplo de SaaS para gestión empresarial?",
+                            opciones: ["SAP Business One", "Azure Blob Storage", "AWS Lambda", "Google Compute Engine"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué ventaja del edge computing es crucial en vehículos autónomos ante situaciones de emergencia?",
+                            opciones: ["Mejor integración con la nube", "Reducción de costes operativos", "Latencia reducida", "Mayor escalabilidad"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Cuál de los siguientes NO es un modelo principal de computación en la nube?",
+                            opciones: ["PaaS", "DaaS", "SaaS", "IaaS"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué significa la sigla ALM en el contexto del documento?",
+                            opciones: ["Application Lifecycle Management", "Automated Learning Model", "Advanced Logic Module", "Application Load Manager"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué característica del modelo XaaS permite a las empresas pagar solo por lo que utilizan?",
+                            opciones: ["Acceso remoto", "Mantenimiento reducido", "Flexibilidad", "Escalabilidad"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué tipo de computación descentraliza el procesamiento llevándolo a dispositivos intermedios como routers o gateways?",
+                            opciones: ["Cloud computing", "Mist computing", "Edge computing", "Fog computing"],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿Qué significa la sigla XaaS?",
+                            opciones: ["Todo como servicio", "Plataforma como servicio", "Infraestructura como servicio", "Computación como servicio"],
+                            correcta: 0
+                        }
+                    ]
+                },
+                digi8: {
+                    title: "Q8: IA y Minería de Datos",
+                    questions: [
+                        {
+                            pregunta: "¿Qué disciplina combina estadística, IA, aprendizaje automático y gestión de bases de datos para descubrir patrones?",
+                            opciones: ["Minería de datos", "Big data", "Procesamiento del lenguaje natural", "Robótica"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Cuál es un ejemplo de aplicación del aprendizaje profundo mencionado?",
+                            opciones: ["Segmentación de clientes", "Análisis de preferencias sin etiquetas", "Detección de correo no deseado", "Identificación de patrones en imágenes de radiodiagnóstico"],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿Qué técnica de IA utiliza redes neuronales con múltiples capas?",
+                            opciones: ["Aprendizaje semisupervisado", "Aprendizaje no supervisado", "Machine learning", "Aprendizaje profundo"],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿En qué tipo de aprendizaje el sistema recibe recompensas o penalizaciones?",
+                            opciones: ["Aprendizaje por refuerzo", "Aprendizaje no supervisado", "Aprendizaje supervisado", "Aprendizaje semisupervisado"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué tipo de minería de datos analiza sentimientos en redes sociales?",
+                            opciones: ["Minería temporal", "Minería espacial", "Minería textual", "Minería de asociación"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿En qué año se acuñó el término «inteligencia artificial»?",
+                            opciones: ["1965", "1950", "1956", "1945"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué tipo de aprendizaje se usa cuando solo una parte de los datos está etiquetada?",
+                            opciones: ["Aprendizaje supervisado", "Aprendizaje por refuerzo", "Aprendizaje semisupervisado", "Aprendizaje no supervisado"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Quién planteó la pregunta «¿Puede una máquina pensar?»?",
+                            opciones: ["John McCarthy", "Herbert Simon", "Alan Turing", "Marvin Minsky"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué tecnología permite que asistentes virtuales como Alexa entiendan y respondan?",
+                            opciones: ["Procesamiento del lenguaje natural", "Machine bias", "Aprendizaje por refuerzo", "Visión por computadora"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué fase del proceso de minería de datos implica limpiar y transformar los datos?",
+                            opciones: ["Preparación de los datos", "Comprensión de los datos", "Modelización", "Comprensión del negocio"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué THD utiliza IA para analizar patrones de tráfico y optimizar semáforos?",
+                            opciones: ["IoT", "Impresión 3D", "Robótica colaborativa", "Blockchain"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué tipo de minería de datos se usa para agrupar clientes con comportamientos de compra similares?",
+                            opciones: ["Minería de clústeres", "Minería de asociación", "Minería secuencial", "Minería textual"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿En qué sector la IA puede simular escenarios de competición reales para el entrenamiento?",
+                            opciones: ["Energía", "Deporte", "Salud", "Turismo"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué tipo de minería de datos identifica que los clientes que compran pañales también tienden a comprar cerveza?",
+                            opciones: ["Minería de asociación", "Minería predictiva", "Minería descriptiva", "Minería de clústeres"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué THD combinada con IA permite rastrear productos desde su origen hasta su destino asegurando autenticidad?",
+                            opciones: ["Realidad aumentada", "Computación en la nube", "Blockchain", "IoT"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué tipo de IA se caracteriza por su capacidad para llevar a cabo tareas específicas o limitadas?",
+                            opciones: ["Superinteligencia artificial", "IA estrecha", "IA general", "IA emocional"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué modelo de IA NO existe actualmente en la práctica?",
+                            opciones: ["IA general", "IA estrecha", "IA de asistentes virtuales", "IA especializada"],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué aspecto crítico de la IA exige que los datos personales se recopilen con consentimiento informado?",
+                            opciones: ["Interpretabilidad", "Equidad", "Privacidad y protección de datos personales", "Responsabilidad"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué aspecto crítico del tratamiento de datos en IA se refiere a evitar que los modelos reproduzcan prejuicios?",
+                            opciones: ["Responsabilidad", "Interpretabilidad", "Privacidad", "Equidad y sesgo"],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿Qué término se utiliza para referirse al sesgo inconsciente en los modelos de IA?",
+                            opciones: ["AI ethics", "Machine bias", "Data bias", "Learning error"],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Cuál es un ejemplo de aprendizaje supervisado?",
+                            opciones: ["Detección de patrones en redes sociales", "Reconocimiento de voz sin etiquetas", "Detección de correo no deseado", "Segmentación de clientes sin categorías"],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Cuál es la primera etapa del proceso de minería de datos?",
+                            opciones: ["Preparación de los datos", "Comprensión del negocio", "Evaluación", "Comprensión de los datos"],
+                            correcta: 1
+                        }
+                    ]
+                },
+                digi9: {
+                    title: "Q9: Big Data y Data Science I",
+                    questions: [
+                        {
+                            pregunta: "¿Qué es un \"Dashboard\"?",
+                            opciones: ["Una herramienta visual para ofrecer comprensión clara e interactiva de indicadores.", "Un sistema de almacenamiento en la nube elástico.", "Un tipo de base de datos NoSQL.", "Un formato de intercambio de gráficos."],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Qué define la \"Variedad\" en el big data?",
+                            opciones: ["La capacidad de agregar datos de múltiples fuentes.", "La dificultad para procesar grandes conjuntos de datos.", "La cantidad de errores que contienen los datos.", "La diversidad de tipos y fuentes de datos (estructurados, semi, no estructurados)."],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿Con qué se relaciona la \"Veracidad\" de los datos?",
+                            opciones: ["Velocidad de red.", "Espacio en servidor.", "Calidad y confiabilidad, dado que pueden contener errores.", "Valor económico."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué implica la característica de \"Velocidad\"?",
+                            opciones: ["Tiempo de lectura humano.", "Inconsistencia de formato.", "Rapidez con la que se generan, procesan y analizan los datos.", "Velocidad de internet."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿En qué consiste la característica de \"Agregación\"?",
+                            opciones: ["Rapidez de análisis.", "Capacidad de agregar datos de múltiples fuentes.", "Dificultad de gestión.", "Inconsistencia estructural."],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿A qué se refiere la \"Ingeniería de características\"?",
+                            opciones: ["Proceso de seleccionar, crear o transformar variables de entrada.", "Análisis exploratorio.", "Documentación de origen.", "Visualización mediante dashboards."],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "En la fase de \"Generación de datos\", ¿qué se establece?",
+                            opciones: ["Visualización.", "Decisiones estratégicas.", "Eliminación de datos.", "Cuáles van a ser los datos a tratar y sus fuentes."],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿Qué es la ciencia de datos (data science)?",
+                            opciones: ["Datos de sensores.", "Servicio de Microsoft.", "Repositorio centralizado.", "Disciplina que combina estadística, matemáticas y programación para extraer conocimientos."],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿En qué consiste la fase de \"Limpieza de datos\"?",
+                            opciones: ["Comprender el negocio.", "Buscar datos.", "Crear variables.", "Corregir o eliminar valores erróneos, faltantes o duplicados."],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿Qué es un \"dato\"?",
+                            opciones: ["Producto final útil.", "Análisis climático.", "Representación \"cruda\" y sin procesar de una entidad.", "Resultado interpretado."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿A qué se refiere el concepto de big data?",
+                            opciones: ["Técnicas y tecnologías para manejar conjuntos de datos masivos y complejos.", "Datos de redes sociales únicamente.", "Herramientas de ordenadores domésticos.", "Almacenamiento físico sin internet."],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Cómo surge la \"información\"?",
+                            opciones: ["Eliminación de duplicados.", "Del procesamiento, organización y contextualización de los datos.", "Recopilación masiva aleatoria.", "Representación simbólica."],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué hacen la minería de datos y la IA en la fase de \"Procesamiento\"?",
+                            opciones: ["Toman decisiones finales.", "Almacenan datos.", "Presentan gráficos.", "Preparan datos, identifican patrones y realizan transformaciones."],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿A qué se refiere la característica de \"Volumen\" en big data?",
+                            opciones: ["Rapidez de generación.", "Diversidad de fuentes.", "Calidad de datos.", "Escala masiva de datos generados constantemente."],
+                            correcta: 3
+                        }
+                    ]
+                },
+                digi10: {
+                    title: "Q10: Data Analytics y Almacenamiento",
+                    questions: [
+                        {
+                            pregunta: "¿Para qué se utiliza la información en la data science?",
+                            opciones: ["Para transformarla en big data.", "Para predecir los problemas futuros.", "Para convertirla en insights.", "Para resolver los problemas de negocio."],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Qué significa el término insight?",
+                            opciones: ["Valor de mayor tamaño.", "Herramienta visual.", "Información significativa que surge al procesar datos.", "Dato sin procesar."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿A qué disciplina corresponde la fase de validación de los resultados mencionada?",
+                            opciones: ["Data science.", "Data analytics.", "Data insights.", "Común a todos."],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Cuál NO es un nivel del modelo de almacenamiento de datos por niveles?",
+                            opciones: ["Nivel templado.", "Nivel frío.", "Nivel caliente.", "Nivel crítico."],
+                            correcta: 3
+                        },
+                        {
+                            pregunta: "¿Qué relación existe entre la data science y el data analytics?",
+                            opciones: ["Ninguna.", "El data analytics es una disciplina derivada de la data science.", "Son lo mismo.", "La data science deriva del data analytics."],
+                            correcta: 1
+                        },
+                        {
+                            pregunta: "¿Cómo se llama la disciplina que busca generar insights?",
+                            opciones: ["Data analytics.", "Data insights.", "Big data.", "Data science."],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Cuál NO es una de las seis uves que definen el big data?",
+                            opciones: ["Variedad.", "Veracidad.", "Volatilidad.", "Valor."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Para qué se utiliza un dashboard según el texto?",
+                            opciones: ["Para visualizar información relevante en tiempo real.", "Para eliminar datos duplicados.", "Para convertir science en big data.", "Para almacenar datos calientes."],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "¿Cuál es la principal diferencia entre dato e información?",
+                            opciones: ["El dato es resultado de procesar.", "El dato surge de organizar información.", "La información surge del procesamiento y organización de datos.", "Son lo mismo."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿Qué requiere el Data Analytics a diferencia del Data Science?",
+                            opciones: ["Estrategias futuras.", "Predecir futuro.", "Habilidades más orientadas al negocio y visualización.", "Habilidades en programación y matemáticas."],
+                            correcta: 2
+                        },
+                        {
+                            pregunta: "¿En qué consiste la agregación de los datos?",
+                            opciones: ["En combinar datos que provienen de diferentes fuentes.", "Agregar comienzo al final.", "Agregar etiquetas.", "Eliminar duplicados."],
+                            correcta: 0
+                        },
+                        {
+                            pregunta: "En el modelo por niveles, ¿qué medio se usa para el \"Nivel frío\"?",
+                            opciones: ["HDD tradicionales.", "SSD alta velocidad.", "Cintas magnéticas o soluciones cloud de bajo coste.", "Memoria RAM."],
+                            correcta: 2
+                        }
+                    ]
+                }
 
 
 
-                
+
             },
             diseno: {
                 ud1: {
@@ -1519,59 +1870,437 @@ digi10: {
                         { pregunta: "El código `<%= usuario.getNombre() %>` en JSP es:", opciones: ["Una directiva.", "Una expresión que imprime el resultado.", "Un scriptlet.", "Ninguna es correcta."], correcta: 1 },
                         { pregunta: "En el ejercicio propuesto de CRUD, ¿qué acción se realiza primero para modificar?", opciones: ["UPDATE SQL.", "SELECT SQL por ID para cargar datos previos.", "DELETE SQL.", "Ninguna es correcta."], correcta: 1 }
                     ]
+                },
+                serv_t4: {
+                    title: "Tema 4: Servlets, Cookies y Sesiones",
+                    questions: [
+                        { pregunta: "¿Cuál es la clase base de la que se debe heredar para crear un Servlet HTTP estándar?", opciones: ["javax.servlet.GenericServlet", "javax.servlet.http.HttpServlet", "javax.servlet.Servlet", "Ninguna de las anteriores"], correcta: 1 },
+                        { pregunta: "En el ciclo de vida de un Servlet, ¿cuántas veces se ejecuta el método init()?", opciones: ["Cada vez que llega una petición.", "Solo una vez, al instanciar el servlet.", "Cada vez que se reinicia la sesión del usuario.", "Todas las anteriores son falsas."], correcta: 1 },
+                        { pregunta: "Analiza el siguiente código: `request.getParameter('cliente')`. Si el campo 'cliente' no existe en el formulario enviado, ¿qué devuelve?", opciones: ["Una cadena vacía \"\".", "Lanza una NullPointerException.", "Devuelve null.", "Devuelve \"undefined\"."], correcta: 2 },
+                        { pregunta: "¿Dónde se almacenan físicamente las Cookies?", opciones: ["En la memoria del servidor.", "En la base de datos del servidor.", "En el cliente (navegador).", "En el objeto HttpSession."], correcta: 2 },
+                        { pregunta: "Para invalidar manualmente una sesión y borrar sus datos, utilizamos:", opciones: ["request.closeSession()", "session.invalidate()", "session.setMaxInactiveInterval(0)", "response.endSession()"], correcta: 1 },
+                        { pregunta: "¿Qué método se utiliza para enviar una Cookie al cliente?", opciones: ["request.setCookie(cookie)", "response.addCookie(cookie)", "session.putCookie(cookie)", "Ninguna de las anteriores"], correcta: 1 },
+                        { pregunta: "Si queremos compartir una variable entre TODOS los usuarios de la aplicación, ¿qué Scope debemos usar?", opciones: ["Request Scope", "Session Scope", "Page Scope", "Application Scope"], correcta: 3 },
+                        { pregunta: "Dado el código: `cookie.setMaxAge(-1);`. ¿Qué efecto tiene?", opciones: ["La cookie se borra inmediatamente.", "La cookie no caduca nunca.", "La cookie se borra al cerrar el navegador.", "Lanza una excepción de tiempo negativo."], correcta: 2 },
+                        { pregunta: "¿Qué objeto usamos para redirigir una petición a otro JSP manteniendo los atributos del request (Forward)?", opciones: ["HttpServletResponse", "RequestDispatcher", "SendRedirect", "Todas las anteriores"], correcta: 1 },
+                        { pregunta: "¿Qué ocurre si intentamos convertir a entero un parámetro que contiene texto ('abc') sin usar try-catch?", opciones: ["Se convierte a 0.", "Se produce una NumberFormatException.", "Se produce una IOException.", "El compilador da error."], correcta: 1 },
+                        { pregunta: "En la arquitectura J2EE, ¿dónde se ejecutan los Servlets?", opciones: ["En el navegador del cliente.", "En el Contenedor Web del servidor.", "En el servidor de Base de Datos.", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "¿Cuál es la forma correcta de obtener la sesión actual o crearla si no existe?", opciones: ["request.getSession(false)", "request.getSession()", "new HttpSession()", "response.createSession()"], correcta: 1 },
+                        { pregunta: "Si definimos una variable dentro del método `doGet` de un servlet, su alcance es:", opciones: ["Page Scope (local al método).", "Session Scope.", "Application Scope.", "Ninguna de las anteriores."], correcta: 0 },
+                        { pregunta: "¿Qué archivo XML se utiliza como descriptor de despliegue para configurar servlets y mapeos URL?", opciones: ["context.xml", "server.xml", "web.xml", "config.xml"], correcta: 2 },
+                        { pregunta: "Para obtener un objeto `PrintWriter` que nos permita enviar texto HTML al cliente, usamos:", opciones: ["request.getWriter()", "response.getWriter()", "session.getOut()", "System.out.println()"], correcta: 1 },
+                        { pregunta: "¿Qué método de `HttpServletRequest` devuelve un array con todas las cookies enviadas por el cliente?", opciones: ["getCookies()", "getCookieList()", "fetchCookies()", "Ninguna de las anteriores, se obtienen una a una."], correcta: 0 },
+                        { pregunta: "¿Cuál es la diferencia principal entre `request.setAttribute()` y `request.getParameter()`?", opciones: ["No hay diferencia.", "getParameter lee datos enviados por el cliente (form/URL), setAttribute gestiona datos internos entre servlets/JSP.", "setAttribute es solo para enteros y getParameter para Strings.", "Todas las anteriores."], correcta: 1 },
+                        { pregunta: "Si configuramos `session.setMaxInactiveInterval(60)`, la sesión expirará tras:", opciones: ["60 milisegundos de inactividad.", "60 segundos de inactividad.", "60 minutos de inactividad.", "60 peticiones."], correcta: 1 },
+                        { pregunta: "¿Qué método HTTP es idempotente y muestra los parámetros en la URL?", opciones: ["POST", "GET", "PUT", "DELETE"], correcta: 1 },
+                        { pregunta: "Para acceder al contexto de la aplicación (Application Scope) desde un Servlet, usamos:", opciones: ["this.getServletContext()", "request.getApplication()", "session.getContext()", "Todas las anteriores."], correcta: 0 },
+                        { pregunta: "¿Qué anotación se usa en versiones modernas de Java EE para definir un Servlet sin usar web.xml?", opciones: ["@Servlet", "@WebServlet", "@Controller", "@HttpConfig"], correcta: 1 },
+                        { pregunta: "¿Qué ocurre si ejecutamos `response.sendRedirect('pagina.jsp')`?", opciones: ["El servidor transfiere el control internamente.", "El navegador recibe una respuesta 302 y hace una nueva petición a pagina.jsp.", "Se mantienen los atributos del request original.", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "¿Qué vulnerabilidad de seguridad debemos tratar al recibir parámetros de un usuario?", opciones: ["Validación de tipos de datos.", "Sanitización para evitar XSS/Inyección.", "Control de nulos.", "Todas las anteriores."], correcta: 3 },
+                        { pregunta: "El método `destroy()` de un servlet:", opciones: ["Se llama cada vez que termina una petición.", "Se llama solo una vez, cuando el contenedor descarga el servlet.", "Se debe llamar manualmente desde el doGet.", "Todas las anteriores."], correcta: 1 },
+                        { pregunta: "¿Qué interfaz implementa la clase `HttpServletRequest`?", opciones: ["ServletRequest", "ServletResponse", "HttpSession", "Serializable"], correcta: 0 },
+                        { pregunta: "¿Qué objeto permite compartir datos entre un Servlet y un JSP en la misma petición?", opciones: ["El objeto request.", "El objeto response.", "El objeto config.", "El objeto out."], correcta: 0 },
+                        { pregunta: "Si el método `request.getSession(false)` devuelve `null`, significa que:", opciones: ["Ha ocurrido un error en el servidor.", "No existe una sesión previa asociada al cliente.", "El navegador no acepta cookies.", "Todas las anteriores."], correcta: 1 },
+                        { pregunta: "Respecto a las Cookies, ¿qué desventaja presentan?", opciones: ["Poca privacidad (texto plano).", "El usuario puede deshabilitarlas.", "Limitación de tamaño.", "Todas las anteriores."], correcta: 3 },
+                        { pregunta: "¿Cómo se define un parámetro de inicialización para un servlet específico en web.xml?", opciones: ["<init-param>", "<context-param>", "<servlet-config>", "<param-value>"], correcta: 0 },
+                        { pregunta: "En un entorno MVC con Servlets y JSP, ¿quién actúa normalmente como Controlador?", opciones: ["El archivo JSP.", "El Servlet.", "El JavaBean.", "La base de datos."], correcta: 1 }
+                    ]
+                },
+                serv_t5: {
+                    title: "Tema 5: JDBC y Patrón MVC",
+                    questions: [
+                        { pregunta: "¿Qué significan las siglas JDBC?", opciones: ["Java Database Connectivity", "Java Data Base Control", "Java Direct Buffer Connection", "Ninguna de las anteriores"], correcta: 0 },
+                        { pregunta: "¿Qué método se utiliza para registrar dinámicamente el driver JDBC?", opciones: ["DriverManager.register()", "Class.forName(\"com.mysql.jdbc.Driver\")", "Connection.loadDriver()", "System.loadLibrary()"], correcta: 1 },
+                        { pregunta: "En el patrón MVC implementado con Java, ¿qué componente suele representar el Modelo?", opciones: ["Los Servlets.", "Los archivos JSP.", "Los JavaBeans (POJOs) y clases DAO.", "El navegador web."], correcta: 2 },
+                        { pregunta: "Analiza la cadena: `jdbc:mysql://localhost:3306/tienda`. ¿Qué representa `3306`?", opciones: ["El ID del usuario.", "La versión de MySQL.", "El puerto de escucha del servicio MySQL.", "El tiempo de timeout."], correcta: 2 },
+                        { pregunta: "Para ejecutar una sentencia SQL SELECT, ¿qué método de `Statement` utilizamos?", opciones: ["executeUpdate()", "executeQuery()", "executeSelect()", "execute()"], correcta: 1 },
+                        { pregunta: "El objeto que contiene los resultados devueltos por una consulta SELECT es:", opciones: ["RowSet", "ResultList", "ResultSet", "QueryOutput"], correcta: 2 },
+                        { pregunta: "¿Qué devuelve el método `executeUpdate()` utilizado para INSERT, UPDATE o DELETE?", opciones: ["Un ResultSet.", "Un booleano true/false.", "Un entero indicando el número de filas afectadas.", "Nada (void)."], correcta: 2 },
+                        { pregunta: "¿Cuál es la principal ventaja de usar `PreparedStatement` frente a `Statement`?", opciones: ["Mejora el rendimiento (precompilación).", "Evita la inyección SQL.", "Facilita la inserción de parámetros dinámicos.", "Todas las anteriores."], correcta: 3 },
+                        { pregunta: "En el patrón DAO (Data Access Object), ¿cuál es su responsabilidad principal?", opciones: ["Mostrar los datos al usuario.", "Validar la entrada del formulario.", "Abstraer y encapsular el acceso a la fuente de datos.", "Gestionar la sesión HTTP."], correcta: 2 },
+                        { pregunta: "Para implementar el patrón Singleton en una clase de conexión, el constructor debe ser:", opciones: ["Public", "Private", "Protected", "Static"], correcta: 1 },
+                        { pregunta: "¿Qué excepción obligatoria (Checked Exception) debemos capturar al trabajar con JDBC?", opciones: ["SQLException", "DatabaseException", "IOException", "ConnectionException"], correcta: 0 },
+                        { pregunta: "El método `rs.next()` del ResultSet sirve para:", opciones: ["Mover el cursor a la siguiente fila.", "Devolver true si hay más registros.", "Avanzar en la iteración de resultados.", "Todas las anteriores."], correcta: 3 },
+                        { pregunta: "¿Qué interfaz de JDBC se usa para crear sentencias SQL?", opciones: ["DriverManager", "Connection", "Statement", "ResultSet"], correcta: 2 },
+                        { pregunta: "En una arquitectura MVC Web, el flujo típico es:", opciones: ["Vista -> Modelo -> Controlador.", "Controlador -> Vista -> Modelo.", "Petición -> Controlador -> Modelo -> Vista -> Respuesta.", "Ninguna de las anteriores."], correcta: 2 },
+                        { pregunta: "Si queremos cerrar la conexión a la base de datos, llamamos al método:", opciones: ["stop()", "close()", "end()", "disconnect()"], correcta: 1 },
+                        { pregunta: "¿Qué método estático de `DriverManager` nos devuelve la conexión?", opciones: ["getConnection(url, user, pass)", "createConnection()", "connect()", "getDriver()"], correcta: 0 },
+                        { pregunta: "Un JavaBean (Modelo) debe cumplir qué características:", opciones: ["Constructor vacío.", "Atributos privados.", "Getters y Setters públicos.", "Todas las anteriores."], correcta: 3 },
+                        { pregunta: "En el código: `Class.forName('com.mysql.jdbc.Driver')`, si el driver no está en el classpath, se lanza:", opciones: ["SQLException", "ClassNotFoundException", "NullPointerException", "DriverNotFoundException"], correcta: 1 },
+                        { pregunta: "¿Qué método se usa para leer un String de la columna 'nombre' en un ResultSet?", opciones: ["rs.getValue('nombre')", "rs.getString('nombre')", "rs.getField('nombre')", "rs.retrieve('nombre')"], correcta: 1 },
+                        { pregunta: "La interfaz `Serializable` en un Bean sirve para:", opciones: ["Convertir el objeto en bytes para poder guardarlo o transmitirlo.", "Encriptar la contraseña.", "Conectar con la base de datos.", "Ninguna de las anteriores."], correcta: 0 },
+                        { pregunta: "¿Qué objeto gestiona una lista de controladores de base de datos?", opciones: ["ConnectionManager", "DriverManager", "DriverList", "DataSource"], correcta: 1 },
+                        { pregunta: "Para evitar abrir múltiples conexiones innecesarias en un DAO, se suele utilizar el patrón:", opciones: ["Factory", "Observer", "Singleton", "Adapter"], correcta: 2 },
+                        { pregunta: "En una sentencia `PreparedStatement`, ¿qué carácter se usa como marcador de posición para los parámetros?", opciones: ["%", "$", "?", "#"], correcta: 2 },
+                        { pregunta: "Si `rs.next()` devuelve `false` al inicio de la lectura, significa que:", opciones: ["La consulta falló.", "La conexión se ha perdido.", "La consulta no devolvió ningún registro (vacía).", "Todas las anteriores."], correcta: 2 },
+                        { pregunta: "¿Qué librería (JAR) es imprescindible añadir al proyecto para conectar con MySQL?", opciones: ["mysql-connector-java.jar", "jdbc-api.jar", "javax.sql.jar", "java-db-core.jar"], correcta: 0 },
+                        { pregunta: "El método `connection.createStatement()` devuelve:", opciones: ["Un objeto ResultSet.", "Un objeto Statement.", "Un booleano.", "Una excepción."], correcta: 1 },
+                        { pregunta: "En un Servlet Controlador, para pasar la lista de usuarios recuperada (List<Usuario>) a la vista JSP, usamos:", opciones: ["request.setParameter()", "request.setAttribute()", "response.sendParameter()", "session.put()"], correcta: 1 },
+                        { pregunta: "¿Qué es XAMPP en el contexto de la asignatura?", opciones: ["Un IDE de programación.", "Un paquete de software que incluye Apache y MySQL.", "Un framework de Java.", "Un driver JDBC."], correcta: 1 },
+                        { pregunta: "Si queremos borrar un usuario con ID 5, la sentencia SQL correcta para `executeUpdate` sería:", opciones: ["DELETE FROM usuarios WHERE id=5", "REMOVE FROM usuarios WHERE id=5", "DROP usuario 5", "TRUNCATE id=5"], correcta: 0 },
+                        { pregunta: "¿Qué método de `PreparedStatement` usamos para asignar un entero al primer parámetro '?' ?", opciones: ["setInteger(1, valor)", "setInt(0, valor)", "setInt(1, valor)", "putInt(1, valor)"], correcta: 2 }
+                    ]
+                },
+                serv_t6: {
+                    title: "Tema 6: Servicios Web (REST y JAX-RS)",
+                    questions: [
+                        { pregunta: "¿Qué significan las siglas JAX-RS?", opciones: ["Java API for RESTful Web Services", "Java XML Remote Service", "Java Ajax Request System", "Ninguna de las anteriores"], correcta: 0 },
+                        { pregunta: "¿Cuál es la implementación de referencia más utilizada para JAX-RS mencionada en el temario?", opciones: ["Spring Boot", "Jersey", "Hibernate", "Apache Struts"], correcta: 1 },
+                        { pregunta: "Para definir la ruta relativa de un recurso o método en JAX-RS, utilizamos la anotación:", opciones: ["@Route", "@Url", "@Path", "@Location"], correcta: 2 },
+                        { pregunta: "Analiza el código: `@GET public String saludar()`. ¿Qué tipo de petición HTTP atiende este método?", opciones: ["POST", "PUT", "GET", "DELETE"], correcta: 2 },
+                        { pregunta: "¿Qué anotación se utiliza para especificar el tipo MIME que retorna un método (por ejemplo, \"text/plain\")?", opciones: ["@Returns", "@Produces", "@Consumes", "@ContentType"], correcta: 1 },
+                        { pregunta: "Si un método tiene la anotación `@Consumes(MediaType.APPLICATION_JSON)`, significa que:", opciones: ["El método devuelve un JSON.", "El método acepta/procesa datos en formato JSON enviados por el cliente.", "El método consume mucha memoria.", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "¿Qué anotación JAX-RS se corresponde con la operación de actualización de un recurso?", opciones: ["@UPDATE", "@POST", "@PUT", "@PATCH"], correcta: 2 },
+                        { pregunta: "En la configuración de `web.xml` para Jersey, el parámetro `jersey.config.server.provider.packages` sirve para:", opciones: ["Definir la contraseña de la base de datos.", "Indicar los paquetes Java donde buscar las clases con anotaciones REST.", "Configurar el puerto de Tomcat.", "Todas las anteriores."], correcta: 1 },
+                        { pregunta: "¿Qué clase se utiliza en un cliente Java (Jersey) para iniciar la configuración del cliente?", opciones: ["ClientBuilder", "RestClient", "HttpConnection", "WebClient"], correcta: 0 },
+                        { pregunta: "En un servicio REST, un POJO (Plain Old Java Object) se convierte en un recurso web mediante:", opciones: ["Herencia de la clase Servlet.", "Implementación de la interfaz Serializable.", "El uso de Anotaciones JAX-RS.", "La compilación en C++."], correcta: 2 },
+                        { pregunta: "Si tenemos `@Path(\"/usuarios\")` en la clase y `@Path(\"/vip\")` en un método, la URL completa será:", opciones: ["/usuarios", "/vip", "/usuarios/vip", "/vip/usuarios"], correcta: 2 },
+                        { pregunta: "¿Qué error común suele ocurrir si no se incluyen correctamente las librerías de Jersey en `WEB-INF/lib`?", opciones: ["ClassNotFoundException", "NullPointerException", "SQLException", "NumberFormatException"], correcta: 0 },
+                        { pregunta: "¿Qué método HTTP se suele asociar con la creación de un nuevo recurso?", opciones: ["GET", "PUT", "POST", "HEAD"], correcta: 2 },
+                        { pregunta: "El objeto `WebTarget` en el cliente sirve para:", opciones: ["Definir el objetivo de la base de datos.", "Apuntar a una URI específica para realizar peticiones.", "Configurar el servidor Tomcat.", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "Si queremos que un método devuelva HTML, usamos:", opciones: ["@Produces(MediaType.TEXT_HTML)", "@Produces(\"text/html\")", "Ambas opciones A y B son válidas.", "Ninguna de las anteriores."], correcta: 2 },
+                        { pregunta: "¿Qué hace la anotación `@DELETE`?", opciones: ["Borra la clase del servidor.", "Indica que el método responderá a peticiones HTTP DELETE.", "Elimina la base de datos.", "Cierra la sesión del usuario."], correcta: 1 },
+                        { pregunta: "Para construir una URI en el cliente, usamos la clase:", opciones: ["UriBuilder", "UrlFactory", "PathFinder", "LocationManager"], correcta: 0 },
+                        { pregunta: "REST se basa en el protocolo:", opciones: ["FTP", "SMTP", "HTTP", "SOAP"], correcta: 2 },
+                        { pregunta: "¿Qué es un recurso en la arquitectura REST?", opciones: ["Cualquier información que puede ser nombrada y accedida vía web.", "Solo archivos de imagen.", "Solo bases de datos.", "El hardware del servidor."], correcta: 0 },
+                        { pregunta: "La anotación `@HEAD` sirve para:", opciones: ["Obtener solo las cabeceras de la respuesta sin el cuerpo.", "Obtener el primer registro de la base de datos.", "Encabezar la lista de servlets.", "Todas las anteriores."], correcta: 0 },
+                        { pregunta: "En el código del cliente: `target.request(MediaType.TEXT_XML).get(String.class)`. ¿Qué hace `.get(String.class)`?", opciones: ["Envía una petición GET y espera recibir un String.", "Envía una petición GET y espera recibir un entero.", "Envía una petición POST.", "Obtiene la clase del objeto."], correcta: 0 },
+                        { pregunta: "¿Qué ventaja tiene usar JAX-RS frente a Servlets puros para servicios web?", opciones: ["Uso de anotaciones simplifica el código.", "Manejo automático de tipos MIME.", "Mapeo de URLs más flexible.", "Todas las anteriores."], correcta: 3 },
+                        { pregunta: "Si el servidor responde con un código 404 a tu servicio REST, probablemente:", opciones: ["El servidor está apagado.", "La ruta (@Path) o el mapeo en web.xml son incorrectos.", "Hay un error de sintaxis Java.", "La base de datos está llena."], correcta: 1 },
+                        { pregunta: "¿Se pueden tener múltiples métodos con `@GET` en la misma clase?", opciones: ["No, da error de compilación.", "Sí, si tienen diferentes `@Path` o diferentes `@Produces`/`@Consumes`.", "Sí, siempre que tengan diferente nombre de método Java.", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "Jersey es un framework que implementa la especificación:", opciones: ["JPA", "JMS", "JAX-RS", "JSF"], correcta: 2 },
+                        { pregunta: "Para desplegar un servicio Jersey en Tomcat, necesitamos configurar el servlet:", opciones: ["org.apache.catalina.servlets.DefaultServlet", "com.sun.jersey.spi.container.servlet.ServletContainer", "javax.servlet.http.HttpServlet", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "El formato de intercambio de datos más ligero y común en REST hoy en día es:", opciones: ["XML", "SOAP", "JSON", "HTML"], correcta: 2 },
+                        { pregunta: "¿Qué anotación permite inyectar valores de la URL (ej: /usuarios/5) en un parámetro del método?", opciones: ["@QueryParam", "@PathParam", "@FormParam", "@UrlParam"], correcta: 1 },
+                        { pregunta: "Un servicio RESTful es por definición:", opciones: ["Stateless (sin estado).", "Stateful (con estado).", "Dependiente de la sesión.", "Síncrono únicamente."], correcta: 0 },
+                        { pregunta: "¿Qué método de la clase `Client` inicia la comunicación?", opciones: ["Client.create() (versiones antiguas) o ClientBuilder.newClient()", "new Client()", "Client.start()", "Client.init()"], correcta: 0 }
+                    ]
+                },
+                serv_t7: {
+                    title: "Tema 7: Formato JSON (GSON)",
+                    questions: [
+                        { pregunta: "¿Qué es JSON?", opciones: ["JavaScript Object Notation", "Java Serialized Object Network", "JavaScript Online Notation", "Java Standard Output Node"], correcta: 0 },
+                        { pregunta: "Para trabajar con JSON en Java de forma sencilla, el temario recomienda la librería:", opciones: ["Jackson", "Google Gson", "JSON-B", "FastJson"], correcta: 1 },
+                        { pregunta: "¿Cómo se instancia un objeto Gson básico?", opciones: ["Gson g = Gson.create();", "Gson g = new Gson();", "Gson g = GsonFactory.build();", "No se puede instanciar."], correcta: 1 },
+                        { pregunta: "Analiza el código: `gson.toJson(listaPersonas)`. ¿Qué devuelve este método?", opciones: ["Un objeto ArrayList.", "Un archivo .json en disco.", "Un String con el contenido en formato JSON.", "Un objeto HttpServletResponse."], correcta: 2 },
+                        { pregunta: "En un Servlet que devuelve JSON, ¿qué tipo de contenido debemos establecer en la respuesta?", opciones: ["response.setContentType(\"text/html\")", "response.setContentType(\"application/xml\")", "response.setContentType(\"application/json\")", "response.setContentType(\"text/plain\")"], correcta: 2 },
+                        { pregunta: "¿Qué estructura JSON representa una lista de objetos?", opciones: ["{ objeto1, objeto2 }", "[ objeto1, objeto2 ]", "<list>objeto1</list>", "( objeto1, objeto2 )"], correcta: 1 },
+                        { pregunta: "Si tenemos la clase `Persona` con atributos `nombre` y `edad`. ¿Cómo se ve en JSON `new Persona(\"Ana\", 30)`?", opciones: ["{ \"nombre\": \"Ana\", \"edad\": 30 }", "[ \"Ana\", 30 ]", "Persona(Ana, 30)", "<persona><nombre>Ana</nombre>...</persona>"], correcta: 0 },
+                        { pregunta: "Para enviar el JSON generado al cliente desde un Servlet, usamos:", opciones: ["System.out.println(json)", "response.getWriter().println(json)", "request.setAttribute(\"json\", json)", "return json"], correcta: 1 },
+                        { pregunta: "La librería Gson permite:", opciones: ["Convertir objetos Java a JSON.", "Convertir cadenas JSON a objetos Java.", "Manejar estructuras complejas como Listas y Mapas.", "Todas las anteriores."], correcta: 3 },
+                        { pregunta: "¿Qué ocurre si intentamos serializar con Gson un objeto que tiene referencias circulares?", opciones: ["Funciona perfectamente.", "Se produce un StackOverflowError.", "Gson ignora la referencia.", "Se devuelve null."], correcta: 1 },
+                        { pregunta: "¿Es necesario que la clase Java (POJO) tenga getters y setters para que Gson funcione?", opciones: ["Sí, es obligatorio.", "No, Gson puede acceder a los campos directamente (incluso privados) por reflexión.", "Solo necesita los setters.", "Solo necesita los getters."], correcta: 1 },
+                        { pregunta: "¿Qué método de Gson usarías para convertir un String JSON en un objeto Java?", opciones: ["gson.toJson()", "gson.fromJson()", "gson.parse()", "gson.toObject()"], correcta: 1 },
+                        { pregunta: "En el ejemplo del temario, se utiliza `ArrayList<Persona>` antes de convertir a JSON. Esto generará en JSON:", opciones: ["Un objeto raíz {}", "Un array raíz []", "Una cadena de texto simple", "Un error de conversión"], correcta: 1 },
+                        { pregunta: "JSON es un formato:", opciones: ["Binario.", "De texto ligero.", "Compilado.", "Cifrado."], correcta: 1 },
+                        { pregunta: "En la sintaxis JSON, las claves (nombres de atributos) deben ir siempre:", opciones: ["Sin comillas.", "Entre comillas simples.", "Entre comillas dobles.", "Entre paréntesis."], correcta: 2 },
+                        { pregunta: "¿Qué ventaja tiene JSON sobre XML?", opciones: ["Es más verboso.", "Es más ligero y fácil de leer para humanos y máquinas.", "Soporta comentarios nativos.", "Todas las anteriores."], correcta: 1 },
+                        { pregunta: "Para usar Gson en nuestro proyecto Eclipse, debemos:", opciones: ["Instalar un plugin de Eclipse.", "Añadir el fichero .jar de Gson a WEB-INF/lib.", "Importar `java.util.gson` (viene en el JDK).", "No hace falta nada."], correcta: 1 },
+                        { pregunta: "¿Qué imprimirá `pw.println(gson.toJson(null));`?", opciones: ["null (texto)", "Una cadena vacía", "Lanza NullPointerException", "{}"], correcta: 0 },
+                        { pregunta: "Si queremos excluir un campo de la serialización JSON con Gson, podemos usar la palabra clave:", opciones: ["transient", "static", "private", "final"], correcta: 0 },
+                        { pregunta: "En una respuesta JSON correcta, los valores booleanos se representan como:", opciones: ["\"true\" / \"false\"", "1 / 0", "true / false (sin comillas)", "T / F"], correcta: 2 },
+                        { pregunta: "¿Gson pertenece al paquete estándar de Java (JDK)?", opciones: ["Sí, desde Java 8.", "No, es una librería de terceros (Google).", "Sí, desde Java 5.", "No, es de Apache."], correcta: 1 },
+                        { pregunta: "En el código: `response.getWriter()`. ¿Qué excepción debemos capturar?", opciones: ["ServletException", "IOException", "JsonException", "SQLException"], correcta: 1 },
+                        { pregunta: "Si la clase `Persona` tiene un campo `fechaNacimiento` de tipo Date, Gson:", opciones: ["Da error.", "Lo serializa usando un formato por defecto.", "Lo ignora.", "Lo convierte a null."], correcta: 1 },
+                        { pregunta: "¿Puede Gson serializar un objeto que contiene otro objeto (anidado)?", opciones: ["No, solo tipos primitivos.", "Sí, crea una estructura JSON anidada { \"obj\": { ... } }.", "Sí, pero lo convierte a String.", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "El tipo de dato numérico en JSON:", opciones: ["Distingue entre int y float.", "Es siempre un número (number), puede ser entero o flotante.", "Debe ir entre comillas.", "No existe, todo es texto."], correcta: 1 },
+                        { pregunta: "¿Qué carácter separa los elementos dentro de un objeto JSON?", opciones: ["Punto y coma (;)", "Coma (,)", "Punto (.)", "Espacio"], correcta: 1 },
+                        { pregunta: "¿Qué carácter separa la clave del valor en JSON (ej: \"edad\" _ 20)?", opciones: ["Igual (=)", "Flecha (=>)", "Dos puntos (:)", "Guion (-)"], correcta: 2 },
+                        { pregunta: "En el temario, el ServletDatosJSON extiende de:", opciones: ["GenericServlet", "HttpServlet", "JsonServlet", "RestServlet"], correcta: 1 },
+                        { pregunta: "¿Qué hace `pw.close()` al final del servlet?", opciones: ["Cierra la conexión con la base de datos.", "Cierra el flujo de escritura hacia el cliente.", "Apaga el servidor.", "Borra el objeto Gson."], correcta: 1 },
+                        { pregunta: "¿Es JSON independiente del lenguaje de programación?", opciones: ["No, solo funciona en JavaScript.", "Sí, es un formato de texto independiente del lenguaje.", "No, solo funciona en Java.", "Solo funciona en aplicaciones web."], correcta: 1 }
+                    ]
+                },
+                serv_final: {
+                    title: "🎓 EXAMEN FINAL: Desarrollo Servidor",
+                    questions: [
+                        // BLOQUE SERVLETS
+                        { pregunta: "¿Qué método se llama para procesar una petición HTTP GET?", opciones: ["serviceGet()", "doGet()", "init()", "processRequest()"], correcta: 1 },
+                        { pregunta: "Para obtener un parámetro enviado por un formulario HTML, usamos:", opciones: ["request.getAttribute()", "request.getParameter()", "response.getParameter()", "session.getAttribute()"], correcta: 1 },
+                        { pregunta: "¿Qué Scope usarías para un carrito de la compra?", opciones: ["Page", "Request", "Session", "Application"], correcta: 2 },
+                        { pregunta: "La interfaz `javax.servlet.Servlet` define los métodos del ciclo de vida:", opciones: ["init, service, destroy", "start, run, stop", "create, read, delete", "load, execute, unload"], correcta: 0 },
+                        { pregunta: "¿Dónde reside físicamente una Cookie?", opciones: ["Servidor", "Cliente (Navegador)", "Base de Datos", "En la red"], correcta: 1 },
+                        { pregunta: "Si `session.getAttribute('user')` devuelve null, ¿qué significa?", opciones: ["El usuario no existe en BBDD.", "No hay ningún objeto guardado con esa clave en la sesión.", "El servidor ha fallado.", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "Para redirigir al usuario a otra URL (Redirect) se usa:", opciones: ["request.getRequestDispatcher().forward()", "response.sendRedirect()", "pageContext.forward()", "Todas las anteriores"], correcta: 1 },
+                        { pregunta: "El archivo `web.xml` se encuentra en la carpeta:", opciones: ["WebContent", "WEB-INF", "META-INF", "src"], correcta: 1 },
+                        { pregunta: "¿Qué objeto permite escribir la respuesta HTML enviada al cliente?", opciones: ["PrintWriter", "Scanner", "BufferedReader", "StringWriter"], correcta: 0 },
+                        { pregunta: "Para invalidar una sesión se usa:", opciones: ["session.remove()", "session.invalidate()", "session.logout()", "session.delete()"], correcta: 1 },
+
+                        // BLOQUE JDBC
+                        { pregunta: "¿Qué clase carga el driver de base de datos?", opciones: ["DriverManager", "Class", "Connection", "Driver"], correcta: 1 },
+                        { pregunta: "La URL de conexión JDBC típica para MySQL empieza por:", opciones: ["mysql://", "jdbc:mysql://", "http://mysql", "db:mysql://"], correcta: 1 },
+                        { pregunta: "¿Qué objeto representa una conexión física a la BBDD?", opciones: ["Statement", "Connection", "ResultSet", "DriverManager"], correcta: 1 },
+                        { pregunta: "Para consultas SELECT se usa el método:", opciones: ["executeUpdate", "executeQuery", "executeInsert", "executeSelect"], correcta: 1 },
+                        { pregunta: "Para INSERT, UPDATE, DELETE se usa el método:", opciones: ["executeUpdate", "executeQuery", "executeBatch", "executeMod"], correcta: 0 },
+                        { pregunta: "`PreparedStatement` es preferible a `Statement` porque:", opciones: ["Es más rápido.", "Previene inyección SQL.", "Acepta parámetros.", "Todas las anteriores."], correcta: 3 },
+                        { pregunta: "¿Qué excepción lanza JDBC ante errores de BBDD?", opciones: ["IOException", "DatabaseException", "SQLException", "JDBCException"], correcta: 2 },
+                        { pregunta: "El patrón DAO sirve para:", opciones: ["Diseñar la interfaz gráfica.", "Separar la lógica de acceso a datos del resto de la aplicación.", "Gestionar sesiones.", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "Para recorrer un ResultSet usamos el método:", opciones: ["next()", "hasNext()", "moveNext()", "forward()"], correcta: 0 },
+                        { pregunta: "El cierre de conexiones (`close()`) es importante para:", opciones: ["Liberar recursos del servidor.", "Evitar fugas de memoria.", "No saturar la BBDD.", "Todas las anteriores."], correcta: 3 },
+
+                        // BLOQUE REST/JAX-RS
+                        { pregunta: "¿Qué anotación define la ruta de un recurso REST?", opciones: ["@Route", "@Path", "@Url", "@Link"], correcta: 1 },
+                        { pregunta: "El método HTTP para actualizar un recurso es:", opciones: ["POST", "GET", "PUT", "HEAD"], correcta: 2 },
+                        { pregunta: "¿Qué anotación indica el tipo de contenido que produce un servicio?", opciones: ["@Produces", "@Consumes", "@Output", "@Return"], correcta: 0 },
+                        { pregunta: "JAX-RS es:", opciones: ["Una implementación.", "Una especificación (API) de Java.", "Un servidor web.", "Un lenguaje."], correcta: 1 },
+                        { pregunta: "Jersey es:", opciones: ["Una especificación.", "Una implementación de JAX-RS.", "Un tipo de JSON.", "Una base de datos."], correcta: 1 },
+                        { pregunta: "El código de estado HTTP 200 significa:", opciones: ["Error", "Not Found", "OK", "Created"], correcta: 2 },
+                        { pregunta: "El código de estado HTTP 404 significa:", opciones: ["OK", "Not Found", "Server Error", "Bad Request"], correcta: 1 },
+                        { pregunta: "El código de estado HTTP 500 significa:", opciones: ["Internal Server Error", "OK", "Unauthorized", "Forbidden"], correcta: 0 },
+                        { pregunta: "¿Qué anotación inyecta un parámetro de la URL?", opciones: ["@PathParam", "@QueryParam", "@UrlParam", "@InjectedParam"], correcta: 0 },
+                        { pregunta: "REST es un estilo arquitectónico:", opciones: ["Con estado (Stateful).", "Sin estado (Stateless).", "Basado en sesiones.", "Basado en Cookies."], correcta: 1 },
+
+                        // BLOQUE JSON/GSON
+                        { pregunta: "JSON significa:", opciones: ["Java Serialized Object Notation", "JavaScript Object Notation", "Java Syntax On Net", "Ninguna"], correcta: 1 },
+                        { pregunta: "`new Gson().toJson(obj)` convierte:", opciones: ["JSON a Java", "Java a JSON", "XML a JSON", "JSON a XML"], correcta: 1 },
+                        { pregunta: "Un array en JSON se delimita por:", opciones: ["{}", "[]", "()", "<>"], correcta: 1 },
+                        { pregunta: "Un objeto en JSON se delimita por:", opciones: ["{}", "[]", "()", "<>"], correcta: 0 },
+                        { pregunta: "¿Qué librería de Google se usa comúnmente para JSON?", opciones: ["Jackson", "GSON", "JSON-P", "SimpleJSON"], correcta: 1 },
+
+                        // PREGUNTAS MIXTAS / ANÁLISIS CÓDIGO
+                        { pregunta: "Si `rs.next()` devuelve false, ¿qué ocurre?", opciones: ["Se lanza una excepción.", "El bucle de lectura termina.", "Se cierra la conexión.", "Se borran los datos."], correcta: 1 },
+                        { pregunta: "¿Qué hace `response.setContentType(\"application/json\")`?", opciones: ["Convierte los datos a JSON.", "Informa al navegador que la respuesta es JSON.", "Valida el JSON.", "Todas las anteriores."], correcta: 1 },
+                        { pregunta: "En un patrón MVC, ¿qué archivo suele ser la VISTA?", opciones: ["Servlet (.java)", "Clase DAO", "Archivo JSP", "web.xml"], correcta: 2 },
+                        { pregunta: "Si un Servlet lanza una `ServletException`, ¿quién la gestiona normalmente?", opciones: ["El navegador.", "El contenedor de Servlets (Tomcat).", "La base de datos.", "El usuario."], correcta: 1 },
+                        { pregunta: "¿Es posible tener un Servlet sin método `doPost`?", opciones: ["No, es obligatorio.", "Sí, si solo atiende peticiones GET.", "Sí, pero no compila.", "Ninguna de las anteriores."], correcta: 1 },
+                        { pregunta: "La instrucción `Class.forName` en JDBC puede lanzar la excepción:", opciones: ["ClassNotFoundException", "SQLException", "IOException", "RuntimeException"], correcta: 0 },
+                        { pregunta: "¿Qué método de `HttpSession` devuelve el tiempo de creación?", opciones: ["getCreationTime()", "getStartTime()", "getInitTime()", "getBirthTime()"], correcta: 0 },
+                        { pregunta: "Para obtener los nombres de todos los parámetros de un formulario:", opciones: ["request.getParameterNames()", "request.getParams()", "request.getAll()", "request.list()"], correcta: 0 },
+                        { pregunta: "En REST, el método POST NO es:", opciones: ["Seguro.", "Idempotente.", "Cachable.", "Todas las anteriores."], correcta: 3 },
+                        { pregunta: "¿Qué clase Java se usa para representar una fecha en un POJO simple?", opciones: ["java.sql.Date", "java.util.Date", "java.time.LocalDate", "Cualquiera de las anteriores."], correcta: 3 },
+                        { pregunta: "Si en un JSP ponemos `<%= x %>`, ¿qué ocurre?", opciones: ["Se declara una variable x.", "Se imprime el valor de x en la salida.", "Se comenta x.", "Da error de sintaxis."], correcta: 1 },
+                        { pregunta: "¿El directorio `WEB-INF` es accesible directamente desde el navegador?", opciones: ["Sí.", "No, es privado.", "Solo si tienes contraseña.", "Depende del navegador."], correcta: 1 },
+                        { pregunta: "Para recuperar un entero de `request.getParameter`, debemos usar:", opciones: ["(int) request.getParameter()", "Integer.parseInt(request.getParameter())", "request.getIntParameter()", "No se puede."], correcta: 1 },
+                        { pregunta: "¿Qué patrón de diseño garantiza una única instancia de la conexión a BBDD?", opciones: ["MVC", "DAO", "Singleton", "Factory"], correcta: 2 },
+                        { pregunta: "¡Última! ¿Qué nota vas a sacar en el examen?", opciones: ["Un 5 pelao.", "Un 10, soy una máquina.", "Lo importante es participar.", "Depende de si cae lo que he estudiado."], correcta: 1 }
+                    ]
                 }
-            } 
+            },
+            // ... dentro de const BBDD = { ...
+
+            cliente: {
+                angular1: {
+                    title: "Angular: Data Binding, Control Flow y Formularios",
+                    questions: [
+                        // Pregunta 1
+                        {
+                            pregunta: "¿Qué característica tiene @if frente a *ngIf?",
+                            code: `// Dado este código en Angular 17+:
+@if (activo) {
+  <p>Activo</p>
+}`,
+                            opciones: ["Usa ng-template de forma explícita", "Es más antiguo y menos eficiente", "Es el control de flujo moderno recomendado"],
+                            correcta: 2,
+                            type: "test"
+                        },
+                        // Pregunta 2 (IA)
+                        {
+                            type: "text",
+                            pregunta: "¿Qué valor se mostrará por consola al pulsar el botón Guardar si el campo nombre está vacío? Explica por qué.",
+                            code: `// TS
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+export class AppComponent {
+  usuarioForm = new FormGroup({
+    nombre: new FormControl('', Validators.required)
+  });
+
+  guardar() {
+    console.log(this.usuarioForm.valid);
+  }
+}
+
+// HTML
+<form [formGroup]="usuarioForm" (ngSubmit)="guardar()">
+  <input type="text" formControlName="nombre">
+  <button type="submit">Guardar</button>
+</form>`,
+                            criterio: "Debe indicar que se mostrará 'false'. La razón es que el campo tiene el validador 'Validators.required' y al estar vacío, el estado del formulario (valid) es falso.",
+                            correcta: 0
+                        },
+                        // Pregunta 3
+                        {
+                            pregunta: "¿Qué indica (click) en el HTML?",
+                            code: `<button (click)="saludar()">Saludar</button>
+
+// TS
+saludar() {
+  console.log('Hola');
+}`,
+                            opciones: ["Un enlace bidireccional", "Un evento que ejecuta un método del componente", "Una directiva estructural"],
+                            correcta: 1,
+                            type: "test"
+                        },
+                        // Pregunta 4 (IA)
+                        {
+                            type: "text",
+                            pregunta: "¿Qué valor se mostrará por consola (form.valid) al pulsar Guardar si el campo nombre está vacío? Explica brevemente.",
+                            code: `<form #usuarioForm="ngForm" (ngSubmit)="guardar(usuarioForm)">
+  <input 
+    type="text" 
+    name="nombre" 
+    [(ngModel)]="usuario.nombre" 
+    required 
+  >
+  <button type="submit">Guardar</button>
+</form>
+
+// TS
+export class AppComponent {
+  usuario = {
+    nombre: ''
+  };
+
+  guardar(form: any) {
+    console.log(form.valid);
+  }
+}`,
+                            criterio: "Se mostrará 'false'. Al usar el atributo 'required' en el input dentro de un formulario Template-Driven, Angular valida automáticamente que no esté vacío.",
+                            correcta: 0
+                        },
+                        // Pregunta 5 (IA)
+                        {
+                            type: "text",
+                            pregunta: "¿Por qué este formulario no funciona correctamente y cómo se arregla?",
+                            code: `// TS
+this.formulario = new FormGroup({
+  nombre: new FormControl('')
+});
+
+<form>
+  <input formControlName="nombre">
+</form>`,
+                            criterio: "No funciona porque falta vincular el formulario del TS con el del HTML. Falta añadir [formGroup]=\"formulario\" en la etiqueta <form> del HTML.",
+                            correcta: 0
+                        },
+                        // Pregunta 6
+                        {
+                            pregunta: "¿Qué tipo de data binding se está utilizando?",
+                            code: `// TS
+export class AppComponent {
+  nombre = 'Ana';
+}
+
+<p>{{ nombre }}</p>`,
+                            opciones: ["Interpolation", "Two-way binding", "Property binding"],
+                            correcta: 0,
+                            type: "test"
+                        },
+                        // Pregunta 7
+                        {
+                            pregunta: "¿Para qué se utiliza el uso de [src] (corchetes)?",
+                            code: `// TS
+export class AppComponent {
+  imagen = 'logo.png';
+}
+
+<img [src]="imagen">`,
+                            opciones: ["Para escuchar eventos del HTML", "Para enlazar una propiedad HTML con una variable del componente (Property Binding)", "Para mostrar texto dinámico"],
+                            correcta: 1,
+                            type: "test"
+                        },
+                        // Pregunta 8
+                        {
+                            pregunta: "Analiza el siguiente código. ¿Qué afirmación es correcta sobre [(...)]?",
+                            code: `<input [(ngModel)]="nombre">
+<p>{{ nombre }}</p>`,
+                            opciones: ["Solo permite leer datos del componente", "No requiere importar ningún módulo", "Permite modificar la variable desde la vista y el componente (Two-way binding)"],
+                            correcta: 2,
+                            type: "test"
+                        }
+                    ]
+                }
+            }
         };
+
+
+
+
+
+
+        // --- CONFIGURACIÓN IA ---
+        // --- CONFIGURACIÓN IA ---
+        // --- CONFIGURACIÓN IA ---
+        const GOOGLE_API_KEY = "AIzaSyAwEB0h4FBd85xj-OLUfT3i-ui5fJxtXuY";
 
         // --- VARIABLES DE ESTADO ---
         let currentQuiz = null;
         let currentQuestionIndex = 0;
         let score = 0;
-        let userAnswers = []; // Almacena { selected: index, correct: index }
+        let userAnswers = [];
 
         // --- ELEMENTOS DOM ---
         const seleccionScreen = document.getElementById('seleccion-screen');
         const quizScreen = document.getElementById('quiz-screen');
         const resultsScreen = document.getElementById('results-screen');
-        
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const loadingText = document.getElementById('loading-text');
+        const loadingBar = document.getElementById('loading-bar');
+
         const quizTitle = document.getElementById('quiz-title');
         const questionText = document.getElementById('question-text');
         const optionsContainer = document.getElementById('options-container');
         const progressText = document.getElementById('progress');
         const nextBtn = document.getElementById('next-btn');
-        
+
         const finalScore = document.getElementById('final-score');
         const finalGrade = document.getElementById('final-grade');
         const feedbackMsg = document.getElementById('feedback-msg');
         const reviewContainer = document.getElementById('review-container');
 
-        // --- FUNCIONES ---
+        // --- FUNCIONES PRINCIPALES ---
 
         function showScreen(screenId) {
             [seleccionScreen, quizScreen, resultsScreen].forEach(el => el.classList.add('hidden'));
-            document.getElementById(screenId).classList.remove('hidden');
-            window.scrollTo(0,0);
+            loadingOverlay.classList.add('hidden'); // Asegurar que el overlay se oculte
+            const active = document.getElementById(screenId);
+            if (active) active.classList.remove('hidden');
+            window.scrollTo(0, 0);
         }
 
         function startQuiz(subject, quizId) {
+            if (!BBDD[subject] || !BBDD[subject][quizId]) {
+                alert("Cuestionario no encontrado");
+                return;
+            }
             currentQuiz = BBDD[subject][quizId];
             currentQuestionIndex = 0;
             score = 0;
             userAnswers = [];
+
             showScreen('quiz-screen');
             loadQuestion();
         }
 
         function loadQuestion() {
             const q = currentQuiz.questions[currentQuestionIndex];
-            
+
             quizTitle.textContent = currentQuiz.title;
             progressText.textContent = `${currentQuestionIndex + 1} / ${currentQuiz.questions.length}`;
             questionText.textContent = q.pregunta;
-            
+
             optionsContainer.innerHTML = '';
+
+            // --- NUEVO: RENDERIZAR BLOQUE DE CÓDIGO SI EXISTE ---
+            if (q.code) {
+                const codeBlock = document.createElement('div');
+                codeBlock.className = "code-box";
+                codeBlock.textContent = q.code; // Usamos textContent para respetar formato y seguridad
+                optionsContainer.appendChild(codeBlock);
+            }
+            // ---------------------------------------------------
+
             nextBtn.disabled = true;
 
+            // LÓGICA DIFERENCIADA: TEST vs TEXTO
+            if (q.type === 'text') {
+                renderTextQuestion(q);
+            } else {
+                renderTestQuestion(q);
+            }
+        }
+
+        function renderTestQuestion(q) {
             q.opciones.forEach((opt, index) => {
                 const btn = document.createElement('button');
                 btn.className = "option-btn";
@@ -1582,103 +2311,249 @@ digi10: {
         }
 
         function selectOption(index, btnElement) {
-            // Desmarcar previos
             Array.from(optionsContainer.children).forEach(b => b.classList.remove('selected'));
-
-            // Marcar actual
             btnElement.classList.add('selected');
-            
-            // Guardar respuesta temporalmente
             optionsContainer.dataset.selectedIndex = index;
             nextBtn.disabled = false;
         }
 
-        function nextQuestion() {
-            const selectedIndex = parseInt(optionsContainer.dataset.selectedIndex);
-            const correctIndex = currentQuiz.questions[currentQuestionIndex].correcta;
-            
-            // Guardar resultado
-            userAnswers.push({
-                question: currentQuiz.questions[currentQuestionIndex].pregunta,
-                options: currentQuiz.questions[currentQuestionIndex].opciones,
-                selected: selectedIndex,
-                correct: correctIndex
+        function renderTextQuestion(q) {
+            const textarea = document.createElement('textarea');
+            textarea.className = "text-answer-area";
+            textarea.placeholder = "Escribe tu respuesta aquí. Se corregirá al final del examen.";
+            textarea.id = "user-text-answer";
+
+            // Habilitamos el botón siguiente en cuanto el usuario escriba algo
+            textarea.addEventListener('input', () => {
+                nextBtn.disabled = textarea.value.trim().length === 0;
             });
 
-            if (selectedIndex === correctIndex) score++;
+            optionsContainer.appendChild(textarea);
+        }
+
+        // --- NAVEGACIÓN Y GUARDADO TEMPORAL ---
+        function nextQuestion() {
+            const q = currentQuiz.questions[currentQuestionIndex];
+
+            if (q.type === 'text') {
+                const userText = document.getElementById('user-text-answer').value;
+
+                // Guardamos la respuesta y el criterio, pero NO corregimos todavía
+                userAnswers.push({
+                    question: q.pregunta,
+                    type: 'text',
+                    userResponse: userText,
+                    criterio: q.criterio, // Guardamos esto para enviarlo a la IA luego
+                    aiFeedback: "Pendiente de corrección...",
+                    score: 0
+                });
+
+            } else {
+                const selectedIndex = parseInt(optionsContainer.dataset.selectedIndex);
+                const correctIndex = q.correcta;
+                const isCorrect = selectedIndex === correctIndex;
+
+                // Si es test, ya sabemos la nota, la sumamos (o la guardamos para sumar al final)
+                userAnswers.push({
+                    question: q.pregunta,
+                    type: 'test',
+                    options: q.opciones,
+                    selected: selectedIndex,
+                    correct: correctIndex,
+                    isCorrect: isCorrect,
+                    score: isCorrect ? 10 : 0 // Normalizamos a base 10 para consistencia
+                });
+            }
 
             currentQuestionIndex++;
 
             if (currentQuestionIndex < currentQuiz.questions.length) {
                 loadQuestion();
             } else {
-                finishQuiz();
+                // AL TERMINAR, LANZAMOS LA CORRECCIÓN MASIVA
+                finishQuizWithAI();
             }
         }
 
-        function finishQuiz() {
+        // --- CORRECCIÓN FINAL MASIVA (BATCH) ---
+        async function finishQuizWithAI() {
+            // 1. Mostrar pantalla de carga
+            loadingOverlay.classList.remove('hidden');
+
+            let processedCount = 0;
+            const totalItems = userAnswers.length;
+
+            // 2. Iterar sobre todas las respuestas
+            for (let i = 0; i < userAnswers.length; i++) {
+                let ans = userAnswers[i];
+
+                // Actualizar barra de progreso
+                loadingText.textContent = `Analizando pregunta ${i + 1} de ${totalItems}...`;
+                loadingBar.style.width = `${((i + 1) / totalItems) * 100}%`;
+
+                if (ans.type === 'text') {
+                    // LLAMADA A LA IA
+                    try {
+                        const evaluation = await getAIEvaluation(ans.question, ans.criterio, ans.userResponse);
+                        ans.score = evaluation.score;
+                        ans.aiFeedback = evaluation.feedback;
+                    } catch (error) {
+                        console.error(error);
+                        ans.score = 0;
+                        ans.aiFeedback = "⚠️ Error al conectar con la IA. No se ha podido puntuar esta pregunta.";
+                    }
+                }
+
+                // Si es tipo 'test', ya tiene su score asignado en nextQuestion
+                processedCount++;
+            }
+
+            // 3. Calcular Nota Final
+            calculateFinalScore();
+
+            // 4. Ocultar carga y mostrar resultados
+            loadingOverlay.classList.add('hidden');
+            showScreen('results-screen');
+            renderResults();
+        }
+
+        // --- FUNCIÓN PURA DE IA (SIN DOM) ---
+        async function getAIEvaluation(pregunta, criterio, respuesta) {
+            const prompt = `
+            Actúa como profesor. 
+            Pregunta: "${pregunta}"
+            Criterio ideal: "${criterio}"
+            Respuesta alumno: "${respuesta}"
+            
+            Tarea: Puntúa (0-10, admite decimales) y Feedback breve (2 frases).
+            Formato OBLIGATORIO:
+            NOTA: [Número]
+            FEEDBACK: [Texto]
+        `;
+
+            const candidates = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest"];
+
+            for (const model of candidates) {
+                try {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GOOGLE_API_KEY}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.candidates && data.candidates[0].content) {
+                            const text = data.candidates[0].content.parts[0].text;
+
+                            // Extraer nota
+                            const match = text.match(/NOTA:\s*(\d+(\.\d+)?)/i);
+                            const score = match ? parseFloat(match[1]) : 0;
+
+                            return { score: score, feedback: text };
+                        }
+                    }
+                } catch (e) {
+                    console.warn(`Fallo modelo ${model}`, e);
+                }
+            }
+            throw new Error("Fallo de conexión IA");
+        }
+
+        function calculateFinalScore() {
+            score = 0;
+            userAnswers.forEach(ans => {
+                // Cada pregunta vale 1 punto en el total.
+                // Si la nota es 6/10 -> suma 0.6
+                // Si es test correcta (10/10) -> suma 1.0
+                score += (ans.score / 10);
+            });
+        }
+
+        function renderResults() {
             const total = currentQuiz.questions.length;
             const grade = (score / total) * 10;
 
-            finalScore.textContent = `${score} / ${total}`;
+            finalScore.textContent = `${score.toFixed(1)} / ${total}`;
             finalGrade.textContent = grade.toFixed(2);
 
-            // Feedback
+            // Feedback general
             feedbackMsg.className = 'feedback-box';
             if (grade >= 9) {
-                feedbackMsg.textContent = "¡Excelente trabajo! Dominas el tema. 🌟";
+                feedbackMsg.textContent = "¡Excelente! 🌟";
                 feedbackMsg.classList.add('fb-good');
             } else if (grade >= 5) {
-                feedbackMsg.textContent = "Aprobado. Buen esfuerzo, pero repasa los fallos. 👍";
+                feedbackMsg.textContent = "Aprobado. 👍";
                 feedbackMsg.classList.add('fb-avg');
             } else {
-                feedbackMsg.textContent = "Necesitas estudiar más. ¡Ánimo! 💪";
+                feedbackMsg.textContent = "A estudiar más. 💪";
                 feedbackMsg.classList.add('fb-bad');
             }
 
-            // Generar revisión
+            // Renderizar tarjetas
             reviewContainer.innerHTML = '';
             userAnswers.forEach((ans, idx) => {
-                const isCorrect = ans.selected === ans.correct;
                 const card = document.createElement('div');
-                card.className = `review-item ${isCorrect ? 'correct' : 'incorrect'}`;
-                
-                let html = `<p><strong>${idx + 1}. ${ans.question}</strong></p>`;
-                
-                ans.options.forEach((opt, optIdx) => {
-                    let classes = "review-option ";
-                    let icon = "";
 
-                    if (optIdx === ans.correct) {
-                        classes += "opt-correct"; 
-                        icon = " ✅ (Correcta)";
-                    } else if (optIdx === ans.selected && !isCorrect) {
-                        classes += "opt-incorrect"; 
-                        icon = " ❌ (Tu respuesta)";
-                    } else if (optIdx === ans.selected && isCorrect) {
-                         // Ya cubierto por el caso correcto
-                    } else {
-                        // Opciones no seleccionadas y no correctas
-                        classes += "bg-white border border-gray-200";
+                if (ans.type === 'text') {
+                    // --- TARJETA TEXTO (Con nota IA) ---
+                    let badgeColor = '#fee2e2';
+                    let badgeText = '#991b1b';
+                    let borderColor = '#ef4444';
+
+                    if (ans.score >= 9) {
+                        badgeColor = '#dcfce7'; badgeText = '#166534'; borderColor = '#22c55e';
+                    } else if (ans.score >= 5) {
+                        badgeColor = '#ffedd5'; badgeText = '#9a3412'; borderColor = '#f97316';
                     }
-                    
-                    html += `<div class="${classes}">${opt} ${icon}</div>`;
-                });
 
-                card.innerHTML = html;
+                    card.className = 'review-item';
+                    card.style.backgroundColor = '#f8fafc';
+                    card.style.borderLeft = `5px solid ${borderColor}`;
+
+                    card.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <p style="margin:0;"><strong>${idx + 1}. ${ans.question}</strong></p>
+                        <span style="background:${badgeColor}; color:${badgeText}; padding:4px 10px; border-radius:12px; font-weight:bold; font-size:0.9rem; min-width:85px; text-align:center;">
+                            Nota: ${ans.score}/10
+                        </span>
+                    </div>
+                    <div style="font-style:italic; color:#555; margin-bottom:10px;">Tu respuesta: "${ans.userResponse}"</div>
+                    <div style="background:white; padding:10px; border-radius:5px; border:1px solid #ddd; font-size:0.9rem;">
+                        <strong>Corrección IA:</strong><br>${ans.aiFeedback}
+                    </div>
+                `;
+
+                } else {
+                    // --- TARJETA TEST (Clásica) ---
+                    card.className = `review-item ${ans.isCorrect ? 'correct' : 'incorrect'}`;
+                    let html = `<p><strong>${idx + 1}. ${ans.question}</strong></p>`;
+
+                    ans.options.forEach((opt, optIdx) => {
+                        let classes = "review-option ";
+                        let icon = "";
+
+                        if (optIdx === ans.correct) {
+                            classes += "opt-correct"; icon = " ✅";
+                        } else if (optIdx === ans.selected && !ans.isCorrect) {
+                            classes += "opt-incorrect"; icon = " ❌";
+                        } else {
+                            classes += "bg-white border border-gray-200";
+                        }
+                        html += `<div class="${classes}">${opt} ${icon}</div>`;
+                    });
+                    card.innerHTML = html;
+                }
                 reviewContainer.appendChild(card);
             });
-
-            showScreen('results-screen');
         }
 
         function restartQuiz() {
-            currentQuestionIndex = 0;
-            score = 0;
-            userAnswers = [];
-            showScreen('quiz-screen');
-            loadQuestion();
+            startQuiz(currentQuiz.subject, currentQuiz.id);
+            showScreen('seleccion-screen'); // O puedes mandarlo a seleccion si prefieres
         }
+
     </script>
 </body>
+
 </html>
