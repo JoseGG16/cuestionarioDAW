@@ -518,7 +518,7 @@
 
         <header>
             <h1>Plataforma de Repaso</h1>
-            <p>Sostenibilidad | Digitalización | Diseño Web | Entorno Servidor</p>
+            <p>Sostenibilidad | Digitalización | Diseño Web | Entorno Servidor | Entorno Cliente</p>
         </header>
 
         <main>
@@ -576,6 +576,14 @@
                         Accesibilidad</button>
                     <button onclick="startQuiz('diseno', 'ud4')" class="quiz-btn">UD4. HTML y Semántica</button>
                     <button onclick="startQuiz('diseno', 'ud5')" class="quiz-btn">UD5. CSS y Estilos</button>
+                    <button onclick="startQuiz('diseno', 'ud6_grid')" class="quiz-btn">UD6: Grid y Flexbox</button>
+                    <button onclick="startQuiz('diseno', 'ud7_bootstrap')" class="quiz-btn">UD7: Framework Bootstrap</button>
+                    <button onclick="startQuiz('diseno', 'ud8_tailwind')" class="quiz-btn">UD8: Tailwind CSS</button>
+                    <button onclick="startQuiz('diseno', 'ud9_multimedia')" class="quiz-btn">UD9: Multimedia y Animaciones</button>
+                    <button onclick="startQuiz('diseno', 'ud10_sass')" class="quiz-btn">UD10: Preprocesador SASS</button>
+                    <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); margin: 10px 0;">
+
+                    <button onclick="startQuiz('diseno', 'diseno_final')" class="quiz-btn" style="font-weight:bold; color:#7e22ce;">🎓 Examen Final Diseño (UD6-10)</button>
                 </div>
 
                 <!-- NUEVO: Desarrollo Web Entorno Servidor -->
@@ -601,7 +609,15 @@
                 <div class="subject-card sub-cli">
                     <h2>🎨 Desarrollo Web en Entorno Cliente (Angular)</h2>
                     <button onclick="startQuiz('cliente', 'angular1')" class="quiz-btn">Ejemplo preguntas text
-                        examen</button>
+                        examen
+                    </button>
+                    <button onclick="startQuiz('cliente', 'angular_ud5')" class="quiz-btn">UD5: Intro, Componentes y Routing</button>
+                    <button onclick="startQuiz('cliente', 'angular_ud6')" class="quiz-btn">UD6: Data Binding y Formularios</button>
+                    <button onclick="startQuiz('cliente', 'angular_ud7')" class="quiz-btn">UD7: HTTP y Servicios</button>
+                    
+                    <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); margin: 10px 0;">
+
+                    <button onclick="startQuiz('cliente', 'angular_final')" class="quiz-btn" style="font-weight:bold; color:#db2777;">🎓 Examen Final Angular (UD5-7)</button>
                 </div>
             </div>
 
@@ -1757,7 +1773,1419 @@
                         { pregunta: "Especificidad: ¿Qué pesa más, un ID o una Clase?", opciones: ["Clase", "ID", "Igual"], correcta: 1 },
                         { pregunta: "¿Para qué sirve 'box-sizing: border-box'?", opciones: ["Para decorar el borde.", "Para que el padding y border se incluyan en el ancho total del elemento.", "Para eliminar bordes."], correcta: 1 }
                     ]
+                },ud6_grid: {
+            title: "UD6: Maquetación con CSS Grid y Flexbox",
+            questions: [
+                // --- FLEXBOX ---
+                { 
+                    pregunta: "Si tenemos un contenedor con `display: flex`, ¿cómo se alinean los hijos por defecto?", 
+                    opciones: ["En columna (vertical).", "En fila (horizontal).", "Se ocultan.", "En cuadrícula."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Analiza el código. ¿Qué hace `flex-wrap: wrap`?", 
+                    code: `.container {
+  display: flex;
+  flex-wrap: wrap;
+}`,
+                    opciones: ["Impide que los elementos salten de línea.", "Permite que los elementos salten a la siguiente línea si no caben.", "Centra los elementos.", "Invierte el orden de los elementos."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué propiedad alinea los elementos en el Eje Principal (Main Axis)?", 
+                    opciones: ["align-items", "justify-content", "align-content", "flex-direction"], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Analiza el código. ¿Qué ancho tendrá el elemento `.hijo`?", 
+                    code: `.padre { display: flex; width: 600px; }
+.hijo { flex-grow: 1; } 
+/* (Supón que hay 3 hijos iguales) */`,
+                    opciones: ["200px", "0px", "600px", "Auto"], 
+                    correcta: 0,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué propiedad define si los elementos flexibles pueden encogerse si falta espacio?", 
+                    opciones: ["flex-grow", "flex-basis", "flex-shrink", "flex-flow"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Si definimos `flex-direction: column`, el Eje Principal (Main Axis) pasa a ser:", 
+                    opciones: ["Horizontal.", "Vertical.", "Diagonal.", "Inverso."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Cuál es el valor por defecto de `align-items` (alineación en eje transversal)?", 
+                    opciones: ["center", "flex-start", "stretch", "baseline"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "La propiedad `flex` es un atajo (shorthand) para:", 
+                    code: `flex: 1 0 auto;`,
+                    opciones: ["flex-grow, flex-shrink, flex-basis", "flex-direction, flex-wrap", "justify-content, align-items", "order, grow, shrink"], 
+                    correcta: 0,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué hace `justify-content: space-between`?", 
+                    opciones: ["Pega los elementos al centro.", "Distribuye los elementos dejando el mismo espacio entre ellos y los bordes.", "Pega el primero al inicio, el último al final, y distribuye el resto.", "No existe ese valor."], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Para cambiar el orden visual de un elemento específico sin cambiar el HTML, usamos:", 
+                    code: `.item { ???: 1; }`,
+                    opciones: ["z-index", "priority", "order", "flex-order"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué hace `align-self`?", 
+                    opciones: ["Alinea todo el contenedor.", "Sobrescribe la alineación (align-items) solo para un elemento hijo específico.", "Alinea el texto del elemento.", "Cambia la dirección del eje."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Analiza el código. ¿Dónde se colocarán los hijos?", 
+                    code: `justify-content: center;
+align-items: center;
+height: 100vh;`,
+                    opciones: ["Arriba a la izquierda.", "Centrados solo horizontalmente.", "Perfectamente centrados en el medio de la pantalla.", "Abajo a la derecha."], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué propiedad combina `flex-direction` y `flex-wrap`?", 
+                    opciones: ["flex-flow", "flex-style", "flex-group", "flex-mode"], 
+                    correcta: 0,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Si usas `display: inline-flex`, el contenedor...", 
+                    opciones: ["Ocupa todo el ancho disponible (bloque).", "Se comporta como un elemento en línea respecto a sus hermanos.", "Hace que los hijos sean inline.", "No funciona."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "La propiedad `gap` en Flexbox sirve para:", 
+                    opciones: ["Separar el contenedor del borde.", "Crear espacio entre los elementos hijos (hueco).", "Definir el ancho de las columnas.", "Nada, solo funciona en Grid."], 
+                    correcta: 1,
+                    type: "test"
+                },
+
+                // --- CSS GRID ---
+                { 
+                    pregunta: "Para crear una cuadrícula con 3 columnas de igual tamaño, usamos:", 
+                    code: `grid-template-columns: ???`,
+                    opciones: ["1fr 1fr 1fr", "33% 33% 33%", "repeat(3, 1fr)", "Todas las anteriores."], 
+                    correcta: 3,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué unidad CSS se introdujo con Grid para representar una fracción del espacio libre?", 
+                    opciones: ["px", "%", "fr", "rem"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Analiza el código. ¿Qué hace `grid-column: 1 / 3`?", 
+                    code: `.item { grid-column: 1 / 3; }`,
+                    opciones: ["Hace que el ítem ocupe desde la línea de columna 1 hasta la 3 (ocupa 2 columnas).", "Hace que el ítem empiece en la fila 1 y acabe en la 3.", "Divide la columna en 3 partes.", "Mueve el ítem a la tercera celda."], 
+                    correcta: 0,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué función permite repetir un patrón de columnas automáticamente tantas veces como quepan?", 
+                    code: `repeat(???, 200px)`,
+                    opciones: ["auto-fill o auto-fit", "infinite", "flex", "contain"], 
+                    correcta: 0,
+                    type: "test"
+                },
+                { 
+                    pregunta: "La propiedad `grid-template-areas` permite:", 
+                    opciones: ["Definir el tamaño de las celdas.", "Diseñar el layout usando nombres de áreas ('header', 'menu'...).", "Colorear las áreas.", "No existe."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Analiza el código. ¿Qué altura tendrán las filas?", 
+                    code: `grid-template-rows: 100px auto;`,
+                    opciones: ["Ambas 100px.", "La primera 100px y la segunda se adapta al contenido.", "La primera auto y la segunda 100px.", "Infinitas filas."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué hace la función `minmax(100px, 1fr)`?", 
+                    opciones: ["La celda mide siempre 100px.", "La celda mide mínimo 100px y máximo 1fr (se estira).", "La celda mide entre 0 y 100px.", "Da error."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué propiedad es el atajo (shorthand) para `grid-column-start` y `grid-column-end`?", 
+                    opciones: ["grid-column", "grid-area", "grid-gap", "column-span"], 
+                    correcta: 0,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Para alinear el contenido de una celda grid tanto vertical como horizontalmente, usamos:", 
+                    code: `place-items: center;`,
+                    opciones: ["Verdadero, es shorthand de align-items y justify-items.", "Falso, place-items no existe.", "Solo funciona en Flexbox.", "Depende del navegador."], 
+                    correcta: 0,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Si colocamos un elemento en una columna que no hemos definido explícitamente...", 
+                    opciones: ["El elemento no se muestra.", "Se crea una columna en el Grid Implícito.", "Se rompe el layout.", "Se coloca en la primera columna."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué palabra clave se usa en `grid-column` para indicar que un elemento abarque todo el ancho hasta el final?", 
+                    code: `grid-column: 1 / -1`,
+                    opciones: ["end", "span-all", "-1", "last"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué diferencia principal hay entre Grid y Flexbox?", 
+                    opciones: ["Ninguna, son iguales.", "Flexbox es unidimensional (fila O columna) y Grid es bidimensional (filas Y columnas).", "Flexbox es para webs antiguas.", "Grid no soporta alineación."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "La propiedad `gap` en Grid:", 
+                    opciones: ["Solo define espacio entre columnas.", "Solo define espacio entre filas.", "Define el espacio entre filas y columnas (shorthand).", "Es margin."], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué hace `grid-auto-flow: dense`?", 
+                    opciones: ["Hace el grid más pequeño.", "Intenta rellenar los huecos vacíos con elementos más pequeños si caben.", "Obliga a seguir un orden estricto.", "Desactiva el grid."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué valor de `display` convierte un elemento en un contenedor Grid?", 
+                    opciones: ["display: flex", "display: block", "display: grid", "display: table"], 
+                    correcta: 2,
+                    type: "test"
                 }
+            ]
+        },ud7_bootstrap: {
+        title: "UD7: Diseño Responsivo con Bootstrap",
+        questions: [
+            // --- CONCEPTOS BÁSICOS ---
+            { 
+                pregunta: "¿Qué es Bootstrap?", 
+                opciones: ["Un lenguaje de programación backend.", "Un framework CSS 'mobile-first' para desarrollo frontend.", "Un gestor de bases de datos.", "Un plugin de Photoshop."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para que el diseño responsivo funcione en móviles, es imprescindible incluir en el `<head>`:", 
+                code: `<meta name="viewport" content="width=device-width, initial-scale=1">`,
+                opciones: ["Verdadero.", "Falso, Bootstrap lo hace automático sin meta.", "Solo es necesario en tablets.", "Depende del navegador."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cuál es la clase contenedora principal que centra el contenido y le da un ancho máximo responsivo?", 
+                opciones: [".container-fluid", ".wrapper", ".container", ".box"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Si queremos un contenedor que ocupe siempre el 100% del ancho de la pantalla (full width), usamos:", 
+                opciones: [".container-full", ".container-fluid", ".w-100-container", ".container-all"], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- SISTEMA DE GRID (REJILLA) ---
+            { 
+                pregunta: "El sistema de rejilla (Grid) de Bootstrap divide la pantalla en:", 
+                opciones: ["10 columnas.", "12 columnas.", "6 columnas.", "Depende de la configuración."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué ancho ocupará la columna en una pantalla de escritorio (lg)?", 
+                code: `<div class="col-12 col-md-6 col-lg-4">Contenido</div>`,
+                opciones: ["100% (12 columnas).", "50% (6 columnas).", "33.3% (4 columnas).", "25% (3 columnas)."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase define una fila en el sistema de grid?", 
+                opciones: [".line", ".row", ".flex-row", ".grid-row"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si ponemos `<div class='col'>A</div><div class='col'>B</div>` sin especificar número:", 
+                opciones: ["Se reparten el espacio equitativamente (50% cada uno).", "Ocupan el 100% cada uno (se apilan).", "Ocupan solo el ancho de su contenido.", "Da error."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué hace la clase `g-3` aplicada a un `.row`?", 
+                opciones: ["Añade un borde de 3px.", "Define el 'gutter' (espacio entre columnas) a nivel 3.", "Gira el contenido 3 grados.", "Genera 3 columnas."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué ocurre en móviles (pantallas < 576px)?", 
+                code: `<div class="col-md-6">...</div>`,
+                opciones: ["La columna ocupa el 50%.", "La columna desaparece.", "La columna ocupa el 100% (se apila) porque no hay clase 'col-' específica.", "Ocupa el 25%."], 
+                correcta: 2,
+                type: "test"
+            },
+
+            // --- COLORES Y UTILIDADES ---
+            { 
+                pregunta: "¿Qué clase aplica un color de fondo azul (primario)?", 
+                opciones: [".color-blue", ".bg-primary", ".back-blue", ".btn-blue"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para poner el texto de color rojo (semántica de error), usamos:", 
+                opciones: [".text-red", ".font-danger", ".text-danger", ".text-alert"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué márgenes se aplican?", 
+                code: `<div class="m-3 p-2">...</div>`,
+                opciones: ["Margen 3px y Padding 2px.", "Margen nivel 3 en todos los lados y Padding nivel 2 en todos los lados.", "Margen superior 3 y Padding inferior 2.", "Margen solo a los lados."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase añade margen superior (margin-top)?", 
+                opciones: [".mt-*", ".m-top-*", ".t-m-*", ".margin-up-*"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para centrar texto horizontalmente, usamos:", 
+                opciones: [".align-center", ".text-center", ".center-text", ".justify-center"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "La clase `w-100` sirve para:", 
+                opciones: ["Poner el ancho al 100%.", "Poner el 'weight' (peso) de fuente a 100.", "Esperar (wait) 100ms.", "Poner el ancho a 100px."], 
+                correcta: 0,
+                type: "test"
+            },
+
+            // --- COMPONENTES ---
+            { 
+                pregunta: "¿Qué clases son necesarias para crear un botón estándar azul?", 
+                code: `<button class="???">Enviar</button>`,
+                opciones: ["button button-blue", "btn btn-primary", "btn-blue", "button-primary"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para crear una tarjeta con borde y sombra, la estructura básica es:", 
+                opciones: [".box > .box-body", ".card > .card-body", ".container > .content", ".panel > .panel-body"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase convierte una imagen en responsiva (max-width: 100% y height: auto)?", 
+                opciones: [".img-responsive", ".img-fluid", ".responsive-img", ".w-100"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En los formularios, ¿qué clase estiliza los inputs (`<input>`, `<textarea>`)?", 
+                opciones: [".input-group", ".form-input", ".form-control", ".form-style"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Para crear una alerta de éxito (fondo verde), usamos:", 
+                opciones: [".alert .alert-success", ".msg .msg-ok", ".notification .green", ".alert .success"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué componente se usa para la navegación principal que colapsa en móviles (menú hamburguesa)?", 
+                opciones: ["Sidebar", "Navbar", "Breadcrumb", "Pagination"], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- FLEXBOX EN BOOTSTRAP Y VISIBILIDAD ---
+            { 
+                pregunta: "¿Qué clase activa el comportamiento Flexbox en un elemento?", 
+                opciones: [".flex", ".d-flex", ".display-flex", ".flexbox"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para centrar contenido horizontal y verticalmente en un contenedor flex:", 
+                code: `<div class="d-flex ??? ???">...</div>`,
+                opciones: ["justify-content-center align-items-center", "text-center align-middle", "flex-center-all", "middle-center"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Cuándo se verá este elemento?", 
+                code: `<div class="d-none d-md-block">Hola</div>`,
+                opciones: ["Siempre.", "Solo en móviles (pantallas pequeñas).", "Oculto en móviles, visible de tablet (md) hacia arriba.", "Nunca."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase pone los elementos flex en columna?", 
+                opciones: [".flex-column", ".flex-vertical", ".col-mode", ".d-column"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para añadir un margen automático a la izquierda (empujar a la derecha) en un flex:", 
+                opciones: [".ml-auto (o .ms-auto en v5)", ".mr-auto", ".float-right", ".align-right"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué hace la clase `shadow`?", 
+                opciones: ["Añade una sombra al texto.", "Añade una sombra a la caja (box-shadow).", "Oscurece el fondo.", "Oculta el elemento."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "La clase `rounded-circle` sirve para:", 
+                opciones: ["Redondear las esquinas ligeramente.", "Hacer un elemento perfectamente circular (si es cuadrado).", "Crear un borde circular.", "Girar el elemento."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cuál es el orden correcto de los breakpoints de menor a mayor?", 
+                opciones: ["xs, sm, md, lg, xl, xxl", "sm, xs, md, lg, xl", "md, lg, xl, xxl", "mini, small, medium, large"], 
+                correcta: 0,
+                type: "test"
+            }
+        ]
+    },ud8_tailwind: {
+        title: "UD8: Diseño Responsivo con Tailwind CSS",
+        questions: [
+            // --- CONCEPTOS BÁSICOS ---
+            { 
+                pregunta: "¿Cuál es la filosofía principal de Tailwind CSS?", 
+                opciones: ["Component-First (usar componentes predefinidos como .btn).", "Utility-First (usar clases de bajo nivel como .flex, .pt-4).", "Model-View-Controller.", "Escribir CSS puro en archivos separados."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para instalar Tailwind y generar el archivo de configuración, ejecutamos:", 
+                code: `npx tailwindcss init`,
+                opciones: ["Verdadero, esto crea tailwind.config.js.", "Falso, se usa 'npm install bootstrap'.", "Falso, Tailwind no tiene configuración.", "Solo funciona con CDN."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué ventaja ofrece el modo JIT (Just-In-Time) de Tailwind?", 
+                opciones: ["Genera todo el CSS posible por si acaso.", "Genera los estilos bajo demanda (solo lo que usas) mejorando el rendimiento.", "Permite escribir PHP en el CSS.", "Desactiva el responsive."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué hace la clase `w-full`?", 
+                code: `<div class="w-full">...</div>`,
+                opciones: ["Pone el ancho a 100px.", "Pone el ancho al 100% (width: 100%).", "Pone el ancho a pantalla completa (100vw).", "Elimina el ancho."], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- ESPACIADO Y TAMAÑO ---
+            { 
+                pregunta: "En Tailwind, la clase `p-4` aplica padding de:", 
+                opciones: ["4px.", "4em.", "1rem (16px habitualmente).", "4%."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase aplica margen solo en el eje vertical (arriba y abajo)?", 
+                opciones: ["my-4", "mx-4", "mtb-4", "m-y-4"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para definir una altura de 100vh (toda la altura del viewport), usamos:", 
+                opciones: ["h-full", "h-screen", "h-100", "h-viewport"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si queremos un ancho máximo que centre el contenido (similar al container de Bootstrap), usamos:", 
+                code: `<div class="container mx-auto">`,
+                opciones: ["Correcto, 'container' define el ancho y 'mx-auto' centra.", "Incorrecto, Tailwind no tiene clase container.", "Solo 'center'.", "margin-auto."], 
+                correcta: 0,
+                type: "test"
+            },
+
+            // --- TIPOGRAFÍA Y COLOR ---
+            { 
+                pregunta: "¿Qué clase pone el texto en negrita?", 
+                opciones: ["text-bold", "font-bold", "weight-bold", "bold"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para cambiar el tamaño del texto a algo muy grande (ej: 30px/36px), usamos:", 
+                opciones: ["text-lg", "text-xl", "text-3xl", "font-big"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿De qué color será el fondo?", 
+                code: `<div class="bg-blue-500">...</div>`,
+                opciones: ["Azul oscuro (nivel 900).", "Azul medio (nivel 500).", "Azul muy claro (nivel 100).", "Transparente."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para cambiar el color del texto a blanco:", 
+                opciones: ["color-white", "text-white", "font-white", "fg-white"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué hace la clase `uppercase`?", 
+                opciones: ["Pone la primera letra en mayúscula.", "Transforma todo el texto a mayúsculas (text-transform: uppercase).", "Aumenta el tamaño de fuente.", "Pone el texto en la parte superior."], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- FLEXBOX Y GRID ---
+            { 
+                pregunta: "Para activar Flexbox en un elemento, la clase es:", 
+                opciones: ["display-flex", "flexbox", "flex", "d-flex"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Cómo se alinean los ítems?", 
+                code: `<div class="flex justify-center items-center">...</div>`,
+                opciones: ["Centrados horizontal y verticalmente.", "Centrados solo horizontalmente.", "Justificados a la izquierda.", "Separados entre sí."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase permite que los elementos flex salten de línea?", 
+                opciones: ["flex-wrap", "flex-nowrap", "wrap", "break-flex"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para crear un Grid de 3 columnas iguales, usamos:", 
+                code: `<div class="grid ??? gap-4">`,
+                opciones: ["grid-cols-3", "col-3", "grid-3", "cols-3"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase hace que un elemento flex ocupe todo el espacio disponible sobrante?", 
+                opciones: ["flex-grow", "flex-1", "grow", "Todas las anteriores (depende de la versión/necesidad, pero flex-1 es la más común)."], 
+                correcta: 3,
+                type: "test"
+            },
+
+            // --- RESPONSIVE DESIGN ---
+            { 
+                pregunta: "En Tailwind, los prefijos responsivos (`md:`, `lg:`) aplican estilos...", 
+                opciones: ["Solo en ese tamaño exacto.", "Mobile-first (desde ese tamaño hacia arriba).", "Desktop-first (desde ese tamaño hacia abajo).", "Aleatoriamente."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Cuándo será el fondo rojo?", 
+                code: `<div class="bg-blue-500 md:bg-red-500"></div>`,
+                opciones: ["Siempre.", "En móviles.", "En pantallas medianas (tablet) y superiores.", "Nunca."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cómo ocultamos un elemento en móvil y lo mostramos en escritorio (lg)?", 
+                code: `<div class="??? lg:block">...</div>`,
+                opciones: ["hidden", "d-none", "invisible", "hide"], 
+                correcta: 0,
+                type: "test"
+            },
+
+            // --- ESTADOS Y DIRECTIVAS ---
+            { 
+                pregunta: "Para cambiar el color de fondo al pasar el ratón por encima (hover), usamos:", 
+                code: `class="bg-red-500 ???:bg-red-700"`,
+                opciones: ["focus", "active", "hover", "mouse"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "La directiva `@apply` en el archivo CSS sirve para:", 
+                code: `.btn { @apply bg-blue-500 text-white; }`,
+                opciones: ["Importar fuentes.", "Extraer y reutilizar conjuntos de clases de utilidad en una clase propia CSS.", "Aplicar estilos inline.", "Animar elementos."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué archivo permite extender el tema (añadir colores propios, fuentes, etc.)?", 
+                opciones: ["tailwind.config.js", "style.css", "index.html", "package.json"], 
+                correcta: 0,
+                type: "test"
+            },
+
+            // --- EFECTOS Y BORDES ---
+            { 
+                pregunta: "¿Qué clase añade bordes redondeados completos (pill shape)?", 
+                opciones: ["rounded", "rounded-lg", "rounded-full", "circle"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Para añadir una sombra media a un elemento:", 
+                opciones: ["shadow", "shadow-md", "box-shadow", "shade"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué hace la clase `opacity-50`?", 
+                opciones: ["Hace el elemento invisible.", "Pone la opacidad al 50% (semitransparente).", "Pone el ancho al 50%.", "No existe."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase se usa para posicionamiento absoluto?", 
+                opciones: ["position-absolute", "abs", "absolute", "fixed"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Para que una imagen cubra su contenedor sin deformarse (como background-size: cover), usamos:", 
+                opciones: ["object-contain", "object-cover", "img-cover", "bg-cover"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase pone el cursor como una mano al pasar por encima (enlace)?", 
+                opciones: ["cursor-pointer", "cursor-hand", "pointer", "click"], 
+                correcta: 0,
+                type: "test"
+            }
+        ]
+    }, ud9_multimedia: {
+        title: "UD9: Multimedia, Transiciones y Animaciones CSS",
+        questions: [
+            // --- GRADIENTES ---
+            { 
+                pregunta: "¿Cuál es la sintaxis correcta para un fondo degradado lineal de rojo a azul?", 
+                code: `background: ???(red, blue);`,
+                opciones: ["gradient-linear", "linear-gradient", "background-gradient", "color-gradient"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En un `linear-gradient`, si no especificamos la dirección, ¿cuál es por defecto?", 
+                opciones: ["De izquierda a derecha (to right).", "De arriba a abajo (to bottom).", "Diagonal.", "Radial."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué tipo de gradiente irradia desde un punto central hacia afuera?", 
+                opciones: ["linear-gradient", "conic-gradient", "radial-gradient", "circular-gradient"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Para crear un patrón repetitivo de rayas, usamos:", 
+                opciones: ["repeat-gradient", "repeating-linear-gradient", "loop-gradient", "pattern-gradient"], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- TRANSICIONES (TRANSITIONS) ---
+            { 
+                pregunta: "Las transiciones CSS permiten:", 
+                opciones: ["Crear animaciones complejas con keyframes.", "Suavizar el cambio de valores de una propiedad CSS durante un tiempo determinado.", "Mover elementos sin animación.", "Cambiar el HTML."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué propiedad define cuánto tiempo tarda la transición en completarse?", 
+                opciones: ["transition-delay", "transition-time", "transition-duration", "animation-duration"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "La propiedad `transition-timing-function` controla:", 
+                opciones: ["La velocidad de la curva de aceleración (ej: ease, linear).", "El tiempo total.", "El retraso inicial.", "Las propiedades a animar."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué propiedad se animará?", 
+                code: `transition: opacity 0.5s ease;`,
+                opciones: ["Todas (all).", "Solo la opacidad.", "El color de fondo.", "Ninguna, falta el delay."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué hace la función de tiempo `linear`?", 
+                opciones: ["Empieza lento y acelera.", "Mantiene una velocidad constante de principio a fin.", "Empieza rápido y frena.", "Da un efecto de rebote."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si queremos que la transición empiece 1 segundo después de hacer hover, usamos:", 
+                opciones: ["transition-wait: 1s", "transition-delay: 1s", "transition-start: 1s", "sleep: 1s"], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- TRANSFORMACIONES (TRANSFORMS 2D/3D) ---
+            { 
+                pregunta: "La propiedad `transform` permite:", 
+                opciones: ["Modificar el espacio de coordenadas (rotar, escalar, mover) sin afectar el flujo del documento.", "Cambiar el color.", "Animar el tiempo.", "Cambiar la fuente."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué función se usa para mover un elemento de su posición original?", 
+                code: `transform: ???(50px, 100px);`,
+                opciones: ["move", "translate", "shift", "position"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para hacer un elemento el doble de grande, usamos:", 
+                code: `transform: ???(2);`,
+                opciones: ["size", "resize", "scale", "zoom"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué efecto produce?", 
+                code: `transform: rotate(45deg);`,
+                opciones: ["Mueve el elemento 45 píxeles.", "Gira el elemento 45 grados en el sentido del reloj.", "Gira el elemento 45 grados en sentido antihorario.", "Inclina el elemento."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué función inclina o sesga un elemento?", 
+                opciones: ["skew()", "tilt()", "slant()", "rotate()"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Por defecto, el punto de origen de una transformación (`transform-origin`) es:", 
+                opciones: ["La esquina superior izquierda (0 0).", "El centro del elemento (50% 50%).", "La esquina inferior derecha.", "Aleatorio."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Es posible combinar múltiples transformaciones?", 
+                code: `transform: rotate(90deg) scale(1.5);`,
+                opciones: ["Sí, separándolas por espacios.", "No, solo una por elemento.", "Sí, separándolas por comas.", "No, requiere JavaScript."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué propiedad es necesaria en el padre para crear un efecto 3D realista (profundidad)?", 
+                opciones: ["perspective", "3d-view", "depth", "z-axis"], 
+                correcta: 0,
+                type: "test"
+            },
+
+            // --- ANIMACIONES (@KEYFRAMES) ---
+            { 
+                pregunta: "Para definir los pasos de una animación CSS, utilizamos la regla:", 
+                opciones: ["@animation", "@transition", "@keyframes", "@steps"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué hace esta animación?", 
+                code: `@keyframes mover {
+  from { left: 0; }
+  to { left: 100px; }
+}`,
+                opciones: ["Mueve el elemento de 0 a 100px.", "Cambia la opacidad.", "Gira el elemento.", "No hace nada sin asignarla."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué propiedad vincula una animación `@keyframes` a un selector?", 
+                opciones: ["animation-link", "animation-name", "animation-src", "keyframe-name"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para que una animación se repita infinitamente, usamos:", 
+                code: `animation-iteration-count: ???;`,
+                opciones: ["loop", "forever", "infinite", "always"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué hace `animation-direction: alternate`?", 
+                opciones: ["Reproduce la animación hacia adelante y luego hacia atrás (ida y vuelta).", "Reproduce la animación en orden aleatorio.", "Invierte la animación siempre.", "Detiene la animación."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Si queremos que el elemento conserve los estilos del último keyframe al terminar la animación, usamos:", 
+                code: `animation-fill-mode: ???;`,
+                opciones: ["none", "backwards", "forwards", "keep"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Es posible pausar una animación con CSS?", 
+                opciones: ["No, solo con JS.", "Sí, usando `animation-play-state: paused`.", "Sí, usando `animation-stop: true`.", "Sí, eliminando la clase."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "La propiedad `animation` es un shorthand. ¿Cuál es el orden típico?", 
+                opciones: ["name duration timing-function delay...", "duration name delay...", "timing name duration...", "No tiene orden."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué diferencia principal hay entre Transición y Animación?", 
+                opciones: ["Las transiciones requieren un disparador (hover, focus) y solo tienen inicio/fin. Las animaciones pueden ejecutarse solas, tener bucles y pasos intermedios.", "Son lo mismo.", "Las animaciones no usan GPU.", "Las transiciones son solo para color."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para optimizar el rendimiento, ¿qué propiedades es preferible animar?", 
+                opciones: ["width, height, top, left.", "opacity y transform.", "margin y padding.", "box-shadow."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "La función `steps(n)` en una animación sirve para:", 
+                opciones: ["Crear una animación fluida.", "Crear una animación a saltos (frame a frame), como un reloj o sprite.", "Detener la animación.", "Acelerar la animación."], 
+                correcta: 1,
+                type: "test"
+            }
+        ]
+    }, ud10_sass: {
+        title: "UD10: Preprocesador SASS (Syntactically Awesome Style Sheets)",
+        questions: [
+            // --- CONCEPTOS BÁSICOS ---
+            { 
+                pregunta: "¿Qué es SASS?", 
+                opciones: ["Un framework de JS.", "Un preprocesador CSS que extiende el lenguaje con variables, anidamiento, etc.", "Una base de datos.", "Un editor de texto."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Pueden los navegadores interpretar archivos .scss o .sass directamente?", 
+                opciones: ["Sí, los navegadores modernos lo soportan.", "No, deben ser compilados (transpilados) a CSS estándar.", "Solo Chrome y Firefox.", "Depende del servidor."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cuál es la diferencia principal entre la sintaxis SCSS (.scss) y SASS indentado (.sass)?", 
+                opciones: ["SCSS usa llaves {} y puntos y comas; SASS usa indentación y saltos de línea.", "SCSS es más antiguo.", "SASS no soporta variables.", "No hay diferencia."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para definir una variable en SASS, utilizamos el símbolo:", 
+                code: `???primary-color: #333;`,
+                opciones: ["@", "$", "#", "--"], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- ANIDAMIENTO Y SELECTORES ---
+            { 
+                pregunta: "Analiza el código SCSS. ¿Cómo se compilará a CSS?", 
+                code: `nav {
+  ul {
+    margin: 0;
+  }
+}`,
+                opciones: ["nav { margin: 0; } ul { margin: 0; }", "nav ul { margin: 0; }", "nav > ul { margin: 0; }", "nav + ul { margin: 0; }"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué símbolo representa al selector padre (parent selector) en el anidamiento?", 
+                code: `a {
+  text-decoration: none;
+  ???:hover { color: red; }
+}`,
+                opciones: ["%", "$parent", "&", "@"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Si usamos `&__elemento` dentro de `.bloque`, el resultado CSS será (metodología BEM):", 
+                opciones: [".bloque .bloque__elemento", ".bloque__elemento", ".bloque > __elemento", "Error de sintaxis."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué sucede con los comentarios de una línea `//` al compilar a CSS?", 
+                opciones: ["Se mantienen en el CSS final.", "Se eliminan en el CSS final.", "Se convierten a `/* */`.", "Depende del navegador."], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- MIXINS Y FUNCIONES ---
+            { 
+                pregunta: "Para definir un bloque de código reutilizable (mixin), usamos la directiva:", 
+                opciones: ["@function", "@include", "@mixin", "@extend"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cómo se llama (usa) un mixin definido previamente?", 
+                code: `.box { ??? border-radius(5px); }`,
+                opciones: ["@import", "@use", "@include", "@call"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Es válido pasar argumentos a un mixin?", 
+                code: `@mixin size($w, $h) {
+  width: $w;
+  height: $h;
+}`,
+                opciones: ["Sí, los mixins aceptan parámetros.", "No, para eso están las funciones.", "Solo si son números.", "No, da error."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cuál es la diferencia principal entre un `@mixin` y una `@function` en SASS?", 
+                opciones: ["No hay diferencia.", "El mixin devuelve bloques de estilos CSS; la función devuelve un valor (color, número...).", "La función no acepta argumentos.", "El mixin solo sirve para colores."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué función nativa de SASS oscurece un color?", 
+                code: `color: ???($blue, 10%);`,
+                opciones: ["dark()", "blacken()", "darken()", "shade()"], 
+                correcta: 2,
+                type: "test"
+            },
+
+            // --- HERENCIA Y EXTEND ---
+            { 
+                pregunta: "La directiva `@extend` permite:", 
+                opciones: ["Importar un archivo.", "Hacer que un selector herede los estilos de otro selector.", "Crear una variable.", "Definir un bucle."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué es un 'placeholder selector' (selector silencioso) en SASS?", 
+                code: `%mensaje-base { ... }`,
+                opciones: ["Un selector que no se compila a CSS a menos que se use con @extend.", "Una variable global.", "Un comentario especial.", "Un selector de ID."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Si usamos `@extend .btn;` en `.btn-primary` y `.btn-danger`, en el CSS resultante:", 
+                opciones: ["Se duplica el código de .btn en cada clase.", "Se agrupan los selectores: `.btn, .btn-primary, .btn-danger { ... }`.", "No pasa nada.", "Se crea un mixin."], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- ESTRUCTURAS DE CONTROL ---
+            { 
+                pregunta: "¿Qué directiva usamos para lógica condicional?", 
+                code: `??? ($theme == dark) { background: black; }`,
+                opciones: ["@check", "@if", "@when", "@case"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para iterar sobre una lista de elementos, usamos:", 
+                code: `$colores: red, green, blue;
+??? ($color in $colores) { ... }`,
+                opciones: ["@for", "@each", "@while", "@loop"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el bucle. ¿Cuántas veces se ejecuta?", 
+                code: `@for $i from 1 through 3 { ... }`,
+                opciones: ["2 veces (1, 2).", "3 veces (1, 2, 3).", "4 veces.", "Depende del contenido."], 
+                correcta: 1,
+                type: "test"
+            },
+            
+            // --- PARTIALS Y MÓDULOS ---
+            { 
+                pregunta: "¿Cómo se nombra un archivo 'partial' (que no debe compilarse solo, sino importarse)?", 
+                opciones: ["Con un guion bajo al principio: `_variables.scss`.", "Con @ al principio.", "Con extensión .part.", "No se puede."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué directiva moderna reemplaza a `@import` para cargar módulos evitando duplicidades?", 
+                opciones: ["@include", "@require", "@use", "@load"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Si usamos `@use 'base';`, ¿cómo accedemos a una variable `$font` definida en `_base.scss`?", 
+                opciones: ["$font", "base.$font", "@base-$font", "$base-font"], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- OPERACIONES Y OTROS ---
+            { 
+                pregunta: "SASS permite realizar operaciones matemáticas como:", 
+                code: `width: 600px / 960px * 100%;`,
+                opciones: ["Verdadero.", "Falso, solo CSS calc().", "Solo sumas.", "Solo con variables."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué sintaxis se usa para la interpolación (usar variable como parte de un nombre de clase o propiedad)?", 
+                code: `.item-???($i) { ... }`,
+                opciones: ["${}", "#{}", "{{}}", "$()"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "El operador `!default` al final de una variable sirve para:", 
+                code: `$color: red !default;`,
+                opciones: ["Asignar el valor solo si la variable NO está definida previamente.", "Hacer la variable obligatoria.", "Definir una constante.", "Dar prioridad (como !important)."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué es `LibSass` y `Dart Sass`?", 
+                opciones: ["Librerías de JS.", "Implementaciones del compilador de SASS (Dart Sass es la oficial actual).", "Nombres de variables.", "Tipos de archivos."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué color tendrá el borde?", 
+                code: `$borde: 1px solid red;
+div { border: $borde; }`,
+                opciones: ["Negro.", "Rojo.", "No funciona, las variables solo guardan un valor.", "Azul."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "La directiva `@warn` sirve para:", 
+                opciones: ["Detener la compilación con un error.", "Mostrar un mensaje de advertencia en la consola de compilación.", "Añadir un warning en el CSS.", "No existe."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "SASS Maps permite crear estructuras tipo:", 
+                code: `$colors: (light: #fff, dark: #000);`,
+                opciones: ["Arrays.", "Pares clave-valor.", "Funciones.", "Mixins."], 
+                correcta: 1,
+                type: "test"
+            }
+        ]
+    },diseno_final: {
+        title: "🎓 Examen Final Diseño (UD6 - UD10)",
+        questions: [
+            // --- BLOQUE 1: GRID Y FLEXBOX (12 Preguntas) ---
+            { 
+                pregunta: "¿Qué propiedad de Flexbox permite alinear elementos en el eje secundario (vertical si es fila)?", 
+                opciones: ["justify-content", "align-items", "align-content", "flex-align"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En CSS Grid, ¿qué unidad representa una fracción del espacio disponible?", 
+                opciones: ["px", "%", "fr", "rem"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué ocurre con los elementos si no caben en una línea?", 
+                code: `.container { display: flex; flex-wrap: wrap; }`,
+                opciones: ["Se ocultan.", "Saltan a la siguiente línea.", "Se encogen hasta desaparecer.", "Aparece un scroll horizontal."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué propiedad es un atajo (shorthand) para `flex-grow`, `flex-shrink` y `flex-basis`?", 
+                opciones: ["flex-flow", "flex", "flex-group", "display"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si queremos centrar un elemento perfectamente en el centro de la pantalla con Flexbox, usamos:", 
+                code: `display: flex; ???; ???; height: 100vh;`,
+                opciones: ["text-align: center; vertical-align: middle;", "justify-content: center; align-items: center;", "margin: auto; float: center;", "align-self: center; justify-self: center;"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En Grid, ¿cómo definimos 3 columnas: la primera de 100px, la segunda automática y la tercera ocupa el resto?", 
+                code: `grid-template-columns: ???`,
+                opciones: ["100px auto 1fr", "100px 1fr auto", "100px auto auto", "33% 33% 33%"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué hace `justify-content: space-between`?", 
+                opciones: ["Pega todos los elementos al inicio.", "Distribuye el espacio igual entre los elementos y los bordes.", "Pega el primero al inicio, el último al final y distribuye el resto.", "Centra los elementos."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "La propiedad `gap` sirve para:", 
+                opciones: ["Añadir margen externo.", "Definir el espacio (hueco) entre filas y columnas en Grid y Flexbox.", "Añadir padding interno.", "Solo funciona en Grid."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué área ocupará el elemento?", 
+                code: `grid-column: 1 / -1;`,
+                opciones: ["Solo la primera columna.", "Desde la primera columna hasta la última (todo el ancho).", "Da error.", "La última columna."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si `flex-direction` es `column`, el eje principal es:", 
+                opciones: ["Horizontal.", "Vertical.", "Diagonal.", "Inverso."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué función de Grid permite crear columnas dinámicas que se ajustan al contenedor automáticamente?", 
+                opciones: ["repeat(auto-fit, minmax(...))", "repeat(3, 1fr)", "grid-auto-columns", "flex-grow"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué propiedad cambia el orden visual de un elemento flex sin cambiar el HTML?", 
+                opciones: ["z-index", "priority", "order", "sort"], 
+                correcta: 2,
+                type: "test"
+            },
+
+            // --- BLOQUE 2: BOOTSTRAP (12 Preguntas) ---
+            { 
+                pregunta: "El sistema de rejilla de Bootstrap se basa en:", 
+                opciones: ["10 columnas.", "12 columnas.", "6 columnas.", "Fluido sin columnas."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase de Bootstrap oculta un elemento en móviles y lo muestra en escritorio (lg)?", 
+                opciones: ["d-none d-lg-block", "hidden-xs visible-lg", "d-block d-lg-none", "hide-mobile"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cuál es la clase para un botón verde (éxito)?", 
+                opciones: ["btn-green", "btn-ok", "btn-success", "button-success"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Cuánto margen superior aplica?", 
+                code: `<div class="mt-3">...</div>`,
+                opciones: ["3px.", "3em.", "El nivel 3 de la escala de espaciado (aprox 1rem).", "3%."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué contenedor ocupa siempre el 100% del ancho?", 
+                opciones: [".container", ".container-fluid", ".wrapper", ".w-100"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para hacer una imagen responsiva en Bootstrap usamos:", 
+                opciones: [".img-responsive", ".img-fluid", ".responsive-img", ".fit-image"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase añade padding en el eje X (izquierda y derecha)?", 
+                opciones: ["py-2", "px-2", "pl-2", "p-x-2"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cuál es el orden correcto de breakpoints en Bootstrap?", 
+                opciones: ["xs < sm < md < lg < xl", "sm < md < xs < lg", "md < lg < xl < xxl < sm", "No hay orden."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para alinear texto al centro usamos:", 
+                opciones: ["align-center", "text-center", "font-center", "justify-center"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué componente de Bootstrap se usa para menús de navegación colapsables?", 
+                opciones: ["Navbar", "Sidebar", "Menu", "Collapse"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "La clase `text-danger` pone el texto de color:", 
+                opciones: ["Amarillo.", "Rojo.", "Naranja.", "Negro."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase convierte un `<div>` en una fila flexbox?", 
+                opciones: [".row", ".d-flex", ".flex-row", ".grid"], 
+                correcta: 1,
+                type: "test"
+            },
+
+            // --- BLOQUE 3: TAILWIND (12 Preguntas) ---
+            { 
+                pregunta: "Tailwind es un framework:", 
+                opciones: ["Component-First.", "Utility-First.", "Backend-First.", "Semantic-UI."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para aplicar un estilo solo al pasar el ratón (hover), usamos:", 
+                code: `class="bg-blue-500 ???:bg-blue-700"`,
+                opciones: ["on-hover", "hover", "mouse", "active"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En Tailwind, `w-full` significa:", 
+                opciones: ["width: 100vw", "width: 100%", "width: auto", "width: full"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cómo se define un grid de 3 columnas en Tailwind?", 
+                opciones: ["grid-cols-3", "col-3", "grid-3", "display-grid-3"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para ocultar un elemento en Tailwind usamos:", 
+                opciones: ["d-none", "hidden", "invisible", "hide"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "El prefijo `md:` en Tailwind aplica estilos en:", 
+                opciones: ["Pantallas medianas y superiores (min-width: 768px).", "Solo pantallas medianas.", "Pantallas menores a medianas.", "Modo oscuro."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase pone el texto en negrita?", 
+                opciones: ["text-bold", "font-weight-bold", "font-bold", "bold"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Para añadir un borde redondeado completo (círculo/píldora):", 
+                opciones: ["rounded-circle", "rounded-full", "border-radius-100", "circle"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué hace `flex-1`?", 
+                code: `<div class="flex-1"></div>`,
+                opciones: ["Permite que el elemento crezca y ocupe el espacio disponible.", "Pone flex: 1px.", "Pone orden 1.", "Desactiva flex."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué archivo se usa para personalizar los colores y fuentes de Tailwind?", 
+                opciones: ["style.css", "tailwind.config.js", "package.json", "index.html"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "La directiva `@apply` sirve para:", 
+                opciones: ["Importar librerías.", "Extraer clases de utilidad a CSS personalizado.", "Aplicar JS.", "Validar el código."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase aplica un sombra grande?", 
+                opciones: ["shadow-lg", "shadow-big", "box-shadow-large", "shade-3"], 
+                correcta: 0,
+                type: "test"
+            },
+
+            // --- BLOQUE 4: MULTIMEDIA Y SASS (12 Preguntas) ---
+            { 
+                pregunta: "Para crear una animación CSS por pasos, usamos la regla:", 
+                opciones: ["@animate", "@keyframes", "@transition", "@motion"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué propiedad define la curva de velocidad de una transición (ej: linear, ease)?", 
+                opciones: ["transition-duration", "transition-timing-function", "transition-delay", "animation-speed"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué hace esta transformación?", 
+                code: `transform: scale(1.5);`,
+                opciones: ["Mueve el elemento 1.5px.", "Rota el elemento.", "Aumenta el tamaño del elemento un 50%.", "Lo reduce."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué tipo de gradiente va de un color a otro en línea recta?", 
+                opciones: ["radial-gradient", "linear-gradient", "conic-gradient", "color-mix"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En SASS, las variables se definen con el símbolo:", 
+                opciones: ["@", "$", "--", "#"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué permite hacer el anidamiento (nesting) en SASS?", 
+                code: `nav { ul { ... } }`,
+                opciones: ["Escribir selectores hijos dentro de los padres para un código más limpio.", "Crear funciones.", "Importar archivos.", "Nada, es ilegal."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para reutilizar un bloque de código CSS en SASS usamos:", 
+                opciones: ["@mixin y @include", "@function y @return", "@var y @set", "@copy y @paste"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué hace el símbolo `&` en SASS?", 
+                code: `a { &:hover { ... } }`,
+                opciones: ["Es un operador AND.", "Hace referencia al selector padre.", "Crea una variable.", "Concatena strings."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "La directiva `@extend` sirve para:", 
+                opciones: ["Heredar estilos de otro selector.", "Extender la funcionalidad de SASS.", "Importar librerías.", "Crear un bucle."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué función de SASS oscurece un color?", 
+                opciones: ["blacken()", "dark()", "darken()", "dim()"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Si queremos que una animación se repita para siempre, usamos:", 
+                code: `animation-iteration-count: ???`,
+                opciones: ["loop", "infinite", "always", "forever"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cuál es la diferencia entre `.sass` y `.scss`?", 
+                opciones: ["SASS usa indentación, SCSS usa llaves y punto y coma (más parecido a CSS).", "SCSS no soporta variables.", "SASS es la versión moderna.", "Son lo mismo."], 
+                correcta: 0,
+                type: "test"
+            },
+
+            // --- BLOQUE 5: PREGUNTAS MIXTAS FINALES (12 Preguntas) ---
+            { 
+                pregunta: "¿Qué propiedad CSS es necesaria para activar `z-index`?", 
+                opciones: ["position (relative, absolute, fixed...)", "display", "float", "margin"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "En Bootstrap, `col-6` ocupa el 50%. En Tailwind, el equivalente es:", 
+                opciones: ["w-1/2", "w-50", "col-6", "width-half"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué hace `box-sizing: border-box`?", 
+                opciones: ["Incluye el padding y el border dentro del ancho total del elemento.", "Añade un borde a la caja.", "Calcula el ancho solo con el contenido.", "No existe."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para centrar un div absoluto dentro de un relativo:", 
+                code: `top: 50%; left: 50%; transform: ???;`,
+                opciones: ["translate(-50%, -50%)", "center()", "scale(0.5)", "rotate(90deg)"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué metodología de nombrado CSS usa bloques, elementos y modificadores?", 
+                opciones: ["SMACSS", "OOCSS", "BEM (Block Element Modifier)", "Atomic CSS"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "En SASS, un archivo que empieza con `_` (ej: `_vars.scss`) es:", 
+                opciones: ["Un partial (no se compila solo).", "Un archivo privado.", "Un error.", "Un archivo temporal."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "El viewport meta tag sirve para:", 
+                opciones: ["Controlar el layout en móviles (escala y ancho).", "El SEO.", "Definir el idioma.", "Cargar CSS."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué hace `object-fit: cover` en una imagen?", 
+                opciones: ["La estira para llenar.", "Recorta la imagen para llenar el contenedor manteniendo la proporción.", "Muestra la imagen completa dejando huecos.", "La hace transparente."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En Tailwind, `@layer components` sirve para:", 
+                opciones: ["Definir estilos de componentes personalizados que se pueden purgar.", "Crear capas en Photoshop.", "Organizar el HTML.", "Nada."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué pseudo-clase selecciona el primer hijo de un elemento?", 
+                opciones: [":first-child", ":child-1", ":nth-child(0)", ":initial"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "Para hacer una web accesible, es importante usar colores con:", 
+                opciones: ["Mucho brillo.", "Suficiente contraste.", "Solo blanco y negro.", "Colores pastel."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¡Última! ¿Qué framework prefieres para desarrollar rápido?", 
+                opciones: ["Bootstrap (componentes listos).", "Tailwind (libertad total).", "CSS Puro (soy valiente).", "Todos tienen su uso."], 
+                correcta: 3,
+                type: "test"
+            }
+        ]
+    }
             },
             // Base de datos de Entorno Servidor
             servidor: {
@@ -2195,7 +3623,7 @@ export class AppComponent {
 }
 
 <img [src]="imagen">`,
-                            opciones: ["Para escuchar eventos del HTML", "Para enlazar una propiedad HTML con una variable del componente (Property Binding)", "Para mostrar texto dinámico"],
+                            opciones: ["Para escuchar eventos del HTML", "Para enlazar una propiedad HTML con una variable del componente", "Para mostrar texto dinámico"],
                             correcta: 1,
                             type: "test"
                         },
@@ -2204,13 +3632,1031 @@ export class AppComponent {
                             pregunta: "Analiza el siguiente código. ¿Qué afirmación es correcta sobre [(...)]?",
                             code: `<input [(ngModel)]="nombre">
 <p>{{ nombre }}</p>`,
-                            opciones: ["Solo permite leer datos del componente", "No requiere importar ningún módulo", "Permite modificar la variable desde la vista y el componente (Two-way binding)"],
+                            opciones: ["Solo permite leer datos del componente", "No requiere importar ningún módulo", "Permite modificar la variable desde la vista y el componente "],
                             correcta: 2,
                             type: "test"
                         }
                     ]
-                }
+                },angular_ud5: {
+        title: "UD5: Introducción a Angular 20",
+        questions: [
+            // --- CONCEPTOS BÁSICOS ---
+            { 
+                pregunta: "¿Qué es una SPA (Single Page Application) según el temario?", 
+                opciones: ["Una web que solo tiene una página HTML estática.", "Una web que carga diferentes páginas HTML del servidor al navegar.", "Una web dinámica que no recarga la página, solo cambia los componentes."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué comando de Angular CLI se usa para levantar el servidor de desarrollo y abrir el navegador?", 
+                code: `// Ejemplo de terminal
+PS C:\\proyectos\\angular>`,
+                opciones: ["ng build", "ng serve -o", "ng start", "npm run dev"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para generar un nuevo componente llamado 'navbar', ¿cuál es el comando abreviado correcto?", 
+                opciones: ["ng new navbar", "ng g c navbar", "ng create component navbar", "ng add navbar"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "Explica las tres partes fundamentales que componen un Componente en Angular y en qué archivo va cada una.", 
+                criterio: "Debe mencionar: 1. La Vista (HTML), 2. Los Estilos (CSS) y 3. La Lógica (TypeScript).",
+                correcta: 0
+            },
+            // --- ESTRUCTURA Y DECORADORES ---
+            { 
+                pregunta: "Analiza este código. ¿Qué propiedad del decorador @Component falta para indicar dónde está el HTML?", 
+                code: `@Component({
+  selector: 'app-root',
+  standalone: true,
+  styleUrl: './app.component.css'
+})
+export class AppComponent {}`,
+                opciones: ["htmlUrl", "templateUrl", "viewUrl", "layout"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué significa `standalone: true` en un componente de Angular 17+?", 
+                opciones: ["Que depende de un NgModule.", "Que es un componente independiente y gestiona sus propios imports.", "Que solo funciona en modo local.", "Que no tiene archivo CSS."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si queremos usar un componente hijo dentro del HTML del padre, ¿qué debemos poner en el array `imports` del padre?", 
+                code: `@Component({
+  selector: 'app-padre',
+  standalone: true,
+  imports: [ /* ¿Qué va aquí? */ ],
+  template: '<app-hijo></app-hijo>'
+})`,
+                opciones: ["Nada, es automático.", "El nombre de la clase del componente hijo (HijoComponent).", "El selector del hijo.", "El módulo del hijo."], 
+                correcta: 1,
+                type: "test"
+            },
+            // --- ROUTING ---
+            { 
+                pregunta: "En Angular 20, ¿en qué archivo se definen las rutas de la aplicación?", 
+                opciones: ["app.config.ts", "main.ts", "app.routes.ts", "index.html"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza la siguiente definición de ruta. ¿Es correcta?", 
+                code: `export const routes: Routes = [
+  { url: 'contacto', load: ContactoComponent }
+];`,
+                opciones: ["Sí, es correcta.", "No, las propiedades son 'path' y 'component'.", "No, falta el 'standalone: true'.", "No, 'url' debería ser 'href'."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué etiqueta HTML especial utiliza Angular para saber dónde renderizar el contenido de la ruta activa?", 
+                opciones: ["<ng-content>", "<router-outlet>", "<app-root>", "<div id='app'>"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "¿Por qué debemos usar `routerLink` en lugar de `href` en los enlaces de navegación?", 
+                code: `<a routerLink="/inicio">Inicio</a> vs <a href="/inicio">Inicio</a>`,
+                criterio: "Porque 'href' recarga la página completa (perdiendo el estado), mientras que 'routerLink' cambia solo el componente (navegación SPA) sin recargar.",
+                correcta: 0
+            },
+            { 
+                pregunta: "Para que las rutas funcionen, ¿qué proveedor debemos añadir en `app.config.ts`?", 
+                code: `export const appConfig: ApplicationConfig = {
+  providers: [
+     // ... ¿Qué falta aquí?
+  ]
+};`,
+                opciones: ["provideHttpClient()", "provideRouter(routes)", "provideForms()", "provideAnimations()"], 
+                correcta: 1,
+                type: "test"
+            },
+            // --- FICHEROS Y CONFIGURACIÓN ---
+            { 
+                pregunta: "¿Qué archivo es el punto de entrada principal (entry point) de una aplicación Angular?", 
+                opciones: ["index.html", "app.component.ts", "main.ts", "angular.json"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Dónde se gestionan las dependencias (librerías) del proyecto?", 
+                opciones: ["angular.json", "package.json", "tsconfig.json", "node_modules"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si queremos aplicar estilos globales a toda la web, ¿dónde los ponemos?", 
+                opciones: ["app.component.css", "styles.css", "main.css", "index.css"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza este selector. ¿Cómo se usaría este componente en el HTML?", 
+                code: `selector: 'app-hello-world'`,
+                opciones: ["<app-hello-world></app-hello-world>", "<div class='app-hello-world'></div>", "<hello-world></hello-world>", "<app name='hello-world'></app>"], 
+                correcta: 0,
+                type: "test"
+            },
+            // --- CÓDIGO Y ERRORES ---
+            { 
+                type: "text",
+                pregunta: "El siguiente código da error. El enlace 'Contacto' no funciona. ¿Qué falta importar en el componente?", 
+                code: `@Component({
+  standalone: true,
+  imports: [], // Array vacío
+  template: \`<a routerLink="/contacto">Contacto</a>\`
+})
+export class NavbarComponent {}`,
+                criterio: "Falta importar 'RouterLink' en el array 'imports' del componente standalone.",
+                correcta: 0
+            },
+            { 
+                pregunta: "¿Qué hace la interpolación `{{ title }}` en el HTML?", 
+                code: `export class AppComponent {
+  title = 'Mi App';
+}`,
+                opciones: ["Ejecuta una función.", "Muestra el valor de la variable 'title' del TS en el HTML.", "Crea una variable local.", "Es un comentario."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si en `app.routes.ts` definimos `{ path: '', component: Inicio }`, ¿cuándo se carga el componente Inicio?", 
+                opciones: ["Nunca, está vacío.", "Cuando la URL es la raíz (home).", "Cuando hay un error 404.", "Al hacer clic en un botón."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "El archivo `app.config.ts` reemplaza en Angular moderno a:", 
+                opciones: ["app.module.ts (AppModule)", "index.html", "main.ts", "component.ts"], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "Describe paso a paso qué ocurre cuando el usuario hace clic en un enlace con `routerLink`.", 
+                criterio: "1. La URL del navegador cambia. 2. El Router detecta el cambio. 3. Busca la ruta en app.routes.ts. 4. Carga el componente asociado en el <router-outlet>.",
+                correcta: 0
+            },
+            { 
+                pregunta: "¿Cómo se llama la carpeta que contiene todas las librerías descargadas por npm?", 
+                opciones: ["src", "public", "dist", "node_modules"], 
+                correcta: 3,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué extensión tienen los archivos de pruebas (testing) en Angular?", 
+                opciones: [".test.ts", ".spec.ts", ".js", ".unit.ts"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En la estructura de carpetas, ¿dónde se encuentra la carpeta `app`?", 
+                opciones: ["En la raíz.", "Dentro de `src`.", "Dentro de `public`.", "Dentro de `.angular`."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿De qué color será el texto h1?", 
+                code: `// app.component.css
+h1 { color: red; }
+
+// hijo.component.css
+h1 { color: blue; }
+
+// HTML hijo
+<h1>Hola</h1>`,
+                opciones: ["Rojo (hereda del padre).", "Azul (los estilos están encapsulados por defecto).", "Negro (ninguno aplica).", "Violeta (mezcla)."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "Si ejecutas `ng serve` y te sale un error de 'Port 4200 is already in use', ¿qué significa y cómo lo arreglas?", 
+                criterio: "Significa que ya hay otro servidor Angular corriendo. Puedes cerrarlo o usar otro puerto con 'ng serve --port 4201'.",
+                correcta: 0
+            },
+            { 
+                pregunta: "¿Para qué sirve el archivo `.gitignore`?", 
+                opciones: ["Para configurar rutas.", "Para indicar qué archivos NO se deben subir a Git (como node_modules).", "Para ignorar errores de TypeScript.", "Para borrar archivos basura."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En Angular 20, los componentes son `standalone`...", 
+                opciones: ["Por defecto (true).", "Solo si lo especificas manualmente.", "Ya no existen.", "Depende de la versión de Node."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cuál es la función del archivo `main.ts`?", 
+                code: `bootstrapApplication(AppComponent, appConfig)`,
+                opciones: ["Definir las rutas.", "Arrancar la aplicación (Bootstrapping).", "Compilar el CSS.", "Conectar con la base de datos."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "¿Qué es `RouterOutlet` y por qué es vital en una SPA?", 
+                criterio: "Es una directiva que actúa como un marcador de posición dinámico. Es vital porque ahí es donde Angular intercambia las 'páginas' (componentes) sin recargar el navegador.",
+                correcta: 0
             }
+        ]
+    },angular_ud6: {
+        title: "UD6: Data Binding y Formularios",
+        questions: [
+            // --- DATA BINDING ---
+            { 
+                pregunta: "Analiza el siguiente código. ¿Qué tipo de Binding se está aplicando en el atributo 'src'?", 
+                code: `<img [src]="user.avatarUrl" />`,
+                opciones: ["Interpolación.", "Event Binding.", "Property Binding.", "Two-Way Binding."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Para escuchar el evento de clic en un botón y ejecutar la función 'guardar()', la sintaxis correcta es:", 
+                opciones: ["<button onclick='guardar()'>", "<button (click)='guardar()'>", "<button [click]='guardar()'>", "<button bind-click='guardar()'>"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué combinación de caracteres se conoce como 'Banana in a box' para el Two-Way Binding?", 
+                opciones: ["{{()}}", "[()]", "([])", "{( )}"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "Explica la diferencia principal entre 'Interpolación' {{ }} y 'Property Binding' [ ]. ¿Cuándo es obligatorio usar Property Binding?", 
+                code: `{{ isDisabled }} vs [disabled]="isDisabled"`,
+                criterio: "La interpolación siempre convierte el resultado a String. El Property Binding mantiene el tipo de dato (booleano, objeto, etc.). Es obligatorio usar [] cuando la propiedad HTML espera un booleano (como disabled, hidden, checked) o un objeto.",
+                correcta: 0
+            },
+            // --- DIRECTIVAS ESTRUCTURALES (NUEVA SINTAXIS) ---
+            { 
+                pregunta: "En Angular 17+, ¿cómo se escribe un bucle para recorrer una lista de usuarios optimizada?", 
+                code: `users = [{id: 1, name: 'Ana'}, {id: 2, name: 'Pepe'}]`,
+                opciones: ["*ngFor='let user of users'", "@for (user of users; track user.id) { ... }", "@foreach (user in users) { ... }", "<div for='user in users'>"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "Reescribe el siguiente código antiguo usando la nueva sintaxis de control de flujo (@if / @else).", 
+                code: `<div *ngIf="isAdmin; else userTpl">
+  <h1>Panel Admin</h1>
+</div>
+<ng-template #userTpl>
+  <h1>Panel Usuario</h1>
+</ng-template>`,
+                criterio: "Debe quedar así: @if (isAdmin) { <h1>Panel Admin</h1> } @else { <h1>Panel Usuario</h1> }. Se elimina el ng-template.",
+                correcta: 0
+            },
+            { 
+                pregunta: "¿Qué ventaja principal tiene la nueva sintaxis `@for` y `@if` frente a las directivas estructurales clásicas (`*ngIf`, `*ngFor`)?", 
+                opciones: ["No requieren importar CommonModule.", "Son más rápidas (mejor rendimiento).", "Son más legibles al no usar ng-template implícitos.", "Todas las anteriores."], 
+                correcta: 3,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué parámetro es OBLIGATORIO en el nuevo bloque `@for`?", 
+                code: `@for (item of items; ???) { ... }`,
+                opciones: ["let i = index", "track", "key", "id"], 
+                correcta: 1,
+                type: "test"
+            },
+            // --- TEMPLATE DRIVEN FORMS ---
+            { 
+                pregunta: "Para usar formularios de tipo 'Template-Driven', ¿qué módulo debemos importar en el componente (o en app.config)?", 
+                opciones: ["ReactiveFormsModule", "FormsModule", "TemplateModule", "AngularForms"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En un formulario de plantilla, ¿cómo accedemos al estado global del formulario (valid, touched, etc.) desde el HTML?", 
+                code: `<form ??? (ngSubmit)="save()"> ... </form>`,
+                opciones: ["name='miForm'", "#miForm='ngForm'", "[(ngModel)]='miForm'", "formGroup='miForm'"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué directiva es imprescindible en un input dentro de un `<form>` para que Angular registre su valor en el objeto del formulario?", 
+                code: `<input type="text" [(ngModel)]="user.name" ??? >`,
+                opciones: ["id", "name", "value", "formControlName"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "Analiza el código. ¿Por qué el botón de enviar no se deshabilita aunque el nombre esté vacío?", 
+                code: `<form #f="ngForm">
+  <input name="nombre" [(ngModel)]="user.nombre" required>
+  <button type="submit" [disabled]="f.dirty">Enviar</button>
+</form>`,
+                criterio: "Porque se está comprobando 'f.dirty' (si ha sido modificado), no 'f.invalid'. Debería ser [disabled]='f.invalid'.",
+                correcta: 0
+            },
+            // --- REACTIVE FORMS ---
+            { 
+                pregunta: "En los formularios reactivos (Reactive Forms), la lógica y definición del formulario reside principalmente en:", 
+                opciones: ["El archivo HTML (template).", "El archivo TypeScript (componente).", "El servicio.", "La base de datos."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué clase se utiliza para crear un grupo de controles en un formulario reactivo?", 
+                opciones: ["FormControl", "FormGroup", "FormArray", "FormBuilder"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué falta para vincular el formulario del TS con el HTML?", 
+                code: `// TS
+myForm = new FormGroup({ ... });
+
+// HTML
+<form (ngSubmit)="send()"> ... </form>`,
+                opciones: ["#myForm='ngForm'", "[(ngModel)]='myForm'", "[formGroup]='myForm'", "name='myForm'"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Cómo se define un campo obligatorio en un Reactive Form?", 
+                code: `name: new FormControl('', ???)`,
+                opciones: ["'required'", "Validators.required", "[Validators.required]", "Todas las anteriores son válidas."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "Escribe la línea de código en TypeScript para obtener el valor del campo 'email' dentro de un FormGroup llamado 'registroForm'.", 
+                criterio: "this.registroForm.get('email')?.value  O  this.registroForm.value.email",
+                correcta: 0
+            },
+            { 
+                pregunta: "¿Qué propiedad nos indica si el usuario ha interactuado (hecho foco y salido) con un campo?", 
+                opciones: ["dirty", "touched", "pristine", "valid"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si queremos establecer un valor en el formulario desde el código (por ejemplo, al editar), usamos el método:", 
+                code: `this.myForm.???({ nombre: 'Pepe' })`,
+                opciones: ["setValue o patchValue", "updateValue", "setForm", "pushValue"], 
+                correcta: 0,
+                type: "test"
+            },
+            // --- VALIDACIONES Y ERRORES ---
+            { 
+                pregunta: "Analiza el código. ¿Cuándo se mostrará el mensaje de error?", 
+                code: `@if (nameCtrl.invalid && nameCtrl.touched) {
+  <span>Error</span>
+}`,
+                opciones: ["Siempre que el campo sea inválido.", "Solo cuando el usuario haya tocado el campo Y sea inválido.", "Cuando el usuario esté escribiendo (dirty).", "Nunca, la sintaxis es incorrecta."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué método se utiliza para marcar todos los campos como 'tocados' y forzar que aparezcan los errores al intentar enviar?", 
+                opciones: ["validateAll()", "markAllAsTouched()", "setTouched()", "forceValidation()"], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "El validador `Validators.pattern(...)` sirve para:", 
+                opciones: ["Validar que el campo no esté vacío.", "Validar una expresión regular (Regex).", "Validar una longitud mínima.", "Validar que coincida con otro campo."], 
+                correcta: 1,
+                type: "test"
+            },
+            // --- COMUNICACIÓN Y ESTADO ---
+            { 
+                type: "text",
+                pregunta: "En una arquitectura de componentes Padre-Hijo con un Modal (ventana emergente), ¿quién debe controlar la variable 'isVisible' (el estado)?", 
+                criterio: "El componente Padre. El padre es el dueño del estado y decide cuándo se muestra u oculta el hijo (modal).",
+                correcta: 0
+            },
+            { 
+                pregunta: "Si usamos `OnPush` como estrategia de detección de cambios, la vista solo se actualiza si:", 
+                opciones: ["Cambia cualquier variable.", "Cambian las referencias de los @Input o se lanza un evento.", "Se ejecuta un setInterval.", "Nunca se actualiza."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué hace el operador `!` en `nombre!: string`?", 
+                opciones: ["Indica que la variable es opcional.", "Indica que la variable no puede ser null (Non-null assertion).", "Es un operador lógico NOT.", "Inicializa la variable a vacío."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué directiva estructural usamos para simular un 'switch-case' en el HTML?", 
+                code: `
+@switch (color) {
+  @case ('red') { ... }
+  ...
+}`,
+                opciones: ["@switch", "ngSwitch", "*switch", "Todas las anteriores (depende de la versión)."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "En un formulario reactivo, si queremos deshabilitar un campo, ¿qué es lo correcto?", 
+                opciones: ["Usar el atributo [disabled]='true' en el HTML.", "Llamar a control.disable() en el TS.", "Usar readonly.", "CSS pointer-events: none."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "Describe qué es el 'Data Binding Unidireccional' y pon un ejemplo de cada sentido (TS->HTML y HTML->TS).", 
+                criterio: "Unidireccional significa que los datos fluyen en una sola dirección. TS->HTML: Interpolación {{}} o Property []. HTML->TS: Event Binding ().",
+                correcta: 0
+            },
+            { 
+                pregunta: "¡Pregunta trampa! ¿Se pueden mezclar Reactive Forms y Template-driven en la misma aplicación?", 
+                opciones: ["No, está prohibido.", "Sí, pero no es recomendable en el mismo formulario.", "Sí, es la práctica estándar.", "Angular da error al compilar."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué significa que un campo de formulario esté 'dirty'?", 
+                opciones: ["Que tiene un valor inválido.", "Que el usuario ha modificado su valor (ha escrito algo).", "Que el usuario ha hecho clic y ha salido.", "Que tiene un virus."], 
+                correcta: 1,
+                type: "test"
+            }
+        ]
+    }, angular_ud7: {
+        title: "UD7: HTTP, Servicios y RxJS",
+        questions: [
+            // --- LIFECYCLE HOOKS ---
+            { 
+                pregunta: "¿Qué es un 'Lifecycle Hook' en Angular?", 
+                opciones: ["Un servicio para conectar con APIs.", "Un evento que Angular llama automáticamente en momentos clave de la vida del componente.", "Un gancho para colgar estilos CSS.", "Una librería externa."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Cuándo se ejecutará el mensaje de consola?", 
+                code: `ngOnInit(): void {
+  console.log('Hola mundo');
+}`,
+                opciones: ["Cada vez que cambie un dato.", "Solo una vez, cuando el componente se inicializa.", "Cuando el componente se destruye.", "Nunca, falta llamarlo manualmente."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "¿Cuál es la diferencia principal entre `constructor` y `ngOnInit`? ¿Qué se debe poner en cada uno?", 
+                criterio: "El constructor es de JS y se usa solo para Inyección de Dependencias. ngOnInit es de Angular y se usa para lógica de inicialización (cargar datos, llamadas a servicios).",
+                correcta: 0
+            },
+            { 
+                pregunta: "El hook `ngOnChanges` solo se ejecuta si:", 
+                opciones: ["Cambia cualquier variable del componente.", "Cambia la referencia de una propiedad decorada con @Input().", "El usuario hace clic en un botón.", "Se redimensiona la ventana."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Para qué sirve el hook `ngOnDestroy`?", 
+                code: `ngOnDestroy() {
+  this.subscription.unsubscribe();
+}`,
+                opciones: ["Para destruir la base de datos.", "Para limpieza final (cancelar suscripciones, timers) y evitar fugas de memoria.", "Para borrar el HTML.", "Se ejecuta al iniciar la app."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si necesitamos manipular el DOM manualmente o usar librerías externas que tocan el HTML, ¿qué hook es el seguro?", 
+                opciones: ["ngOnInit", "ngOnChanges", "ngAfterViewInit", "constructor"], 
+                correcta: 2,
+                type: "test"
+            },
+            
+            // --- SERVICIOS Y DI (INYECCIÓN DE DEPENDENCIAS) ---
+            { 
+                pregunta: "Según la analogía del temario, si el Componente es un 'Profesor', el Servicio es:", 
+                opciones: ["El Alumno.", "La Pizarra.", "La Secretaría (hace el trabajo de fondo y gestión).", "El Director."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué decorador es OBLIGATORIO para que una clase sea un Servicio inyectable?", 
+                code: `@???({ providedIn: 'root' })
+export class DataService {}`,
+                opciones: ["@Component", "@Service", "@Injectable", "@Module"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza el código. ¿Qué patrón de diseño está aplicando Angular aquí?", 
+                code: `constructor(private http: HttpClient) {}`,
+                opciones: ["Singleton.", "Factory.", "Inyección de Dependencias (DI).", "MVC."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "¿Por qué NO debemos hacer `const servicio = new MiServicio()` dentro de un componente? Explícalo.", 
+                criterio: "Porque rompe la Inyección de Dependencias. Angular no podría gestionar su ciclo de vida, ni compartir la instancia (Singleton), ni inyectarle otras dependencias a ese servicio.",
+                correcta: 0
+            },
+            { 
+                pregunta: "¿Qué significa `providedIn: 'root'` en un servicio?", 
+                opciones: ["Que solo funciona en el componente raíz.", "Que el servicio es un Singleton (instancia única compartida) disponible en toda la app.", "Que requiere permisos de administrador (root).", "Nada, es opcional."], 
+                correcta: 1,
+                type: "test"
+            },
+            
+            // --- HTTP Y RXJS ---
+            { 
+                pregunta: "¿Qué librería utiliza Angular para manejar la asincronía y las peticiones HTTP?", 
+                opciones: ["Axios", "Fetch API", "RxJS", "jQuery"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué es un `Observable`?", 
+                opciones: ["Una promesa que solo emite un valor.", "Un objeto que puede emitir múltiples valores en el tiempo (stream de datos).", "Una base de datos.", "Un servicio web."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Analiza este código. ¿Se realizará la petición HTTP?", 
+                code: `this.http.get('https://api.com/users');`,
+                opciones: ["Sí, inmediatamente.", "No, porque falta el `.subscribe()`.", "Sí, pero no devolverá datos.", "Depende del navegador."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "Explica con tus palabras qué hace el método `.subscribe()` en un Observable HTTP.", 
+                criterio: "Es el que 'activa' el Observable. Sin subscribe, la petición no se envía. Es como 'abrir el grifo' para recibir los datos (o errores) cuando lleguen.",
+                correcta: 0
+            },
+            { 
+                pregunta: "En Angular 20 (Standalone), ¿dónde configuramos `provideHttpClient()`?", 
+                opciones: ["En el AppModule (imports).", "En el componente (providers).", "En `app.config.ts` (providers globales).", "No hace falta configurar nada."], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Si `http.get()` devuelve un Observable, ¿qué devuelve `http.get<Pokemon>(...)`?", 
+                opciones: ["Un objeto Pokemon directo.", "Un Observable tipado que emitirá un objeto Pokemon.", "Una Promesa de Pokemon.", "Un array de Pokemons."], 
+                correcta: 1,
+                type: "test"
+            },
+            
+            // --- CÓDIGO Y DEBUGGING ---
+            { 
+                pregunta: "Analiza el error. ¿Por qué ocurre `NullInjectorError: No provider for HttpClient`?", 
+                code: `constructor(private http: HttpClient) {} // Error en consola`,
+                opciones: ["Has olvidado importar HttpClient en el archivo.", "Has olvidado añadir `provideHttpClient()` en la configuración de la app.", "El servidor está caído.", "HttpClient ya no existe en Angular 20."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué argumentos acepta el método `subscribe` para manejar el resultado?", 
+                code: `.subscribe({ ... })`,
+                opciones: ["Solo una función de callback.", "Un objeto con `next`, `error` y `complete`.", "Un try-catch.", "Ninguno."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                type: "text",
+                pregunta: "Dado el siguiente código en un servicio, ¿qué error de concepto tiene?", 
+                code: `
+getDatos() {
+  return "Datos: " + this.http.get('api/datos'); 
+}`,
+                criterio: "El error es intentar tratar el retorno de http.get como un dato síncrono (string). http.get devuelve un Observable, no el dato en sí. Debería retornar el Observable.",
+                correcta: 0
+            },
+            { 
+                pregunta: "Para manejar errores en una petición HTTP dentro del subscribe, usamos la propiedad:", 
+                code: `.subscribe({
+  next: (data) => { ... },
+  ???: (err) => { console.error(err) }
+})`,
+                opciones: ["catch", "fail", "error", "reject"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué método HTTP se usa habitualmente para ENVIAR datos al servidor (crear)?", 
+                opciones: ["http.get()", "http.put()", "http.post()", "http.delete()"], 
+                correcta: 2,
+                type: "test"
+            },
+            { 
+                pregunta: "Si queremos tipar la respuesta de la API para que TypeScript nos ayude, hacemos:", 
+                code: `this.http.get<???>(url)`,
+                opciones: ["<any>", "<Object>", "<LaInterfazDeMisDatos>", "<String>"], 
+                correcta: 2,
+                type: "test"
+            },
+            
+            // --- CASOS PRÁCTICOS ---
+            { 
+                type: "text",
+                pregunta: "Estás creando un buscador de Pokémon. Describe los pasos necesarios desde que el usuario escribe el ID hasta que se muestran los datos.", 
+                criterio: "1. Recoger ID del formulario. 2. Llamar al método del componente. 3. Componente llama al Servicio. 4. Servicio hace http.get(). 5. Componente hace .subscribe(). 6. Asignar datos a variable para mostrar en HTML.",
+                correcta: 0
+            },
+            { 
+                pregunta: "¿Qué variable especial de Angular se usa para mostrar los datos de una petición mientras cargan?", 
+                code: `@if (loading) { <p>Cargando...</p> }`,
+                opciones: ["No existe variable especial, hay que crear una variable booleana manual (ej: loading).", "Angular tiene una variable `isLoading` automática.", "Usar `*ngIfLoading`.", "El navegador lo hace solo."], 
+                correcta: 0,
+                type: "test"
+            },
+            { 
+                pregunta: "El operador pipe `| json` en el HTML sirve para:", 
+                code: `<pre>{{ datos | json }}</pre>`,
+                opciones: ["Hacer una petición JSON.", "Ver el objeto JS formateado como texto JSON (útil para debug).", "Convertir texto a objeto.", "Validar el JSON."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Si un servicio necesita inyectar otro servicio (ej: un Logger), ¿es posible?", 
+                opciones: ["No, los servicios no pueden tener dependencias.", "Sí, pidiéndolo en su constructor (gracias a @Injectable).", "Sí, pero solo con herencia.", "Solo si están en el mismo módulo."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "En una arquitectura limpia, ¿quién debe encargarse de la lógica de negocio y llamadas a API?", 
+                opciones: ["El Componente.", "El Servicio.", "La Vista (HTML).", "El Módulo."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "¿Qué ocurre si te suscribes múltiples veces a un mismo Observable http.get?", 
+                opciones: ["Nada, se reutiliza el dato.", "Se realizan múltiples peticiones HTTP al servidor.", "Angular lanza un error.", "Se bloquea la app."], 
+                correcta: 1,
+                type: "test"
+            },
+            { 
+                pregunta: "Para transformar los datos que llegan del servidor ANTES de que lleguen al componente, se usan:", 
+                opciones: ["Promesas.", "Operadores de RxJS (pipe, map, tap...).", "Bucles for.", "CSS."], 
+                correcta: 1,
+                type: "test"
+            }
+        ]
+    },
+                angular_final: {
+            title: "🎓 Examen Final Angular (UD5, UD6, UD7)",
+            questions: [
+                // --- UD5: INTRODUCCIÓN Y COMPONENTES ---
+                { 
+                    pregunta: "Para crear un nuevo componente en Angular usando la CLI, ¿qué comando es el correcto y más abreviado?", 
+                    opciones: ["ng new component nombre", "ng create c nombre", "ng g c nombre", "ng add component nombre"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "En la arquitectura de Angular 17+, ¿qué propiedad del decorador @Component indica que no necesita módulos (NgModules)?", 
+                    opciones: ["module: false", "standalone: true", "imports: []", "provider: 'root'"], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    type: "text",
+                    pregunta: "Explica brevemente qué es un Componente en Angular y cuáles son sus tres partes fundamentales.", 
+                    criterio: "Debe mencionar que es la pieza base de la UI. Sus partes son: la Vista (HTML), los Estilos (CSS) y la Lógica (TypeScript).",
+                    correcta: 0
+                },
+                { 
+                    pregunta: "Analiza el siguiente código del decorador @Component. ¿Qué falta para que funcione si queremos usar 'RouterLink' en el HTML?", 
+                    code: `@Component({
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+  // ... falta algo aquí
+})`,
+                    opciones: ["Falta imports: [RouterLink]", "Falta providers: [Router]", "Falta exports: [RouterModule]", "No falta nada, funciona automático"], 
+                    correcta: 0,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué archivo es el punto de entrada principal que arranca la aplicación en Angular?", 
+                    opciones: ["index.html", "app.component.ts", "main.ts", "angular.json"], 
+                    correcta: 2,
+                    type: "test"
+                },
+
+                // --- UD6: DATA BINDING Y DIRECTIVAS ---
+                { 
+                    pregunta: "Dado el siguiente código en la vista (HTML):",
+                    code: `<button [disabled]="isValid">Enviar</button>`,
+                    opciones: ["Es un Event Binding.", "Es una Interpolación.", "Es un Property Binding (unidireccional: Componente -> Vista).", "Es un Two-Way Binding."], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Cuál es la sintaxis moderna (Angular 17+) para iterar una lista de elementos?", 
+                    code: `nombres = ['Ana', 'Luis', 'Pepe']`,
+                    opciones: ["*ngFor='let n of nombres'", "@for (n of nombres; track n) { ... }", "@foreach (n in nombres) { ... }", "@iterate (n of nombres)"], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    type: "text",
+                    pregunta: "Transforma el siguiente código antiguo (*ngIf) a la nueva sintaxis de control de flujo (@if).", 
+                    code: `<div *ngIf="isLoggedIn; else guestTemplate">
+  <p>Hola User</p>
+</div>
+<ng-template #guestTemplate>
+  <p>Login</p>
+</ng-template>`,
+                    criterio: "Debe usar @if (isLoggedIn) { <p>Hola User</p> } @else { <p>Login</p> }. No debe usar ng-template.",
+                    correcta: 0
+                },
+                { 
+                    pregunta: "Analiza este código. ¿Qué ocurrirá al escribir en el input?", 
+                    code: `<!-- TS -->
+nombre = 'Alicia';
+
+<!-- HTML -->
+<input [value]="nombre">
+<p>{{ nombre }}</p>`,
+                    opciones: ["El párrafo <p> se actualiza automáticamente al escribir.", "El input muestra 'Alicia' pero al escribir NO cambia la variable (no es bidireccional).", "Da error porque falta el módulo de formularios.", "Todas las anteriores son falsas."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Para usar Two-Way Binding `[(ngModel)]`, ¿qué módulo es OBLIGATORIO importar?", 
+                    opciones: ["ReactiveFormsModule", "FormsModule", "CommonModule", "BrowserModule"], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué significa el evento `(click)` en un botón?", 
+                    opciones: ["Binding de propiedad.", "Binding de evento (Vista -> Componente).", "Binding de estilo.", "Ninguna de las anteriores."], 
+                    correcta: 1,
+                    type: "test"
+                },
+
+                // --- UD6: COMUNICACIÓN COMPONENTES (@Input / @Output) ---
+                { 
+                    type: "text",
+                    pregunta: "Queremos pasar un dato del componente PADRE al componente HIJO. ¿Qué decorador debemos usar en el hijo y cómo se usa en el HTML del padre?", 
+                    criterio: "Debe mencionar el decorador @Input() en el hijo. En el HTML del padre se usa Property Binding con corchetes: <app-hijo [propiedad]='valor'></app-hijo>.",
+                    correcta: 0
+                },
+                { 
+                    pregunta: "Si un componente hijo quiere enviar un evento al padre, utiliza:", 
+                    code: `@Output() notificar = new ...`,
+                    opciones: ["Subject()", "Observable()", "EventEmitter()", "EventDispatcher()"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "En el componente padre, ¿cómo se captura el dato emitido por el hijo?", 
+                    code: `<!-- HTML del Padre -->
+<app-hijo (eventoHijo)="manejarEvento( ... )"></app-hijo>`,
+                    opciones: ["$event", "event.target.value", "this.event", "data"], 
+                    correcta: 0,
+                    type: "test"
+                },
+
+                // --- UD6: FORMULARIOS (REACTIVE & TEMPLATE) ---
+                { 
+                    pregunta: "En un formulario Reactivo (Reactive Forms), ¿dónde se define principalmente la lógica y validación?", 
+                    opciones: ["En el HTML (template).", "En el archivo TypeScript (componente).", "En el servicio.", "En el módulo."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Analiza el siguiente código de formulario Reactivo. ¿Por qué es inválido inicialmente?", 
+                    code: `miFormulario = new FormGroup({
+  email: new FormControl('', [Validators.required, Validators.email])
+});`,
+                    opciones: ["Porque falta inicializar el FormControl.", "Porque el valor inicial es cadena vacía y tiene Validators.required.", "Porque Validators.email no existe.", "El código es válido y el formulario estado 'VALID'."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    type: "text",
+                    pregunta: "Diferencia clave entre Template-Driven Forms y Reactive Forms respecto a la escalabilidad y testing.", 
+                    criterio: "Reactive Forms son más escalables, robustos y fáciles de testear (lógica en TS). Template-driven son más simples pero menos escalables (lógica en HTML).",
+                    correcta: 0
+                },
+                { 
+                    pregunta: "Para agrupar varios controles en un formulario reactivo usamos:", 
+                    opciones: ["FormArray", "FormGroup", "FormBuilder", "FormControl"], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué propiedad de un control de formulario indica que el usuario ha modificado el valor (ha escrito algo)?", 
+                    opciones: ["touched", "valid", "dirty", "pristine"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Si queremos mostrar un mensaje de error SOLO cuando el usuario ha tocado el input y es inválido, ¿qué condición usamos?", 
+                    code: `nombre.invalid && ...`,
+                    opciones: ["nombre.dirty", "nombre.touched", "nombre.pristine", "nombre.pending"], 
+                    correcta: 1,
+                    type: "test"
+                },
+
+                // --- UD7: HTTP Y SERVICIOS ---
+                { 
+                    pregunta: "¿Qué decorador es esencial para definir un Servicio en Angular?", 
+                    opciones: ["@Component", "@Service", "@Injectable", "@Module"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "En Angular 17+, ¿dónde se configura globalmente el `provideHttpClient()`?", 
+                    opciones: ["En el AppModule.", "En el app.config.ts (ApplicationConfig).", "En el componente raíz.", "En el servicio."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué patrón de diseño utiliza Angular para entregar instancias de servicios a los componentes?", 
+                    opciones: ["Singleton", "Factory", "Inyección de Dependencias (DI)", "Observer"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    type: "text",
+                    pregunta: "¿Qué devuelve el método `http.get(...)` de Angular? ¿Devuelve los datos directamente?", 
+                    criterio: "No devuelve los datos directamente. Devuelve un Observable. Para obtener los datos es necesario suscribirse (subscribe).",
+                    correcta: 0
+                },
+                { 
+                    pregunta: "Analiza este código. ¿Por qué no se ejecuta la petición HTTP?", 
+                    code: `
+getUsuarios() {
+  this.http.get('https://api.com/users');
+  console.log('Petición enviada');
+}`,
+                    opciones: ["Falta importar HttpClient.", "Falta hacer .subscribe() al observable.", "La URL está mal formada.", "Angular bloquea peticiones http por defecto."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué librería utiliza Angular para manejar la asincronía y los Observables?", 
+                    opciones: ["Axios", "PromiseAPI", "RxJS", "NgZone"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Si queremos que un servicio sea Singleton (una única instancia para toda la app), ¿cómo lo definimos?", 
+                    opciones: ["providedIn: 'root'", "En el array de providers del componente.", "Usando static class.", "Todas las anteriores."], 
+                    correcta: 0,
+                    type: "test"
+                },
+                { 
+                    pregunta: "En una suscripción a un Observable, ¿qué callback maneja los datos exitosos?", 
+                    code: `.subscribe({ ... })`,
+                    opciones: ["error", "complete", "next", "success"], 
+                    correcta: 2,
+                    type: "test"
+                },
+
+                // --- MIX DE CÓDIGO Y DEBUGGING (ESTILO PROFESORA) ---
+                { 
+                    pregunta: "¿Qué hace la función `markAllAsTouched()` en un formulario?", 
+                    opciones: ["Resetea el formulario.", "Marca todos los campos como 'tocados' para forzar que se muestren los mensajes de error.", "Valida el formulario.", "Envía el formulario al servidor."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Analiza el HTML. ¿Qué directiva estructural falta o está mal escrita?", 
+                    code: `<ul>
+  <li *for="let item of items">{{ item }}</li>
+</ul>`,
+                    opciones: ["Debería ser *ngFor.", "Debería ser @for (sin asterisco).", "Ambas A y B son correcciones válidas (sintaxis antigua vs nueva).", "Está correcto."], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    type: "text",
+                    pregunta: "Observa el siguiente código. ¿Qué se mostrará por consola? \n\nconstructor() { console.log('1'); }\nngOnInit() { console.log('2'); }", 
+                    criterio: "Se mostrará primero '1' y luego '2'. El constructor se ejecuta al instanciar la clase, y ngOnInit se ejecuta después, cuando Angular inicializa el componente.",
+                    correcta: 0
+                },
+                { 
+                    pregunta: "¿Para qué sirve el operador `?.` (elvis operator / optional chaining) en el HTML? Ej: `usuario?.nombre`", 
+                    opciones: ["Para hacer el dato opcional.", "Para evitar un error si 'usuario' es null o undefined.", "Para forzar la validación.", "Es un error de sintaxis."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "En Reactive Forms, ¿cómo accedemos al valor actual de un control llamado 'nombre'?", 
+                    opciones: ["this.form.value.nombre", "this.form.get('nombre')?.value", "Ambas A y B son válidas.", "Ninguna de las anteriores."], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué ventaja tiene usar `RouterLink` en lugar de `href` en una etiqueta `<a>`?", 
+                    opciones: ["Es más rápido.", "Evita que la página se recargue completa (navegación SPA).", "Permite pasar parámetros.", "Todas las anteriores."], 
+                    correcta: 3,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Para mostrar una fecha formateada en el HTML, usamos:", 
+                    code: `{{ fecha | date:'dd/MM/yyyy' }}`,
+                    opciones: ["Un Servicio.", "Un Pipe.", "Una Directiva.", "Un Componente."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Si definimos `styleUrl: './app.css'` en el componente, ¿a quién afectan esos estilos?", 
+                    opciones: ["A toda la aplicación (Global).", "Solo a ese componente (Encapsulados).", "A ese componente y sus hijos.", "Depende del navegador."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    type: "text",
+                    pregunta: "Explica qué es la Inyección de Dependencias con un ejemplo de la vida real (analogía).", 
+                    criterio: "Analogía válida: En lugar de fabricar tú mismo un coche (new Coche()), pides uno a la fábrica y te lo traen listo para usar. Angular es la fábrica que te 'inyecta' el servicio.",
+                    correcta: 0
+                },
+                { 
+                    pregunta: "¿Qué ciclo de vida se ejecuta justo después de que cambie un input `bound property` (@Input)?", 
+                    opciones: ["ngOnInit", "ngOnChanges", "ngAfterViewInit", "ngOnDestroy"], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "En el routing, ¿qué etiqueta actúa como marcador donde se cargarán los componentes dinámicos?", 
+                    opciones: ["<app-root>", "<router-outlet>", "<ng-content>", "<router-link>"], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Cómo se define una ruta con un parámetro variable (ej: /producto/5)?", 
+                    opciones: ["path: 'producto/{id}'", "path: 'producto/:id'", "path: 'producto?id'", "path: 'producto-$id'"], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Si `ngOnDestroy` se ejecuta al destruir el componente, ¿para qué es útil?", 
+                    opciones: ["Para guardar datos en BBDD.", "Para limpiar suscripciones y evitar fugas de memoria.", "Para renderizar la vista.", "No sirve para nada."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "El archivo `package.json` contiene:", 
+                    opciones: ["El código fuente de la app.", "Las dependencias y scripts del proyecto.", "La configuración de TypeScript.", "Los estilos globales."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué comando levanta el servidor de desarrollo y abre el navegador?", 
+                    opciones: ["ng build", "ng start", "ng serve -o", "ng run"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    type: "text",
+                    pregunta: "Dado el error: 'NullInjectorError: No provider for HttpClient'. ¿Qué has olvidado configurar y dónde?", 
+                    criterio: "Se ha olvidado añadir 'provideHttpClient()' en el array de 'providers' dentro del archivo de configuración global 'app.config.ts'.",
+                    correcta: 0
+                },
+                { 
+                    pregunta: "¿Cuál es la diferencia entre `constructor` y `ngOnInit`?", 
+                    opciones: ["No hay diferencia.", "El constructor es de JS (inyección dependencias) y ngOnInit es de Angular (lógica inicial).", "ngOnInit se ejecuta antes.", "El constructor se ejecuta cada vez que cambia la vista."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Para aplicar una clase CSS condicionalmente, usamos:", 
+                    code: `[class.activa]="isActive"`,
+                    opciones: ["NgStyle", "Class Binding", "Style Binding", "Attribute Binding"], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "Los servicios en Angular son, por defecto:", 
+                    opciones: ["Transient (una instancia por uso).", "Singleton (una única instancia compartida).", "Scoped.", "Static."], 
+                    correcta: 1,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¿Qué método de `FormBuilder` crea un grupo de controles?", 
+                    opciones: ["fb.control()", "fb.array()", "fb.group()", "fb.create()"], 
+                    correcta: 2,
+                    type: "test"
+                },
+                { 
+                    pregunta: "¡Pregunta final! ¿Qué opinas de Angular después de este curso?", 
+                    opciones: ["Es muy difícil.", "Prefiero React.", "Es potente y ordenado (la respuesta correcta para aprobar).", "No sé, no contesto."], 
+                    correcta: 2,
+                    type: "test"
+                }
+            ]
+        }
+            }
+            
         };
 
 
