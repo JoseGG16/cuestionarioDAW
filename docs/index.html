@@ -4667,7 +4667,7 @@ getUsuarios() {
         // --- CONFIGURACIÓN IA ---
         // --- CONFIGURACIÓN IA ---
         // --- CONFIGURACIÓN IA ---
-        const GOOGLE_API_KEY = "AIzaSyAwEB0h4FBd85xj-OLUfT3i-ui5fJxtXuY";
+        const GOOGLE_API_KEY = "AIzaSyBaQZ_xmw6aWVOV525QbTEbwAYu_1tNoqk";
 
         // --- VARIABLES DE ESTADO ---
         let currentQuiz = null;
@@ -4864,48 +4864,89 @@ getUsuarios() {
         }
 
         // --- FUNCIÓN PURA DE IA (SIN DOM) ---
-        async function getAIEvaluation(pregunta, criterio, respuesta) {
-            const prompt = `
-            Actúa como profesor. 
-            Pregunta: "${pregunta}"
-            Criterio ideal: "${criterio}"
-            Respuesta alumno: "${respuesta}"
+       async function getAIEvaluation(pregunta, criterio, respuesta) {
+    const prompt = `
+        Actúa como profesor riguroso. 
+        Pregunta: "${pregunta}"
+        Criterio ideal: "${criterio}"
+        Respuesta alumno: "${respuesta}"
+        
+        Tarea: Puntúa (0-10, admite decimales) y Feedback breve (2 frases).
+        Formato OBLIGATORIO:
+        NOTA: [Número]
+        FEEDBACK: [Texto]
+    `;
+
+    const candidates = [
+        "gemma-3-27b-it", "gemma-3-12b-it", "gemma-3-4b-it",
+        "gemini-2.0-flash-lite", "gemini-2.5-flash-lite", 
+        "gemini-3-flash-preview", "gemini-2.5-flash", 
+        "gemini-2.0-flash", "gemini-1.5-flash-8b"
+    ];
+
+    for (const model of candidates) {
+        try {
+            console.log(`🤖 Intentando con: ${model}...`);
             
-            Tarea: Puntúa (0-10, admite decimales) y Feedback breve (2 frases).
-            Formato OBLIGATORIO:
-            NOTA: [Número]
-            FEEDBACK: [Texto]
-        `;
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GOOGLE_API_KEY}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { temperature: 0.2 }
+                })
+            });
 
-            const candidates = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest"];
+            const data = await response.json();
 
-            for (const model of candidates) {
-                try {
-                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GOOGLE_API_KEY}`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-                    });
-
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.candidates && data.candidates[0].content) {
-                            const text = data.candidates[0].content.parts[0].text;
-
-                            // Extraer nota
-                            const match = text.match(/NOTA:\s*(\d+(\.\d+)?)/i);
-                            const score = match ? parseFloat(match[1]) : 0;
-
-                            return { score: score, feedback: text };
-                        }
-                    }
-                } catch (e) {
-                    console.warn(`Fallo modelo ${model}`, e);
+            if (!response.ok) {
+                // Si hay error, registramos el motivo y saltamos al siguiente modelo
+                console.warn(`⚠️ Modelo ${model} rechazado (${response.status}): ${data.error?.message}`);
+                
+                // Si es un error de cuota (429), esperamos un poco
+                if (response.status === 429) {
+                    await new Promise(r => setTimeout(r, 1000));
                 }
+                continue; // <--- ESTO ES LO MÁS IMPORTANTE: No hace el throw, sigue intentando.
             }
-            throw new Error("Fallo de conexión IA");
+
+            if (data.candidates && data.candidates[0].content) {
+                const text = data.candidates[0].content.parts[0].text;
+                const match = text.match(/NOTA:\s*(\d+([.,]\d+)?)/i);
+                const score = match ? parseFloat(match[1].replace(',', '.')) : 0;
+
+                console.log(`✅ ¡Éxito con ${model}!`);
+                return { 
+                    score: score, 
+                    feedback: text.split("FEEDBACK:")[1]?.trim() || text,
+                    modelUsed: model 
+                };
+            }
+        } catch (e) {
+            console.error(`❌ Fallo de red/desconocido con ${model}:`, e.message);
+        }
+    }
+    throw new Error("❌ Agotados todos los modelos o error de API persistente.");
+}
+
+      /*  async function checkMyModels() {
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${GOOGLE_API_KEY}`);
+        const data = await response.json();
+        
+        if (data.error) {
+            console.error("Error de API:", data.error.message);
+            return;
         }
 
+        console.log("¡Éxito! Estos son los modelos que puedes usar:");
+        data.models.forEach(m => console.log(`-> ${m.name.split('/')[1]}`));
+    } catch (e) {
+        console.error("Error de conexión:", e);
+    }
+}
+
+checkMyModels();*/
         function calculateFinalScore() {
             score = 0;
             userAnswers.forEach(ans => {
